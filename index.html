@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE ÅLïEN SCõÖL :: Synthesis Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="harmonious70.css">
+<script src="tas-transitions.js" defer></script>
+<style>
+  #audio-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--h70-ink); transition: opacity 1.5s ease; text-align: center;
+    padding: var(--h70-gutter);
+    overflow: hidden;
+    background: var(--h70-bg);
+  }
+  
+  /* Multidimensional Mural Installation for the Gateway */
+  #audio-overlay::before, #audio-overlay::after {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    z-index: -1;
+    background: radial-gradient(circle at 30% 70%, color-mix(in oklab, var(--h70-signal) 12%, transparent) 0%, transparent 40%),
+                radial-gradient(circle at 70% 30%, color-mix(in oklab, var(--h70-ink) 8%, transparent) 0%, transparent 50%);
+    filter: blur(40px);
+    opacity: 0.8;
+    animation: gateway-breathe 8s infinite alternate ease-in-out;
+  }
+  #audio-overlay::after {
+    background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--h70-signal) 5%, transparent) 0%, transparent 60%);
+    animation: gateway-breathe 12s infinite alternate-reverse ease-in-out;
+    mix-blend-mode: overlay;
+  }
+  
+  @keyframes gateway-breathe {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+    100% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  }
+
+  .gateway-content {
+    position: relative; z-index: 2;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .artifact-link, .site-link { 
+    text-decoration: none; display: flex; flex-direction: column; cursor: pointer; 
+    transition: transform 420ms var(--h70-ease), box-shadow 420ms var(--h70-ease), border-color 420ms var(--h70-ease);
+    will-change: transform;
+  }
+  .artifact-link:is(:hover, :focus-visible), .site-link:is(:hover, :focus-visible) {
+    box-shadow: 0 32px 100px rgba(0,0,0,0.3), inset 0 1px 0 var(--h70-reflection);
+    outline: none;
+    border-color: color-mix(in oklab, var(--h70-signal) 42%, var(--h70-line));
+  }
+  /* Parallax specific smoothing */
+  .parallax-vessel {
+    transition: transform 0.1s linear, box-shadow 420ms var(--h70-ease), border-color 420ms var(--h70-ease);
+  }
+  .parallax-mural {
+    transition: transform 0.1s linear;
+  }
+
+  .h70-grid--three { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .h70-tooltip-container { position: relative; overflow: visible !important; }
+  .h70-tooltip {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+    background: var(--h70-ink); color: var(--h70-bg); padding: 1rem 1.5rem;
+    border-radius: 4px; width: max-content; max-width: 300px;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100; font-size: 13px; text-align: left; pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .h70-tooltip::before {
+    content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+    border-width: 6px; border-style: solid; border-color: transparent transparent var(--h70-ink) transparent;
+  }
+  .h70-tooltip-container:hover .h70-tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .h70-invitation-links a { color: var(--h70-signal); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .h70-invitation-links a:hover { border-color: var(--h70-signal); }
+
+  @media (hover: none) and (pointer: coarse), (max-width: 768px) {
+    .h70-tooltip {
+      position: relative; top: 0; left: 0; transform: none; width: 100%; max-width: 100%;
+      opacity: 1; visibility: visible; margin-top: 1rem; box-shadow: none; pointer-events: auto;
+    }
+    .h70-tooltip::before { display: none; }
+    .h70-invitation-links { padding-left: 1rem !important; border-left-width: 1px !important; }
+  }
+</style>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span>THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
+    <span id="nav-magnet-status" style="opacity: 0.4; border-left: 1px solid var(--h70-line); padding-left: 1.5vw;">MaGNET :: SECURED</span>
+  </div>
+</nav>
+
+<style>
+  /* Responsive Navigation Anticipation */
+  body { padding-top: 80px; } /* Prevent nav from covering content */
+  #h70-global-nav.nav-hidden { transform: translateY(-100%); }
+  
+  @media (max-width: 768px) {
+    #nav-c-thinking { display: none; } /* On mobile, simplify brand after initial gateway */
+    #h70-global-nav { padding: 1rem; }
+  }
+</style>
+
+<script>
+  // Anticipatory scroll logic
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('h70-global-nav');
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      nav.classList.add('nav-hidden'); // Scrolling down, hide nav
+    } else {
+      nav.classList.remove('nav-hidden'); // Scrolling up, anticipate intent, show nav
+    }
+    lastScrollY = window.scrollY;
+    
+    // Fade out "FOR CREATIVE THINKING" as they steep deeper, leaving just the school
+    const ct = document.getElementById('nav-c-thinking');
+    if(ct) {
+      if(window.scrollY > 300) { ct.style.opacity = '0'; }
+      else { ct.style.opacity = '1'; }
+    }
+  });
+
+  // Check MaGNET status from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('magnetUnlocked') === 'true') {
+      const ms = document.getElementById('nav-magnet-status');
+      if(ms) {
+        ms.textContent = 'MaGNET :: ACTIVE';
+        ms.style.opacity = '1';
+        ms.style.color = 'var(--h70-signal)';
+      }
+    }
+  });
+</script>
+
+
+<!-- INVITATION GATEWAY -->
+<div id="audio-overlay">
+  <div class="gateway-content parallax-vessel">
+    <div class="steam-sans--harris" style="font-size: clamp(3rem, 8vw, 7rem); letter-spacing: 0.02em; margin-bottom: 1rem; line-height: 1.1; text-transform: uppercase;">SYNTHESIS ARCHIVE</div>
+    <div class="steam-sans--vapor" style="font-size: clamp(1rem, 2vw, 1.5rem); margin-bottom: 0.5rem; letter-spacing: 0.2em;">THE ÅLïEN SCõÖL</div>
+    <div class="h70-kicker" style="margin-bottom: 4rem; color: var(--h70-signal); letter-spacing: 0.3em; display: flex; align-items: center; justify-content: center; gap: 1rem;">
+       <span style="opacity: 0.5;">∴</span>
+       <span class="mural-text">FOR CREATIVE THÏNKING</span>
+       <span style="opacity: 0.5;">∴</span>
+    </div>
+    <button class="h70-glyph-button sonic-link" onclick="initializeSpace()" style="background: transparent; color: var(--h70-ink); border: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent); padding: 1rem 4rem; font-size: 11px; letter-spacing: 0.2em; border-radius: 4px; cursor: pointer;">ENTER SPACE</button>
+  </div>
+</div>
+
+<!-- HÅRMONIOUS70 INSTALLATION -->
+<main id="archive-core" class="h70-installation">
+  <!-- The Room's Atmosphere (Parallax Target) -->
+  <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
+  
+  <!-- Header Geometry -->
+  <header style="max-width: 820px; margin: 0 auto; text-align: center;">
+    <p class="h70-kicker">THE ÅLïEN SCõÖL</p>
+    <h1 class="steam-sans--harris" style="margin: 1.5rem 0;">Synthesis<br><span class="h70-signal">Archive</span></h1>
+    <p class="h70-body" style="margin: 0 auto;">A living record. 528Hz attuned.</p>
+  </header>
+
+  <!-- Artifacts Geometry -->
+  <section style="max-width: 960px; margin: 0 auto; width: 100%;">
+    <p class="h70-kicker" style="margin-bottom: var(--h70-room);">THE ARTIFACTS</p>
+    <div class="h70-grid h70-grid--two">
+       <!-- Card 1 -->
+       <a href="artifacts/field-notes.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link">
+         <p class="h70-kicker">INAUGURAL EDITION</p>
+         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0;">Field <span class="h70-signal">Notes</span></h2>
+         <p class="h70-body">The inaugural accounting. Scholar arcs. Living equations.</p>
+       </a>
+       
+       <!-- Card 2 -->
+       <a href="artifacts/proof-of-field.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link">
+         <p class="h70-kicker">THE REFLECTIONARY</p>
+         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0;">Proof of <span class="h70-signal">Field</span></h2>
+         <p class="h70-body">Six threads. The reflectionary. Evidence of the field.</p>
+       </a>
+
+       <!-- Card 3 -->
+       <a href="artifacts/elevation-codex.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link">
+         <p class="h70-kicker">ARTIFACT 01</p>
+         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0;">The Elevation <span class="h70-signal">Codex</span></h2>
+         <p class="h70-body">Five moves of the guide methodology. The practitioner's map.</p>
+       </a>
+
+       <!-- Card 4 -->
+       <a href="artifacts/frequency-report.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link">
+         <p class="h70-kicker">ARTIFACT 06</p>
+         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0;">The Frequency <span class="h70-signal">Report</span></h2>
+         <p class="h70-body">Three resonance coordinates. The mineral base.</p>
+       </a>
+
+       <!-- Card 5 -->
+       <a href="artifacts/metaphor-library.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto; width: 100%;">
+         <p class="h70-kicker">ARTIFACT 07</p>
+         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0;">The Metaphor <span class="h70-signal">Library</span></h2>
+         <p class="h70-body" style="max-width: 100%;">Sixteen symbolic vessels. The tools for crossing thresholds.</p>
+       </a>
+    </div>
+  </section>
+
+  <!-- Sites Geometry -->
+  <section style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%;">
+    <p class="h70-kicker" style="margin-bottom: var(--h70-room);">VIRTUAL CAMPUS LINKS</p>
+    <div class="h70-grid h70-grid--two">
+      <a href="https://thealienschool.com" target="_blank" rel="noopener noreferrer" class="h70-vessel-card site-link parallax-vessel sonic-link">
+        <p class="h70-kicker h70-signal">PRIMARY INSTITUTION</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.25rem;">The Alien School</h3>
+      </a>
+      
+      <a href="https://creativesteeping.com" target="_blank" rel="noopener noreferrer" class="h70-vessel-card site-link parallax-vessel sonic-link">
+        <p class="h70-kicker h70-signal">CORE METHODOLOGY</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.25rem;">Creative Steeping</h3>
+      </a>
+      
+      <a href="https://hdmathematics.netlify.app" target="_blank" rel="noopener noreferrer" class="h70-vessel-card site-link parallax-vessel sonic-link">
+        <p class="h70-kicker h70-signal">RESEARCH LABORATORY</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.25rem;">HDM Insights</h3>
+      </a>
+
+      <a href="https://wayof.netlify.app" target="_blank" rel="noopener noreferrer" class="h70-vessel-card site-link parallax-vessel sonic-link">
+        <p class="h70-kicker h70-signal">CREATIVE PHILOSOPHY</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.25rem;">The Stone Forger</h3>
+      </a>
+
+      <a href="https://threedaysoff.netlify.app" target="_blank" rel="noopener noreferrer" class="h70-vessel-card site-link parallax-vessel sonic-link" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto; width: 100%;">
+        <p class="h70-kicker h70-signal">CONTEMPLATIVE PRACTICE</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.25rem;">Three Days Off</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- SYNTHESIS MEDIA GEOMETRY -->
+  <section id="synthesis-media" style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%;">
+    <div style="margin-bottom: var(--h70-room); max-width: 72ch;">
+      <p class="h70-kicker" style="margin-bottom: 1rem; color: var(--h70-signal);">SYNTHESIS MEDIA</p>
+      <p class="h70-body" style="color: var(--h70-muted);">Field reports built for specific audiences — where the tÅs archive enters the wider conversation. Observational register. Citable evidence. Editorial precision calibrated for systems change practitioners.</p>
+    </div>
+
+    <div class="h70-grid h70-grid--two">
+
+      <!-- SCEU REPORT 01 -->
+      <a href="sceu-report-one-integrating-creative-thinking.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link h70-tooltip-container" style="border-top: 2px solid var(--h70-signal); padding-top: 2rem;">
+        <div style="font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.2em; color: var(--h70-signal); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <span>SCEU FIELD REPORT</span>
+          <span style="opacity: 0.5;">01 OF 02</span>
+        </div>
+        <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0 1rem; line-height: 1.2;">Integrating <span class="h70-signal">Creative Thinking</span></h2>
+        <p class="h70-body" style="margin-bottom: 1.5rem;">Into The Places We Work — the structural argument for creative intelligence as an organizational property, not a personal talent.</p>
+        <p class="h70-body" style="font-size: var(--h70-sm); color: var(--h70-muted); border-top: 1px solid var(--h70-line); padding-top: 1rem; font-style: italic;">Creative Awareness · Creative Responsibility · Five Integration Conditions</p>
+        <div class="h70-tooltip">
+          <span style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--h70-muted); display: block; margin-bottom: 0.5rem;">PROVOCATION INSIDE</span>
+          <em style="color: var(--h70-signal); font-style: italic; display: block; line-height: 1.55;">"What is the cost, to the system's outcomes, of the creative intelligence currently going unused?"</em>
+        </div>
+      </a>
+
+      <!-- SCEU REPORT 02 -->
+      <a href="sceu-report-two-illuminating-creative-thinking.html" class="h70-vessel-card artifact-link parallax-vessel sonic-link h70-tooltip-container" style="border-top: 2px solid var(--h70-signal); padding-top: 2rem;">
+        <div style="font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.2em; color: var(--h70-signal); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <span>SCEU FIELD REPORT</span>
+          <span style="opacity: 0.5;">02 OF 02</span>
+        </div>
+        <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0 1rem; line-height: 1.2;">Illuminating the <span class="h70-signal">Dynamics</span></h2>
+        <p class="h70-body" style="margin-bottom: 1.5rem;">Of Creative Thinking — five observable patterns from the tÅs archive, translated into systems language with an advocacy for daily practice.</p>
+        <p class="h70-body" style="font-size: var(--h70-sm); color: var(--h70-muted); border-top: 1px solid var(--h70-line); padding-top: 1rem; font-style: italic;">Five Dynamics · HDM Equations in Systems Language · Advocacy for Daily Practice</p>
+        <div class="h70-tooltip">
+          <span style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--h70-muted); display: block; margin-bottom: 0.5rem;">PROVOCATION INSIDE</span>
+          <em style="color: var(--h70-signal); font-style: italic; display: block; line-height: 1.55;">"What daily practice could your system adopt — not as a program, but as a rhythm — that maintains creative thinking between formal interventions?"</em>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+
+  <!-- OPEN SESAME GEOMETRY -->
+  <section style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; text-align: center;" id="open-sesame-container">
+    <p class="h70-kicker" style="margin-bottom: 2rem;">GRADUATE ACCESS</p>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+      <input type="password" id="magnet-input" placeholder="APPLY MaGNET" style="background: transparent; border: none; border-bottom: 1px solid var(--h70-line); color: var(--h70-ink); font-family: var(--h70-mono); font-size: 13px; letter-spacing: 0.2em; padding: 0.5rem 1rem; outline: none; text-align: center; width: 240px; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--h70-signal)'" onblur="this.style.borderColor='var(--h70-line)'" onkeydown="if(event.key === 'Enter') unlockMagnet()">
+      <button class="h70-glyph-button sonic-link" onclick="unlockMagnet()" style="padding: 0.5rem 1.5rem; font-size: 10px;">UNLOCK</button>
+    </div>
+    <p id="magnet-feedback" class="h70-body" style="font-size: 13px; color: var(--h70-signal); margin-top: 1rem; opacity: 0; transition: opacity 0.3s;"></p>
+  </section>
+
+  <!-- Graduate Preview Geometry -->
+  <section style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; display: none; opacity: 0; transition: opacity 1.5s ease;" id="magnetized-experience">
+    <p class="h70-kicker" style="margin-bottom: var(--h70-room);">THE MaGNETIZED EXPERIENCE</p>
+    <div style="margin-bottom: 3rem; max-width: 75ch;">
+      <p class="h70-body" style="margin-bottom: 1.5rem;">The Equitable vector: the Academy is designed so every entry point reaches the same depth. Your MaGNET is your door. All doors open inward.</p>
+      <p class="h70-body" style="margin-bottom: 1.5rem;">Scholar protocol: Complete at least one full session in each MaGNET's Theater. Publish a comparative observation :: what each one surfaces in you that the others do not. The differences are the findings. UNION requires the multiplicity.</p>
+    </div>
+
+    <!-- The 3 MaGNETS -->
+    <div class="h70-grid h70-grid--three" style="margin-bottom: 5rem;">
+      <!-- ELLIAN -->
+      <a href="artifacts/magnet-ellian.html" class="h70-vessel-card site-link parallax-vessel sonic-link h70-tooltip-container">
+        <div style="height: 180px; overflow: hidden; margin-bottom: 1.5rem; border-radius: 2px;">
+          <img src="assets/hdm_magnets/MaGNET_ELLIAN.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.2); mix-blend-mode: luminosity;" alt="ELLIAN">
+        </div>
+        <p class="h70-kicker h70-signal">ELLIAN</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.5rem;">Warmth as Attractor</h3>
+        <p class="h70-body" style="font-size: 15px;">We explore the felt sense of those who hold the radiance without announcing it.</p>
+        <div class="h70-tooltip">
+          <span style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--h70-muted); display: block; margin-bottom: 0.5rem;">GRADUATE LIBRARY PREVIEW</span>
+          The Dynamics of Mathematics<br>
+          You Like It = I Love It<br>
+          <em style="color: var(--h70-signal); font-style: normal; display: block; margin-top: 0.5rem;">The mathematics of human connection.</em>
+        </div>
+      </a>
+
+      <!-- CLOPS -->
+      <a href="artifacts/magnet-clops.html" class="h70-vessel-card site-link parallax-vessel sonic-link h70-tooltip-container">
+        <div style="height: 180px; overflow: hidden; margin-bottom: 1.5rem; border-radius: 2px;">
+          <img src="assets/hdm_magnets/MaGNET_CLOPS.WEBP" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.2); mix-blend-mode: luminosity;" alt="CLOPS">
+        </div>
+        <p class="h70-kicker h70-signal">CLOPS</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.5rem;">Pattern Geography</h3>
+        <p class="h70-body" style="font-size: 15px;">We attract foresight having learned that creativity has a plan and path and a flow.</p>
+        <div class="h70-tooltip">
+          <span style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--h70-muted); display: block; margin-bottom: 0.5rem;">GRADUATE LIBRARY PREVIEW</span>
+          The Stone Forger's Way Context<br>
+          Crickets Ain't Quiet<br>
+          <em style="color: var(--h70-signal); font-style: normal; display: block; margin-top: 0.5rem;">Observing what the silence carries.</em>
+        </div>
+      </a>
+
+      <!-- THE DRAGONFLY -->
+      <a href="artifacts/magnet-dragonfly.html" class="h70-vessel-card site-link parallax-vessel sonic-link h70-tooltip-container">
+        <div style="height: 180px; overflow: hidden; margin-bottom: 1.5rem; border-radius: 2px;">
+          <img src="assets/hdm_magnets/MaGNET_GLEAM.JPEG" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.2); mix-blend-mode: luminosity;" alt="THE DRAGONFLY">
+        </div>
+        <p class="h70-kicker h70-signal">THE DRAGONFLY</p>
+        <h3 class="steam-sans--vapor" style="font-size: var(--h70-lg); margin-bottom: 0.5rem;">Clarity as Asset</h3>
+        <p class="h70-body" style="font-size: 15px;">The transparency that allows others to learn from our learnings.</p>
+        <div class="h70-tooltip">
+          <span style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--h70-muted); display: block; margin-bottom: 0.5rem;">GRADUATE LIBRARY PREVIEW</span>
+          The Road to 3DO<br>
+          Waterfalls and Breath<br>
+          3DO Boundary Templates<br>
+          <em style="color: var(--h70-signal); font-style: normal; display: block; margin-top: 0.5rem;">Contemplation mapped to action.</em>
+        </div>
+      </a>
+    </div>
+
+    <!-- INVITATIONAL LINKS -->
+    <div class="h70-invitation-links" style="max-width: 820px; border-left: 2px solid var(--h70-signal); padding-left: 2rem; margin-bottom: 2rem;">
+      <p class="h70-kicker" style="margin-bottom: 1.5rem;">CONTINUE THE ARC</p>
+      <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 16px; font-family: var(--h70-font);">
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); min-width: 60px;">PORTAL</span>
+          <a href="https://www.thealienschool.com/" target="_blank" rel="noopener noreferrer">Creative Alienation as Portal</a>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); min-width: 60px;">ABOUT</span>
+          <a href="https://www.thealienschool.com/about-us" target="_blank" rel="noopener noreferrer">Alien School Creative Thinking</a>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); min-width: 60px;">ENROLL</span>
+          <a href="https://www.thealienschool.com/portfolio-3" target="_blank" rel="noopener noreferrer">Our Courses</a>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); min-width: 60px;">SERVICES</span>
+          <a href="https://www.thealienschool.com/services" target="_blank" rel="noopener noreferrer">Creative Maverick Recognition</a>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); min-width: 60px;">INTELLIGENCE</span>
+          <a href="https://www.thealienschool.com/new-page" target="_blank" rel="noopener noreferrer">Action-Oriented Creative Intelligence</a>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: baseline;">
+          <span style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); min-width: 60px;">NETWORK</span>
+          <a href="https://www.linkedin.com/company/thealienschool" target="_blank" rel="noopener noreferrer">THE ÅLïEN SCöÕL :: LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Geometry -->
+  <footer style="max-width: 820px; margin: var(--h70-mural) auto 0; text-align: center;">
+    <p class="h70-kicker" style="line-height: 2.2; opacity: 0.6;">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING · 
+      KAMAU ZUBERI AKABUEZE · SYNTHESIS ARCHIVE · 2024–2026<br>
+      RESONANCE INDEX 0.74 · HÅRMONIOUS70 ARCHITECTURE
+    </p>
+  </footer>
+</main>
+
+<script>
+  // ==========================================
+  // PARALLAX SCIENCES
+  // ==========================================
+  // We use a small requestAnimationFrame loop so we don't choke the paint
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  const ease = 0.08;
+
+  document.addEventListener('mousemove', (e) => {
+    // Normalize coordinates between -1 and 1
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function renderParallax() {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+
+    const mural = document.querySelector('.parallax-mural');
+    if (mural) {
+      mural.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px) scale(1.05)`;
+    }
+
+    const vessels = document.querySelectorAll('.parallax-vessel');
+    vessels.forEach(vessel => {
+      // The vessels gently float toward the mouse
+      vessel.style.transform = `translate(${currentX * 6}px, ${currentY * 6}px)`;
+    });
+
+    requestAnimationFrame(renderParallax);
+  }
+  
+  // Start the render loop if not on a strictly touch device
+  if (window.matchMedia("(pointer: fine)").matches) {
+    requestAnimationFrame(renderParallax);
+  }
+
+  // ==========================================
+  // THE SONNET AUDIO ENGINE (LITE VERSION)
+  // ==========================================
+  let audioCtx;
+  let masterGain;
+
+  const PENTATONIC_SCALE = [264.00, 296.33, 332.62, 395.55, 444.00, 528.00, 592.67, 665.24];
+
+  function initializeSpace(isPortalEntry) {
+    const overlay = document.getElementById('audio-overlay');
+    if (overlay) {
+      if (isPortalEntry) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 1500);
+      }
+    }
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    audioCtx = new AudioContext();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = isPortalEntry ? 0 : 0.5;
+    masterGain.connect(audioCtx.destination);
+
+    if (isPortalEntry) {
+      masterGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2.0);
+    }
+
+    // Start ambient background breath
+    playAmbientBreath();
+
+    // Play entry chime
+    playStrikingBowl(528);
+  }
+
+  
+  // 240Hz Holistic Register injected into the ambient breath
+  function playAmbientBreath() {
+    if (!audioCtx) return;
+    const osc174 = audioCtx.createOscillator();
+    const osc240 = audioCtx.createOscillator(); // The Holistic Addition
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+
+    osc174.type = 'sine'; osc174.frequency.value = 174;
+    osc240.type = 'sine'; osc240.frequency.value = 240;
+
+    filter.type = 'lowpass'; filter.frequency.value = 400;
+    gain.gain.value = 0.02;
+
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.type = 'sine'; lfo.frequency.value = 0.22; // 4.4s breath
+    lfoGain.gain.value = 0.015;
+    
+    lfo.connect(lfoGain);
+    lfoGain.connect(gain.gain);
+    lfo.start();
+
+    osc174.connect(filter);
+    osc240.connect(filter);
+    filter.connect(gain);
+    gain.connect(masterGain);
+
+    osc174.start();
+    osc240.start();
+  }
+
+  function playStrikingBowl(freqOverride, isHover = false) {
+    if (!audioCtx) return;
+    const freq = freqOverride || PENTATONIC_SCALE[Math.floor(Math.random() * PENTATONIC_SCALE.length)];
+    
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    
+    // Experiential Sonification: spatial panning based on random float
+    const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+    if(panner) { panner.pan.value = (Math.random() * 1) - 0.5; }
+
+    osc.type = isHover ? 'triangle' : 'sine'; // Different texture for hover
+    osc.frequency.value = isHover ? freq * 2 : freq;
+
+    filter.type = 'lowpass';
+    filter.frequency.value = isHover ? freq * 4 : freq * 3;
+
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(isHover ? 0.015 : 0.1, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (isHover ? 1.5 : 3.5));
+
+    osc.connect(filter);
+    filter.connect(gain);
+    if(panner) {
+      gain.connect(panner);
+      panner.connect(masterGain);
+    } else {
+      gain.connect(masterGain);
+    }
+
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + (isHover ? 1.6 : 4.0));
+  }
+// Bind audio feedback to all interactive links
+  document.querySelectorAll('.sonic-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (audioCtx && audioCtx.state === 'running' && !link.classList.contains('h70-glyph-button')) {
+        playStrikingBowl();
+      }
+    });
+
+    link.addEventListener('mouseenter', () => {
+      if (audioCtx && audioCtx.state === 'running') {
+        playStrikingBowl(null, true);
+      }
+    });
+  });
+
+  // ==========================================
+  // MaGNET OPEN SESAME LOGIC
+  // ==========================================
+  function unlockMagnet() {
+    const input = document.getElementById('magnet-input').value.toUpperCase().trim();
+    const feedback = document.getElementById('magnet-feedback');
+    const container = document.getElementById('magnetized-experience');
+    
+    // We can accept ELLIAN, CLOPS, GLEAM, DRAGONFLY, or a master unlock 'OPEN SESAME'
+    const validMagnets = ['ELLIAN', 'CLOPS', 'GLEAM', 'DRAGONFLY', 'OPEN SESAME'];
+    
+    if (validMagnets.includes(input)) {
+      if (audioCtx && audioCtx.state === 'running') playStrikingBowl(528); // Resonance
+      document.getElementById('open-sesame-container').style.display = 'none';
+      container.style.display = 'block';
+      localStorage.setItem('magnetUnlocked', 'true');
+      document.getElementById('nav-magnet-status').textContent = 'MaGNET :: ACTIVE'; document.getElementById('nav-magnet-status').style.color = 'var(--h70-signal)'; document.getElementById('nav-magnet-status').style.opacity = '1';
+      setTimeout(() => { container.style.opacity = '1'; }, 100);
+      
+      // If a specific magnet was applied, we could highlight it or hide others, but "UNION requires multiplicity"
+      // so we reveal the whole theater but acknowledge the entry point.
+      feedback.style.opacity = '0';
+    } else {
+      feedback.textContent = 'Frequency unrecognized. Steeping required.';
+      feedback.style.opacity = '1';
+      setTimeout(() => { feedback.style.opacity = '0'; }, 3000);
+    }
+  }
+</script>
+
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span>tÅs</span>
+    <span id="scroll-progress">0% STEEPED</span>
+  </div>
+  <div style="text-align: right;">
+    <a href="mailto:thealienscool@gmail.com" style="color: var(--h70-signal); text-decoration: none;">thealienscool@gmail.com</a>
+    <span style="opacity: 0.6; margin-left: 1rem; display: none;" class="contact-desktop">Elevating the Creative Spirit in organizations, relationships, & edge navigation</span>
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = Math.min(100, Math.max(0, Math.round((window.scrollY / docHeight) * 100)));
+    const indicator = document.getElementById('scroll-progress');
+    if(indicator) indicator.textContent = progress + '% STEEPED';
+  });
+</script>
+<style>
+@media(min-width: 800px) { .contact-desktop { display: inline !important; } }
+</style>
+</body>
+
+</html>
