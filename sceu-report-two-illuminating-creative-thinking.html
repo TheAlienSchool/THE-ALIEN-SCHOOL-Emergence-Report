@@ -4,25 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Illuminating The Dynamics of Creative Thinking — tÅs Field Report</title>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="harmonious70.css">
 <script src="tas-transitions.js" defer></script>
 <style>
   :root {
-    --bg:        #f4f0e8;
-    --ink:       #181410;
-    --deep:      #22180a;
-    --muted:     #787060;
-    --border:    #ccc0a0;
-    --border-lt: #e4d8bc;
-    --warm:      #eae2d0;
-    --gold:      #886010;
-    --gold-pale: #ece0b4;
-    --teal:      #104038;
-    --teal-pale: #d8e8e2;
-    --indigo:    #28285c;
-    --indigo-lt: #e4e4f4;
-    --rule:      #bca878;
+    --bg:        var(--h70-bg);
+    --ink:       var(--h70-ink);
+    --deep:      var(--h70-ink);
+    --muted:     var(--h70-muted);
+    --border:    var(--h70-line);
+    --border-lt: var(--h70-line);
+    --warm:      var(--h70-surface);
+    --gold:      var(--h70-signal);
+    --gold-pale: color-mix(in oklab, var(--h70-signal) 12%, var(--h70-surface));
+    --teal:      var(--h70-signal);
+    --teal-pale: var(--h70-surface);
+    --indigo:    var(--h70-indigo);
+    --indigo-lt: color-mix(in oklab, var(--h70-indigo) 40%, var(--h70-surface));
+    --coral:     var(--h70-signal);
+    --rule:      var(--h70-line);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,16 +31,10 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Spectral', Georgia, serif;
+    font-family: var(--h70-font);
     font-size: 18px;
     line-height: 1.78;
     -webkit-font-smoothing: antialiased;
-  }
-
-  body::before {
-    content: '';
-    position: fixed; inset: 0; pointer-events: none; z-index: 400; opacity: 0.016;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
   }
 
   .page { max-width: 800px; margin: 0 auto; padding: 0 2.25rem 8rem; position: relative; z-index: 1; }
@@ -56,7 +50,7 @@
   }
 
   .cover-meta {
-    font-family: 'Inconsolata', monospace;
+    font-family: var(--h70-mono);
     font-size: 9px;
     letter-spacing: 0.22em;
     color: var(--muted);
@@ -65,7 +59,7 @@
   }
 
   .cover-series {
-    font-family: 'Inconsolata', monospace;
+    font-family: var(--h70-mono);
     font-size: 10px;
     letter-spacing: 0.18em;
     color: var(--indigo);
@@ -104,7 +98,7 @@
   }
 
   .cover-rule-line { flex: 1; height: 0.5px; background: var(--rule); }
-  .cover-rule-glyph { font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--gold); opacity: 0.6; }
+  .cover-rule-glyph { font-family: var(--h70-mono); font-size: 10px; color: var(--gold); opacity: 0.6; }
 
   /* ── SECTION ── */
   .section { padding: 5rem 0 0; }
@@ -115,7 +109,7 @@
   }
 
   .section-num {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
+    font-family: var(--h70-mono); font-size: 9px;
     letter-spacing: 0.2em; color: var(--muted); padding-top: 0.5rem;
   }
 
@@ -140,7 +134,7 @@
   }
 
   .locate-label {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
+    font-family: var(--h70-mono); font-size: 9px;
     letter-spacing: 0.16em; color: var(--muted); margin-bottom: 0.45rem; display: block;
   }
 
@@ -153,7 +147,7 @@
   }
 
   .couplet-l1 {
-    font-family: 'Inconsolata', monospace; font-size: 10px;
+    font-family: var(--h70-mono); font-size: 10px;
     letter-spacing: 0.12em; color: var(--gold); opacity: 0.7; margin-bottom: 0.35rem; line-height: 1.5;
   }
 
@@ -161,7 +155,7 @@
 
   /* ── ANCHOR ── */
   .anchor {
-    font-family: 'Inconsolata', monospace; font-size: 12px; color: var(--muted);
+    font-family: var(--h70-mono); font-size: 12px; color: var(--muted);
     border-left: 2px solid var(--border); padding-left: 1rem;
     margin: 1.25rem 0; line-height: 1.65; letter-spacing: 0.02em;
   }
@@ -179,7 +173,7 @@
   }
 
   .dynamic-num {
-    font-family: 'Inconsolata', monospace; font-size: 10px;
+    font-family: var(--h70-mono); font-size: 10px;
     color: var(--muted); letter-spacing: 0.12em;
   }
 
@@ -205,7 +199,7 @@
   }
 
   .dynamic-ev-label {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
+    font-family: var(--h70-mono); font-size: 9px;
     letter-spacing: 0.14em; color: var(--muted); margin-bottom: 0.5rem; display: block;
   }
 
@@ -219,7 +213,7 @@
   .dynamic-ev-item:first-of-type { border-top: none; }
 
   .dynamic-ev-who {
-    font-family: 'Inconsolata', monospace; font-size: 10px;
+    font-family: var(--h70-mono); font-size: 10px;
     color: var(--muted); white-space: nowrap; font-style: normal;
   }
 
@@ -230,7 +224,7 @@
   }
 
   .thinker-label {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
+    font-family: var(--h70-mono); font-size: 9px;
     letter-spacing: 0.16em; color: var(--teal); opacity: 0.8; margin-bottom: 0.5rem; display: block;
   }
 
@@ -240,7 +234,7 @@
   .thinker-body em { font-style: italic; color: var(--teal); }
 
   .thinker-cite {
-    font-family: 'Inconsolata', monospace; font-size: 10px;
+    font-family: var(--h70-mono); font-size: 10px;
     color: var(--muted); margin-top: 0.6rem; display: block; letter-spacing: 0.03em;
   }
 
@@ -255,7 +249,7 @@
   .eq-row:first-child { border-top: none; }
 
   .eq-formula {
-    font-family: 'Inconsolata', monospace; font-size: 13px;
+    font-family: var(--h70-mono); font-size: 13px;
     font-weight: 500; color: var(--teal); letter-spacing: 0.03em;
   }
 
@@ -263,23 +257,25 @@
 
   /* ── ADVOCACY BLOCK ── */
   .advocacy {
-    background: var(--indigo); color: #eeeeff;
+    background: var(--h70-bg-alt);
+    color: var(--ink);
     padding: 2.5rem; border-radius: 4px; margin: 3rem 0;
+    border: 0.5px solid var(--border);
   }
 
   .advocacy-label {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
-    letter-spacing: 0.22em; color: rgba(180,180,220,0.55); margin-bottom: 1.5rem; display: block;
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.22em; color: var(--muted); margin-bottom: 1.5rem; display: block;
   }
 
   .advocacy p {
-    font-size: 17px; line-height: 1.78; color: rgba(230,230,255,0.88);
+    font-size: 17px; line-height: 1.78; color: var(--ink);
     margin-bottom: 1.25rem;
   }
 
   .advocacy p:last-child { margin-bottom: 0; }
-  .advocacy em { font-style: italic; color: #c0c8f0; }
-  .advocacy strong { font-weight: 500; color: #eeeeff; }
+  .advocacy em { font-style: italic; color: var(--gold); }
+  .advocacy strong { font-weight: 500; color: var(--ink); }
 
   /* ── PULLQUOTE ── */
   .pullquote {
@@ -295,41 +291,43 @@
   .pullquote p em { font-style: normal; font-weight: 500; color: var(--gold); }
 
   .pullquote-attr {
-    font-family: 'Inconsolata', monospace; font-size: 10px;
+    font-family: var(--h70-mono); font-size: 10px;
     letter-spacing: 0.16em; color: var(--muted); margin-top: 1.25rem; display: block;
   }
 
   /* ── RESOURCES ── */
   .resources {
-    background: var(--deep); color: #f0e8d4;
+    background: var(--h70-bg-alt);
+    color: var(--ink);
     padding: 3rem; border-radius: 4px; margin: 4rem 0;
+    border: 0.5px solid var(--border);
   }
 
   .resources-label {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
-    letter-spacing: 0.22em; color: rgba(200,180,130,0.55); margin-bottom: 1.75rem; display: block;
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.22em; color: var(--muted); margin-bottom: 1.75rem; display: block;
   }
 
   .resource-item {
-    padding: 1rem 0; border-top: 0.5px solid rgba(200,180,130,0.2);
+    padding: 1rem 0; border-top: 0.5px solid var(--border);
     display: grid; grid-template-columns: 1fr; gap: 0.3rem;
   }
 
   .resource-item:first-of-type { border-top: none; padding-top: 0; }
 
-  .resource-title { font-size: 15px; font-weight: 500; font-style: italic; color: #f0e8d4; line-height: 1.4; }
+  .resource-title { font-size: 15px; font-weight: 500; font-style: italic; color: var(--ink); line-height: 1.4; }
 
   .resource-author {
-    font-family: 'Inconsolata', monospace; font-size: 10px;
-    color: rgba(200,180,130,0.65); letter-spacing: 0.04em;
+    font-family: var(--h70-mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.04em;
   }
 
-  .resource-note { font-size: 14px; color: rgba(200,180,130,0.7); line-height: 1.6; font-style: italic; margin-top: 0.2rem; }
+  .resource-note { font-size: 14px; color: var(--muted); line-height: 1.6; font-style: italic; margin-top: 0.2rem; }
 
   /* ── DIVIDER ── */
   .divider { display: flex; align-items: center; gap: 1rem; margin: 4rem 0; }
   .divider-line { flex: 1; height: 0.5px; background: var(--border); }
-  .divider-mark { font-family: 'Inconsolata', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--muted); white-space: nowrap; }
+  .divider-mark { font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--muted); white-space: nowrap; }
 
   /* ── CLOSING ── */
   .closing { padding: 4rem 0 3rem; border-top: 0.5px solid var(--border); text-align: center; }
@@ -337,7 +335,7 @@
   .closing p { font-size: 16px; color: var(--muted); font-style: italic; max-width: 460px; margin: 0 auto 1rem; line-height: 1.72; }
 
   .closing-sig {
-    font-family: 'Inconsolata', monospace; font-size: 9px;
+    font-family: var(--h70-mono); font-size: 9px;
     letter-spacing: 0.2em; color: var(--muted); margin-top: 2.5rem;
     display: block; line-height: 2.3; opacity: 0.55;
   }
@@ -349,12 +347,11 @@
   }
 
   @media print {
-    body::before { display: none; }
     .section, .dynamic { break-inside: avoid; }
   }
 </style>
 </head>
-<body data-h70-scene="day">
+<body>
 
 <!-- HÅRMONIOUS70 GLOBAL NAVIGATION -->
 <nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.25rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--h70-bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
@@ -404,7 +401,7 @@
       <span class="cover-rule-glyph">◈</span>
       <div class="cover-rule-line"></div>
     </div>
-    <div style="font-family: 'Inconsolata', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--muted); line-height: 2;">
+    <div style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); line-height: 2;">
       KAMAU ZUBERI AKABUEZE · KzA · QUIET WARRIOR PRODUCTIONS<br>
       BUILT THROUGH THE VESSELVERSE EDITORIAL PROTOCOL · PRIMER INSTALLED
     </div>
@@ -760,7 +757,7 @@
 </div>
 
 <!-- SCROLL PROGRESS BAR -->
-<div id="sceu-progress" style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 0.85rem 2rem; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(12px); border-top: 0.5px solid var(--border-lt); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: 'Inconsolata', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted);">
+<div id="sceu-progress" style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 0.85rem 2rem; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(12px); border-top: 0.5px solid var(--border-lt); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--muted);">
   <div style="display: flex; gap: 2rem; align-items: center;">
     <span style="color: var(--gold); opacity: 0.7;">tÅs</span>
     <span id="read-progress">0% READ</span>
