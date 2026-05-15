@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes :: THE ÅLïEN SCõÖL</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<style>
+      :root {
+    --bg:         var(--h70-bg);
+    --ink:        var(--h70-ink);
+    --deep:       var(--h70-ink);
+    --muted:      var(--h70-muted);
+    --border:     var(--h70-line);
+    --border-lt:  var(--h70-line);
+    --warm:       var(--h70-surface);
+    --gold:       var(--h70-signal);
+    --gold-pale:  var(--h70-surface);
+    --teal:       var(--h70-signal);
+    --teal-pale:  var(--h70-surface);
+    --scholar:    var(--h70-ink);
+    --scholar-lt: var(--h70-surface);
+    --review:     var(--h70-signal);
+    --review-lt:  var(--h70-surface);
+    --rule:       var(--h70-line);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--h70-font);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* grain */
+  
+
+  .page { max-width: 860px; margin: 0 auto; padding: 0 2.25rem 10rem; position: relative; z-index: 1; }
+
+  /* ── MONO ── */
+  .m { font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh; padding: 4rem 0 5rem;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-rows: auto 1fr auto;
+  }
+
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+
+  .cover-stamp {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.22em; color: var(--muted); line-height: 2;
+  }
+
+  .cover-stamp a { color: var(--teal); text-decoration: none; }
+  .cover-stamp a:hover { text-decoration: underline; }
+
+  .cover-edition {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; color: var(--gold); text-align: right; line-height: 2; opacity: 0.85;
+  }
+
+  .cover-body { display: flex; flex-direction: column; justify-content: center; padding: 5rem 0 3rem; }
+
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--muted); margin-bottom: 1.5rem; display: block;
+  }
+
+  .cover-title {
+    font-size: clamp(3.2rem, 7vw, 5.8rem); font-weight: 300; font-style: normal;
+    line-height: 1.0; color: var(--deep); margin-bottom: 0.5rem;
+  }
+
+  .cover-title strong { font-weight: 500; font-style: normal; color: var(--gold); }
+
+  .cover-rule {
+    display: flex; align-items: center; gap: 1rem; margin: 2rem 0;
+  }
+
+  .cover-rule-line { flex: 1; height: 0.5px; background: var(--rule); }
+  .cover-rule-mark { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); opacity: 0.6; }
+
+  .cover-sub {
+    font-size: 17px; font-weight: 300; font-style: normal; color: var(--muted);
+    max-width: 65ch; margin-left: 0; line-height: 1.75; margin-bottom: 3rem;
+  }
+
+  .cover-registers {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border); border: 0.5px solid var(--border);
+    border-radius: 3px; overflow: hidden; margin-bottom: 2.5rem;
+  }
+
+  .reg-block { background: var(--bg); padding: 1rem 1.1rem; }
+
+  .reg-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.16em; color: var(--muted); display: block; margin-bottom: 0.3rem;
+  }
+
+  .reg-name { font-size: 13px; font-style: normal; color: var(--deep); line-height: 1.4; }
+
+  .cover-nav {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0; border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden;
+  }
+
+  .nav-item {
+    padding: 0.8rem 1.1rem; border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border); text-decoration: none;
+    color: var(--ink); transition: background 0.15s; display: block;
+  }
+
+  .nav-item:nth-child(even) { border-right: none; }
+  .nav-item:nth-last-child(-n+2) { border-bottom: none; }
+  .nav-item:hover { background: var(--warm); }
+
+  .nav-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.14em; color: var(--muted); display: block; margin-bottom: 0.2rem; }
+  .nav-name { font-size: 13px; font-style: normal; color: var(--deep); line-height: 1.35; }
+
+  /* ── SECTION ── */
+  .section { padding: 6rem 0 0; }
+
+  .section-header {
+    display: grid; grid-template-columns: 56px 1fr; gap: 0 1.5rem;
+    margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; color: var(--muted); padding-top: 0.4rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 300; font-style: normal;
+    color: var(--deep); line-height: 1.15;
+  }
+
+  .section-title em { font-style: normal; font-weight: 500; color: var(--gold); }
+
+  /* ── PROSE ── */
+  .prose { max-width: 65ch; margin-left: 0; }
+  .prose p { font-size: 18px; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose em { font-style: normal; color: var(--gold); }
+  .prose strong { font-weight: 500; color: var(--deep); }
+  .prose a { color: var(--teal); text-decoration: none; border-bottom: 0.5px solid var(--teal); }
+  .prose a:hover { opacity: 0.7; }
+
+  /* ── LOCATE ── */
+  .locate {
+    border-left: 2px solid var(--border); padding: 1rem 1.4rem;
+    margin-bottom: 2rem; border-radius: 0 3px 3px 0; background: var(--warm);
+  }
+
+  .locate-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 0.45rem; display: block; }
+  .locate p { font-size: 17px; font-style: normal; color: var(--deep); line-height: 1.75; }
+
+  /* ── ANCHOR ── */
+  .anchor { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); border-left: 2px solid var(--border); padding-left: 1rem; margin: 1.25rem 0; line-height: 1.75; letter-spacing: 0.02em; }
+
+  /* ── BELIEF BLOCKS ── */
+  .beliefs { display: grid; grid-template-columns: 1fr; gap: 0; margin: 2.5rem 0; border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden; }
+
+  .belief {
+    padding: 1.1rem 1.5rem; border-top: 0.5px solid var(--border);
+    display: grid; grid-template-columns: 32px 1fr; gap: 0 1.25rem; align-items: baseline;
+    opacity: 0; transform: translateX(-8px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .belief:first-child { border-top: none; }
+  .belief.visible { opacity: 1; transform: translateX(0); }
+
+  .belief-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); font-weight: 600; }
+
+  .belief-text { font-size: 16px; color: var(--deep); line-height: 1.75; }
+
+  /* ── SCHOLAR CARDS ── */
+  .scholar-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin: 2.5rem 0; }
+
+  .scholar-card {
+    border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .scholar-card.visible { opacity: 1; transform: translateY(0); }
+
+  .scholar-card-top {
+    background: var(--warm); padding: 0.9rem 1.25rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  }
+
+  .scholar-identifier {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.14em; color: var(--scholar);
+  }
+
+  .scholar-context {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--muted); text-align: right; line-height: 1.75;
+  }
+
+  .scholar-card-body { padding: 1.1rem 1.25rem; background: var(--bg); }
+
+  .scholar-card-body p {
+    font-size: 15px; line-height: 1.75; color: var(--ink); margin-bottom: 0.75rem;
+  }
+
+  .scholar-card-body p:last-child { margin-bottom: 0; }
+  .scholar-card-body em { font-style: normal; color: var(--gold); }
+
+  .scholar-shift {
+    margin-top: 0.75rem; padding-top: 0.75rem; border-top: 0.5px dashed var(--border-lt);
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal);
+    line-height: 1.75; letter-spacing: 0.02em;
+  }
+
+  /* ── REVIEW BLOCKS ── */
+  .review {
+    border-left: 3px solid var(--review); padding: 1.25rem 1.5rem;
+    background: var(--review-lt); border-radius: 0 4px 4px 0; margin: 1.5rem 0;
+    opacity: 0; transform: translateX(-8px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .review.visible { opacity: 1; transform: translateX(0); }
+
+  .review-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; color: var(--review); opacity: 0.7; margin-bottom: 0.75rem; display: block; }
+
+  .review p { font-size: 16px; font-style: normal; color: var(--deep); line-height: 1.75; margin-bottom: 0.75rem; }
+  .review p:last-child { margin-bottom: 0; }
+  .review em { font-style: normal; font-weight: 500; color: var(--review); }
+
+  .review-sig { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 0.75rem; display: block; line-height: 1.75; letter-spacing: 0.03em; }
+
+  /* ── EQUATION ROW ── */
+  .eq-row {
+    display: flex; align-items: baseline; gap: 1rem; padding: 0.9rem 0;
+    border-top: 0.5px solid var(--border-lt);
+  }
+
+  .eq-row:first-of-type { border-top: none; }
+
+  .eq-formula { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--teal); font-weight: 500; min-width: 280px; flex-shrink: 0; }
+
+  .eq-note { font-size: 14px; color: var(--muted); font-style: normal; line-height: 1.55; }
+
+  /* ── DATA TABLE ── */
+  .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+
+  .data-table th {
+    font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em;
+    color: var(--muted); text-align: left; padding: 0.6rem 1rem; border-bottom: 1px solid var(--border);
+    background: var(--warm);
+  }
+
+  .data-table td {
+    font-size: 14px; color: var(--ink); padding: 0.7rem 1rem;
+    border-bottom: 0.5px solid var(--border-lt); vertical-align: top; line-height: 1.75;
+  }
+
+  .data-table td em { font-style: normal; color: var(--gold); }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* ── COUPLET ── */
+  .couplet { border-left: 2px solid var(--gold); padding: 1.1rem 1.4rem; margin: 2.5rem 0; background: var(--gold-pale); border-radius: 0 3px 3px 0; }
+
+  .couplet-l1 { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--gold); opacity: 0.7; margin-bottom: 0.35rem; line-height: 1.5; }
+
+  .couplet-l2 { font-size: 18px; font-style: normal; color: var(--deep); line-height: 1.75; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote { padding: 4rem 0; text-align: left; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); margin: 4rem 0; }
+
+  .pullquote p { font-size: clamp(1.2rem, 2.7vw, 1.7rem); font-style: normal; font-weight: 300; line-height: 1.55; color: var(--deep); max-width: 65ch; margin-left: 0; margin: 0 auto; }
+
+  .pullquote p em { font-style: normal; font-weight: 500; color: var(--gold); }
+
+  .pullquote-attr { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--muted); margin-top: 1.25rem; display: block; }
+
+  /* ── FIELD NAMING ── */
+  .field-close {
+    background: var(--deep); color: var(--bg);
+    padding: 4rem 3rem; border-radius: 4px; margin: 4rem 0;
+    text-align: left; position: relative; overflow: hidden;
+  }
+
+  .field-close::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(154,112,24,0.14) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .field-close-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--bg); opacity: 0.7; display: block; margin-bottom: 2rem; }
+
+  .field-close-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; font-style: normal; line-height: 1.12; color: var(--bg); margin-bottom: 1.5rem; }
+
+  .field-close-title em { font-style: normal; font-weight: 500; color: var(--gold); }
+
+  .field-close-body { font-size: 17px; font-style: normal; color: var(--bg); opacity: 0.9; max-width: 65ch; margin-left: 0; margin: 0 auto; line-height: 1.75; }
+
+  .field-close-body em { font-style: normal; color: var(--gold); }
+
+  /* ── LINKS SECTION ── */
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+
+  .link-card {
+    padding: 1rem 1.1rem; border: 0.5px solid var(--border); border-radius: 3px;
+    text-decoration: none; color: var(--ink); transition: background 0.15s; display: block;
+  }
+
+  .link-card:hover { background: var(--warm); }
+
+  .link-card-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.14em; color: var(--teal); display: block; margin-bottom: 0.3rem; }
+
+  .link-card-name { font-size: 14px; font-style: normal; color: var(--deep); line-height: 1.4; margin-bottom: 0.3rem; }
+
+  .link-card-url { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+
+  /* ── CLOSING ── */
+  .closing { padding: 5rem 0 3rem; border-top: 0.5px solid var(--border); text-align: left; }
+
+  .closing-glyph { font-size: 3rem; color: var(--gold); opacity: 0.3; display: block; margin-bottom: 2rem; font-style: normal; }
+
+  .closing p { font-size: 16px; color: var(--muted); font-style: normal; max-width: 480px; margin: 0 auto 1rem; line-height: 1.75; }
+
+  .closing-sig { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--muted); margin-top: 3rem; display: block; line-height: 2.4; opacity: 0.55; }
+
+  /* ── DIVIDER ── */
+  .divider { display: flex; align-items: center; gap: 1rem; margin: 4rem 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--border); }
+  .divider-mark { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--muted); white-space: nowrap; }
+
+  @media (max-width: 580px) {
+    .cover-registers, .cover-nav { grid-template-columns: 1fr; }
+    .cover-top { flex-direction: column; gap: 0.5rem; }
+    .eq-formula { min-width: unset; }
+    .field-close { padding: 3rem 1.5rem; }
+    .scholar-card-top { flex-direction: column; gap: 0.3rem; }
+  }
+
+  @media print {
+    
+    .belief, .scholar-card, .review { opacity: 1; transform: none; break-inside: avoid; }
+    .field-close::before { display: none; }
+  }
+  #audio-overlay { background: var(--h70-bg) !important; }
+  p, li, td, .prose p, .review p, .scholar-card-body p { 
+    font-family: var(--h70-font);
+    font-variation-settings: 'STBL' 50, 'COHR' 84, 'DRFT' 13, 'PRSS' 20;
+    animation: h70-hba-breathe var(--h70-breath-cycle) var(--h70-ease) infinite;
+  }
+  .cover-stamp, .section-num, .locate-label, .review-label, .link-card-label {
+    font-family: var(--h70-mono);
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24;
+  }
+  a:hover {
+    font-variation-settings: 'STBL' 100, 'COHR' 48, 'DRFT' 34, 'PRSS' 12;
+    filter: blur(.16px);
+  }
+</style>
+  <link rel="stylesheet" href="../harmonious70.css">
+<script src="../tas-transitions.js" defer></script>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span>THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="../index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
+    <span id="nav-magnet-status" style="opacity: 0.4; border-left: 1px solid var(--h70-line); padding-left: 1.5vw;">MaGNET :: SECURED</span>
+  </div>
+</nav>
+
+<style>
+  /* Responsive Navigation Anticipation */
+  body { padding-top: 80px; } /* Prevent nav from covering content */
+  #h70-global-nav.nav-hidden { transform: translateY(-100%); }
+  
+  @media (max-width: 768px) {
+    #nav-c-thinking { display: none; } /* On mobile, simplify brand after initial gateway */
+    #h70-global-nav { padding: 1rem; }
+  }
+</style>
+
+<script>
+  // Anticipatory scroll logic
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('h70-global-nav');
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      nav.classList.add('nav-hidden'); // Scrolling down, hide nav
+    } else {
+      nav.classList.remove('nav-hidden'); // Scrolling up, anticipate intent, show nav
+    }
+    lastScrollY = window.scrollY;
+    
+    // Fade out "FOR CREATIVE THINKING" as they steep deeper, leaving just the school
+    const ct = document.getElementById('nav-c-thinking');
+    if(ct) {
+      if(window.scrollY > 300) { ct.style.opacity = '0'; }
+      else { ct.style.opacity = '1'; }
+    }
+  });
+
+  // Check MaGNET status from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('magnetUnlocked') === 'true') {
+      const ms = document.getElementById('nav-magnet-status');
+      if(ms) {
+        ms.textContent = 'MaGNET :: ACTIVE';
+        ms.style.opacity = '1';
+        ms.style.color = 'var(--h70-signal)';
+      }
+    }
+  });
+</script>
+
+<main class="h70-installation" style="display:block; padding-top: 2rem;">
+  <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
+  <div class="page" style="background: transparent;">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-stamp">
+        THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING<br>
+        
+        <a href="https://thealienschool.com" target="_blank" rel="noopener noreferrer">thealienschool.com</a>
+      </div>
+      <div class="cover-edition">
+        FIELD NOTES<br>
+        INAUGURAL EDITION<br>
+        2024 :: 2026
+      </div>
+    </div>
+
+    <div class="cover-body">
+      <span class="cover-eyebrow">EMERGENCE REPORT · PRACTICUM REVIEW · FILED NOTES FROM THE PROOF OF FIELD</span>
+      <h1 class="cover-title">Field<br><strong>Notes</strong></h1>
+
+      <div class="cover-rule">
+        <div class="cover-rule-line"></div>
+        <span class="cover-rule-mark">◈</span>
+        <div class="cover-rule-line"></div>
+      </div>
+
+      <p class="cover-sub">A formal accounting of THE ÅLïEN SCõÖL's documented practice :: its methodology, its scholars, its reach, and what the conversations have produced. Three registers, held simultaneously: evidence, reflection, and living record.</p>
+
+      <div class="cover-registers">
+        <div class="reg-block">
+          <span class="reg-label">REGISTER ONE</span>
+          <div class="reg-name">Annual Report :: formal accounting of what was produced</div>
+        </div>
+        <div class="reg-block">
+          <span class="reg-label">REGISTER TWO</span>
+          <div class="reg-name">Practicum Review :: the methodology in active deployment</div>
+        </div>
+        <div class="reg-block">
+          <span class="reg-label">REGISTER THREE</span>
+          <div class="reg-name">Field Notes :: living record from inside the work</div>
+        </div>
+      </div>
+
+      <div class="cover-nav">
+        <a href="#foundation" class="nav-item"><span class="nav-num">PART I</span><div class="nav-name">The Foundation :: Thirty Years of Behavioral Study</div></a>
+        <a href="#methodology" class="nav-item"><span class="nav-num">PART II</span><div class="nav-name">The Methodology :: What tÅs Does and How</div></a>
+        <a href="#scholars" class="nav-item"><span class="nav-num">PART III</span><div class="nav-name">The Scholar Record :: Documented Engagements</div></a>
+        <a href="#voices" class="nav-item"><span class="nav-num">PART IV</span><div class="nav-name">Voices from the Field :: Reviews and Testimonials</div></a>
+        <a href="#equations" class="nav-item"><span class="nav-num">PART V</span><div class="nav-name">The Experiential Equations :: Observable Patterns</div></a>
+        <a href="#reach" class="nav-item"><span class="nav-num">PART VI</span><div class="nav-name">Geographic and Community Reach</div></a>
+        <a href="#beliefs" class="nav-item"><span class="nav-num">PART VII</span><div class="nav-name">Five Core Proofs This Work Demonstrates</div></a>
+        <a href="#artifacts" class="nav-item"><span class="nav-num">PART VIII</span><div class="nav-name">The Artifact Body :: Deep Dives</div></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART I: FOUNDATION -->
+  <section class="section" id="foundation">
+    <div class="section-header">
+      <span class="section-num">PART I</span>
+      <h2 class="section-title">The <em>Foundation</em></h2>
+    </div>
+
+    <div class="locate">
+      <span class="locate-label">LOCATE · THE GROUND BEFORE THE SCHOOL HAD A NAME</span>
+      <p class="h70-body">Thirty years before the first documented session, the work was already happening :: in advertising war rooms, in strategic planning sessions, in creative leadership across some of the largest brand conversations in American commerce. What looked like a career in marketing was, from the inside, a sustained study of human behavior at scale.</p>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">Kamau Zuberi Akabueze's professional career spanned advertising, strategic consulting, and creative organization leadership :: with engagements across Nike, Sony, Gatorade, Jeep, and dozens of other major brands. What most do not recognize as research rigor was in fact the most data-rich behavioral study available: reading human response to meaning, identity, aspiration, and belonging at the scale of culture.</p>
+
+      <p class="h70-body">Every brand strategy is a hypothesis about what human beings care about and why. Every campaign is a test of that hypothesis. Thirty years of that work :: across demographics, cultural moments, economic conditions, and societal shifts :: produced a specific kind of intelligence: the ability to recognize what a person is actually reaching for beneath what they say they want.</p>
+
+      <p class="h70-body">That intelligence became the foundation of everything THE ÅLïEN SCõÖL formalizes. The practices were not invented for the school :: they were distilled from decades of application in other contexts, named and structured for transmission. The Stone Forger's Way documents the core creative philosophy. Creative Steeping translates it into a seven-step journaling methodology. Three Days Off applies it to the necessity of rest as creative practice. THE ÅLïEN SCõÖL is the institution that holds all of it.</p>
+
+      <p class="h70-body">The documented period covered by these Field Notes :: November 2024 through May 2026 :: is the first formal recording of a practice with a thirty-year development history. What these notes capture is the methodology becoming legible to itself for the first time.</p>
+
+      <p class="h70-body">The school's working sites:</p>
+    </div>
+
+    <div class="links-grid">
+      <a href="https://thealienschool.com" target="_blank" rel="noopener noreferrer" class="link-card parallax-vessel">
+        <span class="link-card-label">PRIMARY INSTITUTION</span>
+        <div class="link-card-name">The Alien School</div>
+        <div class="link-card-url">thealienschool.com</div>
+      </a>
+      <a href="https://creativesteeping.com" target="_blank" rel="noopener noreferrer" class="link-card parallax-vessel">
+        <span class="link-card-label">CORE METHODOLOGY</span>
+        <div class="link-card-name">Creative Steeping</div>
+        <div class="link-card-url">creativesteeping.com</div>
+      </a>
+      <a href="https://threedaysoff.netlify.app" target="_blank" rel="noopener noreferrer" class="link-card parallax-vessel">
+        <span class="link-card-label">CONTEMPLATIVE PRACTICE</span>
+        <div class="link-card-name">Three Days Off</div>
+        <div class="link-card-url">threedaysoff.netlify.app</div>
+      </a>
+      <a href="https://wayof.netlify.app" target="_blank" rel="noopener noreferrer" class="link-card parallax-vessel">
+        <span class="link-card-label">CREATIVE PHILOSOPHY</span>
+        <div class="link-card-name">The Stone Forger's Way</div>
+        <div class="link-card-url">wayof.netlify.app</div>
+      </a>
+      <a href="https://hdmathematics.netlify.app" target="_blank" rel="noopener noreferrer" class="link-card parallax-vessel" style="border-color: var(--teal);">
+        <span class="link-card-label" style="color: var(--teal);">RESEARCH LABORATORY</span>
+        <div class="link-card-name">HDM Insights Academy</div>
+        <div class="link-card-url">hdmathematics.netlify.app</div>
+      </a>
+    </div>
+
+    <div class="prose" style="margin-top: 1.75rem;">
+      <p class="h70-body">The HDM Insights Academy warrants specific naming here. Human Development Mathematics :: the framework that treats somatic response as mathematical input and creativity as structural mathematics :: was born directly from observing what tÅs sessions produced in scholars over time. The school generated the laboratory. What was noticed in the rooms became the basis for a developing research framework. HDM Insights Academy is where those observations are being formalized into teachable and transmissible principles. tÅs and HDM are the same body of work at two different levels of resolution: tÅs is the practice; HDM is the mathematics the practice keeps producing.</p>
+    </div>
+  </section>
+
+  <!-- PART II: METHODOLOGY -->
+  <section class="section" id="methodology">
+    <div class="section-header">
+      <span class="section-num">PART II</span>
+      <h2 class="section-title">The <em>Methodology</em></h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">THE ÅLïEN SCõÖL operates as a practice environment :: a field in which the scholar's original creative intelligence becomes legible to themselves with enough precision to act on.</p>
+
+      <p class="h70-body">The distinction matters. Coaching identifies gaps and builds toward them. The school's methodology identifies what was always present and creates the conditions under which the scholar can hear it clearly. The guide reflects the scholar's existing intelligence at a resolution the scholar has not yet achieved alone.</p>
+
+      <p class="h70-body">Three core tools govern the practice in its documented form:</p>
+    </div>
+
+    <div class="couplet">
+      <p class="couplet-l1">The canonical equation :: permanently fixed</p>
+      <p class="couplet-l2">Patience × Procrastination = Steeping</p>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body"><strong>Creative Steeping</strong> is a seven-steep journaling and reflection methodology, structured around tea ceremony as a temporal metaphor: the scholar steeps in deliberate practice across a defined period, drawing out layers of creative intelligence that accelerate or direct methods of practice cannot reach. The guidebook has been used independently, in cohort, and in one-on-one sessions across multiple continents.</p>
+
+      <p class="h70-body"><strong>The Stone Forger's Way</strong> is the philosophical substrate :: a guide to understanding how change actually happens, drawn from pattern recognition across decades of observing human creative development. It functions as the school's foundational text.</p>
+
+      <p class="h70-body"><strong>The Elevation Methodology</strong> governs one-on-one guide-scholar sessions. It comprises five documented moves: the Elevation Move, the Permission Structure, the Metaphor Interrupt, the Somatic Tether, and Steeping as Time Design. Each move is documented with sourced examples from the session archive in <a href="#artifacts">Artifact 01 :: The Elevation Codex</a>.</p>
+
+      <p class="h70-body">The school's symbolic vocabulary :: the metaphors that function as threshold-crossing tools rather than illustrations :: is documented in <a href="#artifacts">Artifact 07 :: The Metaphor Library</a>. Sixteen metaphors, each sourced from a real session, each with its mechanism named and its conditions of use specified.</p>
+
+      <p class="h70-body">The school works across three documented contexts simultaneously: individual sessions with scholars in specific life transitions; cohort programs for small groups; and immersive installations and events that extend the methodology into physical and sonic experience.</p>
+    </div>
+  </section>
+
+  <div class="pullquote">
+    <p class="h70-body">The school does not install creativity. <em>It develops the conditions in which the scholar's original creative intelligence becomes audible to themselves.</em></p>
+    <span class="pullquote-attr">:: tÅs FIELD NOTES · INAUGURAL EDITION</span>
+  </div>
+
+  <!-- PART III: SCHOLAR RECORD -->
+  <section class="section" id="scholars">
+    <div class="section-header">
+      <span class="section-num">PART III</span>
+      <h2 class="section-title">The <em>Scholar</em> Record</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The following accounts are drawn from the documented session archive :: Fireflies transcripts, session summaries, and in one significant case, the scholar's own hand-written Trailing Notes recorded during and after sessions. Scholar identifiers are descriptive rather than nominal, honoring the privacy of those who requested it while preserving the specificity of what each engagement produced.</p>
+
+      <p class="h70-body">The age range across documented engagements spans from late twenties to the mid-seventies. That span is itself evidence: the methodology reaches the Field of Original Frequency at every life stage, not only in periods of obvious transition or youth.</p>
+    </div>
+
+    
+      <p class="h70-body" style="margin-bottom: 2.5rem; padding-left: 1.5rem; border-left: 2px solid var(--h70-signal); opacity: 0.9;">
+        <em>Privacy as a respectable politic.</em> The identifiers below honor the specific arcs of those who stepped into the field, while preserving the sanctity of the room. This record is presented as a matter of profound gratitude. The transformation documented here is not a service rendered by the school :: it is the exact return on investment from what each scholar offered to what we co-created together.
+      </p>
+    <div class="scholar-grid">
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE PHOTOGRAPHER / VISUAL DESIGNER</span>
+          <span class="scholar-context">Nine sessions · Aug–Oct 2025 · US</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">Arrived after closing a long-running photography studio :: the structure that had sustained his professional life and, he came to see, constrained his creative expression. The sessions documented a man rediscovering the observer position: his way of seeing, separated from the commercial requirements that had organized it for decades.</p>
+          <p class="h70-body">Named his own life "an origami process :: so many creases, infinite manipulation possibilities." Named the studio's demolition "a sand mandala experience." Named himself, in session, "a master designer operating from a premium seat of reality."</p>
+          <p class="h70-body">After three years of intentional rest preceding the engagement: "minimal friction in life due to effective design choices."</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Observer practice established as daily habit · Studio transition held as ceremony rather than loss · Self-identification as designer, not technician</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE EXECUTIVE / STRATEGIST</span>
+          <span class="scholar-context">Nine sessions · Nov 2024–Apr 2025 · US · Elder range</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">A career built on rigorous empirical thinking, arriving at a school that operates in a register his professional training had not prepared him for. The sessions document this negotiation across nine months :: the scholar testing the methodology against his existing knowledge system, gradually finding what it held that his system did not.</p>
+          <p class="h70-body">Named Kamau's observations about "his lack of joy and need for control" as "life-altering insights." The closing session also documents honestly what the methodology did not reach: areas where his resistance proved stronger than the sessions' capacity to work within it. Both are in the record.</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Daily guitar practice with new teacher · Painting and watercolors begun · Changed quality of listening with his wife · More considered financial decision-making during market volatility</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE WELLNESS TEACHER</span>
+          <span class="scholar-context">Six sessions · Dec 2024–May 2025 · US · Younger range</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">Arrived in December with a precise pre-session articulation of his condition: "How to ignite my creatorship in alignment with my work, my home, my movement and my mind :: my being." His Trailing Notes :: written in his own hand during and after sessions across six months :: provide the most direct primary-source evidence in the archive.</p>
+          <p class="h70-body">Built his own working framework from the sessions' materials: Know. Flow. Grow. Three Intentions (Abundance, Alignment, Allowing). Presented it back to the guide by January as his operating system. Extended it independently by May: "Lean back and attract."</p>
+          <p class="h70-body">Written in his own hand during session: "The questions are the mirror." "My attention is powerful. My attention can feel like a dart." "The pregnancy of the pause :: what is it creating?"</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Scholar-generated personal framework · Human Design integration as self-understanding tool · Progressive movement from performance to reception across six months · Vibe statement developed as practitioner identity tool</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE FILMMAKER / WRITER</span>
+          <span class="scholar-context">Creative Steeping Cohort · Jul–Sep 2025 · US</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">Named the dual register of the work in week one, before being told what it was designed to do: "This is spiritual but therapeutic." Arrived giving energy outward at the expense of herself; the sessions developed the mirror practice that gave her language for the inner terrain she had been navigating without a map.</p>
+          <p class="h70-body">Returned to session recordings multiple times during the week between sessions. The recordings held what she described as residual energy she kept finding use for.</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Named her creative intelligence precisely after six weeks of mirror work · Shifted language at the level of self-description · Recordings as between-session continuity practice</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE MUSICIAN / ARTIST</span>
+          <span class="scholar-context">Creative Steeping Cohort · Jul–Sep 2025 · US</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">Arrived in deliberate isolation :: cleansing, decluttering, creating conditions for a frequency he could not yet name. Named the sessions "spiritual therapy, positively influencing my daily routines." The practice traveled through the door and continued in his daily life without requiring his conscious effort to carry it.</p>
+          <p class="h70-body">Articulated "small precious moments" :: baths, sunsets, morning tea :: as the foundation of his practice between sessions. Artwork produced during the program was described as directly sourced from the mirror practice: creative output as a function of sustained self-recognition.</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Daily self-examination established · Artwork output linked directly to mirror practice · Morning ritual as somatic continuity of the steeping methodology</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE CREATIVE DIRECTOR</span>
+          <span class="scholar-context">Individual sessions · May–Jul 2025 · US</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">A senior creative professional whose intelligence was sophisticated but whose confidence in expressing it within institutional structures had eroded. The sessions applied design thinking to the organizational problem itself :: expanding beyond the work he produced within it.</p>
+          <p class="h70-body">Internalized the session's language and began using it independently: applying the school's frameworks to his own creative process without prompting. His stated outcome: "My confidence in expressing my creative ideas has grown, reinforcing my influence within the team."</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Framework internalized and applied independently · Stated increase in confidence and professional influence · Design thinking extended to organizational navigation</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE LEADER</span>
+          <span class="scholar-context">Individual sessions · documented by follow-up letter · US</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">Identity anonymized by scholar's own request. The follow-up letter, received after the engagement concluded, documents change across four life domains simultaneously :: an unusual density of reported shift.</p>
+          <p class="h70-body">"I feel more at ease with my sense of responsibility, and I've been able to handle challenges with a calmer confidence." "By defining and stepping into my leadership style, I've found I can choose to focus on nurturing relationships in order to transform my environments." "I've found myself enjoying healthier outlets for my creative energies." "I've also noticed that I feel more generous than before :: with my time and my resources."</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS (scholar's own words): Calmer confidence in professional challenges · Defined leadership style operationalized · Healthier creative outlets found · Increased generosity with time and resources · Weekly healing community connected</div>
+        </div>
+      </div>
+
+      <div class="scholar-card parallax-vessel">
+        <div class="scholar-card-top">
+          <span class="scholar-identifier">THE EDUCATOR / COMMUNITY BUILDER</span>
+          <span class="scholar-context">Ongoing engagement · Apr 2025–present · Cape Town, South Africa</span>
+        </div>
+        <div class="scholar-card-body">
+          <p class="h70-body">Arrived at the school through LinkedIn. His nine-month arc from first session to implementation of Creative Steeping workshops in Cape Town is the most geographically extended engagement in the archive. A visit to Robben Island during the engagement produced what he described as existential collapse :: historical weight landing in individual experience :: that subsequently clarified his purpose with unusual precision.</p>
+          <p class="h70-body">Named his own program: "Stepping into Yourself." Now implementing the methodology in the field, navigating the institutional resistance that confirms the methodology's necessity.</p>
+          <div class="scholar-shift">DOCUMENTED SHIFTS: Creative Steeping implemented in Cape Town · Own program named and launched · Robben Island experience converted from crisis to clarified purpose · Active collaboration on South Africa retreat planning</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PART IV: VOICES -->
+  <section class="section" id="voices">
+    <div class="section-header">
+      <span class="section-num">PART IV</span>
+      <h2 class="section-title">Voices from <em>the Field</em></h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The following testimonials arrived unsolicited :: written by scholars and observers in their own time and language, submitted publicly or shared directly. They are presented as written, with the writers' own names where permission was given. They represent four distinct relationships to the work: the independent practitioner who used the guidebook alone on a cruise ship; the professional in career transition who engaged the program publicly; the credentialed external observer evaluating the methodology's design; and the scholar whose private follow-up letter documents change across multiple domains.</p>
+    </div>
+
+    <div class="review parallax-vessel">
+      <span class="review-label">INDEPENDENT PRACTITIONER · THE CREATIVE STEEPING GUIDEBOOK</span>
+      <p class="h70-body">"I used the Creative Steeping guidebook while on a cruise. It was a ritual and a journey. With each passing day, as I swayed ever so slightly to and fro sipping moderately enjoyable tea, I'd sit on the deck and journal from the day's prompt."</p>
+      <p class="h70-body">"As a life-long journaler, I valued the invitation to sip tea and commune with my worth. Epiphanies unfolded, and the mythic narrative of my own genius brought me to tears. I experienced myself as a reliable source for wisdom and observed myself in the mirror of self-perception."</p>
+      <p class="h70-body"><em>"For many of us, that alone is the prize."</em></p>
+      <p class="h70-body">"I come back to it every now and then, with a freshly brewed pot of loose leaf tea. The prompts pull new dimensions from me, new flavors, and I'm excited to return again and again."</p>
+      <span class="review-sig">Sallomé Hralima :: writer, filmmaker, mother, partner, friend</span>
+    </div>
+
+    <div class="review parallax-vessel">
+      <span class="review-label">PROFESSIONAL IN TRANSITION · THE ALIEN SCHOOL PROGRAM</span>
+      <p class="h70-body">"Five months ago, I was laid off. It was a tough blow filled with anger, loss, betrayal, and self-doubt. I wondered if I was in the right career field and what I truly wanted from my next opportunity."</p>
+      <p class="h70-body">"Creative Steeping lit a fire under my a$$, helping me broaden my perspective and discover what may very well be my next career journey. It reminded me that transformation requires courage, commitment, continuous self-reflection, and introspection."</p>
+      <p class="h70-body"><em>"What sets THE ÅLÏEN SCõÖL and Creative Steeping apart is its emphasis on self-discovery and sustained growth."</em></p>
+      <p class="h70-body">"The only boundary standing between you and your next big idea is the courage to do the deep work."</p>
+      <span class="review-sig">Lisa Heinsdale (She/Her)</span>
+    </div>
+
+    <div class="review parallax-vessel">
+      <span class="review-label">CREDENTIALED EXTERNAL OBSERVER · CREATIVE STEEPING GUIDEBOOK EVALUATION</span>
+      <p class="h70-body">"I will begin by saying that I really enjoyed reading through. What an enlightening concept, Creative Steeping. <em>It's brilliant!</em>"</p>
+      <p class="h70-body">"I really love the 4 questions you pose, under the Essence of Being, and the invitation to answer with bravado to feel the warmth of the flame."</p>
+      <p class="h70-body">"The notion that 'what sets you apart does not set you apart from others' is so beautifully said."</p>
+      <p class="h70-body"><em>"The Creative Steeping most certainly does guide folks to the 'heart of being'."</em></p>
+      <span class="review-sig">Sylvia Baffour :: Emotional Intelligence Expert, Professional Speaker, Executive Coach · Author, I Dare You to Care</span>
+    </div>
+
+    <div class="review parallax-vessel">
+      <span class="review-label">SCHOLAR FOLLOW-UP LETTER · IDENTITY ANONYMIZED BY SCHOLAR'S REQUEST</span>
+      <p class="h70-body">"I want to let you know that I am doing well. Both physically and mentally, I'm in a good place. I've been taking care of myself, staying healthy, and continuing to incorporate nutrition and mindfulness into my routine."</p>
+      <p class="h70-body">"Work has been going smoothly. I feel more at ease with my sense of responsibility, and I've been able to handle challenges with a calmer confidence. By defining and stepping into my leadership style, I've found I can choose to focus on nurturing relationships in order to transform my environments."</p>
+      <p class="h70-body"><em>"I've also noticed that I feel more generous than before :: with my time and my resources."</em></p>
+      <p class="h70-body">"Your guidance and support have had a profound impact on me, and I find myself reflecting on our conversations frequently. These insights continue to inspire me day to day as I orient myself towards growth, development, and love."</p>
+      <span class="review-sig">The Leader :: anonymity honored</span>
+    </div>
+  </section>
+
+  <div class="pullquote">
+    <p class="h70-body">The guidebook works alone, on a cruise ship, in the reader's own time. <em>The methodology travels beyond the room.</em> That is the measure of a transferable practice.</p>
+    <span class="pullquote-attr">:: tÅs FIELD NOTES · INAUGURAL EDITION</span>
+  </div>
+
+  <!-- PART V: EQUATIONS -->
+  <section class="section" id="equations">
+    <div class="section-header">
+      <span class="section-num">PART V</span>
+      <h2 class="section-title">The <em>Experiential</em> Equations</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">Experiential equations are observable patterns extracted from the documented sessions :: relationships between conditions and outcomes that recur across different scholars, life stages, geographies, and contexts. They are the school's living mathematics: Human Development Mathematics in its most directly evidenced form.</p>
+      <p class="h70-body">These are specific patterns the documented conversations kept producing when specific conditions were met.</p>
+    </div>
+
+    <div class="eq-row">
+      <div class="eq-formula">Patience × Procrastination = Steeping</div>
+      <div class="eq-note">The canonical equation. Slowness is the active ingredient. The Wellness Teacher arrived at this through his own study of the 5th Gene Key, writing it in his own hand: "The pregnancy of the pause :: what is it creating?"</div>
+    </div>
+    <div class="eq-row">
+      <div class="eq-formula">Alienation + Precise Language = Portal</div>
+      <div class="eq-note">The entry mechanism. When a felt condition receives accurate language, the scholar experiences recognition rather than instruction. The moment of naming is the moment of entry. Evidenced across every documented enrollment conversation.</div>
+    </div>
+    <div class="eq-row">
+      <div class="eq-formula">Mirror Work × Time = Identity Precision</div>
+      <div class="eq-note">The cumulative effect. A single session produces initial recognition. Repeated sessions across weeks produce increasingly precise self-concept. The Wellness Teacher's arc from December to May, in his own hand, documents this progression across six months.</div>
+    </div>
+    <div class="eq-row">
+      <div class="eq-formula">Scholar Framework × Guide Container = Scholar's Own System</div>
+      <div class="eq-note">The generative function. The school produces the scholar's own methodology, not the school's. The Wellness Teacher's Know. Flow. Grow. was built by the scholar from the sessions' materials and presented back by January as his working system.</div>
+    </div>
+    <div class="eq-row">
+      <div class="eq-formula">Grief + Ceremony = Forward-Moving Energy</div>
+      <div class="eq-note">Grief held with intention produces a distinct quality of energy. The Visual Artist naming his studio's demolition a sand mandala converted loss into ceremony in real time. The Executive / Strategist's sessions held his father-in-law's hospice situation alongside developmental work simultaneously.</div>
+    </div>
+    <div class="eq-row">
+      <div class="eq-formula">Openness ÷ Secrecy = Collaborative Velocity</div>
+      <div class="eq-note">Named explicitly in the Educator / Community Builder's April 2026 session as "the shift from secrecy to open collaboration." Observable across every engagement in the archive where the work accelerated. The Wellness Teacher's Trailing Notes are themselves an act of this equation.</div>
+    </div>
+    <div class="eq-row">
+      <div class="eq-formula">Stillness × Sound = Perception Shift</div>
+      <div class="eq-note">Documented across the Gamelatron installations and the Sonic Sanctuary at Heron Arts. Visitors choosing to remain longer than the experience required; reported altered breathing and emotional release. The somatic equation the school extends into immersive contexts.</div>
+    </div>
+
+    <div class="eq-row" style="border-top: 1.5px solid var(--teal); margin-top: 1rem; padding-top: 1.5rem;">
+      <div class="eq-formula" style="color: var(--teal);">Seek Guidance + Embrace Growth = ?</div>
+      <div class="eq-note">The foundational axiom of tÅs :: and the most personally significant equation in the ecosystem. The answer to the right side of this equation is not fixed: it is the scholar's own. What makes this equation distinctive is its incompleteness by design. Seeking guidance and embracing growth are the two inputs any person can choose to bring. What they generate is specific to the person who brings them. Across KzA's own career and personal development :: the thirty years of behavioral study, the creative leadership, the coaching and consulting practice, the school itself :: this equation is the operating instruction that preceded every framework the school now teaches. It is the tÅs axiom that transmuted into practice, and from practice into the HDM Insights Academy's developing research framework. The equation belongs at the root of the ecosystem because it is the root.</div>
+    </div>
+
+    <div class="eq-row" style="background: var(--warm); padding: 1.25rem 1.5rem; border-radius: 3px; margin-top: 1.5rem; display: block;">
+      <div style="font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 0.75rem;">EMERGING CREATIVE DEVELOPMENT · IN ACTIVE FORMATION</div>
+      <div class="eq-formula" style="margin-bottom: 0.5rem;">UNION :: Unified Non-Identical Intelligences Operating Naturally</div>
+      <div class="eq-note" style="margin-top: 0.5rem;">UNION is both an acronym and an organizing principle. It names what happens when intelligences that are genuinely different :: not complementary by design, but distinct by nature :: operate together toward an outcome neither could produce alone. The Rock and the Ocean do not blend. They meet. What they generate at the meeting point is neither rock nor ocean. UNION is currently in active development as the conceptual and archetypal framework for <em>The Union of Rock and Ocean</em> :: an upcoming interactive series featuring twenty archetypal characters as guides through the creative and spiritual territory the school maps. It appears here as an equation because it functions as one: non-identical inputs, sustained encounter, emergent output. Its full form is still being discovered. Its presence in the tÅs ecosystem is already felt.</div>
+    </div>
+  </section>
+
+  <!-- PART VI: REACH -->
+  <section class="section" id="reach">
+    <div class="section-header">
+      <span class="section-num">PART VI</span>
+      <h2 class="section-title">Geographic and <em>Community</em> Reach</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The documented period shows a school whose relational reach significantly exceeds its current institutional structure. The following table maps where documented engagements occurred and what each context produced. This functions as an ecology of conversations that formed without a formal expansion strategy, through the gravitational pull of the methodology meeting people whose intelligence was ready to receive it.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>CONTEXT</th>
+          <th>GEOGRAPHY</th>
+          <th>WHAT WAS PRODUCED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Individual sessions :: multiple scholars</td>
+          <td>US (multiple cities)</td>
+          <td>Complete documented arcs; multi-domain behavioral shifts; scholar-generated frameworks</td>
+        </tr>
+        <tr>
+          <td>Creative Steeping Cohort</td>
+          <td>US (remote)</td>
+          <td>Seven-week documented program; mirror practice; somatic continuity tools</td>
+        </tr>
+        <tr>
+          <td>1000 Ways to Sit / Sonic Sanctuary</td>
+          <td>San Francisco, CA</td>
+          <td>Ten-week immersive installation; documented physiological visitor responses; practitioner community of 13+</td>
+        </tr>
+        <tr>
+          <td>Mars College residency</td>
+          <td>Bombay Beach, CA</td>
+          <td>AI Camp integration; Creative Steeping as Thursday practice series; shift from private to open methodology</td>
+        </tr>
+        <tr>
+          <td>Bombay Beach Biennale</td>
+          <td>Bombay Beach, CA</td>
+          <td>SCAR Wash / <em>Birth, Life, and Becoming</em> installation; Thunder Talk on The Conscious Pause</td>
+        </tr>
+        <tr>
+          <td>Educator / Community Builder arc</td>
+          <td>Cape Town, South Africa</td>
+          <td>Nine-month documented arc; "Stepping into Yourself" program launched; South Africa retreat in planning</td>
+        </tr>
+        <tr>
+          <td>Entrepreneur conversations</td>
+          <td>Ghana / Ashanti region</td>
+          <td>Black Men Tour connected to Creative Steeping methodology; diaspora-to-continent framing developed</td>
+        </tr>
+        <tr>
+          <td>Creative Producer conversations</td>
+          <td>Johannesburg, South Africa</td>
+          <td>CE20 Creative Summit concept named; "receptive creativity" coined by scholar before school described its offerings</td>
+        </tr>
+        <tr>
+          <td>Ecosystem Builder conversations</td>
+          <td>Houston / San Diego / New Mexico</td>
+          <td>Reparative economy and intergenerational stewardship framing; methodology at community/economic scale</td>
+        </tr>
+        <tr>
+          <td>International consulting</td>
+          <td>Shenzhen, China</td>
+          <td>Creative culture development framework applied to international school enrollment challenge</td>
+        </tr>
+        <tr>
+          <td>Medical cannabis conference presentation</td>
+          <td>France</td>
+          <td>Creative Steeping methodology presented to international professional audience; speaking invitation to Portugal</td>
+        </tr>
+        <tr>
+          <td>Guidebook use :: independent</td>
+          <td>At sea / multiple locations</td>
+          <td>Sallomé Hralima's documented solo practice; Sylvia Baffour's evaluation from Ghana; ongoing return-use reported</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prose">
+      <p class="h70-body">The Africa thread across the documented period deserves specific naming: five distinct African and diaspora conversations, each arriving through a different door, each finding the same resonance. The school's core work :: recovering original creative frequency :: holds particular power in communities whose creative intelligence has been most precisely named as absent by external systems. The archive documents this resonance consistently, and the school recognizes it as a strategic and philosophical priority for the period ahead.</p>
+    </div>
+  </section>
+
+  <!-- PART VII: FIVE BELIEFS -->
+  <section class="section" id="beliefs">
+    <div class="section-header">
+      <span class="section-num">PART VII</span>
+      <h2 class="section-title">Five Core Proofs This <em>Work</em> Demonstrates</h2>
+    </div>
+
+    <div class="locate">
+      <span class="locate-label">TO THE CAREFUL READER :: WHAT THE EVIDENCE SUPPORTS</span>
+      <p class="h70-body">The following five propositions are what a careful reading of the documented archive :: the sessions, the scholar arcs, the testimonials, the equations, the reach :: supports. They are stated as what the work demonstrates, not as what the work claims. The distinction is the document's structural integrity.</p>
+    </div>
+
+    <div class="beliefs">
+
+      <div class="belief">
+        <span class="belief-num">01</span>
+        <div class="belief-text"><strong>Creativity exists as a matter of existence.</strong> Every documented scholar arrived with creative intelligence already present. The school did not install it. The work developed the conditions under which it became legible. From the Filmmaker who named the dual register of the work in week one, to the Executive who found guitar and watercolors after decades of professional constraint, to the Wellness Teacher who built his own framework from the sessions' materials :: the pattern holds: the creativity was always there.</div>
+      </div>
+
+      <div class="belief">
+        <span class="belief-num">02</span>
+        <div class="belief-text"><strong>Alienation is practical, not esoteric.</strong> Every scholar in the documented archive arrived through a form of alienation: from a career, from a creative life they had set aside, from systems that had organized their intelligence toward ends that were not their own. The school treats this as a signal with specific uses, not as a wound requiring management. Sallomé on a cruise ship, Lisa after a layoff, the Leader developing a new leadership style, the Educator at Robben Island :: each arrival is alienation becoming a portal.</div>
+      </div>
+
+      <div class="belief">
+        <span class="belief-num">03</span>
+        <div class="belief-text"><strong>Service for the creative spirit is valuable to the human experience.</strong> The documented changes in the scholar record are physical facts: daily guitar practice resumed, paintings begun, listening changed, leadership style defined, a program launched in Cape Town, artwork produced, a framework built and deployed. These are changes in the shape of a daily life. They ripple into the relationships and communities around each scholar. Service to the creative spirit produces practical, traceable change in how people inhabit their lives.</div>
+      </div>
+
+      <div class="belief">
+        <span class="belief-num">04</span>
+        <div class="belief-text"><strong>Metaphysics holds practical answers.</strong> The school works in registers that empirical frameworks typically bypass: the somatic, the ceremonial, the symbolic, the felt. And yet the outcomes are practical. The Executive's four documented behavioral shifts. The Leader's increased generosity with time and resources. The Educator's program launched in the field. The methodology's philosophical foundations :: steeping, the dual vortex, the sand mandala, energy as currency :: produce changes that are visible in daily life. That is the test of practical value.</div>
+      </div>
+
+      <div class="belief">
+        <span class="belief-num">05</span>
+        <div class="belief-text"><strong>tÅs is practical service.</strong> The school operates as a practice environment that works with specific people in specific conditions and produces specific, traceable changes in how they live and create. The Wellness Teacher's Trailing Notes exist because the sessions gave him material worth writing down. The Executive's guitar playing exists because the sessions gave him a practice worth returning to. Sallomé returns to the guidebook with fresh tea because it keeps pulling new things from her. This is the measure of practical service: the work continues working after the session ends.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-mark">TOWARD THE FIELD</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- THE BUILD TOWARD -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">CODA</span>
+      <h2 class="section-title">What the <em>Evidence</em> Points Toward</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The five beliefs above are what the archive demonstrates. What follows is what the archive gestures toward :: a proposition the documented period has begun to reveal but has not yet fully proven. It belongs here as the school's emerging orientation, not as its established claim.</p>
+
+      <p class="h70-body">Across every documented engagement :: from the late-seventies executive rediscovering guitar to the late-twenties wellness teacher building his own framework, from Cape Town to Ghana to Johannesburg to San Francisco to a cruise ship on the open sea :: a single pattern persists: the creative intelligence was always already present. The work did not supply it. The work made it legible.</p>
+
+      <p class="h70-body">What this pattern suggests, across the age range and geographic span of the documented period, is that creative intelligence is not a talent distributed unevenly among human beings. It is a condition of human existence :: present in every person, at every life stage, across every cultural context where the archive has reached. The school encounters this intelligence everywhere it goes, in every scholar who arrives, regardless of age, profession, geography, or prior relationship to the word "creative."</p>
+
+      <p class="h70-body">The practical implication is significant: if creativity is a condition of existence rather than a talent, then what the school provides is not enrichment for the fortunate few but service for a universal human need. The alienation that brings scholars to the school is not a personal failing :: it is evidence of a mismatch between the human creative frequency and the systems built to contain it. Those systems are everywhere. So is the frequency they have not yet learned to hold.</p>
+    </div>
+
+    <div class="field-close">
+      <span class="field-close-label">THE FIELD OF ORIGINAL FREQUENCY :: A DISCOVERY IN PROGRESS</span>
+      <h2 class="field-close-title">The Human creative form<br>as <em>identifiable frequency</em></h2>
+      <p class="field-close-body">Every person arrives at tÅs already broadcasting. The frequency is <em>original</em> :: present before every system that shaped them, beneath every borrowed identity. What the school provides is the conditions under which that frequency becomes audible to the person broadcasting it. This is the school's discovered orientation: creativity as a matter of existence, requiring compassionate, skilled, and practical service. The archive has begun to prove it. The work continues.</p>
+    </div>
+  </section>
+
+  <!-- PART VIII: ARTIFACTS -->
+  <section class="section" id="artifacts">
+    <div class="section-header">
+      <span class="section-num">PART VIII</span>
+      <h2 class="section-title">The <em>Artifact</em> Body</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The following documents were developed from the session archive alongside these Field Notes. Each one provides a deeper study of a specific dimension of the school's methodology, philosophy, and resonance field. They are designed to be read in any order, and each one deepens the others.</p>
+    </div>
+
+    <div class="links-grid">
+      <a href="elevation-codex.html" class="link-card parallax-vessel" style="border-color: var(--gold);">
+        <span class="link-card-label" style="color: var(--gold);">ARTIFACT 01</span>
+        <div class="link-card-name">The Elevation Codex</div>
+        <div class="link-card-url" style="color: var(--muted);">Five moves of the guide methodology :: named, sourced, and made transferable to future tÅs guides and AI agents</div>
+      </a>
+      <a href="frequency-report.html" class="link-card parallax-vessel" style="border-color: var(--gold);">
+        <span class="link-card-label" style="color: var(--gold);">ARTIFACT 06</span>
+        <div class="link-card-name">The Frequency Report</div>
+        <div class="link-card-url" style="color: var(--muted);">Compass document mapping three resonance coordinates: the American edge-point, the pan-global somatic inheritance, and the Africa recovery frequency</div>
+      </a>
+      <a href="metaphor-library.html" class="link-card parallax-vessel" style="border-color: var(--gold);">
+        <span class="link-card-label" style="color: var(--gold);">ARTIFACT 07</span>
+        <div class="link-card-name">The Metaphor Library</div>
+        <div class="link-card-url" style="color: var(--muted);">Sixteen symbolic vessels from the session archive :: their origins, mechanisms, and conditions of aliveness</div>
+      </a>
+      <a href="proof-of-field.html" class="link-card parallax-vessel" style="border-color: var(--gold);">
+        <span class="link-card-label" style="color: var(--gold);">THE PROOF OF FIELD</span>
+        <div class="link-card-name">The Reflectionary</div>
+        <div class="link-card-url" style="color: var(--muted);">Phi-level threads, experiential equations, and quotable assets from the full archive :: including the scholar's own hand</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="pullquote">
+    <p class="h70-body">The work is real. The scholars are specific. The changes are traceable. <em>The field is provable.</em> And the field is larger than the archive has yet reached.</p>
+    <span class="pullquote-attr">:: tÅs FIELD NOTES · INAUGURAL EDITION · 2024–2026</span>
+  </div>
+
+  <footer class="closing">
+    <span class="closing-glyph">◈</span>
+    <p class="h70-body">These Field Notes are a living document. They update as the archive deepens, as new scholars enter the field, as the methodology extends its reach, and as the school's understanding of its own work becomes more precise.</p>
+    <p class="h70-body">The inaugural edition covers November 2024 through May 2026 :: the first formally documented period of a practice with thirty years of development history. Future editions will carry what this one planted.</p>
+    <span class="closing-sig">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING<br>
+      KAMAU ZUBERI AKABUEZE<br>
+      FIELD NOTES · INAUGURAL EDITION · 2024–2026<br>
+      BUILT THROUGH THE VESSELVERSE EDITORIAL PROTOCOL<br>
+      thealienschool.com · creativesteeping.com · threedaysoff.netlify.app · wayof.netlify.app
+    </span>
+  </footer>
+
+</div>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.belief, .scholar-card, .review').forEach(el => obs.observe(el));
+</script>
+
+<div id="audio-overlay" style="position: fixed; inset: 0; background: var(--bg); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink); transition: opacity 1.5s ease;">
+  <div style="font-family: var(--h70-font); font-size: 2rem; font-style: normal; margin-bottom: 1rem;">The Synthesis Archive</div>
+  <div style="font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.2em;">A BIOACOUSTIC REPOSITORY</div>
+  <button onclick="initializeSpace()" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 1rem 3rem; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.2em; cursor: pointer; text-transform: uppercase; border-radius: 2px; transition: all 0.5s ease; margin-top: 2rem;">Enter Space</button>
+</div>
+
+<script>
+  let audioCtx;
+  let masterGain;
+  const PENTATONIC_SCALE = [264.00, 296.33, 332.62, 395.55, 444.00, 528.00, 592.67, 665.24];
+
+  function initializeSpace(isPortalEntry) {
+    const overlay = document.getElementById('audio-overlay');
+    if (overlay) {
+      if (isPortalEntry) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 1500);
+      }
+    }
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    audioCtx = new AudioContext();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = isPortalEntry ? 0 : 0.5;
+    masterGain.connect(audioCtx.destination);
+
+    if (isPortalEntry) {
+      masterGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2.0);
+    }
+
+    playAmbientBreath();
+    playStrikingBowl(528);
+  }
+
+  function playAmbientBreath() {
+    if (!audioCtx) return;
+    const osc174 = audioCtx.createOscillator();
+    const osc240 = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc174.type = 'sine'; osc174.frequency.value = 174;
+    osc240.type = 'sine'; osc240.frequency.value = 240;
+    filter.type = 'lowpass'; filter.frequency.value = 400;
+    gain.gain.value = 0.02;
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.type = 'sine'; lfo.frequency.value = 0.22;
+    lfoGain.gain.value = 0.015;
+    lfo.connect(lfoGain); lfoGain.connect(gain.gain); lfo.start();
+    osc174.connect(filter); osc240.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc174.start(); osc240.start();
+  }
+
+  function playStrikingBowl(freqOverride) {
+    if (!audioCtx) return;
+    const freq = freqOverride || PENTATONIC_SCALE[Math.floor(Math.random() * PENTATONIC_SCALE.length)];
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    filter.type = 'lowpass'; filter.frequency.value = freq * 3;
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 3.5);
+    osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 4.0);
+  }
+
+</script>
+</main>
+
+<script>
+  // ==========================================
+  // PARALLAX SCIENCES
+  // ==========================================
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  const ease = 0.08;
+
+  document.addEventListener('mousemove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function renderParallax() {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+
+    const mural = document.querySelector('.parallax-mural');
+    if (mural) {
+      mural.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px) scale(1.05)`;
+    }
+
+    const vessels = document.querySelectorAll('.parallax-vessel');
+    vessels.forEach(vessel => {
+      vessel.style.transform = `translate(${currentX * 6}px, ${currentY * 6}px)`;
+    });
+
+    requestAnimationFrame(renderParallax);
+  }
+  
+  if (window.matchMedia("(pointer: fine)").matches) {
+    requestAnimationFrame(renderParallax);
+  }
+</script>
+
+
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span>tÅs</span>
+    <span id="scroll-progress">0% STEEPED</span>
+  </div>
+  <div style="text-align: right;">
+    <a href="mailto:thealienscool@gmail.com" style="color: var(--h70-signal); text-decoration: none;">thealienscool@gmail.com</a>
+    <span style="opacity: 0.6; margin-left: 1rem; display: none;" class="contact-desktop">Elevating the Creative Spirit in organizations, relationships, & edge navigation</span>
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = Math.min(100, Math.max(0, Math.round((window.scrollY / docHeight) * 100)));
+    const indicator = document.getElementById('scroll-progress');
+    if(indicator) indicator.textContent = progress + '% STEEPED';
+  });
+</script>
+<style>
+@media(min-width: 800px) { .contact-desktop { display: inline !important; } }
+</style>
+</body>
+
+</html>

@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Proof of Field :: tÅs Reflectionary v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+      :root {
+    --bg:         var(--h70-bg);
+    --ink:        var(--h70-ink);
+    --deep:       var(--h70-ink);
+    --muted:      var(--h70-muted);
+    --border:     var(--h70-line);
+    --border-lt:  var(--h70-line);
+    --warm:       var(--h70-surface);
+    --gold:       var(--h70-signal);
+    --gold-pale:  var(--h70-surface);
+    --teal:       var(--h70-signal);
+    --teal-pale:  var(--h70-surface);
+    --scholar:    var(--h70-ink);
+    --scholar-lt: var(--h70-surface);
+    --review:     var(--h70-signal);
+    --review-lt:  var(--h70-surface);
+    --rule:       var(--h70-line);
+    --page:       var(--h70-bg);
+    --coral:      #b85c45;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 500;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 2.25rem 10rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 92vh;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-stamp {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+    line-height: 2;
+  }
+
+  .cover-protocol {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--teal);
+    text-align: right;
+    line-height: 2;
+    opacity: 0.75;
+  }
+
+  .cover-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 0 3rem;
+  }
+
+  .cover-title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.0;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .cover-title span { font-weight: 400; font-style: normal; color: var(--gold); }
+
+  .cover-rule {
+    width: 100%; height: 1px;
+    background: var(--rule); margin: 2rem 0; position: relative;
+  }
+
+  .cover-rule::after {
+    content: '◈'; position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%); background: var(--page);
+    padding: 0 0.75rem; color: var(--gold); font-size: 1rem; opacity: 0.55;
+  }
+
+  .cover-sub {
+    font-size: 17px; font-style: normal; color: var(--muted);
+    max-width: 520px; line-height: 1.75; margin-bottom: 3rem;
+  }
+
+  .cover-toc {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden;
+  }
+
+  .toc-item {
+    padding: 0.9rem 1.1rem; border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border); text-decoration: none;
+    color: var(--ink); transition: background 0.15s; display: block;
+  }
+
+  .toc-item:nth-child(even) { border-right: none; }
+  .toc-item:nth-last-child(-n+2) { border-bottom: none; }
+  .toc-item:hover { background: var(--warm); }
+
+  .toc-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; color: var(--muted); display: block; margin-bottom: 0.2rem;
+  }
+
+  .toc-name { font-size: 13px; font-style: normal; color: var(--deep); line-height: 1.35; }
+
+  .cover-law {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.12em; color: var(--teal); border-left: 2px solid var(--teal);
+    padding-left: 1rem; line-height: 1.9; margin-top: 2.5rem; opacity: 0.8;
+  }
+
+  /* ── SECTION ── */
+  .section { padding: 5.5rem 0 0; }
+
+  .section-header {
+    display: grid; grid-template-columns: 52px 1fr; gap: 0 1.5rem;
+    margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; color: var(--muted); padding-top: 0.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; font-style: normal;
+    color: var(--deep); line-height: 1.15;
+  }
+
+  .section-title em { font-style: normal; font-weight: 700; color: var(--gold); }
+
+  /* ── PROSE ── */
+  .prose { max-width: 65ch; margin-left: 0; }
+  .prose p { font-size: 18px; line-height: 1.75; color: var(--ink); margin-bottom: 1.4rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose em { font-style: normal; color: var(--gold); }
+  .prose strong { font-weight: 700; color: var(--deep); }
+
+  /* ── COUPLET ── */
+  .couplet {
+    border-left: 2px solid var(--gold); padding: 1.1rem 1.4rem;
+    margin: 2.5rem 0; background: var(--gold-pale); border-radius: 0 3px 3px 0;
+  }
+
+  .couplet-l1 {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.12em; color: var(--gold); opacity: 0.7; margin-bottom: 0.35rem; line-height: 1.5;
+  }
+
+  .couplet-l2 { font-size: 18px; font-style: normal; color: var(--deep); line-height: 1.75; }
+
+  /* ── LOCATE (Somatic opening) ── */
+  .locate {
+    border-left: 2px solid var(--border); padding: 1rem 1.4rem;
+    margin-bottom: 1.75rem; border-radius: 0 3px 3px 0; background: var(--warm);
+  }
+
+  .locate-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.16em; color: var(--muted); margin-bottom: 0.45rem; display: block;
+  }
+
+  .locate p { font-size: 17px; font-style: normal; color: var(--deep); line-height: 1.75; }
+
+  /* ── THREAD ── */
+  .thread {
+    margin: 3.5rem 0; padding-bottom: 3.5rem;
+    border-bottom: 0.5px solid var(--border-lt);
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .thread.visible { opacity: 1; transform: translateY(0); }
+  .thread:last-of-type { border-bottom: none; }
+
+  .thread-header {
+    display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem;
+  }
+
+  .thread-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; color: var(--muted); flex-shrink: 0;
+  }
+
+  .thread-name {
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem); font-weight: 400;
+    font-style: normal; color: var(--deep); line-height: 1.2;
+  }
+
+  .thread-name em { font-style: normal; font-weight: 700; color: var(--gold); }
+
+  .thread-body p {
+    font-size: 17px; line-height: 1.75; color: var(--ink);
+    margin-bottom: 1.1rem; max-width: 660px;
+  }
+
+  .thread-body p:last-child { margin-bottom: 0; }
+  .thread-body em { font-style: normal; color: var(--gold); }
+
+  /* ── ANCHOR ── */
+  .anchor {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted);
+    border-left: 2px solid var(--border); padding-left: 1rem;
+    margin: 1.25rem 0; line-height: 1.75; letter-spacing: 0.02em;
+  }
+
+  /* ── EQUATION ── */
+  .equation {
+    margin: 3rem 0; border: 0.5px solid var(--border); border-radius: 4px;
+    overflow: hidden; opacity: 0; transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .equation.visible { opacity: 1; transform: translateY(0); }
+
+  .equation-top {
+    background: var(--warm); padding: 1.2rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: baseline; gap: 1.5rem; flex-wrap: wrap;
+  }
+
+  .equation-formula {
+    font-family: 'JetBrains Mono', monospace; font-size: 15px;
+    font-weight: 500; color: var(--teal); letter-spacing: 0.04em;
+  }
+
+  .equation-name { font-size: 14px; font-style: normal; color: var(--muted); }
+
+  .equation-body { padding: 1.25rem 1.5rem; background: var(--page); }
+  .equation-body p { font-size: 16px; line-height: 1.75; color: var(--ink); margin-bottom: 0.9rem; }
+  .equation-body p:last-child { margin-bottom: 0; }
+  .equation-body em { font-style: normal; color: var(--gold); }
+
+  .equation-evidence {
+    background: var(--warm); border-top: 0.5px solid var(--border-lt); padding: 1rem 1.5rem;
+  }
+
+  .eq-ev-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; color: var(--muted); margin-bottom: 0.5rem; display: block;
+  }
+
+  .eq-ev-item {
+    font-size: 14px; font-style: normal; color: var(--deep); line-height: 1.75;
+    padding: 0.4rem 0; border-top: 0.5px solid var(--border-lt);
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: baseline;
+  }
+
+  .eq-ev-item:first-of-type { border-top: none; }
+
+  .eq-ev-who {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); white-space: nowrap; font-style: normal;
+  }
+
+  /* ── SCHOLAR VOICE :: primary source distinction ── */
+  .scholar-voice {
+    border-left: 3px solid var(--scholar); padding: 1rem 1.25rem;
+    background: var(--scholar-lt); border-radius: 0 3px 3px 0;
+    margin: 1.5rem 0;
+  }
+
+  .scholar-voice-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.16em; color: var(--scholar); margin-bottom: 0.5rem; display: block;
+    opacity: 0.7;
+  }
+
+  .scholar-voice p {
+    font-size: 16px; font-style: normal; color: var(--deep);
+    line-height: 1.75; margin-bottom: 0.5rem;
+  }
+
+  .scholar-voice p:last-child { margin-bottom: 0; }
+
+  .scholar-voice .sv-source {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--scholar); opacity: 0.6; font-style: normal;
+    letter-spacing: 0.04em; margin-top: 0.5rem; display: block;
+  }
+
+  /* ── QUOTE BLOCKS ── */
+  .quote-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin: 2.5rem 0; }
+
+  .quote-block {
+    border-left: 3px solid var(--gold); padding: 1rem 1.25rem;
+    background: var(--gold-pale); border-radius: 0 3px 3px 0;
+    opacity: 0; transform: translateX(-8px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .quote-block.visible { opacity: 1; transform: translateX(0); }
+
+  .quote-text { font-size: 17px; font-style: normal; color: var(--deep); line-height: 1.75; margin-bottom: 0.5rem; }
+  .quote-text em { font-style: normal; font-weight: 700; color: var(--gold); }
+
+  .quote-source {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 0.04em;
+  }
+
+  .quote-function {
+    font-size: 13px; color: var(--teal); margin-top: 0.6rem; font-style: normal;
+    padding-left: 0.75rem; border-left: 1.5px solid var(--teal); line-height: 1.55; opacity: 0.85;
+  }
+
+  /* ── SCHOLAR PROFILE CARDS ── */
+  .scholar-section {
+    margin: 3rem 0; border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden;
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .scholar-section.visible { opacity: 1; transform: translateY(0); }
+
+  .scholar-header {
+    background: var(--warm); padding: 1.2rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .scholar-marker {
+    width: 4px; height: 36px; border-radius: 2px; flex-shrink: 0;
+  }
+
+  .scholar-marker.daniel { background: var(--scholar); }
+  .scholar-marker.doug   { background: var(--coral); }
+
+  .scholar-header-text {}
+
+  .scholar-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.18em; display: block; margin-bottom: 0.2rem;
+  }
+
+  .scholar-tag.daniel { color: var(--scholar); opacity: 0.8; }
+  .scholar-tag.doug   { color: var(--coral); opacity: 0.8; }
+
+  .scholar-name {
+    font-size: 1.2rem; font-style: normal; color: var(--deep); font-weight: 400; line-height: 1.2;
+  }
+
+  .scholar-name em { font-style: normal; font-weight: 700; }
+  .scholar-name.daniel em { color: var(--scholar); }
+  .scholar-name.doug   em { color: var(--coral); }
+
+  .scholar-body { padding: 1.5rem; background: var(--page); }
+
+  .scholar-body p {
+    font-size: 16px; line-height: 1.75; color: var(--ink); margin-bottom: 1rem;
+  }
+
+  .scholar-body p:last-child { margin-bottom: 0; }
+  .scholar-body em { font-style: normal; color: var(--gold); }
+
+  /* ── FIELD NAMING ── */
+  .field-name {
+    background: var(--deep); color: var(--page);
+    padding: 4rem 3rem; border-radius: 4px; margin: 4rem 0;
+    text-align: left; position: relative; overflow: hidden;
+  }
+
+  .field-name::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(160,112,16,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .field-name-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.22em; color: rgba(200,180,138,0.55); display: block; margin-bottom: 2rem;
+  }
+
+  .field-name-title {
+    font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; font-style: normal;
+    line-height: 1.1; color: var(--bg); margin-bottom: 0.5rem;
+  }
+
+  .field-name-title em { font-style: normal; font-weight: 700; color: #c8942a; }
+
+  .field-name-body {
+    font-size: 17px; font-style: normal; color: rgba(200,180,138,0.8);
+    max-width: 520px; margin: 2rem auto 0; line-height: 1.75;
+  }
+
+  .field-name-body em { font-style: normal; color: #c8942a; }
+
+  /* ── CONNECTIONS ── */
+  .connections {
+    background: var(--warm); border: 0.5px solid var(--border);
+    border-radius: 4px; padding: 2rem 2rem 1.5rem; margin: 3rem 0;
+  }
+
+  .connections-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; color: var(--muted); margin-bottom: 1.5rem; display: block;
+  }
+
+  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+
+  .conn-item {
+    padding: 0.9rem 1rem; background: var(--page);
+    border: 0.5px solid var(--border); border-radius: 3px;
+  }
+
+  .conn-artifact {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.12em; color: var(--gold); display: block; margin-bottom: 0.3rem;
+  }
+
+  .conn-name { font-size: 13px; font-style: normal; color: var(--deep); line-height: 1.4; margin-bottom: 0.4rem; }
+  .conn-relation { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    padding: 4.5rem 0; text-align: left;
+    border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); margin: 4rem 0;
+  }
+
+  .pullquote p {
+    font-size: clamp(1.2rem, 2.7vw, 1.72rem); font-style: normal; line-height: 1.52;
+    color: var(--deep); max-width: 65ch; margin-left: 0; margin: 0 auto;
+  }
+
+  .pullquote p em { font-style: normal; color: var(--gold); }
+
+  .pullquote-attr {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.16em; color: var(--muted); margin-top: 1.25rem; display: block;
+  }
+
+  /* ── CLOSING ── */
+  .closing { padding: 5rem 0 3rem; border-top: 0.5px solid var(--border); text-align: left; }
+
+  .closing-glyph { font-size: 3rem; color: var(--gold); opacity: 0.28; display: block; margin-bottom: 2rem; font-style: normal; }
+
+  .closing p { font-size: 16px; color: var(--muted); font-style: normal; max-width: 480px; margin: 0 auto 1rem; line-height: 1.75; }
+
+  .closing-sig {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.2em; color: var(--muted); margin-top: 3rem;
+    display: block; line-height: 2.4; opacity: 0.55;
+  }
+
+  @media (max-width: 580px) {
+    .cover-toc { grid-template-columns: 1fr; }
+    .toc-item { border-right: none; }
+    .cover-top { flex-direction: column; gap: 0.5rem; }
+    .eq-ev-item { grid-template-columns: 1fr; }
+    .field-name { padding: 3rem 1.5rem; }
+  }
+
+  @media print {
+    body::after { display: none; }
+    .thread, .equation, .quote-block, .scholar-section { opacity: 1; transform: none; break-inside: avoid; }
+    .field-name::before { display: none; }
+  }
+  #audio-overlay { background: var(--h70-bg) !important; }
+  p, li, td, .prose p, .review p, .scholar-card-body p { 
+    font-family: var(--h70-font);
+    font-variation-settings: 'STBL' 50, 'COHR' 84, 'DRFT' 13, 'PRSS' 20;
+    animation: h70-hba-breathe var(--h70-breath-cycle) var(--h70-ease) infinite;
+  }
+  .cover-stamp, .section-num, .locate-label, .review-label, .link-card-label {
+    font-family: var(--h70-mono);
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24;
+  }
+  a:hover {
+    font-variation-settings: 'STBL' 100, 'COHR' 48, 'DRFT' 34, 'PRSS' 12;
+    filter: blur(.16px);
+  }
+</style>
+  <link rel="stylesheet" href="../harmonious70.css">
+  <script src="../tas-transitions.js" defer></script>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span>THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="../index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
+    <span id="nav-magnet-status" style="opacity: 0.4; border-left: 1px solid var(--h70-line); padding-left: 1.5vw;">MaGNET :: SECURED</span>
+  </div>
+</nav>
+
+<style>
+  /* Responsive Navigation Anticipation */
+  body { padding-top: 80px; } /* Prevent nav from covering content */
+  #h70-global-nav.nav-hidden { transform: translateY(-100%); }
+  
+  @media (max-width: 768px) {
+    #nav-c-thinking { display: none; } /* On mobile, simplify brand after initial gateway */
+    #h70-global-nav { padding: 1rem; }
+  }
+</style>
+
+<script>
+  // Anticipatory scroll logic
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('h70-global-nav');
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      nav.classList.add('nav-hidden'); // Scrolling down, hide nav
+    } else {
+      nav.classList.remove('nav-hidden'); // Scrolling up, anticipate intent, show nav
+    }
+    lastScrollY = window.scrollY;
+    
+    // Fade out "FOR CREATIVE THINKING" as they steep deeper, leaving just the school
+    const ct = document.getElementById('nav-c-thinking');
+    if(ct) {
+      if(window.scrollY > 300) { ct.style.opacity = '0'; }
+      else { ct.style.opacity = '1'; }
+    }
+  });
+
+  // Check MaGNET status from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('magnetUnlocked') === 'true') {
+      const ms = document.getElementById('nav-magnet-status');
+      if(ms) {
+        ms.textContent = 'MaGNET :: ACTIVE';
+        ms.style.opacity = '1';
+        ms.style.color = 'var(--h70-signal)';
+      }
+    }
+  });
+</script>
+
+<main class="h70-installation" style="display:block; padding-top: 2rem;">
+  <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
+  <div class="page" style="background: transparent;">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-top">
+      <span class="cover-stamp">THE ÅLïEN SCõÖL · REFLECTIONARY · LIVING DOCUMENT<br>DRAWN FROM THE DOCUMENTED SESSION ARCHIVE</span>
+      <span class="cover-protocol">VESSELVERSE EDITORIAL PROTOCOL<br>PRIMER INSTALLED · VERSION 3.0</span>
+    </div>
+
+    <div class="cover-body">
+      <h1 class="cover-title">The <span>Proof</span><br>of Field</h1>
+      <div class="cover-rule"></div>
+      <p class="cover-sub">What the conversations have generated :: drawn from the documented archive of tÅs sessions, including the scholars' own voices, expressed as phi-level threads, experiential equations, and quotable assets that carry the work's living evidence.</p>
+
+      <div class="cover-toc">
+        <a href="#preamble" class="toc-item"><span class="toc-num">PREAMBLE</span><div class="toc-name">The Work Speaking</div></a>
+        <a href="#threads" class="toc-item"><span class="toc-num">PART I</span><div class="toc-name">The Phi-Level Threads</div></a>
+        <a href="#scholars" class="toc-item"><span class="toc-num">PART II</span><div class="toc-name">The Scholar Arcs :: The Wellness Teacher & The Executive / Strategist</div></a>
+        <a href="#equations" class="toc-item"><span class="toc-num">PART III</span><div class="toc-name">The Experiential Equations</div></a>
+        <a href="#quotables" class="toc-item"><span class="toc-num">PART IV</span><div class="toc-name">The Quotable Assets</div></a>
+        <a href="#naming" class="toc-item"><span class="toc-num">PART V</span><div class="toc-name">The Field Named</div></a>
+        <a href="#connections" class="toc-item"><span class="toc-num">PART VI</span><div class="toc-name">The Voltronic Connections</div></a>
+      </div>
+
+      <p class="cover-law">
+        The One-Line Law: Name the mechanism. Keep the magic.<br>
+        :: VesselVerse Editorial Protocol, §9.13
+      </p>
+    </div>
+  </div>
+
+  <!-- PREAMBLE -->
+  <section class="section" id="preamble">
+    <div class="section-header">
+      <span class="section-num">PREAMBLE</span>
+      <h2 class="section-title">The <em>Work</em> Speaking</h2>
+    </div>
+
+    <div class="locate">
+      <span class="locate-label">LOCATE · SOMATIC REGISTER</span>
+      <p class="h70-body">You are in a conversation with a practitioner :: a scholar, a collaborator, a person at the edge of a new frequency :: and the structural geometry shifts. You watch them arrive at language for what they have been carrying for years. You watch the weight of it change in their body. You wonder: what produced that? What were the conditions? Could those conditions be reproduced? Could they be named precisely enough to be made available to others?</p>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">This document answers those questions :: drawn from a living archive of documented conversations between KzA and the scholars who have entered the tÅs field. Every quotation, every equation, every thread named here originates in those conversations. The work is real. This document is the work hearing itself speak.</p>
+
+      <p class="h70-body">This version adds two scholar arcs in full: The Wellness Teacher Richards, whose Trailing Notes :: written in his own hand during and after sessions across six months :: carry a quality of evidence the Fireflies summaries cannot replicate; and The Executive / Strategist Berger, whose complete semester from November 2024 through April 2025 is the most fully documented arc in the archive, including the honest edges of the closing session.</p>
+
+      <p class="h70-body">A reflectionary is a document returned to. Each time the reader arrives at a different position in their own work, different coordinates within it become visible. The partner or funder reads the evidence of production. The guide reads the methodology made visible. The scholar reads the field they are entering. KzA reads the accounting of what the work has generated and continues to generate.</p>
+
+      <p class="h70-body"><em>The conversations are the proof of concept. This document is the echo that makes the proof audible.</em></p>
+    </div>
+  </section>
+
+  <!-- PART I: PHI-LEVEL THREADS -->
+  <section class="section" id="threads">
+    <div class="section-header">
+      <span class="section-num">PART I</span>
+      <h2 class="section-title">The <em>Phi-Level</em> Threads</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">Phi-level threads are the patterns that recur across every context the school enters :: across scholars, geographies, sessions, and years. Six threads are documented in the archive. The Wellness Teacher and The Executive / Strategist both deepen and specify each one.</p>
+    </div>
+
+    <div class="thread visible">
+      <div class="thread-header">
+        <span class="thread-num">THREAD 01</span>
+        <h3 class="thread-name"><em>Alienation</em> as Creative Intelligence</h3>
+      </div>
+      <div class="thread-body">
+        <p class="h70-body">Across every context the school enters :: tÅs sessions, Cogent consulting, Gamelatron curation, conversations with The Educator / Community Builder, The Creative Producer, The Entrepreneur :: the same axis returns: being outside the dominant frame is a form of perception. The person who feels alien to the systems around them is demonstrating a quality of awareness those systems were designed for other purposes and so do not develop.</p>
+        <p class="h70-body">The Wellness Teacher's December 21 orientation note carries this directly: "Over-eager for nothing. Overflowing with everything." He arrived knowing the structure was out of alignment without yet having the name for what it was. The school's work was to give the condition a coordinate precise enough to act from. The Executive / Strategist arrived with decades of professional success and a specific exhaustion with the frameworks that success had required :: he named it as a loss of joy. Both arrivals are the same frequency at different stations.</p>
+        <div class="anchor">Alienation, in the tÅs system, is the qualifying condition that brings the right scholars to the school.</div>
+      </div>
+    </div>
+
+    <div class="thread">
+      <div class="thread-header">
+        <span class="thread-num">THREAD 02</span>
+        <h3 class="thread-name">Steeping as <em>Sacred Technology</em></h3>
+      </div>
+      <div class="thread-body">
+        <p class="h70-body">The methodology of deliberate slowing appears in every documented context. The form changes :: tea ceremony, the seven-steep program, the Gamelatron sanctuary, the Three Stages of Contemplation. The underlying technology holds constant.</p>
+        <p class="h70-body">The Wellness Teacher's Trailing Notes document the steeping technology operating across six months of sessions. His March 12/19 notes name it directly: "The pregnancy of the pause :: what is it creating?" His April 14 entry returns to the same coordinate: "Stimulation can be more satisfying alongside stillness." The sessions did not teach him this. They created the conditions in which he found it himself and wrote it down. <em>That is the technology demonstrating its mechanism through the scholar's own hand.</em></p>
+        <div class="anchor">The steeping technology is the school's operating system. Every other offering runs on it.</div>
+      </div>
+    </div>
+
+    <div class="thread">
+      <div class="thread-header">
+        <span class="thread-num">THREAD 03</span>
+        <h3 class="thread-name">The <em>Economy</em> of Energy</h3>
+      </div>
+      <div class="thread-body">
+        <p class="h70-body">Energy as currency appears across the sessions with David Hartz, with the Creative Steeping cohort, and within the Fractal project conversations. Åttention directed inward generates outward momentum. Rest is a deposit.</p>
+        <p class="h70-body">The Executive / Strategist's February 5 session named the economy directly through the language of design: four principles :: raising awareness, emerging opportunities, joy, and radiance :: framed as the architecture of a sustainable creative life. He described playing guitar "for joy rather than obligation" as a shift in the energy ledger. The guitar did not change. The accounting of why he played it did. The Wellness Teacher's March 5 notes document the same economy at the physiological level: "I CANNOT store up riches of experiences :: shifting to allowing vs seeking." The surplus of experience was itself a drain when held rather than released.</p>
+        <div class="anchor">What looks like rest in the tÅs system is energy returning to the account. The next cycle of creation draws from sufficiency.</div>
+      </div>
+    </div>
+
+    <div class="thread">
+      <div class="thread-header">
+        <span class="thread-num">THREAD 04</span>
+        <h3 class="thread-name">Openness as <em>Creative Velocity</em></h3>
+      </div>
+      <div class="thread-body">
+        <p class="h70-body">The shift from holding ideas privately to sharing them openly appears in every engagement in the archive where the work accelerated. Jesse Elliott's public showcase. The Educator / Community Builder beginning to document his Cape Town implementation. The Entrepreneur's proposal to document from the beginning.</p>
+        <p class="h70-body">The Wellness Teacher's own arc demonstrates the equation from the inside. His Trailing Notes show the progressive opening of his self-understanding across six months :: from the December orientation's "I want to discover a new voice" to the May 8 note's "lean back and attract." The movement from seeking to receiving, from performing to allowing, is documented in his own hand as it happened. <em>The notes themselves are an act of openness :: the scholar capturing the sessions in writing rather than holding them privately in memory.</em></p>
+        <div class="anchor">Every time the work moved swiftly in the archive, openness was the active ingredient.</div>
+      </div>
+    </div>
+
+    <div class="thread">
+      <div class="thread-header">
+        <span class="thread-num">THREAD 05</span>
+        <h3 class="thread-name">Generational Healing as <em>North Star</em></h3>
+      </div>
+      <div class="thread-body">
+        <p class="h70-body">The ceremony for KzA's father in Amsterdam. The session with John Leto where ancestral candles were lit. David Hartz naming his studio demolition a sand mandala. Hamilton's graduation at St. Peter's Prep in Jersey City :: KzA in Athens on creative self-care when speaking about it.</p>
+        <p class="h70-body">The Executive / Strategist's closing session adds a specific and traceable example: he named improved listening with his wife as one of three documented behavioral changes. The coaching produced a different quality of presence with the person closest to him. What changed in the session moved into the marriage. The Wellness Teacher's February 12 Trailing Notes document the thread at the structural level: a conversation about his father's stoicism :: "didn't know I could ask him questions, questions were an affront to order while growing up" :: arriving as the context for a new understanding of how he holds space for others. The generational pattern named and given a new direction.</p>
+        <div class="anchor">The school develops individual creative intelligence. What the individual does with that intelligence extends into every relationship they carry.</div>
+      </div>
+    </div>
+
+    <div class="thread">
+      <div class="thread-header">
+        <span class="thread-num">THREAD 06</span>
+        <h3 class="thread-name">Place as <em>Active Collaborator</em></h3>
+      </div>
+      <div class="thread-body">
+        <p class="h70-body">Mars College, Bombay Beach, Heron Arts, Cape Town, Athens, Amsterdam :: location in the tÅs archive is chosen for what it holds. The Wellness Teacher's sessions were conducted remotely :: and the Trailing Notes document the places he was inhabiting as active variables: snowboarding trips, Lake Tahoe, California travels, the "swings with multiple friends, full send off swings, with safety and celebration" that arrived as a session image in January. The physical landscape of his life was consistently showing up in the sessions as source material. <em>Even at a distance, the school works with wherever the scholar is standing.</em></p>
+        <div class="anchor">Place is a variable the school accounts for deliberately. Every location in the archive was chosen for what it holds.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pullquote">
+    <p class="h70-body">Every conversation in the archive is the school's methodology operating in real human exchange :: producing <em>observable, nameable, traceable</em> change in the people who passed through it.</p>
+    <span class="pullquote-attr">:: THE PROOF OF FIELD · tÅs REFLECTIONARY</span>
+  </div>
+
+  <!-- PART II: SCHOLAR ARCS -->
+  <section class="section" id="scholars">
+    <div class="section-header">
+      <span class="section-num">PART II</span>
+      <h2 class="section-title">The <em>Scholar</em> Arcs</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">Two complete scholar arcs are documented here in fuller detail than the archive's other engagements :: because each one offers a distinct quality of evidence. The Wellness Teacher's arc includes the Trailing Notes: the scholar's own hand, written during and after sessions, which carries primary source weight that no AI synthesis can replicate. The Executive / Strategist's arc includes the closing session, which holds both the transformation and its honest edges.</p>
+      <p class="h70-body">Both arcs are presented as they actually are :: with their depth, their friction, and their specific quality of change.</p>
+    </div>
+
+    <!-- DANIEL -->
+    <div class="scholar-section" id="daniel">
+      <div class="scholar-header">
+        <div class="scholar-marker daniel"></div>
+        <div class="scholar-header-text">
+          <span class="scholar-tag daniel">SCHOLAR ARC · SIX DOCUMENTED SESSIONS · DEC 2024 :: MAY 2025</span>
+          <div class="scholar-name daniel">The Wellness Teacher Richards :: <em>The Trailing Notes</em></div>
+        </div>
+      </div>
+      <div class="scholar-body">
+        <p class="h70-body">The Wellness Teacher arrived in December 2024 with a pre-session reflection that named the condition precisely before the first session began: "How to ignite my creatorship in alignment with my work (focus/distraction/ADHD), my home, my movement and my mind :: my being. Rediscovering my drives and maintaining motivation." He knew what he was looking for. He arrived at the school because his nervous system recognized the register.</p>
+
+        <p class="h70-body">The Trailing Notes :: his own handwritten documentation across six months of sessions :: show the work operating in real time. Each dated entry carries the language the sessions generated and the scholar received. Three qualities of evidence are present here that the Fireflies summaries cannot provide: the scholar's own words rather than AI synthesis; the sessions' language persisting into the week between sessions, confirmed by the act of writing it down; and the progressive development of a framework the scholar built himself from the sessions' materials.</p>
+
+        <div class="scholar-voice">
+          <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES, SELECTED</span>
+          <p class="h70-body">"Over-eager for nothing. Overflowing with everything."</p>
+          <span class="sv-source">December 21, 2024 :: Orientation pre-session reflection, The Wellness Teacher Richards</span>
+        </div>
+
+        <div class="scholar-voice">
+          <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES</span>
+          <p class="h70-body">"The questions are the mirror."</p>
+          <span class="sv-source">May 8, 2025 :: Session notes, The Wellness Teacher Richards</span>
+        </div>
+
+        <div class="scholar-voice">
+          <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES</span>
+          <p class="h70-body">"My attention is powerful. My attention can feel like a dart."</p>
+          <span class="sv-source">May 8, 2025 :: Session notes, The Wellness Teacher Richards</span>
+        </div>
+
+        <div class="scholar-voice">
+          <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES</span>
+          <p class="h70-body">"You sent yourself on journeys all over the world so that you now know how to breathe through challenges."</p>
+          <span class="sv-source">May 8, 2025 :: KzA's words received and written down by The Wellness Teacher Richards</span>
+        </div>
+
+        <div class="scholar-voice">
+          <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES</span>
+          <p class="h70-body">"The pregnancy of the pause :: what is it creating?"</p>
+          <span class="sv-source">March 12/19, 2025 :: Session notes, The Wellness Teacher Richards</span>
+        </div>
+
+        <div class="scholar-voice">
+          <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES</span>
+          <p class="h70-body">"I don't want to write myself out of my calendar."</p>
+          <span class="sv-source">January 2025 :: Noted as arising from a fellow tÅs scholar, received and recorded by The Wellness Teacher Richards</span>
+        </div>
+
+        <p class="h70-body">The framework The Wellness Teacher developed across the six months :: Know. Flow. Grow. Three Intentions (Abundance, Alignment, Allowing). The equation: ease as the destination the three intentions point toward :: was not given to him. He built it from the sessions' materials and wrote it down as it took shape. By January 22 he was presenting it back to KzA as his own working system. By May 8 he was extending it: "Lean back and attract."</p>
+
+        <p class="h70-body">The Human Design alignment is documented in his February 12 notes: both KzA and The Wellness Teacher are Projectors, activated by invitations. The Wellness Teacher named this as a structural feature of the exchange :: "when you're invited, you're trading epic level energy." This is the scholar observing the session's underlying mechanics and writing them down. That quality of meta-awareness is itself evidence of the school's work operating.</p>
+
+        <p class="h70-body">The Resonance Project :: introduced at semester midpoint :: produced The Wellness Teacher's vibe statement work. His April 14 notes document the integration of stimulation and stillness as the session's core discovery: "Stimulation can be more satisfying alongside stillness." Six months of sessions, in his own hand, showing the development of a practitioner's relationship to their own creative intelligence.</p>
+      </div>
+    </div>
+
+    <!-- DOUG -->
+    <div class="scholar-section" id="doug">
+      <div class="scholar-header">
+        <div class="scholar-marker doug"></div>
+        <div class="scholar-header-text">
+          <span class="scholar-tag doug">SCHOLAR ARC · NINE DOCUMENTED SESSIONS · NOV 2024 :: APR 2025</span>
+          <div class="scholar-name doug">The Executive / Strategist Berger :: <em>The Complete Semester</em></div>
+        </div>
+      </div>
+      <div class="scholar-body">
+        <p class="h70-body">The Executive / Strategist's archive is the most fully documented complete semester in the record. Nine sessions across five months, from the November 20 first session through the April 3 closing. The arc is traceable in full :: from the initial exploration of self-awareness and vibes, through the development of four design principles across winter, to the closing session's honest accounting of what the coaching produced and where it met its limits.</p>
+
+        <p class="h70-body">The November 20 session began with The Executive / Strategist integrating "metaphysical experiences with his scientific background" :: a person who had built a successful professional life through rigorously empirical thinking, arriving at a school that works in a different register. The early sessions document this negotiation: the scholar testing the school's framework against his existing system of knowing.</p>
+
+        <p class="h70-body">By February 5, the archive shows a shift. The Executive / Strategist described playing guitar "for joy rather than obligation" :: the first documented behavioral change. He named attending a paint and watercolor class for the first time. He described evolving his language "from trying to to doing from knowing." The sessions were producing changes in practice, not only in understanding.</p>
+
+        <p class="h70-body">The March 7 session documented a significant personal context: The Executive / Strategist's father-in-law's hospice situation. The coaching held grief and personal development simultaneously :: the session navigated The Executive / Strategist's emotional state while continuing the work. The March 19 session introduced the "thinking inside the box" workshop, with The Executive / Strategist applying the 360-degree perspective concept to his own life transitions and naming new metaphors for his current stage.</p>
+
+        <p class="h70-body">The April 3 closing session is the most important document in the The Executive / Strategist archive :: and it requires honest reading in both directions.</p>
+
+        <p class="h70-body">The Executive / Strategist named three specific behavioral changes across the semester: daily guitar practice with a new teacher; painting and watercolors begun after long wanting to try art; improved listening with his wife when she shares her day. Three domains of daily life shifted. These are sourced, specific, and named by the scholar in his own words.</p>
+
+        <p class="h70-body">He also named KzA's observations about "his lack of joy and need for control" as "life-altering insights." That phrase :: life-altering :: carries weight precisely because it arrives in a closing session alongside critique, not in a mid-program moment of enthusiasm.</p>
+
+        <p class="h70-body">The critique is also in the record and belongs here. The Executive / Strategist felt KzA backed off from challenging him in areas where he showed strong resistance. He articulated a principle about communication: "Honoring a scholar's perspective requires first locating yourself in their world." He distinguished between "speaking at" and "speaking to or with." KzA acknowledged this feedback directly in session.</p>
+
+        <p class="h70-body">The closing session shows both: a scholar who changed in specific, traceable ways across a complete semester; and a scholar who identified where the methodology met the edge of what his particular resistance allowed. <em>Both are evidence. A living accounting that holds only the transformations and omits the friction would not be an honest document.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="pullquote">
+    <p class="h70-body">The scholar's own hand, writing what the sessions generated, is the most direct evidence available. <em>It bypasses the summary and goes to the source.</em></p>
+    <span class="pullquote-attr">:: THE PROOF OF FIELD · tÅs REFLECTIONARY</span>
+  </div>
+
+  <!-- PART III: EXPERIENTIAL EQUATIONS -->
+  <section class="section" id="equations">
+    <div class="section-header">
+      <span class="section-num">PART III</span>
+      <h2 class="section-title">The <em>Experiential</em> Equations</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">Experiential equations are observable relationships between conditions and outcomes in human creative development :: patterns that recur across different scholars, sessions, and geographies. The Wellness Teacher and The Executive / Strategist both deepen the equations already documented and contribute one new one.</p>
+    </div>
+
+    <div class="equation">
+      <div class="equation-top">
+        <span class="equation-formula">Patience × Procrastination = Steeping</span>
+        <span class="equation-name">The Canonical Equation :: permanently fixed</span>
+      </div>
+      <div class="equation-body">
+        <p class="h70-body">The foundational equation of the school. Two forces the dominant culture places in opposition :: patience and procrastination :: placed in relationship with each other produce a geometry richer than either generates alone.</p>
+        <p class="h70-body">The Wellness Teacher's March 12/19 Trailing Notes enter the equation at the philosophical level, drawing on the 5th Gene Key :: "the 5th shadow of impatience :: the timing of life, trusting natural timing, seasons, cell growth and decay." He wrote: "Waiting is not the same as waiting. Patience is the natural ground of your being, whereas impatience arises from fear and conditioning." <em>The scholar arrived at the equation's underlying mechanics through his own study, within the sessions' holding environment.</em></p>
+      </div>
+      <div class="equation-evidence">
+        <span class="eq-ev-label">IN THE ARCHIVE</span>
+        <div class="eq-ev-item">
+          <span>The Wellness Teacher's Trailing Notes, March 12/19: "The pregnancy of the pause :: what is it creating?" :: the scholar locating himself inside the equation.</span>
+          <span class="eq-ev-who">The Wellness Teacher R · Mar 2025</span>
+        </div>
+        <div class="eq-ev-item">
+          <span>The Photographer / Visual Designer's three years of intentional rest produced "minimal friction and maximum clarity." The rest was the practice producing the precision that followed.</span>
+          <span class="eq-ev-who">THE PHOTOGRAPHER / VISUAL DESIGNER · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-top">
+        <span class="equation-formula">Alienation + Precise Language = Portal</span>
+        <span class="equation-name">The Entry Equation</span>
+      </div>
+      <div class="equation-body">
+        <p class="h70-body">Alienation given precise language produces recognition, community, and the beginning of creative agency. <em>The moment of naming is the moment of entry.</em> The equation operates across every enrollment conversation in the archive.</p>
+        <p class="h70-body">The Executive / Strategist's first session demonstrates a specific variant: a person who arrives skeptical of the school's register :: his scientific background in tension with the school's vocabulary :: and stays across nine sessions. The entry was not immediate recognition. It was a slower arrival, produced by the persistent precision of the sessions rather than a single naming moment. This is a different quality of the same equation: the language accumulating across multiple sessions until it reached the threshold of recognition.</p>
+      </div>
+      <div class="equation-evidence">
+        <span class="eq-ev-label">IN THE ARCHIVE</span>
+        <div class="eq-ev-item">
+          <span>The Creative Producer named "receptive creativity" :: exactly what the school develops :: before being told what the school offered. Immediate recognition through precise language.</span>
+          <span class="eq-ev-who">THE CREATIVE PRODUCER · Apr 2025</span>
+        </div>
+        <div class="eq-ev-item">
+          <span>The Executive / Strategist: nine sessions of language accumulation before naming Kamau's insights "life-altering." Recognition arriving through sustained exposure rather than single moment.</span>
+          <span class="eq-ev-who">The Executive / Strategist B · Apr 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-top">
+        <span class="equation-formula">Mirror Work × Time = Identity Precision</span>
+        <span class="equation-name">The Cumulative Mirror Equation</span>
+      </div>
+      <div class="equation-body">
+        <p class="h70-body">The mirror exercises produce different results depending on duration. A single session produces initial recognition. Repeated sessions across weeks produce increasing precision of self-concept.</p>
+        <p class="h70-body">The Wellness Teacher's Trailing Notes document this equation across six months. The December orientation's "I want to discover a new voice" becomes January's Know. Flow. Grow. framework, becomes March's Gene Key study and somatic precision, becomes May's "The questions are the mirror" and "lean back and attract." <em>The identity precision accumulated as the mirror was held longer.</em> The equation is visible in the dated sequence of his own handwriting.</p>
+      </div>
+      <div class="equation-evidence">
+        <span class="eq-ev-label">IN THE ARCHIVE</span>
+        <div class="eq-ev-item">
+          <span>The Wellness Teacher: from "Over-eager for nothing" in December to "lean back and attract" in May. The arc documented in the scholar's own hand across six months of sessions.</span>
+          <span class="eq-ev-who">The Wellness Teacher R · Dec 2024 :: May 2025</span>
+        </div>
+        <div class="eq-ev-item">
+          <span>The Filmmaker / Writer, week one: "killing me :: I'm not where I thought I was." Week six: precise language for her own creative intelligence, naming what she offers that is irreplaceable.</span>
+          <span class="eq-ev-who">THE FILMMAKER / WRITER · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-top">
+        <span class="equation-formula">Scholar Framework × Guide Container = Scholar's Own System</span>
+        <span class="equation-name">The Generative Equation :: new, sourced from The Wellness Teacher's arc</span>
+      </div>
+      <div class="equation-body">
+        <p class="h70-body">When the school's methodology provides a container rather than a curriculum, the scholar's intelligence generates a framework that belongs entirely to them :: built from the sessions' materials but shaped by their own architecture of understanding. The guide does not produce the framework. The scholar does. The guide holds the conditions in which it becomes possible.</p>
+        <p class="h70-body">The Wellness Teacher's Know. Flow. Grow. is the clearest example in the archive. It operates independently of the school's language as the scholar's distillation of what the school's sessions made available to him. He presented it back to KzA by January 22 as his working system. By May 8 he was writing: "Lean back and attract" :: an extension of the system in his own direction. <em>The school generated the scholar's own methodology.</em> That is the mechanism this equation names.</p>
+      </div>
+      <div class="equation-evidence">
+        <span class="eq-ev-label">IN THE ARCHIVE</span>
+        <div class="eq-ev-item">
+          <span>The Wellness Teacher: Know. Flow. Grow. :: developed by the scholar from session materials, presented back to KzA as his working system by January 22. Extended independently by May. Scholar's own framework, school's container.</span>
+          <span class="eq-ev-who">The Wellness Teacher R · Jan–May 2025</span>
+        </div>
+        <div class="eq-ev-item">
+          <span>The Executive / Strategist: "doing from knowing" :: the language evolution from "trying to" documented across the semester as a self-developed principle the scholar named and applied independently.</span>
+          <span class="eq-ev-who">The Executive / Strategist B · Feb 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-top">
+        <span class="equation-formula">Grief + Ceremony = Generational Medicine</span>
+        <span class="equation-name">The Ritual Equation</span>
+      </div>
+      <div class="equation-body">
+        <p class="h70-body">The ceremony for KzA's father in Amsterdam. John Leto's session on ancestral candles. David Hartz naming his studio demolition a sand mandala. Each of these moments held grief and intention simultaneously and produced a distinct quality of forward-moving energy.</p>
+        <p class="h70-body">The Executive / Strategist's semester held his father-in-law's hospice situation across multiple sessions without collapsing the coaching work into grief management. The sessions held both simultaneously. The March 7 session documented the hospice situation and continued the developmental work. That capacity to hold grief alongside creative development :: without resolving one into the other :: is the school's methodology in one of its most demanding applications.</p>
+      </div>
+      <div class="equation-evidence">
+        <span class="eq-ev-label">IN THE ARCHIVE</span>
+        <div class="eq-ev-item">
+          <span>The Executive / Strategist: hospice situation held across the March sessions without displacing the developmental work. Grief and growth held simultaneously across multiple documented sessions.</span>
+          <span class="eq-ev-who">The Executive / Strategist B · Mar 2025</span>
+        </div>
+        <div class="eq-ev-item">
+          <span>The Photographer / Visual Designer naming the studio demolition a "sand mandala" :: converting grief into ceremony in real time, during session. The naming itself was the ritual.</span>
+          <span class="eq-ev-who">THE PHOTOGRAPHER / VISUAL DESIGNER · Sep 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-top">
+        <span class="equation-formula">Openness ÷ Secrecy = Collaborative Velocity</span>
+        <span class="equation-name">The Transmission Equation</span>
+      </div>
+      <div class="equation-body">
+        <p class="h70-body">Named explicitly in the April 2026 The Educator / Community Builder session and observable across every engagement in the archive where the work accelerated. As openness increases and secrecy decreases, the velocity of collaborative development compounds.</p>
+        <p class="h70-body">The Wellness Teacher's arc demonstrates this from the inside: the Trailing Notes themselves are an act of openness :: the scholar capturing the sessions in writing rather than holding them privately in memory, making the work available to himself across the distance between sessions. The notes became the continuity mechanism. <em>Openness to one's own process produces the same acceleration as openness to collaboration.</em></p>
+      </div>
+      <div class="equation-evidence">
+        <span class="eq-ev-label">IN THE ARCHIVE</span>
+        <div class="eq-ev-item">
+          <span>The Wellness Teacher: six months of Trailing Notes as the continuity mechanism between sessions. The act of writing the sessions down made them available to the scholar beyond the hour they occurred.</span>
+          <span class="eq-ev-who">The Wellness Teacher R · Dec 2024 :: May 2025</span>
+        </div>
+        <div class="eq-ev-item">
+          <span>The Educator / Community Builder beginning public documentation in Cape Town: "document the work publicly to create awareness and traction." The documentation itself became the invitation for what followed.</span>
+          <span class="eq-ev-who">The Educator / Community Builder L · Jul 2025</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PART IV: QUOTABLE ASSETS -->
+  <section class="section" id="quotables">
+    <div class="section-header">
+      <span class="section-num">PART IV</span>
+      <h2 class="section-title">The <em>Quotable</em> Assets</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">These are words that emerged from the sessions :: spoken or written by scholars, collaborators, and observers in the heat of genuine recognition. Each one is sourced directly from the archive or from the scholar's own hand. The function note names what each quotable demonstrates about the school's work.</p>
+      <p class="h70-body">The Wellness Teacher entries marked [Scholar's hand] carry primary source weight: these are not AI summaries of what was said. They are what the scholar wrote down during or immediately after the session.</p>
+    </div>
+
+    <div class="quote-grid">
+
+      <div class="quote-block visible">
+        <p class="quote-text">"Over-eager for nothing. <em>Overflowing with everything.</em>"</p>
+        <p class="quote-source">The Wellness Teacher Richards :: Trailing Notes, December 21 orientation reflection [Scholar's hand]</p>
+        <p class="quote-function">The scholar's own language for the condition he arrived with. He named his aim before the school named it for him. The precision of the language demonstrates that the qualifying condition was already conscious :: the school provided the container for what was already forming.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"The questions are <em>the mirror.</em>"</p>
+        <p class="quote-source">The Wellness Teacher Richards :: Trailing Notes, May 8, 2025 [Scholar's hand]</p>
+        <p class="quote-function">Six months of mirror work distilled to five words in the scholar's own handwriting. The methodology has been internalized completely enough to generate its own compression. The scholar is now writing the school's principles from the inside.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"My attention is powerful. <em>My attention can feel like a dart.</em>"</p>
+        <p class="quote-source">The Wellness Teacher Richards :: Trailing Notes, May 8, 2025 [Scholar's hand]</p>
+        <p class="quote-function">The somatic tether operating :: the scholar locating a quality of their own presence in physical metaphor. This is Åttention understood as a felt, directional force. The school produced this knowing. The scholar's body confirmed it. The hand wrote it down.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"Kamau's observations about my lack of joy and need for control were <em>life-altering insights.</em>"</p>
+        <p class="quote-source">The Executive / Strategist Berger :: tÅs Closing Session, April 3, 2025</p>
+        <p class="quote-function">Said in a closing session that also contained substantive critique of the methodology's limits. The phrase carries more weight because of the critique around it :: not despite it. This is genuine evaluation from a scholar who had both the depth to receive transformation and the rigor to name what fell short.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"This is <em>spiritual but therapeutic.</em>"</p>
+        <p class="quote-source">The Filmmaker / Writer M Beury :: CREÅTIVE STEEPING cohort, week one reflection, Jul 2025</p>
+        <p class="quote-function">The scholar named the dual register of the work before being told what it was designed to do. The simultaneous operation of spirit and therapy is the school's most precise description :: and it arrived from the scholar, not the guide.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"The pregnancy of the pause :: <em>what is it creating?</em>"</p>
+        <p class="quote-source">The Wellness Teacher Richards :: Trailing Notes, March 12/19, 2025 [Scholar's hand]</p>
+        <p class="quote-function">The steeping technology named from inside by the scholar as a question rather than a statement. The question is the practice. The scholar arrived at the Patience × Procrastination = Steeping equation through their own inquiry, in their own language, in their own hand.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"Started practicing guitar daily. <em>Began painting and watercolors.</em> Changed how I listen to my wife when she shares her day."</p>
+        <p class="quote-source">The Executive / Strategist Berger :: tÅs Closing Session, April 3, 2025. Three distinct domains named in one session.</p>
+        <p class="quote-function">Multi-domain behavioral change, named and sourced. Not a report of feeling different :: a report of doing differently, across creative practice, relational presence, and artistic expression simultaneously. This is the school's work visible in the shape of a daily life.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"I already knew this. <em>I've now been given language for it.</em>"</p>
+        <p class="quote-source">The recurring residue across enrollment and session conversations :: named as the design intention of every STEEPING NOTE (VesselVerse Editorial Protocol §2.1), and generated spontaneously by scholars who had no knowledge of that intention.</p>
+        <p class="quote-function">Recognition rather than instruction is the school's primary output. The spontaneous convergence between the design intention and the scholars' unprompted language is itself evidence that the methodology reaches its stated destination.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PART V: THE FIELD NAMED -->
+  <section class="section" id="naming">
+    <div class="section-header">
+      <span class="section-num">PART V</span>
+      <h2 class="section-title">The <em>Field</em> Named</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The six threads, six equations, eight quotable assets, and two complete scholar arcs in this document all originate in the same territory. Every conversation in the archive takes place inside it. Every scholar who changed within a session was moving through it. The field has been proven across the preceding sections. Here it receives its name.</p>
+    </div>
+
+    <div class="field-name">
+      <span class="field-name-label">THE FIELD BEING PROVEN</span>
+      <h2 class="field-name-title">The Field of<br><em>Original Frequency</em></h2>
+      <p class="field-name-body">The observable territory in which a person's creative intelligence :: present before every system that shaped them, beneath every borrowed identity, prior to every institutional classification of their capacity :: becomes legible to themselves with enough precision to act on. The school enters this field with the scholar and provides the conditions under which <em>original frequency becomes accessible.</em></p>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body"><em>Original</em> :: because the frequency was always present. Recovery of access, not installation of a foreign system. The Wellness Teacher arrived in December knowing the condition he was in. He did not acquire new intelligence across six months. He developed precision of relationship to the intelligence he already carried :: until it was legible enough to build a framework from.</p>
+
+      <p class="h70-body"><em>Frequency</em> :: because what is being recovered is a quality of signal, not a set of skills or beliefs. The Executive / Strategist did not learn to appreciate guitar across the semester. He recovered the relationship to it that his professional conditioning had displaced :: the one that plays for joy rather than obligation. The guitar was always there. The frequency of the relationship to it shifted.</p>
+
+      <p class="h70-body">The honest edge is also here: the Field of Original Frequency is enterable under specific conditions. The Executive / Strategist's closing session documents what happens when a scholar's resistance is stronger than the methodology's reach in a particular area. The field does not override what the scholar is not yet ready to enter. It holds what the scholar brings to it and returns what the scholar can receive. The document that holds this honestly is the one that holds.</p>
+    </div>
+
+    <div class="couplet">
+      <p class="couplet-l1">The arc is the angle of change.</p>
+      <p class="couplet-l2">"The school develops the conditions in which the scholar's original frequency becomes audible to themselves :: often for the first time with enough precision to act on."</p>
+    </div>
+  </section>
+
+  <!-- PART VI: VOLTRONIC CONNECTIONS -->
+  <section class="section" id="connections">
+    <div class="section-header">
+      <span class="section-num">PART VI</span>
+      <h2 class="section-title">The <em>Voltronic</em> Connections</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">This reflectionary holds a specific structural relationship to the three artifacts that preceded it. Each one documents a different dimension of the same living system. Together they constitute the school's body of documented self-knowledge.</p>
+    </div>
+
+    <div class="connections">
+      <span class="connections-label">ARTIFACT RELATIONSHIPS :: THE VOLTRONIC FIELD</span>
+      <div class="connections-grid">
+
+        <div class="conn-item">
+          <span class="conn-artifact">ARTIFACT 07</span>
+          <div class="conn-name">The Metaphor Library</div>
+          <div class="conn-relation">The symbolic vessels through which the equations in Part III become enterable. The Wellness Teacher's sessions deployed specific vessels :: the bonsai, the dual vortex, the canvas of life :: documented in his Trailing Notes as the language that landed. The Proof of Field shows the equations producing outcomes; the Metaphor Library shows the instruments that made those outcomes reachable in each specific case.</div>
+        </div>
+
+        <div class="conn-item">
+          <span class="conn-artifact">ARTIFACT 01</span>
+          <div class="conn-name">The Elevation Codex</div>
+          <div class="conn-relation">The guide methodology that produced the quotable assets in Part IV. The Executive / Strategist's closing session documents both the Elevation Move operating ("life-altering insights") and the Permission Structure meeting its edge (the resistance that limited certain exchanges). The Codex is more useful as a field guide for having both documented here.</div>
+        </div>
+
+        <div class="conn-item">
+          <span class="conn-artifact">ARTIFACT 06</span>
+          <div class="conn-name">The Frequency Report</div>
+          <div class="conn-relation">The compass that maps where the Field of Original Frequency receives its swiftest recognition. The Wellness Teacher and The Executive / Strategist are both American scholars :: edge-point arrivals whose somatic channel required opening across the early sessions. Their arcs provide the richest documented evidence for the American coordinate's specific conditions of entry.</div>
+        </div>
+
+        <div class="conn-item">
+          <span class="conn-artifact">HDM</span>
+          <div class="conn-name">Human Development Mathematics</div>
+          <div class="conn-relation">The foundational framework expressed in its most applied form by the experiential equations in Part III. The Wellness Teacher's Know. Flow. Grow. is HDM generated by a scholar from inside the methodology :: the scholar's own system, built from the school's container. That is HDM demonstrating its generative function.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:2.5rem;">
+      <p class="h70-body">The four artifacts together constitute the school's architecture of self-knowledge. A partner or funder reading any single artifact encounters the school. Reading all four, they encounter its full design :: how it thinks, what it does, where it lands with different audiences, and what it produces when it reaches the scholar who was always already inside the Field of Original Frequency.</p>
+      <p class="h70-body"><em>The reflectionary is the living center of that architecture.</em> It holds the proof that everything the other artifacts describe is alive in real human exchange :: including the edges, which are also part of the real.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="pullquote">
+    <p class="h70-body">The field exists. The archive proves it :: including its edges. The school is the instrument through which <em>original frequency becomes legible</em> to the person who has been broadcasting it their entire life without yet being able to hear it clearly enough to act.</p>
+    <span class="pullquote-attr">:: THE PROOF OF FIELD · tÅs REFLECTIONARY</span>
+  </div>
+
+  <footer class="closing">
+    <span class="closing-glyph">◈</span>
+    <p class="h70-body">This reflectionary updates as the archive deepens. Every session adds to the proof base. Every scholar who speaks in recognition adds to the quotable assets. Every edge that is honestly held strengthens the document's durability.</p>
+    <p class="h70-body">The work is real. This document is the echo that makes it audible to those who were not in the room.</p>
+    <span class="closing-sig">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING · 
+      THE PROOF OF FIELD · tÅs REFLECTIONARY · VERSION 3.0<br>
+      BUILT THROUGH THE VESSELVERSE PRIMER AND EDITORIAL PROTOCOL<br>
+      DANIEL RICHARDS AND DOUG BERGER ARCS INFUSED · THE FIELD OF ORIGINAL FREQUENCY NAMED<br>
+      LIVING DOCUMENT · UPDATES WITH EVERY SESSION THAT ADDS TO THE ARCHIVE
+    </span>
+  </footer>
+
+</div>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.thread:not(.visible), .equation, .quote-block:not(.visible), .scholar-section').forEach(el => obs.observe(el));
+</script>
+
+<div id="audio-overlay" style="position: fixed; inset: 0; background: var(--bg); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink); transition: opacity 1.5s ease;">
+  <div style="font-family: var(--h70-font); font-size: 2rem; font-style: normal; margin-bottom: 1rem;">The Synthesis Archive</div>
+  <div style="font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.2em;">A BIOACOUSTIC REPOSITORY</div>
+  <button onclick="initializeSpace()" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 1rem 3rem; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.2em; cursor: pointer; text-transform: uppercase; border-radius: 2px; transition: all 0.5s ease; margin-top: 2rem;">Enter Space</button>
+</div>
+
+<script>
+  let audioCtx;
+  let masterGain;
+  const PENTATONIC_SCALE = [264.00, 296.33, 332.62, 395.55, 444.00, 528.00, 592.67, 665.24];
+
+  function initializeSpace(isPortalEntry) {
+    const overlay = document.getElementById('audio-overlay');
+    if (overlay) {
+      if (isPortalEntry) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 1500);
+      }
+    }
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    audioCtx = new AudioContext();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = isPortalEntry ? 0 : 0.5;
+    masterGain.connect(audioCtx.destination);
+
+    if (isPortalEntry) {
+      masterGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2.0);
+    }
+
+    playAmbientBreath();
+    playStrikingBowl(528);
+  }
+
+  function playAmbientBreath() {
+    if (!audioCtx) return;
+    const osc174 = audioCtx.createOscillator();
+    const osc240 = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc174.type = 'sine'; osc174.frequency.value = 174;
+    osc240.type = 'sine'; osc240.frequency.value = 240;
+    filter.type = 'lowpass'; filter.frequency.value = 400;
+    gain.gain.value = 0.02;
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.type = 'sine'; lfo.frequency.value = 0.22;
+    lfoGain.gain.value = 0.015;
+    lfo.connect(lfoGain); lfoGain.connect(gain.gain); lfo.start();
+    osc174.connect(filter); osc240.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc174.start(); osc240.start();
+  }
+
+  function playStrikingBowl(freqOverride) {
+    if (!audioCtx) return;
+    const freq = freqOverride || PENTATONIC_SCALE[Math.floor(Math.random() * PENTATONIC_SCALE.length)];
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    filter.type = 'lowpass'; filter.frequency.value = freq * 3;
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 3.5);
+    osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 4.0);
+  }
+
+</script>
+</main>
+
+<script>
+  // ==========================================
+  // PARALLAX SCIENCES
+  // ==========================================
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  const ease = 0.08;
+
+  document.addEventListener('mousemove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function renderParallax() {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+
+    const mural = document.querySelector('.parallax-mural');
+    if (mural) {
+      mural.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px) scale(1.05)`;
+    }
+
+    const vessels = document.querySelectorAll('.parallax-vessel');
+    vessels.forEach(vessel => {
+      vessel.style.transform = `translate(${currentX * 6}px, ${currentY * 6}px)`;
+    });
+
+    requestAnimationFrame(renderParallax);
+  }
+  
+  if (window.matchMedia("(pointer: fine)").matches) {
+    requestAnimationFrame(renderParallax);
+  }
+</script>
+
+
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span>tÅs</span>
+    <span id="scroll-progress">0% STEEPED</span>
+  </div>
+  <div style="text-align: right;">
+    <a href="mailto:thealienscool@gmail.com" style="color: var(--h70-signal); text-decoration: none;">thealienscool@gmail.com</a>
+    <span style="opacity: 0.6; margin-left: 1rem; display: none;" class="contact-desktop">Elevating the Creative Spirit in organizations, relationships, & edge navigation</span>
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = Math.min(100, Math.max(0, Math.round((window.scrollY / docHeight) * 100)));
+    const indicator = document.getElementById('scroll-progress');
+    if(indicator) indicator.textContent = progress + '% STEEPED';
+  });
+</script>
+<style>
+@media(min-width: 800px) { .contact-desktop { display: inline !important; } }
+</style>
+</body>
+
+</html>

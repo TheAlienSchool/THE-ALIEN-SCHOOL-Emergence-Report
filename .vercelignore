@@ -1,0 +1,32 @@
+# Python development scripts — not for deployment
+*.py
+__pycache__/
+*.pyc
+
+# Editorial working documents — internal authoring tools
+VESSELVERSE SESSION PRIMER
+VESSELVERSE_EDITORIAL_PROTOCOL3.1.md
+HARMONIOUS70_AGENTIC_STYLEGUIDE.md
+
+# Extracted / generated working files
+extracted_contents.txt
+harmonious70.tokens.json
+
+# Build artifacts directory (if added later)
+public/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Git
+.git/
+.gitignore
+
+# Node (in case added later)
+node_modules/

@@ -1,0 +1,372 @@
+# 02. Mad-libs Boundary Templates for Three Days Off
+# Post-pledge thank you page copy-to-clipboard templates
+
+boundary_templates:
+  
+  text_messages:
+    friend_casual:
+      audience: "close_friends"
+      tone: "warm_direct"
+      template: |
+        Hey {{friend_name}}! Taking Three Days Off ({{date_range}}) for a stillness practice. 
+        
+        Texts will be {{response_speed}}. Best way to love me = {{preferred_contact}}.
+        
+        Want to join? {{invitation_style}} ✨
+      
+      variables:
+        response_speed: ["slower than usual", "very delayed", "minimal until Sept 4", "read but not answered immediately"]
+        preferred_contact: ["send one calm check-in", "text me one word that makes you smile", "leave a voicemail", "send a photo instead of words"]
+        invitation_style: ["Check out ThreeDaysOff.com", "Try an hour of quiet with me", "Text me '🪷' if you're curious", "No pressure, just mentioning"]
+    
+    friend_detailed:
+      audience: "close_friends"
+      tone: "explanatory_inviting"
+      template: |
+        Taking Three Days Off ({{date_range}}) - a global practice in intentional stillness 🌱
+        
+        Think {{analogy}} but for the nervous system.
+        
+        I'll be {{practice_description}}. Messages will be {{response_approach}}.
+        
+        If you need me urgently: {{emergency_contact}}
+        
+        Otherwise, {{gentle_request}} 💕
+      
+      variables:
+        analogy: ["digital detox", "meditation retreat at home", "consciousness spring cleaning", "creative fasting"]
+        practice_description: ["mostly in silence", "practicing deep quiet", "creating space for what wants to emerge", "listening to the stillness"]
+        response_approach: ["read with love, answered slowly", "received gratefully, responded mindfully", "welcomed but not immediately answered"]
+        emergency_contact: ["call twice in a row", "text 'URGENT' and I'll respond", "reach out to [backup person]", "know that real emergencies will reach me"]
+        gentle_request: ["send good vibes my way", "maybe try 10 minutes of quiet yourself?", "I'll share what I discover", "hold space for this practice"]
+
+  email_auto_replies:
+    personal_warm:
+      subject: "Three Days Off - Slow Response Mode"
+      template: |
+        Thank you for your message! 
+        
+        I'm practicing Three Days Off ({{date_range}}) - {{description}}.
+        
+        Your email is {{reception_style}}. I'll respond {{timing}} with {{quality}}.
+        
+        For urgent matters: {{urgent_instruction}}
+        
+        {{closing_sentiment}}
+        
+        Gratefully in stillness,
+        {{name}}
+      
+      variables:
+        description: ["a global stillness practice", "intentional quiet for emergent clarity", "conscious pause from digital noise", "meditation in everyday life"]
+        reception_style: ["received with gratitude", "welcomed warmly", "appreciated deeply"]
+        timing: ["by September 4th", "in the days following", "when I re-engage", "slowly and mindfully"]
+        quality: ["full attention and care", "deeper listening than usual", "renewed clarity and presence"]
+        urgent_instruction: ["please call [phone number]", "reach out to [backup contact]", "resend with 'URGENT' in subject", "know that true emergencies will find me"]
+        closing_sentiment: ["Thank you for honoring this practice", "Grateful for your patience", "Sending peaceful energy", "In appreciation of stillness"]
+    
+    professional_clear:
+      subject: "Out of Office: Three Days Off Practice"
+      template: |
+        I'm participating in Three Days Off ({{date_range}}) - {{professional_description}}.
+        
+        Your message {{acknowledgment}}. I'll respond {{return_timing}} with {{professional_quality}}.
+        
+        For immediate needs: {{business_backup}}
+        
+        For non-urgent matters: {{gratitude_note}}
+        
+        {{professional_closing}}
+      
+      variables:
+        professional_description: ["a consciousness practice focused on clarity and creativity", "intentional stillness for enhanced focus and innovation", "a mindfulness retreat in place", "conscious pause for optimal performance"]
+        acknowledgment: ["is important to me", "has been received", "is valued and noted"]
+        return_timing: ["by September 4th", "early next week", "upon my return"]
+        professional_quality: ["renewed focus and attention", "enhanced clarity and creativity", "deeper consideration and care"]
+        business_backup: ["contact [colleague name] at [email]", "call our main office line", "reach out to [assistant name]"]
+        gratitude_note: ["your patience with this practice is appreciated", "thank you for understanding this boundary", "grateful for your support of conscious work practices"]
+        professional_closing: ["In service and stillness", "With appreciation", "Returning with renewed focus"]
+
+  social_media_posts:
+    announcement_playful:
+      platforms: ["instagram", "facebook"]
+      template: |
+        Taking Three Days Off ({{date_range}}) because {{reason}} 🪷
+        
+        Translation: {{translation}}
+        
+        Responses will be {{social_response}}. 
+        
+        {{community_invitation}}
+        
+        #ThreeDaysOff {{personal_hashtag}}
+      
+      variables:
+        reason: ["my nervous system asked nicely", "I want to remember what quiet sounds like", "curiosity about stillness won", "I'm practicing being instead of doing"]
+        translation: ["meditation retreat without leaving home", "conscious pause in a noisy world", "remembering that I am not my thoughts", "creating space for what wants to emerge"]
+        social_response: ["slow and mindful", "delayed but heartful", "minimal until integration begins", "like a gentle echo rather than immediate ping"]
+        community_invitation: ["Join the global practice?", "Anyone else curious about collective stillness?", "What would you do with three days of quiet?", "DM me if you want to explore this together"]
+        personal_hashtag: ["#MyStillnessPractice", "#ConsciousCreativity", "#PauseForthePause", "#StillnessAsService"]
+    
+    announcement_sincere:
+      platforms: ["linkedin", "facebook"]
+      template: |
+        Participating in Three Days Off ({{date_range}}) - {{sincere_description}}.
+        
+        In our {{cultural_observation}}, {{personal_insight}}.
+        
+        I'll be {{practice_commitment}} and responding to messages {{response_style}}.
+        
+        {{professional_note}}
+        
+        {{community_reflection}}
+      
+      variables:
+        sincere_description: ["a global practice in intentional stillness", "conscious exploration of presence and clarity", "community experiment in collective pause", "mindfulness practice scaled to daily life"]
+        cultural_observation: ["constantly connected world", "age of information overwhelm", "time of perpetual busyness", "era of distraction and noise"]
+        personal_insight: ["I'm curious about what emerges in genuine quiet", "I want to remember my natural rhythm", "I'm exploring stillness as creative practice", "I'm interested in consciousness as community resource"]
+        practice_commitment: ["mostly in silence", "practicing deep listening", "creating space for emergence", "honoring my natural rhythm"]
+        response_style: ["slowly and thoughtfully", "with renewed presence", "after integration", "mindfully upon return"]
+        professional_note: ["Work projects continue with enhanced focus afterward", "Creative work often benefits from conscious pause", "Sometimes stepping back creates space for breakthrough", "Presence is the foundation of all effective action"]
+        community_reflection: ["What might change if more of us practiced conscious pause?", "Curious how collective stillness might serve our shared challenges", "Wondering about the ripple effects of individual presence practices", "Interested in consciousness as both personal and collective resource"]
+
+  household_announcements:
+    family_gentle:
+      audience: "family_members"
+      template: |
+        Family announcement: Three Days Off Practice ({{date_range}}) 🏠
+        
+        What this means: {{family_explanation}}
+        
+        For you all: {{family_impact}}
+        
+        What I need: {{family_support}}
+        
+        What you might notice: {{observable_changes}}
+        
+        {{family_invitation}}
+        
+        Love and stillness,
+        {{family_role}}
+      
+      variables:
+        family_explanation: ["I'll be practicing intentional quiet and slower responses", "I'm exploring stillness as a way to be more present with you all", "I'm joining a global practice in mindful pause", "I'm taking time to listen to the quiet spaces"]
+        family_impact: ["minimal disruption to routines", "I'll still be present for important things", "dinner conversations might be quieter", "I'll be here but in listening mode more"]
+        family_support: ["gentle voices and slower energy", "patience with my delayed responses to non-urgent things", "maybe join me for some quiet moments?", "understanding if I take longer to answer questions"]
+        observable_changes: ["I might seem more thoughtful and less reactive", "I'll probably move more slowly and speak more softly", "I may spend time just sitting quietly", "I might be more present when we do interact"]
+        family_invitation: ["Anyone welcome to try quiet moments with me", "Let me know if you're curious about stillness practice", "We could explore family quiet time together", "Your own version of this practice is completely welcome"]
+        family_role: ["Mom/Dad", "Partner", "Your [relation]", "Family member taking some still time"]
+    
+    housemates_practical:
+      audience: "roommates_housemates"
+      template: |
+        Housemate heads up: Three Days Off ({{date_range}}) 🤫
+        
+        What's happening: {{practical_explanation}}
+        
+        House impact: {{house_changes}}
+        
+        My asks: {{housemate_requests}}
+        
+        Your space: {{respect_for_others}}
+        
+        {{practical_closing}}
+      
+      variables:
+        practical_explanation: ["I'm doing a stillness practice that involves minimal talking and slow responses", "Participating in a global quiet practice for consciousness clarity", "Taking three days for intentional silence and reflection", "Experimenting with mindful pause and reduced stimulation"]
+        house_changes: ["I'll be quieter than usual but still handling my responsibilities", "Common areas might have a calmer energy when I'm there", "I won't be initiating conversations but will respond to direct needs", "I'll use headphones and keep voices low"]
+        housemate_requests: ["Maybe keep music/TV a bit lower in shared spaces?", "Gentle voices and slower energy if possible", "Patience if I don't immediately respond to casual chat", "Text for urgent house matters rather than shouting across rooms"]
+        respect_for_others: ["Your normal routines are completely fine", "Don't change anything major on my account", "This is my practice, not a house rule", "Use spaces as usual, I'll adapt"]
+        practical_closing: ["Thanks for supporting my weird experiment! 😊", "Grateful for any quiet you're willing to share", "Back to normal chatter on Sept 4th", "Appreciate you holding space for this practice"]
+
+  door_signs:
+    simple_clear:
+      format: "printable_sign"
+      template: |
+        {{icon}}
+        
+        STILLNESS IN SESSION
+        {{date_range}}
+        
+        {{explanation}}
+        
+        {{contact_option}}
+        
+        Thank you 🙏
+      
+      variables:
+        icon: ["🪷", "🤫", "✨", "🕯️", "🌱"]
+        explanation: ["Three Days Off practice in progress", "Intentional quiet for clarity", "Conscious pause - please respect", "Mindfulness retreat in place", "Stillness practice underway"]
+        contact_option: ["Text for urgent matters", "Knock three times for emergencies", "Leave notes under door", "Email for non-urgent communication", "Peaceful energy appreciated"]
+    
+    creative_inviting:
+      format: "artistic_sign"
+      template: |
+        {{artistic_element}}
+        
+        Three Days Off
+        {{dates}}
+        
+        {{poetic_description}}
+        
+        {{gentle_boundary}}
+        
+        {{appreciation}}
+      
+      variables:
+        artistic_element: ["Hand-drawn lotus", "Watercolor wave", "Simple mandala", "Flowing lines", "Peaceful landscape sketch"]
+        poetic_description: ["Creating space for what wants to emerge", "Listening to the wisdom in stillness", "Practicing presence in everyday life", "Exploring the art of conscious pause", "Remembering the intelligence in quiet"]
+        gentle_boundary: ["Gentle knocks welcome for genuine needs", "Whispers appreciated over regular voices", "Your quiet presence is a gift", "Peaceful energy invited and shared"]
+        appreciation: ["Grateful for your understanding", "Thank you for honoring this practice", "In stillness and service", "With deep appreciation"]
+
+  voicemail_messages:
+    personal_warm:
+      tone: "calm_friendly"
+      template: |
+        Hi, you've reached {{name}}. I'm taking Three Days Off ({{date_range}}) - {{voicemail_description}}.
+        
+        {{voicemail_timing}}. {{voicemail_approach}}.
+        
+        For urgent matters: {{urgent_voicemail}}.
+        
+        {{voicemail_blessing}}
+      
+      variables:
+        voicemail_description: ["a practice in intentional stillness and conscious pause", "exploring what emerges in three days of mindful quiet", "joining a global community in stillness practice", "taking time for presence and inner listening"]
+        voicemail_timing: ["I'll return calls by September 4th", "Messages will be returned slowly and mindfully", "I'll respond when I re-engage on Tuesday"]
+        voicemail_approach: ["Your message is welcome and will receive full attention", "I'm listening with deeper presence than usual", "Taking time to respond with care rather than speed"]
+        urgent_voicemail: ["please call twice in a row", "text 'URGENT' and I'll respond", "contact [backup person] at [number]"]
+        voicemail_blessing: ["Thank you for calling during my stillness practice", "Sending peaceful energy your way", "Grateful for your patience with this practice", "In appreciation and quiet"]
+    
+    professional_clear:
+      tone: "professional_mindful"
+      template: |
+        You've reached {{professional_name}} at {{organization}}. I'm participating in Three Days Off ({{date_range}}) - {{professional_voicemail}}.
+        
+        {{business_timing}}. {{business_quality}}.
+        
+        For immediate business needs: {{business_urgent}}.
+        
+        {{professional_appreciation}}
+      
+      variables:
+        professional_voicemail: ["a mindfulness practice for enhanced clarity and focus", "conscious pause for optimal performance and creativity", "stillness practice to support professional presence", "intentional quiet for leadership development"]
+        business_timing: ["I'll return to messages by close of business Tuesday", "Calls will be returned upon my mindful re-engagement", "I'll respond early next week with renewed focus"]
+        business_quality: ["Your message will receive thoughtful attention", "I'll respond with enhanced presence and clarity", "Taking time to provide considered responses"]
+        business_urgent: ["contact [colleague] at [number]", "email [assistant] at [email]", "call our main office line at [number]"]
+        professional_appreciation: ["Thank you for supporting conscious business practices", "Grateful for your understanding of this development practice", "Returning with renewed professional presence"]
+
+custom_situation_templates:
+  
+  healthcare_provider:
+    template: |
+      Patient/Client Notice: Modified Availability ({{date_range}})
+      
+      I'm participating in Three Days Off - {{healthcare_description}}.
+      
+      {{healthcare_impact}}
+      
+      For medical emergencies: {{emergency_protocol}}
+      
+      Regular appointments: {{appointment_status}}
+      
+      {{healthcare_return}}
+    
+    variables:
+      healthcare_description: ["a mindfulness practice to enhance therapeutic presence", "conscious pause for professional renewal", "stillness practice for optimal patient care"]
+      healthcare_impact: ["Non-urgent communications will be delayed", "I'll be responding more mindfully to messages", "Taking time for presence that serves better care"]
+      emergency_protocol: ["Call emergency services (911) immediately", "Contact on-call provider at [number]", "Use established emergency protocols"]
+      appointment_status: ["Tuesday appointments proceed as scheduled", "Monday appointments rescheduled with notice", "All scheduled sessions will be honored"]
+      healthcare_return: ["Returning Tuesday with renewed presence for our work together", "Back to full availability September 4th", "Looking forward to serving with enhanced clarity"]
+  
+  teacher_educator:
+    template: |
+      Student/Parent Communication: Three Days Off Practice ({{date_range}})
+      
+      {{educator_explanation}}
+      
+      Class impact: {{class_changes}}
+      
+      Student support: {{student_access}}
+      
+      Parent communication: {{parent_contact}}
+      
+      {{educator_return}}
+    
+    variables:
+      educator_explanation: ["I'm participating in a mindfulness practice to enhance my teaching presence", "Taking intentional quiet time to support better classroom energy", "Practicing stillness to bring deeper awareness to our learning community"]
+      class_changes: ["Classes will continue with thoughtful energy and mindful pace", "We'll incorporate more quiet reflection in our learning", "Monday classes may include brief mindfulness moments"]
+      student_access: ["Students can still reach me for genuine academic needs", "Office hours will focus on listening and presence", "I'll respond to urgent academic matters"]
+      parent_contact: ["Non-urgent parent emails will be answered Tuesday", "Urgent concerns can be directed to [administrator]", "Regular communication resumes September 4th"]
+      educator_return: ["Returning with renewed energy for our learning journey", "Back to full communication Tuesday with enhanced presence", "Looking forward to a mindful start to our school year"]
+  
+  service_provider:
+    template: |
+      Client Communication: Modified Response Time ({{date_range}})
+      
+      {{service_description}}
+      
+      Project impact: {{project_status}}
+      
+      Client support: {{client_access}}
+      
+      {{service_return}}
+    
+    variables:
+      service_description: ["I'm taking Three Days Off for a consciousness practice that enhances creativity and clarity", "Participating in intentional stillness to support better client service", "Taking mindful pause to bring renewed energy to our projects"]
+      project_status: ["Ongoing projects continue on schedule", "Deliverables will be completed with enhanced attention", "Project work proceeds with mindful focus"]
+      client_access: ["Urgent project matters can reach me at [emergency contact]", "Non-urgent communications will receive thoughtful response Tuesday", "Time-sensitive items should be marked clearly"]
+      service_return: ["Returning September 4th with renewed creative energy", "Back to full availability with enhanced presence", "Looking forward to serving with deeper clarity"]
+
+implementation_guide:
+  
+  copy_to_clipboard_format:
+    instruction: "Click to copy, then customize with your details"
+    customization_prompts:
+      - "Fill in {{variables}} with options that feel right for you"
+      - "Adjust tone to match your communication style"  
+      - "Add personal touches that feel authentic"
+      - "Remove any sections that don't apply to your situation"
+    
+  website_integration:
+    post_pledge_flow:
+      step_1: "Thank you for pledging Three Days Off!"
+      step_2: "Choose your boundary communication templates below"
+      step_3: "Copy, customize, and share with your community"
+      step_4: "Download printable door signs and preparation guides"
+    
+    template_categories:
+      quick_options: "5 most popular templates ready to copy"
+      by_relationship: "Organized by who you're communicating with"
+      by_platform: "Sorted by communication method"
+      custom_situations: "Specialized templates for specific roles"
+  
+  tone_guidance:
+    warm_personal: "For close relationships where explanation feels good"
+    clear_practical: "For situations requiring boundaries without much detail"
+    professional_mindful: "For work contexts that honor both practice and responsibility"
+    creative_inviting: "For communities that might be interested in joining"
+    
+  accessibility_notes:
+    language_simplicity: "All templates use clear, accessible language"
+    cultural_sensitivity: "Avoid assumptions about others' spiritual backgrounds"
+    flexibility_emphasis: "Frame as personal practice, not universal requirement"
+    option_abundance: "Multiple choices honor different communication styles"
+
+usage_analytics:
+  
+  track_popular_templates:
+    most_copied: "Which templates get used most frequently"
+    customization_patterns: "How people modify the standard options"
+    platform_preferences: "Where people share most often"
+    
+  feedback_collection:
+    effectiveness_rating: "How well templates supported boundary setting"
+    clarity_assessment: "Whether recipients understood the practice"
+    relationship_impact: "Effects on various relationship dynamics"
+    
+  iteration_opportunities:
+    seasonal_updates: "Templates for quarterly Three Days Off practices"
+    cultural_expansion: "Versions that honor different cultural contexts"
+    role_specific_growth: "More templates for specialized situations"
+    community_suggestions: "User-submitted template ideas"

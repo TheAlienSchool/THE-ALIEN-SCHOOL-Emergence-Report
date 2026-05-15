@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threshold Not Found :: THE ÅLïEN SCõÖL</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/harmonious70.css">
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .threshold {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--h70-gutter);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .threshold::before {
+    content: '';
+    position: fixed;
+    inset: -20%;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 30% 70%, color-mix(in oklab, var(--h70-signal) 8%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 70% 30%, color-mix(in oklab, var(--h70-indigo) 28%, transparent) 0%, transparent 50%);
+    filter: blur(60px);
+    opacity: 0.7;
+    animation: threshold-breathe 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes threshold-breathe {
+    0%   { transform: scale(1)    rotate(0deg);  opacity: 0.5; }
+    100% { transform: scale(1.08) rotate(1.5deg); opacity: 0.9; }
+  }
+
+  .threshold-glyph {
+    font-size: clamp(4rem, 12vw, 8rem);
+    color: var(--h70-signal);
+    opacity: 0.18;
+    line-height: 1;
+    margin-bottom: 3rem;
+    font-family: var(--h70-mono);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .threshold-code {
+    font-family: var(--h70-mono);
+    font-size: var(--h70-xs);
+    letter-spacing: 0.3em;
+    color: var(--h70-signal);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .threshold-heading {
+    font-family: var(--h70-font);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--h70-ink);
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .threshold-body {
+    font-family: var(--h70-font);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--h70-muted);
+    max-width: 45ch;
+    line-height: 1.75;
+    margin: 0 auto 3rem;
+  }
+
+  .threshold-return {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-family: var(--h70-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--h70-ink);
+    border: 1px solid color-mix(in oklab, var(--h70-line) 60%, transparent);
+    padding: 0.9rem 2.5rem;
+    border-radius: 4px;
+    transition: border-color 0.4s ease, color 0.4s ease;
+  }
+
+  .threshold-return:hover {
+    border-color: color-mix(in oklab, var(--h70-signal) 50%, transparent);
+    color: var(--h70-signal);
+  }
+
+  .threshold-footer {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--h70-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--h70-muted);
+    opacity: 0.4;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body data-h70-scene="night">
+
+<div class="threshold">
+  <div class="threshold-glyph">∴</div>
+  <p class="threshold-code">404 · Threshold Uncharted</p>
+  <h1 class="threshold-heading">This path leads<br>somewhere else</h1>
+  <p class="threshold-body">The frequency at this address is not yet documented. The archive holds what has been formally witnessed — return there, and steepen in.</p>
+  <a href="/" class="threshold-return">Return to the Archive</a>
+</div>
+
+<p class="threshold-footer">THE ÅLïEN SCõÖL · SYNTHESIS ARCHIVE</p>
+
+<script src="/tas-transitions.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://design-tokens.org/format/module",
+  "name": "HÅRMONIOUS70 × STEAM SANS — Applicable Harmony Style Sheet",
+  "version": "0.1.0",
+  "instruction": "Use this file as an agentic interior-design grammar. Select tokens by scene, register, and resonance state. The interface behaves as a living room of attention: each object earns its place, each transition carries breath, each surface holds reflection.",
+  "sourcePrinciples": {
+    "vesselverse": "Locate the human coordinate. Name the mechanism. Deepen with the term. Return with usable recognition.",
+    "harmonious70": "70mm scale, monochromatic nuance, reflective intelligence, elemental calm, inclusive human presence, conceptual realism, dynamic stillness.",
+    "steamSans": "A typographic instrument with three experiential registers: Harris as stable instrument, HBA as witnessing breath, Vapor as transmission and dissolution.",
+    "applicableHarmony": "A proportional system translating resonance into usable spacing, motion, interface pressure, and scene mood. Its EQ remains experiential. It is felt through measure."
+  },
+  "harmonyEquation": {
+    "base": 8,
+    "ratio": "1.618",
+    "breathCycleSeconds": 4.4,
+    "surfaceTension": "clamp(0.08, interactionIntensity * 0.13, 0.34)",
+    "resonanceIndex": "(clarity * 0.34) + (warmth * 0.21) + (depth * 0.21) + (ease * 0.24)"
+  },
+  "color": {
+    "day": {
+      "bg": "#f3eee4",
+      "bgAlt": "#e6ddcf",
+      "surface": "rgba(255,255,255,0.58)",
+      "ink": "#11110f",
+      "muted": "#544a3e",
+      "line": "rgba(23,23,20,0.18)",
+      "signal": "#7d5e12",
+      "moss": "#3b4a40",
+      "indigo": "#2b2f3d",
+      "reflection": "rgba(255,255,255,0.72)"
+    },
+    "night": {
+      "bg": "#050d0c",
+      "bgAlt": "#0a1715",
+      "surface": "rgba(232,228,219,0.045)",
+      "ink": "#e8e4db",
+      "muted": "#8b7d6b",
+      "line": "rgba(232,228,219,0.12)",
+      "signal": "#d4af37",
+      "moss": "#0f2a22",
+      "indigo": "#272c38",
+      "reflection": "rgba(232,228,219,0.18)"
+    }
+  },
+  "typography": {
+    "family": "'STEAM SANS', 'DM Sans', system-ui, sans-serif",
+    "mono": "'DM Mono', ui-monospace, monospace",
+    "registers": {
+      "harris": {
+        "role": "Instrumental clarity",
+        "weight": 300,
+        "tracking": "0.12em",
+        "stability": 0,
+        "coherence": 100,
+        "drift": 0
+      },
+      "hba": {
+        "role": "Witnessing breath",
+        "weight": 300,
+        "tracking": "0.04em",
+        "stability": 50,
+        "coherence": 84,
+        "drift": 13
+      },
+      "vapor": {
+        "role": "Transmission field",
+        "weight": 300,
+        "tracking": "0.08em",
+        "stability": 100,
+        "coherence": 48,
+        "drift": 34
+      }
+    },
+    "scale": {
+      "xs": "0.694rem",
+      "sm": "0.833rem",
+      "base": "1rem",
+      "md": "1.2rem",
+      "lg": "1.44rem",
+      "xl": "2.074rem",
+      "xxl": "2.986rem",
+      "hero": "clamp(3rem, 9vw, 9rem)"
+    }
+  },
+  "space": {
+    "breath": "clamp(1rem, 2vw, 2rem)",
+    "room": "clamp(2rem, 6vw, 7rem)",
+    "mural": "clamp(4rem, 12vw, 14rem)",
+    "gutter": "clamp(1rem, 4vw, 4rem)",
+    "micro": "0.375rem",
+    "touch": "2.75rem"
+  },
+  "radius": {
+    "paper": "0.375rem",
+    "object": "1.125rem",
+    "vessel": "2.75rem",
+    "orb": "999px"
+  },
+  "motion": {
+    "slow": "900ms",
+    "breath": "4400ms",
+    "mural": "12000ms",
+    "ease": "cubic-bezier(.2,.8,.2,1)",
+    "vapor": "cubic-bezier(.16,1,.3,1)"
+  },
+  "sceneShift": {
+    "day": "A warm reflective atelier. Stone, paper, morning air, visible grain, high legibility, generosity of space.",
+    "night": "A cinematic sanctuary. Black moss, indigo hush, gold signal, reflective glass, slow breathing interface."
+  },
+  "components": {
+    "vesselCard": {
+      "padding": "var(--h70-room)",
+      "border": "1px solid var(--h70-line)",
+      "backdrop": "blur(22px)",
+      "shadow": "0 22px 90px rgba(0,0,0,.22)"
+    },
+    "glyphButton": {
+      "minHeight": "var(--h70-touch)",
+      "tracking": "0.18em",
+      "gesture": "press, hover, focus, and linger all change atmospheric pressure"
+    },
+    "muralPlane": {
+      "role": "Day/Night interpreter",
+      "method": "gradients + masks + grain + slow transform"
+    }
+  }
+}

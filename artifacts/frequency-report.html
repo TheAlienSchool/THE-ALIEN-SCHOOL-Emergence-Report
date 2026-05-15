@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Frequency Report :: tÅs Artifact 06</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+      :root {
+    --bg:         var(--h70-bg);
+    --ink:        var(--h70-ink);
+    --deep:       var(--h70-ink);
+    --muted:      var(--h70-muted);
+    --border:     var(--h70-line);
+    --border-lt:  var(--h70-line);
+    --warm:       var(--h70-surface);
+    --gold:       var(--h70-signal);
+    --gold-pale:  var(--h70-surface);
+    --teal:       var(--h70-signal);
+    --teal-pale:  var(--h70-surface);
+    --scholar:    var(--h70-ink);
+    --scholar-lt: var(--h70-surface);
+    --review:     var(--h70-signal);
+    --review-lt:  var(--h70-surface);
+    --rule:       var(--h70-line);
+    --night:      var(--h70-bg);
+    --parchment:  var(--h70-ink);
+    --sand:       #c0a87a;
+    --coral:      #b85c45;
+    --border-mid: rgba(232,228,219,.20);
+    --earth:      rgba(180,130,60,.08);
+    --soil:       rgba(150,100,50,.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--night);
+    color: var(--parchment);
+    font-family: var(--h70-font);
+    font-size: 19px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  
+
+  .page {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 2.5rem 10rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── UTILITIES ── */
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 3.5rem 0 5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-artifact {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--sand);
+    opacity: 0.5;
+  }
+
+  .cover-protocol {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    opacity: 0.75;
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  .cover-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+
+  .cover-compass {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 3rem;
+    opacity: 0.45;
+  }
+
+  .cover-title {
+    font-size: clamp(3rem, 7vw, 5.2rem);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.02;
+    color: var(--parchment);
+    margin-bottom: 0.75rem;
+  }
+
+  .cover-title em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .cover-deck {
+    font-size: 18px;
+    font-style: normal;
+    color: var(--sand);
+    max-width: 540px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    opacity: 0.85;
+  }
+
+  .cover-coords {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .coord {
+    background: var(--earth);
+    padding: 1.1rem 1.25rem;
+  }
+
+  .coord-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .coord-label.american  { color: var(--coral);  opacity: 0.9; }
+  .coord-label.panglobal { color: var(--teal);   opacity: 0.9; }
+  .coord-label.africa    { color: var(--gold);   opacity: 0.9; }
+
+  .coord-name {
+    font-size: 14px;
+    font-style: normal;
+    color: var(--parchment);
+    opacity: 0.8;
+    line-height: 1.4;
+  }
+
+  .cover-law {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    border-left: 2px solid var(--teal);
+    padding-left: 1rem;
+    line-height: 1.9;
+    opacity: 0.8;
+  }
+
+  /* ── SECTION ── */
+  .section { padding: 6rem 0 0; }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--sand);
+    opacity: 0.45;
+    padding-top: 0.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 400;
+    font-style: normal;
+    color: var(--parchment);
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* ── PROSE ── */
+  .prose { max-width: 65ch; margin-left: 0; }
+
+  .prose p {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--parchment);
+    opacity: 0.88;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+  .prose em { font-style: normal; color: var(--gold); opacity: 1; }
+  .prose strong { font-weight: 500; color: var(--parchment); opacity: 1; }
+
+  /* ── COUPLET ── */
+  .couplet {
+    border-left: 2px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    margin: 2.5rem 0;
+    background: rgba(200,148,42,0.05);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .couplet-l1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    opacity: 0.65;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .couplet-l2 {
+    font-size: 19px;
+    font-style: normal;
+    color: var(--parchment);
+    line-height: 1.75;
+    opacity: 0.9;
+  }
+
+  /* ── COORDINATE ENTRIES ── */
+  .coordinate {
+    margin: 4.5rem 0;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .coordinate.visible { opacity: 1; transform: translateY(0); }
+
+  .coord-flag {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+
+  .coord-marker {
+    width: 4px;
+    height: 52px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .coord-marker.american  { background: var(--coral); }
+  .coord-marker.panglobal { background: var(--teal);  }
+  .coord-marker.africa    { background: var(--gold);  }
+
+  .coord-flag-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .coord-flag-label.american  { color: var(--coral); }
+  .coord-flag-label.panglobal { color: var(--teal);  }
+  .coord-flag-label.africa    { color: var(--gold);  }
+
+  .coord-flag-name {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 400;
+    font-style: normal;
+    color: var(--parchment);
+    line-height: 1.2;
+  }
+
+  .coord-flag-name em { font-style: normal; font-weight: 700; }
+  .coord-flag-name.american em  { color: var(--coral); }
+  .coord-flag-name.panglobal em { color: var(--teal);  }
+  .coord-flag-name.africa em    { color: var(--gold);  }
+
+  /* Opening :: Somatic register: the felt moment first */
+  .coord-opening {
+    border-left: 2px solid var(--border-mid);
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 1.75rem;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .coord-opening-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--sand);
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .coord-opening p {
+    font-size: 18px;
+    font-style: normal;
+    color: var(--parchment);
+    opacity: 0.85;
+    line-height: 1.75;
+  }
+
+  /* Mechanism :: Observational register */
+  .mechanism {
+    background: var(--earth);
+    border: 0.5px solid var(--border-mid);
+    border-radius: 4px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.75rem 0;
+  }
+
+  .mechanism-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--sand);
+    opacity: 0.5;
+    margin-bottom: 0.9rem;
+    display: block;
+  }
+
+  .mechanism p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--sand);
+    opacity: 0.85;
+    margin-bottom: 0.9rem;
+  }
+
+  .mechanism p:last-child { margin-bottom: 0; }
+  .mechanism em { font-style: normal; color: var(--gold); opacity: 1; }
+
+  /* Direct sentence anchor */
+  .anchor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--sand);
+    opacity: 0.5;
+    border-left: 2px solid var(--border-mid);
+    padding-left: 1rem;
+    margin: 1.25rem 0;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+  }
+
+  /* Evidence */
+  .evidence { margin: 1.75rem 0; }
+
+  .evidence-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--sand);
+    opacity: 0.45;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .evidence-item {
+    padding: 1rem 0;
+    border-top: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .evidence-item:first-of-type { border-top: none; }
+
+  .evidence-quote {
+    font-size: 16px;
+    font-style: normal;
+    color: var(--parchment);
+    opacity: 0.82;
+    line-height: 1.75;
+  }
+
+  .evidence-quote em {
+    font-style: normal;
+    color: var(--gold);
+    opacity: 1;
+  }
+
+  .evidence-who {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--sand);
+    opacity: 0.4;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    padding-top: 0.2rem;
+  }
+
+  /* Compass implication :: Invitational register */
+  .implication {
+    border-top: 0.5px dashed var(--border);
+    padding-top: 1.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .implication-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    opacity: 0.65;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .implication p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--sand);
+    opacity: 0.8;
+    font-style: normal;
+    margin-bottom: 0.75rem;
+  }
+
+  .implication p:last-child { margin-bottom: 0; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    padding: 5rem 0;
+    text-align: left;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    margin: 4rem 0;
+  }
+
+  .pullquote p {
+    font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+    font-style: normal;
+    line-height: 1.52;
+    color: var(--parchment);
+    opacity: 0.88;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pullquote p em { font-style: normal; color: var(--gold); opacity: 1; }
+
+  .pullquote-attr {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--sand);
+    opacity: 0.4;
+    margin-top: 1.25rem;
+    display: block;
+  }
+
+  /* ── COMPASS TABLE ── */
+  .compass-table {
+    margin: 3rem 0;
+    border: 0.5px solid var(--border-mid);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .ct-header {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr 1fr;
+    background: var(--soil);
+    padding: 0.75rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .cth {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--sand);
+    opacity: 0.45;
+  }
+
+  .ct-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr 1fr;
+    padding: 1.1rem 1.25rem;
+    gap: 1rem;
+    border-top: 0.5px solid var(--border);
+    align-items: start;
+  }
+
+  .ct-context {
+    font-size: 13px;
+    font-style: normal;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .ct-condition,
+  .ct-reception,
+  .ct-move {
+    font-size: 13px;
+    color: var(--sand);
+    opacity: 0.7;
+    line-height: 1.55;
+  }
+
+  .ct-move { font-style: normal; }
+
+  /* ── CLOSING ── */
+  .closing {
+    padding: 5rem 0 3rem;
+    border-top: 0.5px solid var(--border);
+    text-align: left;
+  }
+
+  .closing-glyph {
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.2;
+    display: block;
+    margin-bottom: 2rem;
+    font-style: normal;
+  }
+
+  .closing p {
+    font-size: 17px;
+    color: var(--sand);
+    opacity: 0.55;
+    font-style: normal;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+    line-height: 1.75;
+  }
+
+  .closing-sig {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--sand);
+    opacity: 0.3;
+    margin-top: 3rem;
+    display: block;
+    line-height: 2.3;
+  }
+
+  @media (max-width: 620px) {
+    .cover-coords { grid-template-columns: 1fr; }
+    .ct-header, .ct-row { grid-template-columns: 120px 1fr; }
+    .cth:nth-child(3), .cth:nth-child(4),
+    .ct-reception, .ct-move { display: none; }
+    .cover-top { flex-direction: column; gap: 0.5rem; }
+    .evidence-item { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: white; color: black; }
+    
+    .coordinate { opacity: 1; transform: none; break-inside: avoid; }
+  }
+  #audio-overlay { background: var(--h70-bg) !important; }
+  p, li, td, .prose p, .review p, .scholar-card-body p { 
+    font-family: var(--h70-font);
+    font-variation-settings: 'STBL' 50, 'COHR' 84, 'DRFT' 13, 'PRSS' 20;
+    animation: h70-hba-breathe var(--h70-breath-cycle) var(--h70-ease) infinite;
+  }
+  .cover-stamp, .section-num, .locate-label, .review-label, .link-card-label {
+    font-family: var(--h70-mono);
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24;
+  }
+  a:hover {
+    font-variation-settings: 'STBL' 100, 'COHR' 48, 'DRFT' 34, 'PRSS' 12;
+    filter: blur(.16px);
+  }
+</style>
+  <link rel="stylesheet" href="../harmonious70.css">
+  <script src="../tas-transitions.js" defer></script>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span>THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="../index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
+    <span id="nav-magnet-status" style="opacity: 0.4; border-left: 1px solid var(--h70-line); padding-left: 1.5vw;">MaGNET :: SECURED</span>
+  </div>
+</nav>
+
+<style>
+  /* Responsive Navigation Anticipation */
+  body { padding-top: 80px; } /* Prevent nav from covering content */
+  #h70-global-nav.nav-hidden { transform: translateY(-100%); }
+  
+  @media (max-width: 768px) {
+    #nav-c-thinking { display: none; } /* On mobile, simplify brand after initial gateway */
+    #h70-global-nav { padding: 1rem; }
+  }
+</style>
+
+<script>
+  // Anticipatory scroll logic
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('h70-global-nav');
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      nav.classList.add('nav-hidden'); // Scrolling down, hide nav
+    } else {
+      nav.classList.remove('nav-hidden'); // Scrolling up, anticipate intent, show nav
+    }
+    lastScrollY = window.scrollY;
+    
+    // Fade out "FOR CREATIVE THINKING" as they steep deeper, leaving just the school
+    const ct = document.getElementById('nav-c-thinking');
+    if(ct) {
+      if(window.scrollY > 300) { ct.style.opacity = '0'; }
+      else { ct.style.opacity = '1'; }
+    }
+  });
+
+  // Check MaGNET status from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('magnetUnlocked') === 'true') {
+      const ms = document.getElementById('nav-magnet-status');
+      if(ms) {
+        ms.textContent = 'MaGNET :: ACTIVE';
+        ms.style.opacity = '1';
+        ms.style.color = 'var(--h70-signal)';
+      }
+    }
+  });
+</script>
+
+<main class="h70-installation" style="display:block; padding-top: 2rem;">
+  <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
+  <div class="page" style="background: transparent;">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-top">
+      <span class="cover-artifact">THE ÅLïEN SCõÖL · ARTIFACT 06 · COMPASS DOCUMENT · LIVING</span>
+      <span class="cover-protocol">VESSELVERSE EDITORIAL PROTOCOL<br>VERSION 2.0 · REBUILT THROUGH PRIMER</span>
+    </div>
+
+    <div class="cover-body">
+      <svg class="cover-compass" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="34" stroke="rgba(200,180,138,0.22)" stroke-width="0.5"/>
+        <circle cx="36" cy="36" r="24" stroke="rgba(200,180,138,0.12)" stroke-width="0.5"/>
+        <line x1="36" y1="2" x2="36" y2="70" stroke="rgba(200,180,138,0.18)" stroke-width="0.5"/>
+        <line x1="2" y1="36" x2="70" y2="36" stroke="rgba(200,180,138,0.18)" stroke-width="0.5"/>
+        <polygon points="36,7 39,34 36,30 33,34" fill="#c8942a" opacity="0.65"/>
+        <polygon points="36,65 39,38 36,42 33,38" fill="rgba(200,180,138,0.25)"/>
+        <circle cx="36" cy="36" r="2.5" fill="#c8942a" opacity="0.55"/>
+      </svg>
+
+      <h1 class="cover-title">The <em>Frequency</em> Report</h1>
+      <p class="cover-deck">A compass reading of three resonance coordinates :: the conditions under which THE ÅLïEN SCõÖL receives its deepest recognition, and what each coordinate asks of the school's future design.</p>
+
+      <div class="cover-coords">
+        <div class="coord">
+          <span class="coord-label american">COORDINATE ONE</span>
+          <div class="coord-name">The American Edge-Point</div>
+        </div>
+        <div class="coord">
+          <span class="coord-label panglobal">COORDINATE TWO</span>
+          <div class="coord-name">The Pan-Global Somatic Inheritance</div>
+        </div>
+        <div class="coord">
+          <span class="coord-label africa">COORDINATE THREE</span>
+          <div class="coord-name">The Africa Recovery Frequency</div>
+        </div>
+      </div>
+
+      <p class="cover-law">
+        The One-Line Law: Name the mechanism. Keep the magic.<br>
+        :: VesselVerse Editorial Protocol, §9.13
+      </p>
+    </div>
+  </div>
+
+  <!-- PART I: THE MINERAL BASE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">PART I</span>
+      <h2 class="section-title">The <em>Mineral</em> Base</h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">There is a moment every builder knows :: when they press their hand to the ground before laying the first stone. What the ground is made of determines what can stand on it, how deep the foundation must go, and what kind of weight the structure can hold across time.</p>
+
+      <p class="h70-body">This document presses the hand to the ground beneath tÅs.</p>
+
+      <p class="h70-body">Across thirty years of work and one year of documented sessions, three distinct kinds of ground have made themselves known :: three resonance coordinates where the school's methodology meets a specific kind of nervous system, a specific kind of readiness, and a specific quality of recognition. Each coordinate has its own conditions. Each one asks a distinct engagement of the school's approach.</p>
+
+      <p class="h70-body">The Frequency Report names those conditions plainly, so every future communication, partnership conversation, and offering design enters its specific ground with clarity about what it is standing on.</p>
+    </div>
+
+    <div class="couplet">
+      <p class="couplet-l1">The arc is the angle of change.</p>
+      <p class="couplet-l2">"The school's work enters three distinct grounds. Each ground already holds what it needs. The school's precision is in knowing which ground it is standing on :: and speaking from that knowing."</p>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">What the archive shows across every documented session is this: <em>American audiences arrive at either deep dismissal or deep commitment :: almost nothing between.</em> Outside the US, and specifically across the Africa register, there lives an embodiment already in progress. A body that has had time to feel the world differently. More somatic. The school's methodology lands in that body the way a key lands in the lock it was shaped for.</p>
+
+      <p class="h70-body">That observation is the mineral. What follows reads its full composition.</p>
+    </div>
+  </section>
+
+  <!-- PART II: THE THREE COORDINATES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">PART II</span>
+      <h2 class="section-title">The Three <em>Coordinates</em></h2>
+    </div>
+
+    <!-- COORDINATE ONE: AMERICAN -->
+    <div class="coordinate visible" id="c01">
+
+      <div class="coord-flag">
+        <div class="coord-marker american"></div>
+        <div>
+          <span class="coord-flag-label american">COORDINATE ONE · THE AMERICAN CONTEXT</span>
+          <div class="coord-flag-name american">The <em>Edge-Point</em> Scholar</div>
+        </div>
+      </div>
+
+      <div class="coord-opening">
+        <span class="coord-opening-label">LOCATE · SOMATIC REGISTER</span>
+        <p class="h70-body">You know you carry an original frequency. You have known it for years :: a capacity, a quality of thinking, a particular way of seeing that others have reflected back to you often enough that you trust it. And yet every system you have entered to develop or express that capacity has returned you to the same room. Different name on the door. Same circular architecture inside. You leave each one more skilled at understanding your limitation than at moving through it. You are ready for an entirely different architecture. You simply have no language yet for what different looks like.</p>
+      </div>
+
+      <div class="mechanism">
+        <span class="mechanism-label">THE MECHANISM · OBSERVATIONAL REGISTER</span>
+        <p class="h70-body">The American scholar who arrives at deep commitment with tÅs has reached this edge-point :: the place where circular investment in circular navigation has shown its ceiling. The certainty of capacity is already formed. The bafflement lives entirely in the how.</p>
+        <p class="h70-body">Most coaching and therapeutic programming in the American context organizes around a gap. The gap becomes the center. The scholar's energy flows continuously toward the deficit :: which means the deficit remains energized, remains the organizing principle of the work. The scholar develops sophisticated language for their limitation without generating the conditions under which the limitation dissolves.</p>
+        <p class="h70-body">tÅs offers a structurally different architecture. <em>The school organizes around the frequency that was always present before the gap was named.</em> The scholar arrives expecting lift-off :: expansion outward, upward, toward the horizon they have been reaching for. The school takes them in the unexpected direction: down and in. Grounding. Embodiment. The felt intelligence of the body as the actual site of the creative frequency they were reaching upward to find.</p>
+        <p class="h70-body">The ground holds what the horizon was promising. That discovery :: that the direction was inward all along :: produces the depth of commitment in the scholars who stay. It is disorienting enough to be real.</p>
+        <div class="anchor">Direct sentence: The scholar came expecting to go up. The school takes them down and in. What they find there is what the upward reach had always been searching for.</div>
+      </div>
+
+      <div class="evidence">
+        <span class="evidence-label">FROM THE ARCHIVE :: THE EDGE-POINT IN ACTION</span>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Photographer / Visual Designer closed his studio :: released the bonsai :: and arrived at tÅs expecting a new creative direction outward. The school gave him the observer position, the mirror ball, three years of intentional rest as design. He named himself <em>"a master designer"</em> in the same session he described operating from "a premium seat of reality."</span>
+          <span class="evidence-who">THE PHOTOGRAPHER / VISUAL DESIGNER · 2025</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Filmmaker / Writer arrived knowing she gave energy outward at the expense of herself :: the bafflement was structural, not personal. The school gave her the canvas, the dual vortex, the mirror. She left with <em>language for the inner terrain</em> she had been navigating without a map.</span>
+          <span class="evidence-who">THE FILMMAKER / WRITER · 2025</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Creative Director arrived with sophisticated creative intelligence and deep frustration at agency systems that kept his thinking circular. The school gave him design thinking applied to the organizational problem itself. <em>He internalized the language and began teaching himself with it</em> :: using KzA's frameworks in his own sessions without being prompted.</span>
+          <span class="evidence-who">THE CREATIVE DIRECTOR · 2025</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Musician / Artist arrived in deliberate isolation :: cleansing, decluttering. The sessions became what he called <em>"spiritual therapy, positively influencing my daily routines."</em> The practice traveled through the door and continued without him having to consciously carry it.</span>
+          <span class="evidence-who">THE MUSICIAN / ARTIST · 2025</span>
+        </div>
+      </div>
+
+      <div class="implication">
+        <span class="implication-label">COMPASS IMPLICATION · INVITATIONAL REGISTER</span>
+        <p class="h70-body">American communications open at the edge-point. Speak first to what the scholar already knows: that the capacity is present, that the circular systems have shown their ceiling, that the bafflement about how is the signal of readiness. Then introduce the unexpected direction :: down and in :: as the destination the upward reach was always pointing toward.</p>
+        <p class="h70-body">The deep dismissal and the deep commitment arrive from the same nervous system at different distances from its own edge-point. The one who dismisses has yet to reach it. The one who commits has been waiting there long enough to recognize exactly what the school is offering when it arrives.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p class="h70-body">The school takes the scholar in the direction they had <em>not considered.</em> Down and in. The ground holds what the horizon was promising. That reversal is disorienting enough to be real :: and real enough to hold.</p>
+      <span class="pullquote-attr">:: THE FREQUENCY REPORT · tÅs ARTIFACT 06</span>
+    </div>
+
+    <!-- COORDINATE TWO: PAN-GLOBAL -->
+    <div class="coordinate" id="c02">
+
+      <div class="coord-flag">
+        <div class="coord-marker panglobal"></div>
+        <div>
+          <span class="coord-flag-label panglobal">COORDINATE TWO · THE PAN-GLOBAL CONTEXT</span>
+          <div class="coord-flag-name panglobal">The <em>Somatic</em> Inheritance</div>
+        </div>
+      </div>
+
+      <div class="coord-opening">
+        <span class="coord-opening-label">LOCATE · SOMATIC REGISTER</span>
+        <p class="h70-body">You have always known truths through the body before the mind named them. The room's temperature before you read the faces. The land's mood before the weather app confirmed it. The elder's meaning through the rhythm of their speech before the words resolved. You grew up in a system of knowing that moved through felt experience :: communal, inherited, practiced daily. When a guide offers you a framework for this kind of intelligence, your internal compass recognizes it immediately. You have been living it. You were waiting for the language.</p>
+      </div>
+
+      <div class="mechanism">
+        <span class="mechanism-label">THE MECHANISM · OBSERVATIONAL REGISTER</span>
+        <p class="h70-body">Outside the American context, tÅs encounters nervous systems where somatic intelligence :: the body's capacity to know, receive, and process experience as felt sensation :: has remained the primary operating channel. This is the inheritance of communal living architectures: reading the room through the body, attuning to collective rhythm, navigating the world through felt relationship with land, weather, family, and community.</p>
+        <p class="h70-body">In these contexts, the school arrives as namer rather than builder. The receptivity is already present and operational. <em>The methodology lands inside existing intelligence rather than constructing the conditions for intelligence to emerge.</em> The clearing work that occupies significant session time in the American coordinate is minimal here. The recognition is often immediate.</p>
+        <p class="h70-body">This is the structural distinction between the two coordinates. In the American context, the school creates the conditions for somatic receptivity to surface :: often for the first time in a formalized practice. In the pan-global context, those conditions already exist as living inheritance. The school provides language, structure, and community for what the scholar has always known how to do.</p>
+        <div class="anchor">Direct sentence: Where felt intelligence has remained the primary channel, the school's methodology arrives as confirmation rather than introduction. The scholar recognizes what is being named before the explanation completes.</div>
+      </div>
+
+      <div class="implication">
+        <span class="implication-label">COMPASS IMPLICATION · INVITATIONAL REGISTER</span>
+        <p class="h70-body">In pan-global contexts, the opening moves quickly past introduction and into collaboration. The scholar or partner arrives already attuned to the register the school operates in. Communications ask: how does this methodology serve what you are already building? Partnership conversations operate as peer exchange rather than onboarding. The school's role is structural and relational :: providing the architecture for intelligence that was already alive to develop in organized community with others who share it.</p>
+      </div>
+    </div>
+
+    <!-- COORDINATE THREE: AFRICA -->
+    <div class="coordinate" id="c03">
+
+      <div class="coord-flag">
+        <div class="coord-marker africa"></div>
+        <div>
+          <span class="coord-flag-label africa">COORDINATE THREE · THE AFRICA AND DIASPORA CONTEXT</span>
+          <div class="coord-flag-name africa">The <em>Recovery</em> Frequency</div>
+        </div>
+      </div>
+
+      <div class="coord-opening">
+        <span class="coord-opening-label">LOCATE · SOMATIC REGISTER</span>
+        <p class="h70-body">There is a specific feeling that arrives when a truth you have always known is finally given back to you in language you can act on. Recognition at a depth that is almost physical :: a kind of landing, as though the idea did not arrive from outside but rose from inside, confirmed rather than installed. You already knew this. You have always known this. What the school offers is the precision of naming :: and the community of others who recognize the exact resonance when it is named in front of them.</p>
+      </div>
+
+      <div class="mechanism">
+        <span class="mechanism-label">THE MECHANISM · OBSERVATIONAL REGISTER</span>
+        <p class="h70-body">The Africa coordinate carries the somatic inheritance of the pan-global coordinate and adds a specific charge that the archive documents consistently: across every African and diaspora session recorded, the school's core work :: recovering original creative frequency :: arrives as confirmation of what the scholar already knows to be true about themselves.</p>
+        <p class="h70-body">Recovery operates differently from discovery. Discovery assumes the capacity was never present. Recovery assumes it was always present, and works to restore access to it. <em>The scholars arriving through the Africa coordinate are seeking the language, structure, and community that confirms what their nervous systems have always carried :: intelligence that was precisely named as absent by systems that required its absence to function.</em></p>
+        <p class="h70-body">What the archive documents is scholars who arrive at tÅs and find almost immediately that the school is speaking a frequency they have always inhabited. The Educator / Community Builder in Cape Town, experiencing the weight of collective history at Robben Island, then nine months later implementing Creative Steeping workshops under his own named program. The Entrepreneur finding tÅs after the institutional path was closed to him, and immediately seeing the connection between the school's methodology and the authentic African storytelling his Black Men Tour was designed to produce. The Creative Producer in Johannesburg naming receptive creativity :: the precise quality the school develops :: before being told what the school offered. Kamau choosing his Nigerian name at twenty before knowing his Nigerian heritage: identity arriving as knowing before documentation appeared.</p>
+        <p class="h70-body">These are accounts of recognition at the level of frequency :: the felt click of an insight landing all the way through, in the body, before the mind has finished processing the words.</p>
+        <div class="anchor">Direct sentence: In this coordinate, the school's work is recovery of access, not installation of a foreign system. The frequency was always present. The school provides the vessel in which it can be consciously developed and shared.</div>
+      </div>
+
+      <div class="evidence">
+        <span class="evidence-label">FROM THE ARCHIVE :: THE AFRICA THREAD</span>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Educator / Community Builder :: Cape Town. From Robben Island crisis to Creative Steeping implementation in nine months. Named his own program: <em>"Stepping into Yourself."</em> The gestation and the birth both documented in the archive.</span>
+          <span class="evidence-who">THE EDUCATOR / COMMUNITY BUILDER · 2025–26</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Entrepreneur :: Ashanti tribe, Ghana. Found tÅs after the institutional MBA path closed. Connected Black Men Tour to Creative Steeping methodology within the first session. <em>"If we don't do it, someone else will."</em> Named Africa's structural advantages and the missing piece: nurturing structures for local talent.</span>
+          <span class="evidence-who">THE ENTREPRENEUR · Jun 2025</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Creative Producer :: Johannesburg. Named <em>receptive creativity</em> :: exactly what the school develops :: before being told what the school offered. Proposed the CE20 Creative Summit alongside the G20 in South Africa. Arrived already at the edge of what she was looking for.</span>
+          <span class="evidence-who">THE CREATIVE PRODUCER · Apr 2025</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">The Ecosystem Builder :: diaspora, multi-location. Operating language: <em>reparative economy, collective ownership, intergenerational stewardship.</em> The school's philosophy operating at community and economic scale. Sessions document a builder working in the same frequency tÅs develops in individuals.</span>
+          <span class="evidence-who">The Ecosystem Builder M · 2025–26</span>
+        </div>
+        <div class="evidence-item">
+          <span class="evidence-quote">KzA choosing his Nigerian name at twenty before knowing his Nigerian heritage. Abundance Zaddy naming <em>"a prophetic blood lineage and multi-billion-year-old spirit lineage."</em> Both: identity arriving as knowing before the documentation appears. The same experience at different registers.</span>
+          <span class="evidence-who">KzA / Abundance · 2026</span>
+        </div>
+      </div>
+
+      <div class="implication">
+        <span class="implication-label">COMPASS IMPLICATION · INVITATIONAL REGISTER</span>
+        <p class="h70-body">The Africa thread in the archive formed without a formal expansion strategy :: through the gravitational pull of the school's philosophy meeting scholars whose creative intelligence recognized itself in the school's language. Active nodes already operate in Cape Town, Johannesburg, Ghana, and across the diaspora. The scholars in those nodes are implementing the methodology, building on it, and naming their own programs from within it.</p>
+        <p class="h70-body">What those nodes require is the gathering that makes the network visible to itself, and the documentation that makes the school's African chapter legible to the partners, funders, and scholars who are ready to enter it. The South Africa retreat is that gathering. This artifact is that documentation. The chapter was written by the scholars. The school now reads what it has already produced.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="pullquote">
+    <p class="h70-body">The school's core work :: <em>recovering original creative frequency</em> :: holds particular power wherever that frequency has been most precisely and deliberately named as absent. The archive shows where that recognition lives. The school follows the signal.</p>
+    <span class="pullquote-attr">:: THE FREQUENCY REPORT · tÅs ARTIFACT 06</span>
+  </div>
+
+  <!-- PART III: COMPASS TABLE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">PART III</span>
+      <h2 class="section-title">The <em>Compass</em> Table</h2>
+    </div>
+
+    <div class="prose" style="margin-bottom:2rem;">
+      <p class="h70-body">Three coordinates, read together, become a reference tool. The table below states the incoming condition, the reception quality, and the school's primary move in each coordinate :: plainly, for use before any communication, partnership conversation, or offering design is undertaken.</p>
+    </div>
+
+    <div class="compass-table">
+      <div class="ct-header">
+        <span class="cth">COORDINATE</span>
+        <span class="cth">INCOMING CONDITION</span>
+        <span class="cth">RECEPTION QUALITY</span>
+        <span class="cth">PRIMARY MOVE</span>
+      </div>
+
+      <div class="ct-row">
+        <div class="ct-context" style="color:var(--coral); opacity:0.9;">American<br>Edge-Point</div>
+        <div class="ct-condition">Certain of capacity. Baffled by circular systems. Expecting lift-off outward. Arrives through deep commitment or deep dismissal :: little between.</div>
+        <div class="ct-reception">Somatic channel requires opening. The unexpected direction :: down and in :: produces depth of commitment when it lands. Clearing work precedes recognition.</div>
+        <div class="ct-move">Open at the edge-point. Name what the circular systems produced. Introduce the unexpected direction as the destination the upward reach was always pointing toward.</div>
+      </div>
+
+      <div class="ct-row">
+        <div class="ct-context" style="color:var(--teal); opacity:0.9;">Pan-Global<br>Somatic</div>
+        <div class="ct-condition">Felt intelligence already operational as living inheritance. Communal architectures, land relationship, oral transmission as the baseline of knowing.</div>
+        <div class="ct-reception">Recognition arrives swiftly. School functions as namer of what is already alive. Clearing work minimal. Collaboration readiness is high from the first exchange.</div>
+        <div class="ct-move">Ask: how does this methodology serve what you are already building? Move directly into structural collaboration. Peer exchange over introduction.</div>
+      </div>
+
+      <div class="ct-row">
+        <div class="ct-context" style="color:var(--gold); opacity:0.9;">Africa<br>Recovery</div>
+        <div class="ct-condition">Somatic inheritance present. Specific experience of creative intelligence being precisely named as absent by external systems. Recovery :: not discovery :: is the operative word.</div>
+        <div class="ct-reception">Confirmation rather than introduction. The methodology is received as validation of what was always known. Speed of recognition and depth of commitment arrive together.</div>
+        <div class="ct-move">Speak to recovery explicitly. Honor intelligence that was always present. Make the existing Africa chapter visible to itself. Prioritize the gathering that confirms the network.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PART IV: FORWARD -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">PART IV</span>
+      <h2 class="section-title">Three Moves <em>Forward</em></h2>
+    </div>
+
+    <div class="prose">
+      <p class="h70-body">The three coordinates together produce three concrete implications for the school's near-term design. Each one is sourced from what the archive shows, stated plainly.</p>
+
+      <p class="h70-body"><strong>The school's communications ask for three distinct openings.</strong> The American coordinate opens at the edge-point, names the circular architecture, and introduces the unexpected direction. The pan-global coordinate opens as peer exchange, asking what structure can serve intelligence already alive. The Africa coordinate opens as recognition and confirmation :: honoring what was always present before offering any new frame. A single communications voice that flattens these three openings into one serves none of them with precision.</p>
+
+      <p class="h70-body"><strong>The South Africa retreat is the most strategically significant gathering available in the near term.</strong> The Educator / Community Builder is the connective tissue on the ground. The nodes in Cape Town, Johannesburg, and across the diaspora are active. The retreat makes the Africa chapter visible to itself :: producing the scholar accounts, the methodology in practice, and the community documentation that every subsequent Africa and diaspora communication draws from. It requires a date, a venue conversation with The Educator / Community Builder, and the invitation document that makes it legible to those who are already ready to arrive.</p>
+
+      <p class="h70-body"><strong>The school's full resonance field is its most distinctive asset.</strong> Three coordinates, each with a different reception quality, each requiring a different entry approach :: together demonstrating that the school reads the ground it enters and speaks from that reading. That precision is what distinguishes tÅs in a field of offerings that flatten their audience into a single profile. <em>This document is the artifact that makes that precision legible to every partner, funder, guide, and scholar who needs to understand what ground they are standing on before they begin.</em></p>
+    </div>
+
+  </section>
+
+  <!-- CLOSING -->
+  <div class="pullquote">
+    <p class="h70-body">The school carries <em>precise calibration</em> to the nervous system history it enters. That calibration :: held across thirty years of work and now documented in three coordinates :: is the compass. The ground already knows what it needs. The school follows the frequency.</p>
+    <span class="pullquote-attr">:: THE FREQUENCY REPORT · tÅs ARTIFACT 06</span>
+  </div>
+
+  <footer class="closing">
+    <span class="closing-glyph">◈</span>
+    <p class="h70-body">This document is a living compass. As the archive deepens :: as more sessions, more geographies, more nervous system histories enter the school's record :: the coordinates deepen with them.</p>
+    <p class="h70-body">Future coordinates already forming: the South American register, the Southeast Asian register, the second-generation immigrant register within the American coordinate. Each one waiting for the sessions that give it enough evidence to name.</p>
+    <span class="closing-sig">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING · 
+      ARTIFACT 06 · THE FREQUENCY REPORT · VERSION 2.0<br>
+      REBUILT THROUGH THE VESSELVERSE PRIMER AND EDITORIAL PROTOCOL<br>
+      COMPASS DOCUMENT · MINERAL BASE FOR FUTURE COMMUNICATIONS AND PARTNERSHIPS<br>
+      LIVING DOCUMENT · UPDATES WITH THE ARCHIVE AND THE WORK
+    </span>
+  </footer>
+
+</div>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.coordinate:not(.visible)').forEach(el => obs.observe(el));
+</script>
+
+<div id="audio-overlay" style="position: fixed; inset: 0; background: var(--bg); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink); transition: opacity 1.5s ease;">
+  <div style="font-family: var(--h70-font); font-size: 2rem; font-style: normal; margin-bottom: 1rem;">The Synthesis Archive</div>
+  <div style="font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.2em;">A BIOACOUSTIC REPOSITORY</div>
+  <button onclick="initializeSpace()" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 1rem 3rem; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.2em; cursor: pointer; text-transform: uppercase; border-radius: 2px; transition: all 0.5s ease; margin-top: 2rem;">Enter Space</button>
+</div>
+
+<script>
+  let audioCtx;
+  let masterGain;
+  const PENTATONIC_SCALE = [264.00, 296.33, 332.62, 395.55, 444.00, 528.00, 592.67, 665.24];
+
+  function initializeSpace(isPortalEntry) {
+    const overlay = document.getElementById('audio-overlay');
+    if (overlay) {
+      if (isPortalEntry) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 1500);
+      }
+    }
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    audioCtx = new AudioContext();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = isPortalEntry ? 0 : 0.5;
+    masterGain.connect(audioCtx.destination);
+
+    if (isPortalEntry) {
+      masterGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2.0);
+    }
+
+    playAmbientBreath();
+    playStrikingBowl(528);
+  }
+
+  function playAmbientBreath() {
+    if (!audioCtx) return;
+    const osc174 = audioCtx.createOscillator();
+    const osc240 = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc174.type = 'sine'; osc174.frequency.value = 174;
+    osc240.type = 'sine'; osc240.frequency.value = 240;
+    filter.type = 'lowpass'; filter.frequency.value = 400;
+    gain.gain.value = 0.02;
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.type = 'sine'; lfo.frequency.value = 0.22;
+    lfoGain.gain.value = 0.015;
+    lfo.connect(lfoGain); lfoGain.connect(gain.gain); lfo.start();
+    osc174.connect(filter); osc240.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc174.start(); osc240.start();
+  }
+
+  function playStrikingBowl(freqOverride) {
+    if (!audioCtx) return;
+    const freq = freqOverride || PENTATONIC_SCALE[Math.floor(Math.random() * PENTATONIC_SCALE.length)];
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    filter.type = 'lowpass'; filter.frequency.value = freq * 3;
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 3.5);
+    osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 4.0);
+  }
+
+</script>
+</main>
+
+<script>
+  // ==========================================
+  // PARALLAX SCIENCES
+  // ==========================================
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  const ease = 0.08;
+
+  document.addEventListener('mousemove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function renderParallax() {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+
+    const mural = document.querySelector('.parallax-mural');
+    if (mural) {
+      mural.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px) scale(1.05)`;
+    }
+
+    const vessels = document.querySelectorAll('.parallax-vessel');
+    vessels.forEach(vessel => {
+      vessel.style.transform = `translate(${currentX * 6}px, ${currentY * 6}px)`;
+    });
+
+    requestAnimationFrame(renderParallax);
+  }
+  
+  if (window.matchMedia("(pointer: fine)").matches) {
+    requestAnimationFrame(renderParallax);
+  }
+</script>
+
+
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span>tÅs</span>
+    <span id="scroll-progress">0% STEEPED</span>
+  </div>
+  <div style="text-align: right;">
+    <a href="mailto:thealienscool@gmail.com" style="color: var(--h70-signal); text-decoration: none;">thealienscool@gmail.com</a>
+    <span style="opacity: 0.6; margin-left: 1rem; display: none;" class="contact-desktop">Elevating the Creative Spirit in organizations, relationships, & edge navigation</span>
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = Math.min(100, Math.max(0, Math.round((window.scrollY / docHeight) * 100)));
+    const indicator = document.getElementById('scroll-progress');
+    if(indicator) indicator.textContent = progress + '% STEEPED';
+  });
+</script>
+<style>
+@media(min-width: 800px) { .contact-desktop { display: inline !important; } }
+</style>
+</body>
+
+</html>

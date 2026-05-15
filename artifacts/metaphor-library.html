@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Metaphor Library :: tÅs Artifact 07</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+      :root {
+    --bg:         var(--h70-bg);
+    --ink:        var(--h70-ink);
+    --deep:       var(--h70-ink);
+    --muted:      var(--h70-muted);
+    --border:     var(--h70-line);
+    --border-lt:  var(--h70-line);
+    --warm:       var(--h70-surface);
+    --gold:       var(--h70-signal);
+    --gold-pale:  var(--h70-surface);
+    --teal:       var(--h70-signal);
+    --teal-pale:  var(--h70-surface);
+    --scholar:    var(--h70-ink);
+    --scholar-lt: var(--h70-surface);
+    --review:     var(--h70-signal);
+    --review-lt:  var(--h70-surface);
+    --rule:       var(--h70-line);
+    --parchment:  var(--h70-bg);
+    --coral:      #b85c45;
+    --warm-mid:   rgba(212,175,55,.05);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--h70-font);
+    font-size: 19px;
+    line-height: 1.75;
+  }
+
+  /* Subtle grain */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── MASTHEAD ─── */
+  .masthead {
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .masthead-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .masthead-title {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.05;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .masthead-title span {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .masthead-rule::before,
+  .masthead-rule::after {
+    content: '';
+    width: 80px;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .masthead-rule-glyph {
+    font-size: 1rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .masthead-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  /* ─── PREAMBLE ─── */
+  .preamble {
+    padding: 3.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+    max-width: 640px;
+  }
+
+  .preamble p {
+    font-size: 20px;
+    line-height: 1.75;
+    color: var(--deep);
+    font-weight: 400;
+  }
+
+  .preamble p + p { margin-top: 1.25rem; }
+
+  .preamble em { font-style: normal; color: var(--gold); }
+
+  .preamble .law {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    margin-top: 2rem;
+    border-left: 2px solid var(--teal);
+    padding-left: 1rem;
+    font-style: normal;
+    line-height: 1.75;
+  }
+
+  /* ─── INDEX ─── */
+  .index {
+    padding: 2.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0;
+  }
+
+  .index-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-top: 0.5px solid var(--border);
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.15s;
+    font-size: 15px;
+  }
+
+  .index-item:hover { color: var(--gold); }
+
+  .index-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    min-width: 22px;
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTION BREAK ─── */
+  .section-break {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .section-break-line { flex: 1; height: 0.5px; background: var(--border); }
+
+  /* ─── ENTRY ─── */
+  .entry {
+    padding: 4rem 0;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .entry.visible { opacity: 1; transform: translateY(0); }
+
+  .entry-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.6rem;
+    gap: 0.75rem;
+  }
+
+  .entry-glyph {
+    font-size: 2rem;
+    color: var(--gold);
+    opacity: 0.75;
+    line-height: 1;
+    font-style: normal;
+  }
+
+  .entry-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  .entry-name {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.12;
+    color: var(--deep);
+    margin-bottom: 0.3rem;
+  }
+
+  .entry-name span { font-style: normal; color: var(--gold); }
+
+  .entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.75rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    padding: 3px 9px;
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .tag.origin {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .tag.reg-somatic { border-color: var(--teal); color: var(--teal); }
+  .tag.reg-observational { border-color: var(--coral); color: var(--coral); }
+
+  /* The definition :: Line 1 + Line 2 of the Couplet */
+  .entry-couplet {
+    background: var(--gold-pale);
+    border-left: 2px solid var(--gold);
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1.75rem;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .entry-couplet-l1 {
+    font-size: 16px;
+    font-style: normal;
+    font-family: 'DM Mono', monospace;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .entry-couplet-l2 {
+    font-size: 19px;
+    font-style: normal;
+    color: var(--deep);
+    line-height: 1.75;
+  }
+
+  /* Body text :: Observational register */
+  .entry-context {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .entry-context em { font-style: normal; color: var(--gold); }
+  .entry-context strong { font-weight: 500; }
+
+  /* Function block :: the mechanism stated plainly */
+  .entry-function {
+    border-top: 0.5px solid var(--border);
+    padding-top: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .entry-function-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .entry-function p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--deep);
+  }
+
+  /* The direct sentence :: anchor before the dimensional one */
+  .entry-anchor {
+    font-size: 15px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    border-left: 2px solid var(--border);
+    padding-left: 1rem;
+    margin-top: 0.75rem;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+  }
+
+  /* Deploy :: Somatic register */
+  .entry-deploy {
+    background: var(--warm-mid);
+    padding: 1rem 1.25rem;
+    border-radius: 3px;
+    margin-top: 1.25rem;
+  }
+
+  .entry-deploy-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .entry-deploy p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--deep);
+    font-style: normal;
+  }
+
+  /* Source line */
+  .entry-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 0.5px dashed var(--border);
+    line-height: 1.75;
+  }
+
+  /* ─── PULLQUOTE ─── */
+  .pullquote {
+    padding: 4rem 0;
+    text-align: left;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .pullquote p {
+    font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--deep);
+    max-width: 65ch; margin-left: 0;
+    margin: 0 auto;
+  }
+
+  .pullquote-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-top: 1.25rem;
+    display: block;
+  }
+
+  /* ─── REGISTER KEY ─── */
+  .register-key {
+    padding: 2.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .reg-block { padding: 1rem; }
+
+  .reg-block-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .reg-block-name.somatic { color: var(--teal); }
+  .reg-block-name.observational { color: var(--coral); }
+  .reg-block-name.invitational { color: var(--gold); }
+
+  .reg-block p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ─── FOOTER ─── */
+  .closing {
+    padding: 4rem 0 2rem;
+    text-align: left;
+  }
+
+  .closing-glyph {
+    font-size: 2.5rem;
+    color: var(--gold);
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 1.5rem;
+    font-style: normal;
+  }
+
+  .closing p {
+    font-size: 16px;
+    color: var(--muted);
+    font-style: normal;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  .closing p + p { margin-top: 1rem; }
+
+  .closing-sig {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-top: 2.5rem;
+    display: block;
+    line-height: 2;
+  }
+
+  @media (max-width: 580px) {
+    .entry { grid-template-columns: 1fr; }
+    .entry-left { flex-direction: row; align-items: center; margin-bottom: 1.25rem; }
+    .entry-num { writing-mode: horizontal-tb; transform: none; }
+  }
+
+  @media print {
+    body::after { display: none; }
+    .entry { opacity: 1; transform: none; break-inside: avoid; }
+  }
+  #audio-overlay { background: var(--h70-bg) !important; }
+  p, li, td, .prose p, .review p, .scholar-card-body p { 
+    font-family: var(--h70-font);
+    font-variation-settings: 'STBL' 50, 'COHR' 84, 'DRFT' 13, 'PRSS' 20;
+    animation: h70-hba-breathe var(--h70-breath-cycle) var(--h70-ease) infinite;
+  }
+  .cover-stamp, .section-num, .locate-label, .review-label, .link-card-label {
+    font-family: var(--h70-mono);
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24;
+  }
+  a:hover {
+    font-variation-settings: 'STBL' 100, 'COHR' 48, 'DRFT' 34, 'PRSS' 12;
+    filter: blur(.16px);
+  }
+</style>
+  <link rel="stylesheet" href="../harmonious70.css">
+  <script src="../tas-transitions.js" defer></script>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span>THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="../index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
+    <span id="nav-magnet-status" style="opacity: 0.4; border-left: 1px solid var(--h70-line); padding-left: 1.5vw;">MaGNET :: SECURED</span>
+  </div>
+</nav>
+
+<style>
+  /* Responsive Navigation Anticipation */
+  body { padding-top: 80px; } /* Prevent nav from covering content */
+  #h70-global-nav.nav-hidden { transform: translateY(-100%); }
+  
+  @media (max-width: 768px) {
+    #nav-c-thinking { display: none; } /* On mobile, simplify brand after initial gateway */
+    #h70-global-nav { padding: 1rem; }
+  }
+</style>
+
+<script>
+  // Anticipatory scroll logic
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('h70-global-nav');
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      nav.classList.add('nav-hidden'); // Scrolling down, hide nav
+    } else {
+      nav.classList.remove('nav-hidden'); // Scrolling up, anticipate intent, show nav
+    }
+    lastScrollY = window.scrollY;
+    
+    // Fade out "FOR CREATIVE THINKING" as they steep deeper, leaving just the school
+    const ct = document.getElementById('nav-c-thinking');
+    if(ct) {
+      if(window.scrollY > 300) { ct.style.opacity = '0'; }
+      else { ct.style.opacity = '1'; }
+    }
+  });
+
+  // Check MaGNET status from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('magnetUnlocked') === 'true') {
+      const ms = document.getElementById('nav-magnet-status');
+      if(ms) {
+        ms.textContent = 'MaGNET :: ACTIVE';
+        ms.style.opacity = '1';
+        ms.style.color = 'var(--h70-signal)';
+      }
+    }
+  });
+</script>
+
+<main class="h70-installation" style="display:block; padding-top: 2rem;">
+  <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
+  <div class="page" style="background: transparent;">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <span class="masthead-eyebrow">THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING · ARTIFACT 07 · LIVING DOCUMENT</span>
+    <h1 class="masthead-title">The <span>Metaphor</span> Library</h1>
+    <div class="masthead-rule"><span class="masthead-rule-glyph">◈</span></div>
+    <p class="masthead-sub">
+      Sixteen symbolic vessels from the tÅs archive<br>
+      Their origins. Their mechanisms. Their conditions of aliveness.<br>
+      Built through the VesselVerse Editorial Protocol · Version 2.0
+    </p>
+  </header>
+
+  <!-- PREAMBLE -->
+  <section class="preamble">
+    <p class="h70-body">You have already used these metaphors. Some of them arrived in you before this document named them. A scholar you guided reached the edge of a truth they had never said aloud, and you offered a word :: a vessel :: and the concept landed.</p>
+    <p class="h70-body">That is what this library holds. Sixteen of those vessels, sourced from your actual conversations, given definition and mechanism and deployment conditions :: so that what has lived only in the room can now travel beyond it.</p>
+    <p class="h70-body">A metaphor in the tÅs system <em>carries the practitioner across a threshold uniquely accessible through symbolic language.</em> The archery metaphor describes patience, and immediately <em>installs</em> it as a physical practice. The sand mandala explains endings by <em>transforming</em> the experience into ceremony, in the body, while the scholar is still inside it.</p>
+    <p class="h70-body">This is the technology. Each entry names the mechanism. The magic arrives after the practitioner has ground to receive it.</p>
+    <p class="law">The One-Line Law: Name the mechanism. Keep the magic.<br>
+    :: VesselVerse Editorial Protocol, §9.13</p>
+  </section>
+
+  <!-- REGISTER KEY -->
+  <section class="register-key">
+    <div class="reg-block">
+      <span class="reg-block-name somatic">SOMATIC REGISTER</span>
+      <p class="h70-body">Grounded, sensory, companion-close. Speaks <em>with</em> the practitioner. Deployed in session contexts, practice spaces, intimate guidance.</p>
+    </div>
+    <div class="reg-block">
+      <span class="reg-block-name observational">OBSERVATIONAL REGISTER</span>
+      <p class="h70-body">Precise, unhurried, devoid of negation. States what is. Speaks <em>about</em> the territory. Deployed in mechanism explanations, HDM principles, Library entries.</p>
+    </div>
+    <div class="reg-block">
+      <span class="reg-block-name invitational">INVITATIONAL REGISTER</span>
+      <p class="h70-body">Spacious, welcoming, threshold-opening. Speaks <em>toward</em> the practitioner. Deployed in deployment notes, onboarding, entry points.</p>
+    </div>
+  </section>
+
+  <!-- INDEX -->
+  <nav class="index">
+    <span class="section-mono">INDEX</span>
+    <div class="index-grid">
+      <a href="#e01" class="index-item"><span class="index-num">01</span>The Steeping Cup</a>
+      <a href="#e02" class="index-item"><span class="index-num">02</span>The Mirror Ball</a>
+      <a href="#e03" class="index-item"><span class="index-num">03</span>Origami</a>
+      <a href="#e04" class="index-item"><span class="index-num">04</span>The Sand Mandala</a>
+      <a href="#e05" class="index-item"><span class="index-num">05</span>The Archer</a>
+      <a href="#e06" class="index-item"><span class="index-num">06</span>Bonsai</a>
+      <a href="#e07" class="index-item"><span class="index-num">07</span>The Canvas of Life</a>
+      <a href="#e08" class="index-item"><span class="index-num">08</span>The Ocean of Thought</a>
+      <a href="#e09" class="index-item"><span class="index-num">09</span>The Wolf Encounter</a>
+      <a href="#e10" class="index-item"><span class="index-num">10</span>Life as Dojo</a>
+      <a href="#e11" class="index-item"><span class="index-num">11</span>The Dual Vortex</a>
+      <a href="#e12" class="index-item"><span class="index-num">12</span>The Experiential Thunderdome</a>
+      <a href="#e13" class="index-item"><span class="index-num">13</span>The Teenage Baby</a>
+      <a href="#e14" class="index-item"><span class="index-num">14</span>Crown Jewels</a>
+      <a href="#e15" class="index-item"><span class="index-num">15</span>Mapping Your Mosaic</a>
+      <a href="#e16" class="index-item"><span class="index-num">16</span>Energy as Currency</a>
+    </div>
+  </nav>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-mono" style="margin:0;">THE ENTRIES</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <!-- ENTRY 01 -->
+  <article class="entry" id="e01">
+    <div class="entry-left">
+      <span class="entry-glyph">☕</span>
+      <span class="entry-num">ENTRY · 01</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Steeping</span> Cup</h2>
+      <div class="entry-tags">
+        <span class="tag origin">ORIGIN METAPHOR</span>
+        <span class="tag">CORE METHODOLOGY</span>
+        <span class="tag">PROCESS</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Tea takes its exact required time. The leaf releases its essence only when given time, heat, and the right vessel. You are the whole process :: leaf, heat, water, and cup :: operating as one."</p>
+      </div>
+      <p class="entry-context">
+        The central vessel of tÅs. Every session, semester, and scholar relationship operates on this principle: transformation requires sustained thermal contact, a holding container, and time unrushed. The canonical equation :: <em>Patience × Procrastination = Steeping</em> :: holds its own: these two forces, placed in relationship with each other, generate an architecture richer than either produces alone. The "Contemplation blend" tea, developed with Rain and River tea company specifically for the Creative Steeping program, makes this metaphor somatic and literal simultaneously. The scholar holds the cup. The principle arrives through the hands.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">When the scholar's pace of transformation feels slow, the Steeping Cup reframes slowness as the active ingredient. The heat is the Åwareness brought to the practice. The cup is the container :: a session, a semester, a held question. Transformation rises to the surface when given adequate thermal exposure. Speed prevents the release.</p>
+        <div class="entry-anchor">Direct sentence: What feels like waiting is the process producing the flavor.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar arrives anxious about pace :: they feel they should be further along. Bring the cup. Let the metaphor arrive before the framework. Ask: what has steeped longest in you, and what does it taste like now?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs foundational framework. CREÅTIVE STEEPING: The Power of Steeping session, Jun 2025. "Humans are primarily water, and life experiences influence our identity." Contemplation blend commissioned as somatic anchor for the seven-steep program.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 02 -->
+  <article class="entry" id="e02">
+    <div class="entry-left">
+      <span class="entry-glyph">◉</span>
+      <span class="entry-num">ENTRY · 02</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Mirror</span> Ball</h2>
+      <div class="entry-tags">
+        <span class="tag origin">DAVID H SESSIONS</span>
+        <span class="tag">PERCEPTION</span>
+        <span class="tag">MULTI-ANGLE AWARENESS</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"The mirror ball gives light to every wall simultaneously. It holds every angle of the room without choosing between them."</p>
+      </div>
+      <p class="entry-context">
+        Emerged across the David Hartz sessions as a framework for perception that holds multiple truths at once. The mirror ball develops the capacity to observe opportunities, relationships, and circumstances from several positions simultaneously :: <em>without the pressure to resolve them into one correct answer.</em> This is the cognitive state Creative Thinking requires: active, multi-angled, unhurried. The Photographer / Visual Designer received it as a practice assigned between sessions :: not as concept alone but as daily attentional exercise.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Binary thinking collapses perception into two options and demands a choice. The mirror ball installs a third coordinate: the observer position, from which all angles remain available. The scholar gains capacity to sit with productive ambiguity long enough for insight to arrive. Resolution follows :: it arrives on its own terms, after the practitioner has seen from enough positions to recognize it.</p>
+        <div class="entry-anchor">Direct sentence: You can see from more than one position before you decide which one to act from.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar feels trapped in one reading of their situation :: one version of the story, one available move. Bring the mirror ball. Ask: what does this look like from three other positions? Stay in the question. The vessel holds the ambiguity while the scholar expands their angle of view.</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Sessions w/The Photographer / Visual Designer, Aug–Sep 2025. "The mirror ball concept for perspective and opportunity recognition :: developing skill to see from multiple angles without needing immediate answers." Assigned as ongoing between-session practice.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 03 -->
+  <article class="entry" id="e03">
+    <div class="entry-left">
+      <span class="entry-glyph">◇</span>
+      <span class="entry-num">ENTRY · 03</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name"><span>Origami</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">DAVID H SESSIONS</span>
+        <span class="tag">IDENTITY</span>
+        <span class="tag">TRANSFORMATION</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Every fold in the paper creates another possibility of form. The more creases, the greater the range of shapes available. Your history is the geometry of your capacity."</p>
+      </div>
+      <p class="entry-context">
+        David Hartz named it first :: describing his own life as "an origami process." The vessel arrived through his words and expanded in the session: a life folded and refolded accumulates <em>infinite manipulation possibilities</em> :: his phrase, received and held. The flower press extension came from KzA in session: what the crumpled ball needs is gentle, sustained pressure that returns it to full dimension, preserving its delicate material without force. The paper, with all its creases, holds every shape it has ever been :: and every shape it has not yet become.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">The scholar who has lived many different lives, careers, or identities carries the evidence of that range in their body and history. Origami reframes that range from evidence of inconsistency to evidence of geometric complexity. The crease is the memory of a fold. The fold was a choice. The choice built the form. Every apparently discontinuous chapter was a manipulation of the same material :: richer for having been worked.</p>
+        <div class="entry-anchor">Direct sentence: Every time your life changed shape, it did not start over. It gained a new crease.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar arrives with the feeling that their non-linear path disqualifies them :: too many changes, too many reinventions. Hold the origami. Ask them: what shapes has this paper already made? What shapes does a paper with that many folds still hold available?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Session w/The Photographer / Visual Designer, Aug 29, 2025. "The Photographer / Visual Designer's paper has so many creases from constant changes, creating infinite manipulation possibilities like geometric/polygonal rendering." The flower press extension: KzA in-session elaboration.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 04 -->
+  <article class="entry" id="e04">
+    <div class="entry-left">
+      <span class="entry-glyph">◎</span>
+      <span class="entry-num">ENTRY · 04</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Sand Mandala</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">DAVID H SESSIONS</span>
+        <span class="tag">ENDINGS</span>
+        <span class="tag">INTENTIONALITY</span>
+        <span class="tag reg-somatic">SOMATIC</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Tibetan monks spend weeks creating a mandala of colored sand :: then sweep it away. The purpose was always the making. The completion is the ceremony, not the conclusion."</p>
+      </div>
+      <p class="entry-context">
+        The Photographer / Visual Designer named this one without coaching. Facing the demolition of his photography studio :: a space he had built and sustained for years :: he called the process "a sand mandala experience." The vessel arrived complete. The reframe was instantaneous: what had been a loss became a ceremony. The demolition required the same care and intentionality as the original building. <em>The ending was a creative act, continuous with everything that preceded it.</em> This vessel holds grief and celebration simultaneously, without resolving one into the other.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Endings arrive carrying the weight of loss because cultural training treats completion as failure. The sand mandala breaks that equation at the level of meaning: it locates the purpose in the practice rather than the product. The scholar stops trying to hold what is ending and begins to participate in the ending with the same quality of attention they brought to the building.</p>
+        <div class="entry-anchor">Direct sentence: The ending deserves the same care you gave the beginning. That care is the ceremony.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar faces the close of a meaningful era :: a relationship, a career era, a version of themselves :: and grief and relief are arriving at the same time. Bring the mandala. Ask: what does it look like to complete this with the same quality of attention you brought when you began it?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Session w/The Photographer / Visual Designer, Sep 5, 2025. "The Photographer / Visual Designer reframes studio demolition as 'sand mandala' experience :: ceremonial process of taking down what was built with intention." The Photographer / Visual Designer's own language, received and held as the vessel it already was.</p>
+    </div>
+  </article>
+
+  <!-- PULLQUOTE 1 -->
+  <div class="pullquote">
+    <p class="h70-body">A metaphor in this system carries the practitioner across a threshold that direct language cannot open. The vessel does the work the explanation would only describe.</p>
+    <span class="pullquote-attr">:: tÅs METHODOLOGY · THE METAPHOR LIBRARY</span>
+  </div>
+
+  <!-- ENTRY 05 -->
+  <article class="entry" id="e05">
+    <div class="entry-left">
+      <span class="entry-glyph">→</span>
+      <span class="entry-num">ENTRY · 05</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Archer</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">DAVID H SESSIONS</span>
+        <span class="tag">TIMING</span>
+        <span class="tag">STRATEGIC PATIENCE</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"The archer positions, reads the wind, breathes, and waits. Then releases. The waiting is active. The release is the culmination :: not the practice."</p>
+      </div>
+      <p class="entry-context">
+        The Photographer / Visual Designer arrived at this metaphor through his wildlife photography :: a practice requiring 98% patience combined with precise anticipation. He named archery as his core life philosophy: <em>position for the opportunity, understand the trajectory, account for the elements, wait for the alignment, then release.</em> KzA received it and pointed The Photographer / Visual Designer toward Paulo Coelho's <em>The Archer</em> as companion text. The metaphor carries strategic patience as a somatic skill :: embodied, practiced, refined across sessions.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Cultural training treats waiting as the absence of action. The Archer reframes waiting as the most technically demanding phase of the practice: reading conditions, sustaining readiness, holding the draw without releasing prematurely. The scholar who receives this metaphor gains language for active, skilled restraint. The pressure to move before the moment is ready loses its authority.</p>
+        <div class="entry-anchor">Direct sentence: Waiting, done with skill and awareness, is the work. The release follows from it.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar is being pressured :: externally or internally :: to act before the conditions align. Bring the archer. Ask: where are you in the draw? Are you reading the wind? What would it mean to release from full readiness rather than from anxiety?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Session w/The Photographer / Visual Designer, Sep 5, 2025. "Archery metaphor emerges as The Photographer / Visual Designer's core practice: positioning for opportunity, patience for targets to appear, understanding trajectory." Paulo Coelho's <em>The Archer</em> assigned as companion reading.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 06 -->
+  <article class="entry" id="e06">
+    <div class="entry-left">
+      <span class="entry-glyph">✦</span>
+      <span class="entry-num">ENTRY · 06</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name"><span>Bonsai</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">DAVID H SESSIONS</span>
+        <span class="tag">CREATIVE CONSTRAINT</span>
+        <span class="tag">LIBERATION</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"A bonsai is precise and beautiful. It is also shaped entirely by its container. The tree holds the form its conditions gave it. It holds every other form as potential."</p>
+      </div>
+      <p class="entry-context">
+        The Photographer / Visual Designer named his photography studio a bonsai :: <em>beautiful, but artificially limiting growth through financial pressures and practical constraints.</em> His creative energy had been shaped for years by the demands of sustaining overhead rather than the demands of vision. The bonsai metaphor holds no judgment of the form. A bonsai achieves a particular kind of beauty precisely through constraint. What the metaphor opens is a different question: <em>what does this organism want to become when the container changes?</em>
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">The scholar whose creative expression has been shaped by external demands :: financial, institutional, relational :: carries both the beauty of that shaped form and the unexpressed potential of the original organism. Bonsai names the condition without blaming the artist for it. Once named, the scholar gains access to a new question that the constraint had made invisible.</p>
+        <div class="entry-anchor">Direct sentence: The container shaped the form. The form is beautiful. The organism holds more than the container revealed.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar's creative life has organized itself around the demands of a structure :: a job, an overhead, a role, an expectation :: and they sense an unexpressed capacity but cannot name it. Bring the bonsai. Ask: if the pot changed, what shape would this want to grow into?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Session w/The Photographer / Visual Designer, Sep 15, 2025. "Bonsai metaphor for constrained creativity :: business beautiful but artificially limiting growth due to overhead pressures." The Photographer / Visual Designer's observation, received as the diagnosis it already was.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 07 -->
+  <article class="entry" id="e07">
+    <div class="entry-left">
+      <span class="entry-glyph">▭</span>
+      <span class="entry-num">ENTRY · 07</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Canvas of Life</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">CREATIVE STEEPING COHORT</span>
+        <span class="tag">AGENCY</span>
+        <span class="tag">PERSPECTIVE</span>
+        <span class="tag reg-invitational">INVITATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"The painter at work sees one corner. The full composition belongs to the creator :: and reveals itself across the whole span of the making."</p>
+      </div>
+      <p class="entry-context">
+        Introduced in the Creative Steeping cohort sessions with The Filmmaker / Writer and The Musician / Artist. Life as canvas reframes the scholar's current moment from a point of judgment to a position within an ongoing composition. <em>What looks incomplete from outside is part of a picture only the creator can see from where they stand.</em> The progressive nature of the metaphor matters: "there is no end point to enlightenment :: always evolving and progressing." The canvas holds every phase of the work simultaneously, including the phases that look like mistakes and later reveal themselves as texture.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">External evaluation of a life in progress applies a finished-work standard to unfinished work. The canvas reframes incompleteness as the natural condition of creative process rather than evidence of failure. The scholar stops defending a partial view and returns to the perspective of the author :: the one who can see the full composition forming.</p>
+        <div class="entry-anchor">Direct sentence: What looks unfinished from outside is the painting still in process. The painter always knows more than the observer does.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar feels measured against a picture no one else has access to :: their own. They are defending the work to observers who see one corner. Bring the canvas. Return them to the painter's position. Ask: from where you stand, what is the composition doing?</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING w/Kamau, Jul 11, 2025. "Canvas of life metaphor: Like painters, individuals are always creating a bigger picture than what others can see in any single moment."</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 08 -->
+  <article class="entry" id="e08">
+    <div class="entry-left">
+      <span class="entry-glyph">〰</span>
+      <span class="entry-num">ENTRY · 08</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Ocean of Thought</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">GUIDED MEDITATION</span>
+        <span class="tag">RELEASE</span>
+        <span class="tag">NARRATIVE REWRITING</span>
+        <span class="tag reg-somatic">SOMATIC</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Place the old story in a bottle. Release it to the ocean of thought :: where it can drift to the next scholar who needs it more than you do right now."</p>
+      </div>
+      <p class="entry-context">
+        Used by KzA in a guided meditation with the Creative Steeping cohort as a technology for release that removes the violence from letting go. The scholar places their protective narrative in a bottle and sets it to sea :: <em>not into a void, but into a commons.</em> Stories released circulate. They reach whoever needs them next. This reframe converts the act of release from loss into generosity. The ocean holds everything. The scholar gives a narrative forward rather than abandoning a burden behind.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Protective narratives carry survival value. A scholar who built a story around a fear, a limitation, or a wound often holds onto the story because releasing it feels like losing the protection it provided. The ocean of thought dissolves that bind: the protection travels with the story. The next practitioner may need it. The release is an act of service, not surrender.</p>
+        <div class="entry-anchor">Direct sentence: You release the story by offering it forward :: not by abandoning what it protected.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar holds a story that once protected them but now constrains them :: and they feel the grip of it. Bring the ocean in guided meditation. Let them hold the bottle before releasing it. Ask: who might this story serve, now that it has finished its work for you?</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING w/Kamau, Aug 1, 2025. "3-minute guided meditation focused on releasing old protective stories using ocean metaphor. Visualizing placing old narratives in bottles and releasing them to 'ocean of thought' for others who might need those stories."</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 09 -->
+  <article class="entry" id="e09">
+    <div class="entry-left">
+      <span class="entry-glyph">◈</span>
+      <span class="entry-num">ENTRY · 09</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Wolf Encounter</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">KZA PERSONAL NARRATIVE</span>
+        <span class="tag">FEAR REWRITING</span>
+        <span class="tag">BREAKTHROUGH</span>
+        <span class="tag reg-somatic">SOMATIC</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"During shamanic work, two wolves appeared. One embraced me, heart to heart. Decades of fear dissolved :: through contact, not confrontation."</p>
+      </div>
+      <p class="entry-context">
+        KzA's personal account of a lifelong fear of dogs :: rooted in childhood, historical imagery, and the film <em>White Dog</em> :: and the protective story built so carefully around it that the story itself became the belief. The breakthrough arrived not through rational deconstruction but through a somatic encounter during shamanic work: two wolves, an embrace, and the dissolution of decades of held fear. <em>The rewriting happened in the body. The mind followed.</em> Shared with scholars specifically to demonstrate that transformation is real, available, and often arrives through unexpected doors.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Protective stories acquire the status of truth through repetition and embodiment. The rational mind alone rarely dissolves them :: because the rational mind helped build them. The wolf encounter shows the scholar that transformation operates at the somatic level first. The body releases the story. Awareness follows. The path through fear leads through it, at the level of felt experience, with the right kind of contact.</p>
+        <div class="entry-anchor">Direct sentence: The fear was a story. The story had a body. The body found contact. The fear released.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar has identified a fear-based story and rational analysis has reached its limit. They know the story intellectually but still hold it in the body. Bring the wolf. Offer this account as evidence that transformation is available :: and that it often arrives through the door we least expect. Use with care. This is a personal disclosure. It carries the weight of lived truth.</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING w/Kamau, Jul–Aug 2025. Shared across multiple sessions as demonstration of the principle: "Protective stories can be rewritten. The rewriting often happens through the body before the mind."</p>
+    </div>
+  </article>
+
+  <!-- PULLQUOTE 2 -->
+  <div class="pullquote">
+    <p class="h70-body">The practitioner who has been given language for an intelligence they already carry in their body has been handed a key, not a lesson.</p>
+    <span class="pullquote-attr">:: tÅs METHODOLOGY · THE METAPHOR LIBRARY</span>
+  </div>
+
+  <!-- ENTRY 10 -->
+  <article class="entry" id="e10">
+    <div class="entry-left">
+      <span class="entry-glyph">⬡</span>
+      <span class="entry-num">ENTRY · 10</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">Life as <span>Dojo</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">CREATIVE STEEPING COHORT</span>
+        <span class="tag">DAILY PRACTICE</span>
+        <span class="tag">PRESENCE</span>
+        <span class="tag reg-somatic">SOMATIC</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"The dojo and your life occupy the same room. Every interaction is a form. Every difficulty is a practice partner. You are already in training."</p>
+      </div>
+      <p class="entry-context">
+        Introduced in the Creative Steeping cohort to collapse the perceived gap between session and week, between practice and life. The dojo removes the staging area :: the place the scholar waits before engaging fully. <em>The full engagement is already happening.</em> What changes is whether the scholar recognizes it. The Musician / Artist Watson's observation that sessions functioned as "spiritual therapy, positively influencing his daily routines" is the dojo principle in action: the practice traveled through the door and continued without the scholar having to consciously carry it.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">The scholar who defers full engagement until conditions improve :: until they feel ready, until circumstances align :: operates on the assumption that a more appropriate practice context exists elsewhere. Life as Dojo removes that assumption. Every conversation, friction, and decision already holds the structure of the form. The practice and the life are practicing each other, continuously.</p>
+        <div class="entry-anchor">Direct sentence: There is no waiting room before the practice. This is the practice. You have been doing it your whole life.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar separates their "creative work" from their daily life, or treats sessions as the real practice and the week between sessions as interruption. Bring the dojo. Ask: what happened this week that was the training? What was the practice partner? What form were you moving through?</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING cohort sessions, Aug 2025. "The 'Life as Dojo' concept was presented, illustrating how daily challenges can serve as training opportunities." Evidenced in The Musician / Artist Watson's behavioral shifts outside sessions.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 11 -->
+  <article class="entry" id="e11">
+    <div class="entry-left">
+      <span class="entry-glyph">∞</span>
+      <span class="entry-num">ENTRY · 11</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Dual Vortex</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">CREATIVE STEEPING COHORT</span>
+        <span class="tag">ENERGY</span>
+        <span class="tag">SIMULTANEITY</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Two vortexes operate simultaneously :: one shaped by conditioning, one powered by creative intelligence. Both are real. Both are always present. Creative awareness knows which one is being fed."</p>
+      </div>
+      <p class="entry-context">
+        Introduced in the Creative Steeping cohort to name what every scholar already feels but rarely has language for: the simultaneous pull toward creative expansion and the simultaneous pull toward conditioned, protective behavior. <em>These two spirals coexist.</em> The question the dual vortex opens is not "which one is real" :: both are real :: but rather: which one is receiving the scholar's Åttention in this moment, and what happens when that Åttention shifts?
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">The binary of "healed vs. unhealed" or "free vs. blocked" places the scholar in a permanent state of failure: any evidence of fear or conditioning reads as not yet done. The dual vortex dissolves that binary. Both spirals are present in every creative person who has ever lived. What changes is conscious direction of Åttention :: and Åttention is trainable.</p>
+        <div class="entry-anchor">Direct sentence: Fear and creative intelligence both live in you. What you feed with your Åttention grows stronger. Both feeds are always possible.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar judges themselves for still feeling resistance or fear after periods of growth. They expect that growth means the conditioned vortex disappears. Bring the dual vortex. Ask: which spiral received more of your Åttention this week? Which one are you feeding right now, in this moment?</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING w/Kamau, Jul 11, 2025. "Dual vortex concept: Conditioned vortex (fear-based) vs. creative vortex (manifesting ideas) :: need to recognize both operating simultaneously."</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 12 -->
+  <article class="entry" id="e12">
+    <div class="entry-left">
+      <span class="entry-glyph">◬</span>
+      <span class="entry-num">ENTRY · 12</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The Experiential <span>Thunderdome</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">KZA / DAVID H</span>
+        <span class="tag">BIOGRAPHY AS DESIGN</span>
+        <span class="tag">THE ELEVATION MOVE</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Your early life required exactly the quality of awareness you now carry. The difficulties generated the precision. The design was sophisticated from the beginning."</p>
+      </div>
+      <p class="entry-context">
+        KzA's elevation of The Photographer / Visual Designer's early history: a childhood shaped by challenge, designed :: from some dimension of the self :: to develop a precise quality of perceptual awareness. The Thunderdome reframes what looked like damage as a sophisticated curriculum. <em>The scholar did not survive their early life. They designed an environment that would produce the exact capacities they carry now.</em> The Photographer / Visual Designer received this and named himself "a master designer" :: not as performance, but as recognition of what had always been true about the intelligence operating through his experience.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Victimhood and authorship occupy the same biography. The Thunderdome shifts the scholar's relationship to their history from the position of a passive subject, to the position of an active architect the conditions of their own development. This reframe requires care: it holds real pain in full view while introducing a second, simultaneous reading of that pain as sophisticated curriculum. Both readings are true. The Thunderdome opens the second one.</p>
+        <div class="entry-anchor">Direct sentence: What your early life produced in you required exactly those conditions to develop. The difficulty was the curriculum.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar has arrived at sufficient self-knowledge :: through sustained session work :: to receive a reframe of their own history as design. Bring the Thunderdome with care. Hold the pain in full acknowledgment first. Then ask: given what those conditions produced in you, what kind of intelligence required exactly that environment to develop?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Session w/The Photographer / Visual Designer, Aug 29, 2025. "Kamau framed The Photographer / Visual Designer as designer from outside dimension, creating 'experiential Thunderdome' through early life challenges to supercharge self-understanding." The Photographer / Visual Designer self-identified as "master designer" in the same session.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 13 -->
+  <article class="entry" id="e13">
+    <div class="entry-left">
+      <span class="entry-glyph">△</span>
+      <span class="entry-num">ENTRY · 13</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">The <span>Teenage Baby</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">DAVID H / COACHING SESSIONS</span>
+        <span class="tag">SYSTEMS</span>
+        <span class="tag">CREATIVE ECONOMY</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"A structure that requires all the care of an infant while delivering none of the independence of an adult has remained at an undeveloped stage. The creator's energy feeds the structure instead of the vision."</p>
+      </div>
+      <p class="entry-context">
+        The Photographer / Visual Designer described his photography studio as "feeding a teenage baby that never helped." The vessel arrived fully formed in his words: all the demands of early dependency, none of the growing return that healthy development produces. <em>Creative energy that historically went to business survival rather than artistic work.</em> This metaphor applies to any project, business, relationship, or system that has consumed without contributing :: that has remained structurally dependent beyond its natural development stage.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">The creator who exhausts themselves maintaining a structure often struggle to see the structure as the source of depletion :: because their care for it is genuine. The teenage baby names the energetic relationship with precision: the structure requires infant-level maintenance while the creator has outgrown the developmental stage that would make such maintenance appropriate. The diagnosis clarifies the choice: restructure or release.</p>
+        <div class="entry-anchor">Direct sentence: Some structures require more care than they return. Naming that dynamic is what makes a different choice available.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar's creative energy flows primarily toward sustaining a structure rather than expressing a vision. They arrive exhausted and struggle to fully name the source. Bring the teenage baby. Ask: what in your life currently requires more care than it returns? What would your creative energy reach for if that maintenance stopped?</p>
+      </div>
+      <p class="entry-source">SOURCE :: tÅs Weekly Session w/The Photographer / Visual Designer, Sep 15, 2025. "Creative energy historically consumed by business survival :: 'creativity going to keeping business alive, not the work.' Studio as 'teenage baby that never helped.'" The Photographer / Visual Designer's own language, received and extended.</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 14 -->
+  <article class="entry" id="e14">
+    <div class="entry-left">
+      <span class="entry-glyph">♦</span>
+      <span class="entry-num">ENTRY · 14</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name"><span>Crown Jewels</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">CREATIVE STEEPING COHORT</span>
+        <span class="tag">UNIQUE TRAITS</span>
+        <span class="tag">RECEPTIVITY</span>
+        <span class="tag reg-invitational">INVITATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Every person carries gems that belong entirely to them :: irreplaceable, intrinsic, already present. The Crown Jewels exercise asks you to see what you hold before asking what you want."</p>
+      </div>
+      <p class="entry-context">
+        Introduced in the Creative Steeping cohort as a visualization practice for identifying the scholar's unique traits :: <em>the qualities of perception, presence, and being that the world has not yet learned to ask for.</em> Crown Jewels are recognized, not earned. The exercise opens the question of receptivity: can the scholar receive their own gifts without deflecting, minimizing, or immediately converting them into an asset useful to others? KzA observed: "individual clarity enhances collective creativity." The jewels belong to the scholar first.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Scholars trained to produce rather than to be have often lost contact with their intrinsic value. The Crown Jewels exercise develops receptivity :: the capacity to receive one's own qualities as real and sufficient. Clarity about what one holds generates precision in how one offers it. The collective benefits from scholars who know their own jewels.</p>
+        <div class="entry-anchor">Direct sentence: Knowing precisely what you carry changes how you offer it :: and how others can receive it.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar undersells their own quality of presence or compares themselves to others. Bring the Crown Jewels. Ask: what do you carry that no one else in this room carries in the same configuration? Let them name it. Receive the naming alongside them.</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING cohort, Aug 22, 2025. "'Crown Jewels Exercise' encouraged visualization of unique traits to enhance receptivity, reinforcing KzA's view that individual clarity enhances collective creativity."</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 15 -->
+  <article class="entry" id="e15">
+    <div class="entry-left">
+      <span class="entry-glyph">⬢</span>
+      <span class="entry-num">ENTRY · 15</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">Mapping Your <span>Mosaic</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">CREATIVE STEEPING COHORT</span>
+        <span class="tag">IDENTITY</span>
+        <span class="tag">MILESTONES</span>
+        <span class="tag reg-invitational">INVITATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"A mosaic holds contradiction and discontinuity as design elements. Every fragment is necessary. The coherence emerges when you step back far enough to see the full field."</p>
+      </div>
+      <p class="entry-context">
+        Introduced in the Creative Steeping cohort as a chapter exercise connecting the scholar's identity to significant milestones and long-term aspirations. The mosaic holds what biography often cannot: the richness of fragments that resist linear narrative. <em>The scholar lays out every experience, identity, role, and aspiration :: then steps back.</em> The coherence has always been there. It requires distance, not construction. Each fragment that looked like a wrong turn reveals itself as essential texture when seen from the full field.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">The anxiety of narrative fragmentation assumes that a life requires a single through-line to be coherent. The mosaic replaces that assumption with a spatial one: meaning is visible in the arrangement of all the pieces, from sufficient distance. The scholar stops trying to write the story and begins to read the picture. Contradiction and discontinuity become compositional :: they belong.</p>
+        <div class="entry-anchor">Direct sentence: When you lay all the pieces next to each other and step back, the pattern that was always there becomes visible.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar carries the feeling that their life lacks coherence :: too many chapters, too many apparent contradictions. Bring the mosaic. Invite them to lay the pieces out: every role, every phase, every identity, every aspiration. Then ask them to step back and name what they see in the arrangement.</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING w/Kamau, Jul 18, 2025. "'Mapping your mosaic' exercise aimed to connect participants' identities to significant milestones and long-term aspirations through 2027 and beyond."</p>
+    </div>
+  </article>
+
+  <!-- ENTRY 16 -->
+  <article class="entry" id="e16">
+    <div class="entry-left">
+      <span class="entry-glyph">⚡</span>
+      <span class="entry-num">ENTRY · 16</span>
+    </div>
+    <div class="entry-body">
+      <h2 class="entry-name">Energy as <span>Currency</span></h2>
+      <div class="entry-tags">
+        <span class="tag origin">CREATIVE STEEPING COHORT</span>
+        <span class="tag">REGENERATION</span>
+        <span class="tag">CREATIVE SUSTAINABILITY</span>
+        <span class="tag reg-observational">OBSERVATIONAL</span>
+      </div>
+      <div class="entry-couplet">
+        <p class="entry-couplet-l1">The arc is the angle of change.</p>
+        <p class="entry-couplet-l2">"Energy operates on a different ledger than time. It regenerates :: but only when the account is honored rather than perpetually overdrawn."</p>
+      </div>
+      <p class="entry-context">
+        Introduced in the Creative Steeping cohort as a framework for creative sustainability. The scholar who manages time while ignoring energy will arrive at scheduled work depleted. <em>Every regenerative act :: a bath, a sunset, a cup of tea, a walk :: is a deposit.</em> The Musician / Artist Watson's articulation of "small precious moments" as the foundation of his practice demonstrates the principle in action: the deposits were generating the creative output that followed. The ledger balances through stewardship, not scheduling.
+      </p>
+      <div class="entry-function">
+        <span class="entry-function-label">THE MECHANISM</span>
+        <p class="h70-body">Industrial productivity training treats rest as the absence of output. Energy as Currency reframes rest as input :: the deposit that funds the next cycle of expression. Every act of regeneration is productive in the full accounting. Every overdrawn cycle costs more than the output it produced. The scholar who learns to honor the account generates creative output from sufficiency rather than depletion.</p>
+        <div class="entry-anchor">Direct sentence: Rest is the architecture that makes the next work possible. It belongs on the same ledger.</div>
+      </div>
+      <div class="entry-deploy">
+        <span class="entry-deploy-label">WHEN THIS VESSEL IS ALIVE</span>
+        <p class="h70-body">A scholar arrives exhausted, producing, and ashamed of the rest they take. Bring the ledger. Ask: what did you deposit this week? What did you withdraw? If the account is overdrawn, what would one honest deposit look like this week :: before you attempt the next withdrawal?</p>
+      </div>
+      <p class="entry-source">SOURCE :: CREÅTIVE STEEPING w/Kamau, Aug 8, 2025. "Kamau introduced the concept of 'energy as currency,' discussing energy conservation and its relationship with time management and spiritual practice." Evidenced in The Musician / Artist Watson's "small precious moments" practice between sessions.</p>
+    </div>
+  </article>
+
+  <!-- FINAL PULLQUOTE -->
+  <div class="pullquote">
+    <p class="h70-body">The library is living because the school is living. Every session generates new vessels. Every scholar who arrives brings language that wants to be named. This document steeps as the work steeps.</p>
+    <span class="pullquote-attr">:: KzA · THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING</span>
+  </div>
+
+  <!-- CLOSING -->
+  <footer class="closing">
+    <span class="closing-glyph">◈</span>
+    <p class="h70-body">Future entries already forming in the archive: the Ghost Movements, the Antennae of Inquiry, the Interstitium, the Data Harp, the Bloom Point, the Three Days Off, the Flower Press, the Labyrinth Walk. Each one waiting for the session that gives it its full definition.</p>
+    <p class="h70-body">This document updates when those definitions arrive. The protocol governs each new entry: locate the lived coordinate, name the mechanism, introduce the concept, return with recognition.</p>
+    <span class="closing-sig">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING · 
+      ARTIFACT 07 · VERSION 2.0 · BUILT THROUGH THE VESSELVERSE EDITORIAL PROTOCOL<br>
+      LIVING DOCUMENT · UPDATES WITH THE WORK
+    </span>
+  </footer>
+
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.entry').forEach(el => observer.observe(el));
+</script>
+
+<div id="audio-overlay" style="position: fixed; inset: 0; background: var(--bg); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--ink); transition: opacity 1.5s ease;">
+  <div style="font-family: var(--h70-font); font-size: 2rem; font-style: normal; margin-bottom: 1rem;">The Synthesis Archive</div>
+  <div style="font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.2em;">A BIOACOUSTIC REPOSITORY</div>
+  <button onclick="initializeSpace()" style="background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 1rem 3rem; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.2em; cursor: pointer; text-transform: uppercase; border-radius: 2px; transition: all 0.5s ease; margin-top: 2rem;">Enter Space</button>
+</div>
+
+<script>
+  let audioCtx;
+  let masterGain;
+  const PENTATONIC_SCALE = [264.00, 296.33, 332.62, 395.55, 444.00, 528.00, 592.67, 665.24];
+
+  function initializeSpace(isPortalEntry) {
+    const overlay = document.getElementById('audio-overlay');
+    if (overlay) {
+      if (isPortalEntry) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 1500);
+      }
+    }
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    audioCtx = new AudioContext();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = isPortalEntry ? 0 : 0.5;
+    masterGain.connect(audioCtx.destination);
+
+    if (isPortalEntry) {
+      masterGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2.0);
+    }
+
+    playAmbientBreath();
+    playStrikingBowl(528);
+  }
+
+  function playAmbientBreath() {
+    if (!audioCtx) return;
+    const osc174 = audioCtx.createOscillator();
+    const osc240 = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc174.type = 'sine'; osc174.frequency.value = 174;
+    osc240.type = 'sine'; osc240.frequency.value = 240;
+    filter.type = 'lowpass'; filter.frequency.value = 400;
+    gain.gain.value = 0.02;
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.type = 'sine'; lfo.frequency.value = 0.22;
+    lfoGain.gain.value = 0.015;
+    lfo.connect(lfoGain); lfoGain.connect(gain.gain); lfo.start();
+    osc174.connect(filter); osc240.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc174.start(); osc240.start();
+  }
+
+  function playStrikingBowl(freqOverride) {
+    if (!audioCtx) return;
+    const freq = freqOverride || PENTATONIC_SCALE[Math.floor(Math.random() * PENTATONIC_SCALE.length)];
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    osc.type = 'sine'; osc.frequency.value = freq;
+    filter.type = 'lowpass'; filter.frequency.value = freq * 3;
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 3.5);
+    osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+    osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 4.0);
+  }
+
+</script>
+</main>
+
+<script>
+  // ==========================================
+  // PARALLAX SCIENCES
+  // ==========================================
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  const ease = 0.08;
+
+  document.addEventListener('mousemove', (e) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function renderParallax() {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+
+    const mural = document.querySelector('.parallax-mural');
+    if (mural) {
+      mural.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px) scale(1.05)`;
+    }
+
+    const vessels = document.querySelectorAll('.parallax-vessel');
+    vessels.forEach(vessel => {
+      vessel.style.transform = `translate(${currentX * 6}px, ${currentY * 6}px)`;
+    });
+
+    requestAnimationFrame(renderParallax);
+  }
+  
+  if (window.matchMedia("(pointer: fine)").matches) {
+    requestAnimationFrame(renderParallax);
+  }
+</script>
+
+
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span>tÅs</span>
+    <span id="scroll-progress">0% STEEPED</span>
+  </div>
+  <div style="text-align: right;">
+    <a href="mailto:thealienscool@gmail.com" style="color: var(--h70-signal); text-decoration: none;">thealienscool@gmail.com</a>
+    <span style="opacity: 0.6; margin-left: 1rem; display: none;" class="contact-desktop">Elevating the Creative Spirit in organizations, relationships, & edge navigation</span>
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = Math.min(100, Math.max(0, Math.round((window.scrollY / docHeight) * 100)));
+    const indicator = document.getElementById('scroll-progress');
+    if(indicator) indicator.textContent = progress + '% STEEPED';
+  });
+</script>
+<style>
+@media(min-width: 800px) { .contact-desktop { display: inline !important; } }
+</style>
+</body>
+
+</html>
