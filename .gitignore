@@ -35,6 +35,9 @@ env/
 # Build artifacts directory (if added later)
 public/
 
+# Generated intermediate files — not for deployment or version control
+extracted_contents.txt
+
 # Environment
 .env
 .env.local
