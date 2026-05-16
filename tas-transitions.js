@@ -127,6 +127,21 @@
     }, true);
   }
 
+  // ── BFCACHE RESTORE: reset curtain when browser navigates back/forward ──
+  // Mobile browsers (Safari, Chrome iOS) aggressively cache pages. If the
+  // curtain was opaque at the moment of departure, it will be restored that
+  // way — producing a blank, unresponsive page on back navigation.
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      sessionStorage.removeItem(PORTAL_KEY);
+      if (curtain) {
+        curtain.style.transition    = 'none';
+        curtain.style.opacity       = '0';
+        curtain.style.pointerEvents = 'none';
+      }
+    }
+  });
+
   // ── INIT ──────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     injectCurtain();
