@@ -351,11 +351,12 @@
   }
 </style>
 </head>
-<body>
+<body data-h70-scene="night">
 
+<a href="#page-main" class="skip-link">Skip to content</a>
 <!-- HÅRMONIOUS70 GLOBAL NAVIGATION -->
-<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.25rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--h70-bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
-  <a href="index.html" style="font-family: var(--h70-mono); font-size: clamp(0.75rem, 1.5vw, 0.9rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem; letter-spacing: 0.12em;" class="sonic-link">
+<nav aria-label="Primary navigation" id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.25rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--h70-bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
+  <a href="index.html" style="font-family: var(--h70-mono); font-size: clamp(0.75rem, 1.5vw, 0.9rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem; letter-spacing: 0.12em;" class="steam-sans--vapor sonic-link">
     <span>THE ÅLïEN SCõÖL</span>
     <span style="color: var(--h70-signal);">∴ FOR CREATIVE THÏNKING</span>
   </a>
@@ -381,8 +382,36 @@
     _lastY = window.scrollY;
   });
 </script>
+<style>
+  .skip-link { position: absolute; top: -48px; left: 0; background: var(--h70-signal); color: var(--h70-bg); padding: 0.5rem 1.25rem; font-family: var(--h70-mono); font-size: 0.694rem; letter-spacing: 0.12em; text-decoration: none; z-index: 10000; border-radius: 0 0 4px 0; transition: top 0.2s; }
+  .skip-link:focus { top: 0 !important; }
+  :focus-visible { outline: 2px solid var(--h70-signal); outline-offset: 3px; border-radius: 2px; }
+  /* STEAM SANS variable font activation */
+  p, li, td, blockquote,
+  .prose p, .locate p, .couplet-l2, .thinker-body p,
+  .pullquote p, .evidence-body p, .advocacy p,
+  .closing p, .resources p, .prop-body {
+    font-family: var(--h70-font);
+    font-variation-settings: 'STBL' 50, 'COHR' 84, 'DRFT' 13, 'PRSS' 20;
+    animation: h70-hba-breathe var(--h70-breath-cycle) var(--h70-ease) infinite;
+  }
+  .cover-meta, .section-num, .locate-label, .couplet-l1, .anchor,
+  .thinker-label, .thinker-cite, .evidence-label, .evidence-who,
+  .pullquote-attr, .closing-sig, .divider-mark, .resources-label,
+  .resource-author, .prop-num, .cover-rule-glyph,
+  .dynamic-num, .dynamic-ev-label, .dynamic-ev-who,
+  .eq-formula, .advocacy-label {
+    font-family: var(--h70-mono);
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24;
+  }
+  a:hover, a:focus-visible {
+    font-variation-settings: 'STBL' 100, 'COHR' 48, 'DRFT' 34, 'PRSS' 12;
+    filter: blur(.12px);
+  }
+</style>
 
-<div class="page">
+
+<div class="page" id="page-main" role="main">
 
   <!-- COVER -->
   <div class="cover">
@@ -391,7 +420,7 @@
       FIELD REPORT TWO OF TWO · PRESENTATION PRIMER · 2026
     </div>
     <span class="cover-series">EMERGENT FROM tÅs FIELD NOTES — INAUGURAL EDITION</span>
-    <h1>
+    <h1 class="steam-sans--hba">
       Illuminating the Dynamics<br>
       <strong>of Creative Thinking</strong>
     </h1>
@@ -411,7 +440,7 @@
   <section class="section">
     <div class="section-header">
       <span class="section-num">I</span>
-      <h2>The <em>Claim</em> Worth Making</h2>
+      <h2 class="steam-sans--hba">The <em>Claim</em> Worth Making</h2>
     </div>
 
     <div class="locate">
@@ -437,7 +466,7 @@
   <section class="section">
     <div class="section-header">
       <span class="section-num">II</span>
-      <h2>Five <em>Dynamics</em> of Creative Thinking in Action</h2>
+      <h2 class="steam-sans--hba">Five <em>Dynamics</em> of Creative Thinking in Action</h2>
     </div>
 
     <div class="prose">
@@ -574,7 +603,7 @@
   <section class="section">
     <div class="section-header">
       <span class="section-num">III</span>
-      <h2>The <em>Equations</em> in Systems Language</h2>
+      <h2 class="steam-sans--hba">The <em>Equations</em> in Systems Language</h2>
     </div>
 
     <div class="prose">
@@ -609,7 +638,7 @@
   <section class="section">
     <div class="section-header">
       <span class="section-num">IV</span>
-      <h2><em>Advocacy</em> — What We Are Asking Systems to Do</h2>
+      <h2 class="steam-sans--hba"><em>Advocacy</em> — What We Are Asking Systems to Do</h2>
     </div>
 
     <div class="advocacy">
@@ -629,7 +658,7 @@
   <section class="section">
     <div class="section-header">
       <span class="section-num">V</span>
-      <h2>Voices <em>Alongside</em> This Work</h2>
+      <h2 class="steam-sans--hba">Voices <em>Alongside</em> This Work</h2>
     </div>
 
     <div class="prose">
@@ -675,7 +704,7 @@
   <section class="section">
     <div class="section-header">
       <span class="section-num">VI</span>
-      <h2><em>Provocation</em> Points for the Conversation</h2>
+      <h2 class="steam-sans--hba"><em>Provocation</em> Points for the Conversation</h2>
     </div>
 
     <div class="prose">

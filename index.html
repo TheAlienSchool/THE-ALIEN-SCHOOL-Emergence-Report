@@ -68,7 +68,7 @@
   .h70-grid--three { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   .h70-tooltip-container { position: relative; overflow: visible !important; }
   .h70-tooltip {
-    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+    position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-10px);
     background: var(--h70-ink); color: var(--h70-bg); padding: 1rem 1.5rem;
     border-radius: 4px; width: max-content; max-width: 300px;
     opacity: 0; visibility: hidden; transition: opacity 0.3s ease, transform 0.3s ease;
@@ -76,8 +76,8 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
   .h70-tooltip::before {
-    content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
-    border-width: 6px; border-style: solid; border-color: transparent transparent var(--h70-ink) transparent;
+    content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border-width: 6px; border-style: solid; border-color: var(--h70-ink) transparent transparent transparent;
   }
   .h70-tooltip-container:hover .h70-tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
   .h70-invitation-links a { color: var(--h70-signal); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
@@ -178,7 +178,147 @@
     <p class="h70-body" style="margin: 0 auto;">A living record. 528Hz attuned.</p>
   </header>
 
-  <!-- Artifacts Geometry -->
+  <!-- EMERGENCE REPORT FEATURE -->
+  <section id="emergence-summation" aria-labelledby="emergence-title" style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%;">
+
+    <style>
+      /* Four-lineage bar animation */
+      @keyframes lineage-enter {
+        from { opacity: 0; transform: scaleX(0.4); }
+        to   { opacity: 1; transform: scaleX(1); }
+      }
+      .emergence-lineage-bar div {
+        transform-origin: left center;
+        animation: lineage-enter 0.8s var(--h70-ease) both;
+      }
+      .emergence-lineage-bar div:nth-child(1) { animation-delay: 0.05s; }
+      .emergence-lineage-bar div:nth-child(2) { animation-delay: 0.15s; }
+      .emergence-lineage-bar div:nth-child(3) { animation-delay: 0.25s; }
+      .emergence-lineage-bar div:nth-child(4) { animation-delay: 0.35s; }
+
+      .emergence-welcome-btn {
+        display: inline-flex; align-items: center; gap: 0.8rem;
+        text-decoration: none;
+        font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.2em;
+        text-transform: uppercase;
+        min-height: var(--h70-touch);
+        padding: 0.84rem 1.8rem;
+        border: 1px solid color-mix(in oklab, var(--h70-signal) 55%, var(--h70-line));
+        border-radius: var(--h70-radius-orb);
+        background: color-mix(in oklab, var(--h70-signal) 12%, var(--h70-surface));
+        color: var(--h70-ink);
+        cursor: pointer;
+        transition: transform 420ms var(--h70-ease), border-color 420ms var(--h70-ease), background 420ms var(--h70-ease), box-shadow 420ms var(--h70-ease);
+      }
+      .emergence-welcome-btn:hover, .emergence-welcome-btn:focus-visible {
+        transform: translateY(-2px);
+        border-color: color-mix(in oklab, var(--h70-signal) 82%, transparent);
+        background: color-mix(in oklab, var(--h70-signal) 22%, var(--h70-surface));
+        box-shadow: 0 12px 40px color-mix(in oklab, var(--h70-signal) 22%, transparent);
+        outline: 0;
+      }
+
+      @media (max-width: 680px) {
+        .emergence-content-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .emergence-lineage-key {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+    </style>
+
+    <div style="
+      position: relative;
+      overflow: clip;
+      border: 1px solid var(--h70-line);
+      border-top: none;
+      border-radius: 0 0 var(--h70-radius-vessel) var(--h70-radius-vessel);
+      background:
+        radial-gradient(ellipse at 48% 110%, color-mix(in oklab, var(--h70-signal) 12%, transparent) 0%, transparent 55%),
+        radial-gradient(ellipse at 12% 20%, color-mix(in oklab, var(--h70-indigo) 30%, transparent) 0%, transparent 40%),
+        linear-gradient(165deg, color-mix(in oklab, var(--h70-surface) 80%, transparent), var(--h70-surface));
+      backdrop-filter: blur(22px) saturate(1.1);
+      box-shadow: 0 28px 100px rgba(0,0,0,.28), inset 0 1px 0 var(--h70-reflection);
+      padding: clamp(2rem, 4vw, 3.5rem);
+    ">
+
+      <!-- Four-lineage identity bar -->
+      <div class="emergence-lineage-bar" style="display: flex; gap: 3px; margin-bottom: 2.75rem;">
+        <div style="height: 2.5px; flex: 1; background: #c8922a; border-radius: 1px;"></div>
+        <div style="height: 2.5px; flex: 1; background: #1a5848; border-radius: 1px;"></div>
+        <div style="height: 2.5px; flex: 1; background: #883020; border-radius: 1px;"></div>
+        <div style="height: 2.5px; flex: 1; background: #8888cc; border-radius: 1px;"></div>
+      </div>
+
+      <!-- Content grid -->
+      <div class="emergence-content-grid" style="display: grid; grid-template-columns: 1fr min(360px, 40%); gap: clamp(2rem, 5vw, 4.5rem); align-items: start;">
+
+        <!-- Left: identification + title + desc + CTA -->
+        <div>
+          <div style="font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.22em; color: var(--h70-signal); margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <span>THE EMERGENCE REPORT</span>
+            <span style="opacity: 0.42; font-size: 9px; letter-spacing: 0.16em;">FINAL REPORT · 2026</span>
+          </div>
+
+          <h2 id="emergence-title" class="steam-sans--hba" style="font-size: clamp(var(--h70-xl), 4vw, var(--h70-xxl)); margin: 0 0 1.5rem; line-height: 1.08;">
+            A School of <span class="h70-signal">Thought</span><br>in Formation
+          </h2>
+
+          <p class="h70-body" style="margin-bottom: 2.25rem; max-width: 46ch;">
+            The intellectual summation of the inaugural Field Notes thread. Four intellectual traditions traced to their convergence point. The school's position named precisely — what it is, what it belongs alongside, and what its full emergence requires. Speculative in register. Evidenced at base.
+          </p>
+
+          <a href="tas-emergence-report.html" class="emergence-welcome-btn sonic-link" aria-label="Enter the Emergence Report: Welcome to A School of Thought">
+            Welcome to A School of Thought
+            <span style="opacity: 0.5; font-size: 1.1em;">→</span>
+          </a>
+        </div>
+
+        <!-- Right: pull quote + lineage key -->
+        <div>
+          <div style="border-left: 1.5px solid color-mix(in oklab, var(--h70-signal) 65%, var(--h70-line)); padding-left: 1.35rem; margin-bottom: 2.25rem;">
+            <p style="font-family: 'EB Garamond', Georgia, serif; font-size: 1.06rem; font-style: italic; line-height: 1.68; color: color-mix(in oklab, var(--h70-ink) 78%, var(--h70-muted)); margin-bottom: 0.85rem;">
+              "The school is the synthesis that each tradition was reaching toward without being able to produce."
+            </p>
+            <span style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.14em; color: var(--h70-muted); opacity: 0.7;">— THE EMERGENCE REPORT · tÅs · 2026</span>
+          </div>
+
+          <!-- Four lineage key -->
+          <div class="emergence-lineage-key" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <div style="width: 3px; height: 26px; border-radius: 1px; background: #c8922a; flex-shrink: 0;"></div>
+              <span style="font-family: var(--h70-mono); font-size: 8.5px; letter-spacing: 0.1em; color: var(--h70-muted); line-height: 1.5; text-transform: uppercase;">African &amp;<br>Diasporic</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <div style="width: 3px; height: 26px; border-radius: 1px; background: #1a5848; flex-shrink: 0;"></div>
+              <span style="font-family: var(--h70-mono); font-size: 8.5px; letter-spacing: 0.1em; color: var(--h70-muted); line-height: 1.5; text-transform: uppercase;">Somatic &amp;<br>Contemplative</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <div style="width: 3px; height: 26px; border-radius: 1px; background: #883020; flex-shrink: 0;"></div>
+              <span style="font-family: var(--h70-mono); font-size: 8.5px; letter-spacing: 0.1em; color: var(--h70-muted); line-height: 1.5; text-transform: uppercase;">Systems<br>Change</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.65rem;">
+              <div style="width: 3px; height: 26px; border-radius: 1px; background: #8888cc; flex-shrink: 0;"></div>
+              <span style="font-family: var(--h70-mono); font-size: 8.5px; letter-spacing: 0.1em; color: var(--h70-muted); line-height: 1.5; text-transform: uppercase;">Developmental<br>Practice</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Atmospheric radial -->
+      <div aria-hidden="true" style="
+        position: absolute; bottom: -60%; left: 38%; transform: translateX(-50%);
+        width: 55%; height: 80%;
+        background: radial-gradient(closest-side, color-mix(in oklab, var(--h70-signal) 10%, transparent), transparent);
+        filter: blur(45px); pointer-events: none;
+      "></div>
+
+    </div>
+  </section>
+
+    <!-- Artifacts Geometry -->
   <section style="max-width: 960px; margin: 0 auto; width: 100%;">
     <p class="h70-kicker" style="margin-bottom: var(--h70-room);">THE ARTIFACTS</p>
     <div class="h70-grid h70-grid--two">
@@ -291,7 +431,6 @@
 
     </div>
   </section>
-
 
 
   <!-- OPEN SESAME GEOMETRY -->
