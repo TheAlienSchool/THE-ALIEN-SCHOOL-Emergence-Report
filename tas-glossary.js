@@ -27,6 +27,7 @@ const TasGloss = (() => {
   // DOM refs — populated on DOMContentLoaded
   let sheet, overlay, elTermName, elCat, elDef, elMore, elDepth;
   let activeTermEl = null;
+  let openedAt = 0; // timestamp guard against ghost-click close on mobile
 
   const isFinePointer = () =>
     window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 769px)').matches;
@@ -57,9 +58,10 @@ const TasGloss = (() => {
         }
         return;
       }
-      // Tap outside the sheet to close
+      // Tap outside the sheet to close — but not within 350ms of opening,
+      // which would catch the mobile ghost click that fires at the tap coords.
       if (sheet.classList.contains('is-open') && !sheet.contains(e.target)) {
-        close();
+        if (Date.now() - openedAt > 350) close();
       }
     });
 
@@ -121,6 +123,7 @@ const TasGloss = (() => {
     // Track active term (for toggle, focus restoration on close)
     if (activeTermEl) activeTermEl.removeAttribute('aria-expanded');
     activeTermEl = termEl;
+    openedAt = Date.now();
     termEl.setAttribute('aria-expanded', 'true');
 
     // Desktop: position the floating panel near the term
