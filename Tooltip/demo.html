@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tÅs Active Insights Demo</title>
+  <link rel="stylesheet" href="tas-tooltips.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: ui-serif, Georgia, serif;
+      line-height: 1.65;
+      background: #161514;
+      color: #f7f2ea;
+    }
+    main {
+      width: min(850px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      line-height: 0.95;
+      margin: 0 0 22px;
+      letter-spacing: -0.04em;
+    }
+    p {
+      font-size: 1.15rem;
+      color: rgba(247, 242, 234, 0.82);
+    }
+    .demo-card {
+      border: 1px solid rgba(247, 242, 234, 0.18);
+      border-radius: 22px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      margin-top: 28px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Active Insights Demo</h1>
+    <p>
+      This demo shows how the <span data-tas-term="tas">THE ÅLïEN SCõÖL</span> report can support readers through concise tooltips and expandable insight cards.
+    </p>
+
+    <div class="demo-card">
+      <p>
+        The school is a <span data-tas-term="reflationary-lab">Reflationary Lab</span> in formation. It supports the recovery of <span data-tas-term="creative-intelligence">Creative Intelligence</span> through the work of the <span data-tas-term="guide">Guide</span>, the agency of the <span data-tas-term="scholar">Scholar</span>, and the methodology named in the <span data-tas-term="elevation-codex">Elevation Codex</span>.
+      </p>
+      <p>
+        A <span data-tas-term="creative-maverick">Creative Maverick</span> may enter through alienation, but the path becomes clearer through <span data-tas-term="somatic-tether">Somatic Tether</span>, <span data-tas-term="steeping-as-time-design">Steeping as Time Design</span>, and the <span data-tas-term="vesselverse-editorial-protocol">VesselVerse Editorial Protocol</span>.
+      </p>
+      <p>
+        The symbolic layer includes marks like <span data-tas-term="symbol-a-ring">Å</span>, which should arrive after the plain-language doorway.
+      </p>
+    </div>
+  </main>
+
+  <script src="tas-tooltips.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      window.TASActiveInsights.init({
+        glossaryUrl: 'active-insights-glossary.json',
+        mode: 'manual',
+        readerHelpButton: true,
+        readerHelpTarget: 'main'
+      });
+    });
+  </script>
+</body>
+</html>
