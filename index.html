@@ -152,7 +152,7 @@
   }
 </style>
 </head>
-<body data-h70-scene="night">
+<body data-h70-scene="night" class="gateway-open">
 
 <!-- GLOBAL NAVIGATION -->
 <nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
@@ -169,6 +169,8 @@
 <style>
   /* Responsive Navigation Anticipation */
   body { padding-top: 80px; } /* Prevent nav from covering content */
+  /* Lock body scroll while the gateway overlay is the active scroll context */
+  body.gateway-open { overflow: hidden; }
   #h70-global-nav.nav-hidden { transform: translateY(-100%); }
   
   @media (max-width: 768px) {
@@ -835,6 +837,7 @@
   function initializeSpace(isPortalEntry) {
     const overlay = document.getElementById('audio-overlay');
     if (overlay) {
+      document.body.classList.remove('gateway-open');
       if (isPortalEntry) {
         overlay.style.display = 'none';
       } else {
