@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Integrating Creative Thinking Into The Places We Work — tÅs Field Report</title>
 <link rel="stylesheet" href="harmonious70.css">
+<link rel="stylesheet" href="/active-insights/tas-tooltips.css">
 <script src="tas-transitions.js" defer></script>
 <style>
   :root {
@@ -510,7 +511,7 @@
 </style>
 
 
-<div class="page" id="page-main" role="main">
+<div class="page" id="page-main" role="main" data-tas-auto-annotate>
 
   <!-- COVER -->
   <div class="cover">
@@ -851,6 +852,20 @@
     const pct = Math.min(100, Math.max(0, Math.round((window.scrollY / h) * 100)));
     const el = document.getElementById('read-progress');
     if (el) el.textContent = pct + '% READ';
+  });
+</script>
+
+<!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
+<script src="/active-insights/tas-tooltips.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    window.TASActiveInsights.init({
+      glossaryUrl: '/active-insights/active-insights-glossary.json',
+      mode: 'auto',
+      maxAutoMatchesPerTerm: 1,
+      readerHelpButton: true,
+      readerHelpTarget: '[data-tas-auto-annotate]'
+    });
   });
 </script>
 </body>

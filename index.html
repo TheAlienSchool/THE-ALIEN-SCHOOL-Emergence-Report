@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="harmonious70.css">
 <link rel="stylesheet" href="tas-glossary.css">
+<link rel="stylesheet" href="/active-insights/tas-tooltips.css">
 <script src="tas-transitions.js" defer></script>
 <style>
   #audio-overlay {
@@ -211,7 +212,7 @@
 
 
 <!-- INVITATION GATEWAY -->
-<div id="audio-overlay">
+<div id="audio-overlay" data-tas-auto-annotate>
   <div class="gateway-content" style="position: relative; z-index: 2; width: 100%; max-width: 680px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 2.5rem);">
 
     <!-- [1] Brand Screen — fills initial viewport -->
@@ -230,6 +231,9 @@
 
     <!-- [2] Mission Text -->
     <div id="gateway-mission" style="padding: clamp(3rem, 6vw, 5rem) 0; border-top: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent); text-align: left;">
+
+      <!-- Active Insights orientation button -->
+      <button type="button" class="tas-ai-reader-help" onclick="window.TASActiveInsights && window.TASActiveInsights.openTerm('calvin-mode')" style="margin-bottom: 2rem;">New here? Start simple.</button>
 
       <p class="h70-body" style="font-size: clamp(1rem, 2.2vw, 1.15rem); line-height: 1.82; margin-bottom: 1.75rem;">
         THE ALIEN SCHOOL helps creative people, leaders, and builders who feel stuck, alienated, or underused recover access to the creative intelligence already inside them. Through guided reflection, creative practice, language, and structured inner work, we help people hear themselves clearly, trust what they know, and turn that clarity into action.
@@ -289,7 +293,7 @@
 </div>
 
 <!-- HÅRMONIOUS70 INSTALLATION -->
-<main id="archive-core" class="h70-installation">
+<main id="archive-core" class="h70-installation" data-tas-auto-annotate>
   <!-- The Room's Atmosphere (Parallax Target) -->
   <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
   
@@ -465,7 +469,7 @@
     </h2>
 
     <p class="h70-body" style="max-width: 52ch; margin: 0 auto 2.5rem; font-size: clamp(0.95rem, 2vw, 1.08rem); line-height: 1.72; color: var(--h70-muted);">
-      THE ALIEN SCHOOL helps <span class="tas-term" tabindex="0" role="button" data-term="Creative Maverick" data-category="CONCEPT" data-short="The person who senses they are here to create something meaningful, but needs a practical environment to organize their thoughts, restore confidence, and move forward with more peace, purpose, and creative power. The primary audience of THE ALIEN SCHOOL.">Creative Mavericks</span> turn alienation, uncertainty, and inner noise into clarity, confidence, and creative action.
+      THE ALIEN SCHOOL helps <span data-tas-term="creative-maverick">Creative Mavericks</span> turn alienation, uncertainty, and inner noise into clarity, confidence, and creative action.
     </p>
 
     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 3.5rem;">
@@ -485,7 +489,7 @@
       </div>
       <div style="padding: 2rem 0 2rem clamp(1rem, 2.5vw, 1.75rem);">
         <p class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 0.85rem; letter-spacing: 0.2em; font-size: 9px;">What We Offer</p>
-        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Guided sessions, <span class="tas-term" tabindex="0" role="button" data-term="Creative Steeping" data-category="METHODOLOGY" data-short="The core tÅs practice: structured, unhurried immersion in creative work. Not productivity — immersion. Designed to restore access to what you already know by creating the internal conditions for it to surface.">Creative Steeping</span>, courses, retreats, organizational workshops, and research-backed creative development tools.</p>
+        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Guided sessions, <span data-tas-term="steeping-as-time-design">Creative Steeping</span>, courses, retreats, organizational workshops, and research-backed creative development tools.</p>
       </div>
     </div>
 
@@ -601,7 +605,7 @@
         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0 1rem; line-height: 1.2;">Integrating <span class="h70-signal">Creative Thinking</span></h2>
         <p class="h70-body" style="margin-bottom: 1.5rem;">A systems-facing report on creative intelligence as an organizational property. It asks how much capacity remains unused when creativity is treated as a role instead of a shared resource for leaders, teams, and systems change practitioners.</p>
         <p class="h70-body" style="font-size: var(--h70-sm); color: var(--h70-muted); border-top: 1px solid var(--h70-line); padding-top: 1rem; font-style: italic;">Creative Awareness · Creative Responsibility · Five Integration Conditions</p>
-        <p style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase; margin-top: 1.5rem; border-top: 1px solid color-mix(in oklab, var(--h70-line) 35%, transparent); padding-top: 1rem; opacity: 0.7;">PROVOCATION · <span class="tas-term" tabindex="0" role="button" data-term="The Unused Capacity Question" data-short="What is the cost, to the system's outcomes, of the creative intelligence currently going unused?" data-category="PROVOCATION">The Unused Capacity Question</span></p>
+        <p style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase; margin-top: 1.5rem; border-top: 1px solid color-mix(in oklab, var(--h70-line) 35%, transparent); padding-top: 1rem; opacity: 0.7;">PROVOCATION · <span data-tas-term="unused-capacity-question">The Unused Capacity Question</span></p>
       </a>
 
       <!-- SCEU REPORT 02 -->
@@ -613,7 +617,7 @@
         <h2 class="steam-sans--hba" style="font-size: var(--h70-xl); margin: 0.5rem 0 1rem; line-height: 1.2;">Illuminating the <span class="h70-signal">Dynamics</span></h2>
         <p class="h70-body" style="margin-bottom: 1.5rem;">A translation of tÅs patterns into systems language. This report names five observable dynamics and advocates for creative thinking as an applicable daily rhythm beyond one-time interventions. A daily-practice case for critical growth intelligence in high-arc organizations.</p>
         <p class="h70-body" style="font-size: var(--h70-sm); color: var(--h70-muted); border-top: 1px solid var(--h70-line); padding-top: 1rem; font-style: italic;">Five Dynamics · HDM Equations in Systems Language · Advocacy for Daily Practice</p>
-        <p style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase; margin-top: 1.5rem; border-top: 1px solid color-mix(in oklab, var(--h70-line) 35%, transparent); padding-top: 1rem; opacity: 0.7;">PROVOCATION · <span class="tas-term" tabindex="0" role="button" data-term="The Daily Rhythm Question" data-short="What daily practice could your system adopt — not as a program, but as a rhythm — that maintains creative thinking between formal interventions?" data-category="PROVOCATION">The Daily Rhythm Question</span></p>
+        <p style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase; margin-top: 1.5rem; border-top: 1px solid color-mix(in oklab, var(--h70-line) 35%, transparent); padding-top: 1rem; opacity: 0.7;">PROVOCATION · <span data-tas-term="daily-rhythm-question">The Daily Rhythm Question</span></p>
       </a>
 
     </div>
@@ -634,7 +638,7 @@
     </h2>
 
     <p class="h70-body" style="max-width: 52ch; margin: 0 auto 2.5rem; font-size: clamp(0.95rem, 2vw, 1.08rem); line-height: 1.72; color: var(--h70-muted);">
-      THE ALIEN SCHOOL helps <span class="tas-term" tabindex="0" role="button" data-term="Creative Maverick" data-category="CONCEPT" data-short="The person who senses they are here to create something meaningful, but needs a practical environment to organize their thoughts, restore confidence, and move forward with more peace, purpose, and creative power. The primary audience of THE ALIEN SCHOOL.">Creative Mavericks</span> turn alienation, uncertainty, and inner noise into clarity, confidence, and creative action.
+      THE ALIEN SCHOOL helps <span data-tas-term="creative-maverick">Creative Mavericks</span> turn alienation, uncertainty, and inner noise into clarity, confidence, and creative action.
     </p>
 
     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 3.5rem;">
@@ -654,7 +658,7 @@
       </div>
       <div style="padding: 2rem 0 2rem clamp(1rem, 2.5vw, 1.75rem);">
         <p class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 0.85rem; letter-spacing: 0.2em; font-size: 9px;">What We Offer</p>
-        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Guided sessions, <span class="tas-term" tabindex="0" role="button" data-term="Creative Steeping" data-category="METHODOLOGY" data-short="The core tÅs practice: structured, unhurried immersion in creative work. Not productivity — immersion. Designed to restore access to what you already know by creating the internal conditions for it to surface.">Creative Steeping</span>, courses, retreats, organizational workshops, and research-backed creative development tools.</p>
+        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Guided sessions, <span data-tas-term="steeping-as-time-design">Creative Steeping</span>, courses, retreats, organizational workshops, and research-backed creative development tools.</p>
       </div>
     </div>
 
@@ -675,7 +679,7 @@
   <section style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; display: none; opacity: 0; transition: opacity 1.5s ease;" id="magnetized-experience">
     <p class="h70-kicker" style="margin-bottom: var(--h70-room);">THE MaGNETIZED EXPERIENCE</p>
     <div style="margin-bottom: 3rem; max-width: 75ch;">
-      <p class="h70-body" style="margin-bottom: 1.5rem;">The Equitable vector: the Academy is designed so every entry point reaches the same depth. Your <span class="tas-term" tabindex="0" role="button" data-term="MaGNET" data-category="ARCHIVE SYSTEM" data-short="A symbolic entry key in the tÅs Synthesis Archive. Each MaGNET (ELLIAN, CLOPS, THE DRAGONFLY) opens a different theater of the Magnetized Experience — each one surfaces something different in the scholar. UNION requires the multiplicity.">MaGNET</span> is your door. All doors open inward.</p>
+      <p class="h70-body" style="margin-bottom: 1.5rem;">The Equitable vector: the Academy is designed so every entry point reaches the same depth. Your <span data-tas-term="magnet">MaGNET</span> is your door. All doors open inward.</p>
       <p class="h70-body" style="margin-bottom: 1.5rem;">Scholar protocol: Complete at least one full session in each MaGNET's Theater. Publish a comparative observation :: what each one surfaces in you that the others do not. The differences are the findings. UNION requires the multiplicity.</p>
     </div>
 
@@ -1014,6 +1018,19 @@
   <span id="tas-gloss-depth" class="tas-gloss-depth"></span>
 </div>
 <script src="tas-glossary.js" defer></script>
+
+<!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
+<script src="/active-insights/tas-tooltips.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    window.TASActiveInsights.init({
+      glossaryUrl: '/active-insights/active-insights-glossary.json',
+      mode: 'auto',
+      maxAutoMatchesPerTerm: 1,
+      readerHelpButton: false
+    });
+  });
+</script>
 </body>
 
 </html>

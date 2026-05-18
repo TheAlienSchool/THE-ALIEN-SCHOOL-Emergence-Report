@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Metaphor Library :: tÅs Artifact 07</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/harmonious70.css">
+<link rel="stylesheet" href="/active-insights/tas-tooltips.css">
 <style>
       :root {
     --bg:         var(--h70-bg);
@@ -562,7 +564,7 @@
   });
 </script>
 
-<main class="h70-installation" style="display:block; padding-top: 2rem;">
+<main class="h70-installation" data-tas-auto-annotate style="display:block; padding-top: 2rem;">
   <div class="h70-muralist parallax-mural" aria-hidden="true"></div>
   <div class="page" style="background: transparent;">
 
@@ -1350,6 +1352,20 @@
 <style>
 @media(min-width: 800px) { .contact-desktop { display: inline !important; } }
 </style>
+
+<!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
+<script src="/active-insights/tas-tooltips.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    window.TASActiveInsights.init({
+      glossaryUrl: '/active-insights/active-insights-glossary.json',
+      mode: 'auto',
+      maxAutoMatchesPerTerm: 1,
+      readerHelpButton: true,
+      readerHelpTarget: '[data-tas-auto-annotate]'
+    });
+  });
+</script>
 </body>
 
 </html>
