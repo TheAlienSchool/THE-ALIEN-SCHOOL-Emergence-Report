@@ -1,0 +1,297 @@
+/* ================================================================
+   tÅs GLOSSARY SYSTEM — Mobile-First Layered Insight Layer
+   v1.0 · Synthesis Archive
+   ================================================================
+
+   MARKUP PATTERN — add to any term in a report:
+
+   <span class="tas-term"
+     tabindex="0"
+     role="button"
+     data-term="Term Name"
+     data-short="Short entry definition."
+     data-category="CONCEPT">
+     Term Name
+   </span>
+
+   DEPTH LAYERS (as glossary expands):
+     Layer 1 — entry definition (data-short)
+     Layer 2 — add data-href="/glossary#term" for full article link
+     Layer 3 — full report context (linked from glossary article)
+   ================================================================ */
+
+
+/* ── Inline term marker ───────────────────────────────────────── */
+
+.tas-term {
+  cursor: pointer;
+  color: inherit;
+  border-bottom: 1px dotted var(--h70-signal);
+  outline: none;
+  transition: border-bottom-color 0.2s ease, opacity 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tas-term:focus-visible {
+  border-bottom: 1px solid var(--h70-signal);
+  border-radius: 1px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--h70-signal) 28%, transparent);
+}
+
+/* ∴ superscript indicator */
+.tas-term::after {
+  content: '∴';
+  font-size: 0.58em;
+  color: var(--h70-signal);
+  opacity: 0.55;
+  margin-left: 0.16em;
+  vertical-align: super;
+  line-height: 1;
+  pointer-events: none;
+  font-family: var(--h70-mono);
+  transition: opacity 0.2s ease;
+}
+
+.tas-term:hover::after,
+.tas-term:focus::after,
+.tas-term[aria-expanded="true"]::after {
+  opacity: 1;
+}
+
+.tas-term[aria-expanded="true"] {
+  border-bottom-style: solid;
+  opacity: 0.85;
+}
+
+
+/* ── Scrim overlay (mobile only) ──────────────────────────────── */
+
+.tas-gloss-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.tas-gloss-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+
+/* ── Bottom sheet — mobile base ───────────────────────────────── */
+
+.tas-gloss-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20001;
+
+  background: var(--h70-bg);
+  border-top: 1px solid color-mix(in oklab, var(--h70-signal) 30%, var(--h70-line));
+  border-radius: 14px 14px 0 0;
+
+  /* Safe area: leaves room above device nav bar */
+  padding-left: clamp(1.25rem, 4vw, 1.75rem);
+  padding-right: clamp(1.25rem, 4vw, 1.75rem);
+  padding-top: 0;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2.5rem);
+
+  max-height: 62vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Slide-up animation */
+  transform: translateY(105%);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+
+  box-shadow:
+    0 -8px 40px rgba(0, 0, 0, 0.22),
+    0 -2px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 var(--h70-reflection);
+}
+
+.tas-gloss-sheet.is-open {
+  transform: translateY(0);
+}
+
+
+/* ── Sheet internals ──────────────────────────────────────────── */
+
+/* Drag handle */
+.tas-gloss-handle {
+  width: 36px;
+  height: 4px;
+  background: color-mix(in oklab, var(--h70-line) 65%, transparent);
+  border-radius: 2px;
+  margin: 0.9rem auto 1.6rem;
+  flex-shrink: 0;
+}
+
+/* Meta row: category label + close button */
+.tas-gloss-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tas-gloss-cat {
+  font-family: var(--h70-mono);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--h70-signal);
+}
+
+.tas-gloss-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--h70-muted);
+  font-size: 12px;
+  padding: 0.4rem;
+  margin: -0.4rem;
+  border-radius: 3px;
+  line-height: 1;
+  transition: color 0.2s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 44px; /* touch target */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tas-gloss-close:hover {
+  color: var(--h70-ink);
+  background: color-mix(in oklab, var(--h70-line) 28%, transparent);
+}
+
+/* Term name */
+.tas-gloss-term-name {
+  font-family: var(--h70-font);
+  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--h70-ink);
+  margin: 0 0 0.9rem;
+  letter-spacing: -0.01em;
+}
+
+/* Definition body */
+.tas-gloss-def {
+  font-family: var(--h70-font);
+  font-size: 0.96rem;
+  line-height: 1.72;
+  color: var(--h70-muted);
+  margin: 0 0 1.25rem;
+}
+
+/* Glossary link — hidden until href data is available */
+.tas-gloss-more {
+  font-family: var(--h70-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--h70-signal);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--h70-signal) 35%, transparent);
+  transition: border-color 0.2s ease;
+  padding-bottom: 0.1rem;
+}
+
+.tas-gloss-more:hover {
+  border-color: var(--h70-signal);
+}
+
+/* Depth indicator — communicates this is Layer 1 of more to come */
+.tas-gloss-depth {
+  font-family: var(--h70-mono);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--h70-muted);
+  opacity: 0.42;
+  display: block;
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid color-mix(in oklab, var(--h70-line) 35%, transparent);
+}
+
+
+/* ── Desktop upgrade ──────────────────────────────────────────── */
+/* On fine-pointer devices (desktop/laptop): becomes a
+   positioned floating panel near the tapped term.
+   JS handles absolute positioning via getBoundingClientRect(). */
+
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+
+  .tas-gloss-overlay {
+    display: none !important; /* No scrim on desktop */
+  }
+
+  .tas-gloss-sheet {
+    /* Detach from bottom, JS will position near the term */
+    left: 0;
+    top: 0;
+    bottom: auto;
+    right: auto;
+    max-width: 340px;
+    max-height: 50vh;
+    border-radius: 6px;
+    border: 1px solid color-mix(in oklab, var(--h70-signal) 28%, var(--h70-line));
+    box-shadow:
+      0 20px 70px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 var(--h70-reflection);
+    padding: 0 1.5rem 1.5rem;
+
+    /* Fade instead of slide */
+    transform: translateY(0);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.22s ease,
+      visibility 0s linear 0.22s;
+  }
+
+  .tas-gloss-sheet.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.22s ease;
+  }
+
+  .tas-gloss-handle {
+    display: none;
+  }
+}
+
+
+/* ── Reduced motion ───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .tas-gloss-sheet {
+    transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+    transform: translateY(0);
+  }
+  .tas-gloss-sheet.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .tas-gloss-overlay {
+    transition: opacity 0.15s ease, visibility 0s linear 0.15s;
+  }
+}
