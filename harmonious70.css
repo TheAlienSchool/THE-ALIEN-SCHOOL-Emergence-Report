@@ -271,6 +271,146 @@ VesselVerse Protocol: locate the human coordinate, name the mechanism, deepen th
   .h70-reflect { box-shadow: inset 0 1px 0 var(--h70-reflection); }
 }
 
+/* ── ARCHETYPE TYPOGRAPHIC PERSONALITIES ───────────────────────────────
+   STEAM SANS axis encoding: STBL = groundedness, COHR = crystallinity,
+   DRFT = multi-mode fluidity, PRSS = carried weight.
+   Usage: <span class="h70-archetype archetype--executive">The Executive / Strategist</span>
+*/
+@layer h70.type {
+  .h70-archetype {
+    font-family: var(--h70-font);
+    transition:
+      font-variation-settings 620ms var(--h70-ease),
+      letter-spacing 400ms var(--h70-ease),
+      color 400ms var(--h70-ease),
+      opacity 400ms var(--h70-ease);
+  }
+
+  /* THE EXECUTIVE / STRATEGIST
+     Compressed authority. Maximum coherence. High carried weight.
+     STBL 0: command requires no external ground — it is the ground.
+     COHR 100: sees without fog.
+     DRFT 2: sets direction; does not follow currents.
+     PRSS 62: the weight of consequential decisions. */
+  .archetype--executive {
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 2, 'PRSS' 62;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .archetype--executive:hover {
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 100;
+    color: var(--h70-signal);
+  }
+
+  /* THE CREATIVE DIRECTOR
+     Visionary coherence. Creative ranging within a held direction.
+     STBL 20: enough instability to allow expansive seeing.
+     COHR 88: focused vision — sharp but not compressed.
+     DRFT 18: the creative mind moves between modes.
+     PRSS 34: creative urgency, not organizational weight. */
+  .archetype--creative-director {
+    font-variation-settings: 'STBL' 20, 'COHR' 88, 'DRFT' 18, 'PRSS' 34;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .archetype--creative-director:hover {
+    font-variation-settings: 'STBL' 20, 'COHR' 88, 'DRFT' 28, 'PRSS' 52;
+    color: var(--h70-signal);
+  }
+
+  /* THE CREATIVE PRODUCER
+     Execution. Bridge between vision and form. Kinetic clarity.
+     STBL 46: grounded enough to deliver, not locked down.
+     COHR 82: clear to execute — precision without rigidity.
+     DRFT 12: stays on course; navigates without losing the line.
+     PRSS 48: the delivery weight of making it real. */
+  .archetype--creative-producer {
+    font-variation-settings: 'STBL' 46, 'COHR' 82, 'DRFT' 12, 'PRSS' 48;
+    letter-spacing: .07em;
+    font-weight: 400;
+  }
+  .archetype--creative-producer:hover {
+    font-variation-settings: 'STBL' 56, 'COHR' 86, 'DRFT' 8, 'PRSS' 72;
+    color: var(--h70-signal);
+  }
+
+  /* THE EDUCATOR / COMMUNITY BUILDER
+     Steadiness. Warmth. Minimal pressure — creates ease, not urgency.
+     STBL 82: reliable presence; the learner needs something to lean toward.
+     COHR 76: clear for the learner — warm clarity, not clinical precision.
+     DRFT 22: meets people where they are; gently moves toward them.
+     PRSS 10: the teaching space holds, not pushes. */
+  .archetype--educator {
+    font-variation-settings: 'STBL' 82, 'COHR' 76, 'DRFT' 22, 'PRSS' 10;
+    letter-spacing: .04em;
+    font-weight: 400;
+  }
+  .archetype--educator:hover {
+    font-variation-settings: 'STBL' 94, 'COHR' 80, 'DRFT' 16, 'PRSS' 8;
+    color: var(--h70-signal);
+  }
+
+  /* THE ENTREPRENEUR
+     Momentum. Adaptive. Forward lean. Risk as orientation.
+     STBL 14: willingness to move fast and pivot.
+     COHR 70: focused on the opportunity — clear but adaptive.
+     DRFT 44: fluid between modes; sees multiple angles simultaneously.
+     PRSS 54: the urgency of timing and competitive awareness. */
+  .archetype--entrepreneur {
+    font-variation-settings: 'STBL' 14, 'COHR' 70, 'DRFT' 44, 'PRSS' 54;
+    letter-spacing: .06em;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .archetype--entrepreneur:hover {
+    font-variation-settings: 'STBL' 0, 'COHR' 72, 'DRFT' 60, 'PRSS' 72;
+    color: var(--h70-signal);
+  }
+
+  /* THE ECOSYSTEM BUILDER
+     Connective tissue. Vast. Multiple simultaneous currents.
+     STBL 62: holds steady enough to carry others — not fixed, but present.
+     COHR 54: complexity is real; single focus is not the mechanism here.
+     DRFT 50: navigates many currents; this is the signature capacity.
+     PRSS 12: creates conditions rather than forcing — ease in the structure. */
+  .archetype--ecosystem-builder {
+    font-variation-settings: 'STBL' 62, 'COHR' 54, 'DRFT' 50, 'PRSS' 12;
+    letter-spacing: .12em;
+    font-weight: 300;
+    opacity: .88;
+  }
+  .archetype--ecosystem-builder:hover {
+    font-variation-settings: 'STBL' 62, 'COHR' 54, 'DRFT' 64, 'PRSS' 10;
+    color: var(--h70-signal);
+    opacity: 1;
+  }
+
+  /* THE WELLNESS TEACHER
+     Somatic grounding. Primary source presence. Lightest carried weight.
+     STBL 74: grounded in the body — reliable, present, unforced.
+     COHR 72: clear enough; warmly diffuse rather than clinically sharp.
+     DRFT 28: follows the body's rhythm; gently responsive.
+     PRSS 8: restoration is the architecture; no urgency in the field. */
+  .archetype--wellness-teacher {
+    font-variation-settings: 'STBL' 74, 'COHR' 72, 'DRFT' 28, 'PRSS' 8;
+    letter-spacing: .03em;
+    font-weight: 400;
+  }
+  .archetype--wellness-teacher:hover {
+    font-variation-settings: 'STBL' 88, 'COHR' 72, 'DRFT' 20, 'PRSS' 6;
+    color: var(--h70-signal);
+  }
+
+  /* Responsive: reduce tracking on small screens for wide-tracked archetypes */
+  @media (max-width: 48em) {
+    .archetype--executive        { letter-spacing: .10em; }
+    .archetype--creative-director { letter-spacing: .08em; }
+    .archetype--ecosystem-builder { letter-spacing: .08em; }
+  }
+}
+
 /* ── GATEWAY ATMOSPHERIC MURAL ─────────────────────────────────────────
    Applies to artifact-page gateways (#audio-overlay). The index.html
    gateway defines its own inline ::before/::after which take cascade

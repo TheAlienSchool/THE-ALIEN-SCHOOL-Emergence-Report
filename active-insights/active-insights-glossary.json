@@ -1,8 +1,8 @@
 {
   "meta": {
     "project": "THE ÅLïEN SCõÖL :: Active Insights",
-    "version": "1.0.0",
-    "updated": "2026-05-18",
+    "version": "1.2.0",
+    "updated": "2026-05-19",
     "editorial_law": "Name the mechanism. Keep the magic.",
     "recommended_display": "Plain language first. Symbolic language second.",
     "source_site": "https://scoolreport2026.vercel.app"
@@ -15,8 +15,8 @@
       "category": "front-door",
       "tooltip": "A creative development school for people recovering access to their own creative intelligence.",
       "expanded_title": "THE ALIEN SCHOOL for Creative Thinking",
-      "expanded": "tÅs creates conditions where a person’s original creative intelligence becomes clear enough to hear, trust, and act on. First-time readers should see the plain name before entering the symbolic spelling.",
-      "why_it_matters": "This gives new navigators a simple doorway before they meet the deeper archive language.",
+      "expanded": "tÅs creates conditions where a person's original creative intelligence becomes clear enough to hear, trust, and act on. First-time readers should see the plain name before entering the symbolic spelling.",
+      "why_it_matters": "Every person whose intelligence has made them feel alien has been gathering a particular kind of sight. tÅs is the school built to receive it.",
       "source": "https://scoolreport2026.vercel.app/"
     },
     {
@@ -27,7 +27,7 @@
       "tooltip": "The original creative capacity already present in a person or system.",
       "expanded_title": "Creative Intelligence",
       "expanded": "The archive treats creative intelligence as something recovered, not installed. The guide helps the scholar recognize and act from intelligence already present.",
-      "why_it_matters": "This distinction separates tÅs from instruction, correction, and conventional coaching language.",
+      "why_it_matters": "What is already present is the curriculum. Naming this sends the person in the right direction from the first session.",
       "source": "https://scoolreport2026.vercel.app/artifacts/field-notes.html"
     },
     {
@@ -38,7 +38,7 @@
       "tooltip": "A person who knows they think differently and wants a practical path for that difference.",
       "expanded_title": "Creative Maverick",
       "expanded": "The Creative Maverick is aware of their difference, capacity, and unrealized creative power. They need language, structure, reflection, and practice to move with clarity.",
-      "why_it_matters": "This is the clearest audience door for the public-facing site.",
+      "why_it_matters": "The shape of the Creative Maverick is recognizable to itself the moment it is named. Recognition is the first act of recovery.",
       "source": "https://www.thealienschool.com/"
     },
     {
@@ -49,7 +49,7 @@
       "tooltip": "A person actively learning from their own creative intelligence.",
       "expanded_title": "Scholar",
       "expanded": "Scholar is the tÅs term for the person inside the work. It honors the person as an active learner, not a passive client or student.",
-      "why_it_matters": "It places dignity, agency, and self-study at the center of the experience.",
+      "why_it_matters": "How you are named in a learning environment is how you learn to hold yourself. Scholar is an act of geometry — it changes the posture of the person inside the work.",
       "source": "https://scoolreport2026.vercel.app/artifacts/field-notes.html"
     },
     {
@@ -60,7 +60,7 @@
       "tooltip": "The practitioner who helps the scholar recognize what they already carry.",
       "expanded_title": "Guide Function",
       "expanded": "The guide receives what the scholar offers, locates its highest coordinate, and returns it with precision. The guide reflects; they do not install intelligence.",
-      "why_it_matters": "This protects the work from hierarchy and keeps the scholar’s inner knowing central.",
+      "why_it_matters": "When the guide reflects, the scholar's own geometry becomes visible to them. The mirror is the instrument.",
       "source": "https://scoolreport2026.vercel.app/artifacts/elevation-codex.html"
     },
     {
@@ -71,7 +71,7 @@
       "tooltip": "A practice environment that restores creative capacity after it has been compressed.",
       "expanded_title": "Reflationary Lab",
       "expanded": "A Reflationary Lab restores what systemic pressure, alienation, overwork, or inherited patterns have deflated. It does not install creativity; it helps recover access to creative intelligence that was already present.",
-      "why_it_matters": "This is one of the strongest plain-language bridges between the poetic world of tÅs and its practical outcome.",
+      "why_it_matters": "Compression is the primary injury. When restoration is the architecture rather than addition, what was deflated finds its way back to full dimension — and the person discovers they were whole all along.",
       "source": "https://scoolreport2026.vercel.app/tas-emergence-report.html"
     },
     {
@@ -82,7 +82,7 @@
       "tooltip": "A document or environment designed to be returned to from many angles.",
       "expanded_title": "Reflectionary",
       "expanded": "A Reflectionary is less a linear document than a reflective environment. It invites return, repositioning, and renewed understanding as the reader changes.",
-      "why_it_matters": "This helps navigators understand why the archive may be revisited rather than consumed once.",
+      "why_it_matters": "Some intelligence releases only when returned to from a changed position. A document that can be re-entered is a living form; it matches the living structure of the person reading it.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -93,7 +93,7 @@
       "tooltip": "A developing body of ideas, methods, evidence, and community.",
       "expanded_title": "School of Thought in Formation",
       "expanded": "The report positions tÅs carefully: a School of Thought is recognized over time through lineage, peer engagement, demonstrated influence, and the work others build from it. tÅs is in the formation stage.",
-      "why_it_matters": "This keeps the claim ambitious, honest, and intellectually defensible.",
+      "why_it_matters": "Formation is the honest geometry of something alive — named openly so others can locate themselves inside it. The stage holds space for everyone who arrives in time to contribute.",
       "source": "https://scoolreport2026.vercel.app/tas-emergence-report.html"
     },
     {
@@ -104,7 +104,7 @@
       "tooltip": "The living record of what the work is producing in practice.",
       "expanded_title": "Field Notes",
       "expanded": "The Field Notes hold the practical evidence of the work: scholar arcs, equations, live observations, and the developing record of how the practice behaves across contexts.",
-      "why_it_matters": "This helps the reader see the archive as evidence, not merely atmosphere.",
+      "why_it_matters": "Practice without record disappears. What the work produces in real time — the arc of actual people — is the only proof that holds in the third dimension.",
       "source": "https://scoolreport2026.vercel.app/artifacts/field-notes.html"
     },
     {
@@ -115,7 +115,7 @@
       "tooltip": "Evidence that the work produces observable patterns across real conversations.",
       "expanded_title": "Proof of Field",
       "expanded": "Proof of Field gathers recurring patterns, scholar voices, equations, and repeated threads across sessions and locations to make the work legible as evidence.",
-      "why_it_matters": "It translates lived practice into a body of repeatable observations.",
+      "why_it_matters": "When the same pattern recurs across different people, places, and years, it becomes structural — and structural patterns carry the weight of evidence.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -126,7 +126,7 @@
       "tooltip": "The writing discipline: name the mechanism, keep the magic.",
       "expanded_title": "VesselVerse Editorial Protocol",
       "expanded": "This is the governing editorial law for the tooltip layer. The tooltip should clarify how something works, then allow the symbolic or poetic resonance to remain alive.",
-      "why_it_matters": "It prevents the work from becoming either over-explained or inaccessible.",
+      "why_it_matters": "The right editorial law holds open the space where the reader's own intelligence operates — and that gap is where meeting happens.",
       "source": "https://scoolreport2026.vercel.app/tas-emergence-report.html"
     },
     {
@@ -136,8 +136,8 @@
       "category": "methodology",
       "tooltip": "The practitioner field guide for how tÅs sessions work.",
       "expanded_title": "The Elevation Codex",
-      "expanded": "The Elevation Codex names the core moves of the guide methodology and begins to make the founder’s practice transferable to future guides.",
-      "why_it_matters": "It is the bridge from founder-led practice to reproducible methodology.",
+      "expanded": "The Elevation Codex names the core moves of the guide methodology and begins to make the founder's practice transferable to future guides.",
+      "why_it_matters": "Intuitive practice needs a name to travel. The Codex gives the founder's precision a form the next guide can hold and use.",
       "source": "https://scoolreport2026.vercel.app/artifacts/elevation-codex.html"
     },
     {
@@ -148,7 +148,7 @@
       "tooltip": "Receive what the scholar says, locate the highest truth in it, and return it clearly.",
       "expanded_title": "Elevation Move",
       "expanded": "The guide listens for the highest coordinate inside what the scholar has offered and returns it as present-tense identity or usable knowing.",
-      "why_it_matters": "This is one of tÅs’s strongest methodological contributions: the precision of the elevated return.",
+      "why_it_matters": "What someone says at their highest pitch is the truest signal they carry. Receiving, locating, and returning it with precision changes what they believe is possible for themselves.",
       "source": "https://scoolreport2026.vercel.app/artifacts/elevation-codex.html"
     },
     {
@@ -159,7 +159,7 @@
       "tooltip": "Begin by confirming the scholar already has what the work requires.",
       "expanded_title": "Permission Structure",
       "expanded": "Permission Structure reverses the deficiency frame. The scholar is received as already intelligent, already creative, and ready to recognize what they carry.",
-      "why_it_matters": "This changes the emotional and cognitive conditions of the work from correction to recognition.",
+      "why_it_matters": "The geometry of a human in correction-mode is contracted. The geometry of a human in recognition-mode is open. Beginning with permission restructures the entire space in which transformation can happen.",
       "source": "https://scoolreport2026.vercel.app/artifacts/elevation-codex.html"
     },
     {
@@ -170,7 +170,7 @@
       "tooltip": "A metaphor that helps someone cross a threshold plain language cannot open.",
       "expanded_title": "Metaphor Interrupt",
       "expanded": "The Metaphor Interrupt uses symbolic language as a crossing device. It does not decorate an idea; it helps the scholar reach an understanding otherwise unavailable in flat explanation.",
-      "why_it_matters": "This validates metaphor while requiring it to serve clarity.",
+      "why_it_matters": "Some thresholds require a different language than the one that built them. A metaphor arrives through a door that has been waiting — and crossing it reveals access the person was already carrying. That is architecture.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -181,7 +181,7 @@
       "tooltip": "Anchor an insight in the body so it can return as usable knowing.",
       "expanded_title": "Somatic Tether",
       "expanded": "The Somatic Tether asks every meaningful insight to land somewhere in the body, breath, voice, posture, or felt sense before it leaves the session.",
-      "why_it_matters": "It keeps insight from becoming only conceptual and helps it become repeatable in life.",
+      "why_it_matters": "The body is the most reliable storage medium a person has. When an insight takes up residence there, it travels back into the life — available not just as memory but as direction.",
       "source": "https://scoolreport2026.vercel.app/artifacts/elevation-codex.html"
     },
     {
@@ -192,7 +192,7 @@
       "tooltip": "Use time as an active ingredient in transformation.",
       "expanded_title": "Steeping as Time Design",
       "expanded": "Steeping treats time, temperature, attention, and containment as design variables. Delay may be active development, not avoidance.",
-      "why_it_matters": "This gives practical dignity to patience, incubation, and non-linear creative processing.",
+      "why_it_matters": "When the creative person learns to design with time, the geometry of their process opens entirely — and what felt like waiting reveals itself as development already underway.",
       "source": "https://scoolreport2026.vercel.app/artifacts/field-notes.html"
     },
     {
@@ -203,7 +203,7 @@
       "tooltip": "What looks delayed may be developing below the surface.",
       "expanded_title": "Patience × Procrastination = Steeping",
       "expanded": "This equation reframes certain kinds of delay as an active process where the material is still absorbing, releasing, and becoming ready.",
-      "why_it_matters": "It turns shame around timing into design awareness.",
+      "why_it_matters": "Shame contracts the field available for creative work. A single reframe — delay as development — can reopen what shame had closed. The equation is the key that fits the lock.",
       "source": "https://scoolreport2026.vercel.app/artifacts/field-notes.html"
     },
     {
@@ -214,7 +214,7 @@
       "tooltip": "Reflection needs enough heat, time, and containment to release insight.",
       "expanded_title": "Time at Temperature",
       "expanded": "A tea-like principle for creative development: the material needs contact, warmth, and duration before its full flavor becomes available.",
-      "why_it_matters": "It gives the reader an immediately understandable model for process-based change.",
+      "why_it_matters": "Temperature, duration, and containment are variables the creative person can actually work with. This model converts anxiety about readiness into active stewardship of conditions.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -225,7 +225,7 @@
       "tooltip": "Change becomes visible when you can see its curve.",
       "expanded_title": "The Arc is the Angle of Change",
       "expanded": "This line helps the reader notice change as a trajectory rather than a single event. It asks: what is the curve of the becoming?",
-      "why_it_matters": "It supports pattern recognition across a long archive.",
+      "why_it_matters": "Change in motion is already happening before the person can name it. The arc is the instrument that makes the becoming legible — and what can be seen can be moved with.",
       "source": "https://scoolreport2026.vercel.app/tas-emergence-report.html"
     },
     {
@@ -236,7 +236,7 @@
       "tooltip": "The unique creative signal a person carried before systems named their gaps.",
       "expanded_title": "Original Frequency",
       "expanded": "Original Frequency points to the creative signal that was already present before institutional, cultural, or personal pressure deflated access to it.",
-      "why_it_matters": "It helps the reader understand why tÅs centers recovery rather than improvement.",
+      "why_it_matters": "The original signal was always present. Locating it gives the person the most accurate starting point — and from there, the direction of work becomes precise.",
       "source": "https://scoolreport2026.vercel.app/artifacts/frequency-report.html"
     },
     {
@@ -247,7 +247,7 @@
       "tooltip": "Someone certain of their capacity but stuck at the edge of how to move.",
       "expanded_title": "Edge-Point Scholar",
       "expanded": "The Edge-Point Scholar has reached the limits of familiar systems. Their capacity is often clear to them; the challenge is finding the architecture that lets it move.",
-      "why_it_matters": "This helps distinguish the audience from beginners seeking generic creative advice.",
+      "why_it_matters": "The edge-point person has already done the work of becoming. The question is the architecture of movement — what structure can receive this capacity and let it travel.",
       "source": "https://scoolreport2026.vercel.app/artifacts/frequency-report.html"
     },
     {
@@ -258,7 +258,7 @@
       "tooltip": "A personalized doorway into the deeper tÅs experience.",
       "expanded_title": "MaGNET",
       "expanded": "The archive frames each MaGNET as a door. Each door opens inward and gives the scholar a different theater of self-recognition.",
-      "why_it_matters": "This needs a tooltip because the phrase is evocative before it is self-explanatory.",
+      "why_it_matters": "Entry point matters. A door that speaks your frequency orients the entire experience around the shape of the person arriving — the architecture becomes personal from the first step.",
       "source": "https://scoolreport2026.vercel.app/"
     },
     {
@@ -269,7 +269,7 @@
       "tooltip": "The ability to perceive what a situation actually holds.",
       "expanded_title": "Creative Awareness",
       "expanded": "Creative Awareness is the capacity to perceive potential, patterns, resources, and constraints a situation contains, including what conventional mental models may filter out.",
-      "why_it_matters": "This makes creativity useful beyond art spaces and job functions.",
+      "why_it_matters": "Perception is the first act of creation. Creative Awareness converts raw experience into actionable intelligence — from there, the next move becomes clear.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-one-integrating-creative-thinking.html"
     },
     {
@@ -280,7 +280,7 @@
       "tooltip": "Acting from what creative awareness makes visible.",
       "expanded_title": "Creative Responsibility",
       "expanded": "Creative Responsibility is the choice to act from perception: to offer what you see, even when your role or system has not formally named that contribution.",
-      "why_it_matters": "It converts perception into participation.",
+      "why_it_matters": "Creative Responsibility names the passage from perception to contribution — closing that distance is where the person becomes whole in action.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-one-integrating-creative-thinking.html"
     },
     {
@@ -291,7 +291,7 @@
       "tooltip": "Creativity belongs to the whole system, not one department.",
       "expanded_title": "Creative Intelligence as a System Property",
       "expanded": "The organizational reports argue that systems lose capacity when creativity is treated as a role, department, or special event rather than a resource distributed across the whole system.",
-      "why_it_matters": "This frames tÅs as useful for organizations, not only individuals.",
+      "why_it_matters": "When creativity becomes a system property — distributed across the whole — the structure gains access to intelligence it already held in full.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-one-integrating-creative-thinking.html"
     },
     {
@@ -302,7 +302,7 @@
       "tooltip": "The limit reached when people change but the system remains the same.",
       "expanded_title": "Workshop Ceiling",
       "expanded": "The workshop ceiling appears when an intervention energizes people temporarily, then returns them to unchanged meetings, incentives, approval processes, and assumptions.",
-      "why_it_matters": "It helps partners understand why tÅs needs rhythm, structure, and continued practice.",
+      "why_it_matters": "The ceiling is real. Naming it is the act of intelligence that opens the design space beyond it — systems that see the ceiling can architect for what comes after the intervention ends.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-one-integrating-creative-thinking.html"
     },
     {
@@ -313,7 +313,7 @@
       "tooltip": "Recurring patterns that appear across scholars, sessions, geographies, and years.",
       "expanded_title": "Phi-Level Threads",
       "expanded": "Phi-Level Threads are recurring patterns that show the work behaving consistently across different people, places, and contexts.",
-      "why_it_matters": "They help turn lived observations into a body of evidence.",
+      "why_it_matters": "Pattern across people and places is the signature of something structural — and structural patterns carry the weight of evidence.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -323,8 +323,8 @@
       "category": "proof",
       "tooltip": "Feeling outside the dominant frame can be a form of perception.",
       "expanded_title": "Alienation as Creative Intelligence",
-      "expanded": "Alienation can reveal the distance between a person’s original perception and the system they are inside. tÅs treats that distance as information, not as failure.",
-      "why_it_matters": "This is one of the clearest emotional entry points for Creative Mavericks.",
+      "expanded": "Alienation can reveal the distance between a person's original perception and the system they are inside. tÅs treats that distance as information, not as failure.",
+      "why_it_matters": "The gathering was already happening. The question is whether it can be named as a capacity — and the naming is what changes its relationship to the person carrying it.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -335,7 +335,7 @@
       "tooltip": "Energy behaves like a creative account: deposits matter.",
       "expanded_title": "Economy of Energy",
       "expanded": "Rest, reflection, nourishment, and spaciousness are treated as deposits into the creative account rather than interruptions to productivity.",
-      "why_it_matters": "This gives practical language to burnout recovery and sustainable creative practice.",
+      "why_it_matters": "Awareness of the account changes every decision inside it. The person who designs their outputs — rest as deposit, action as draw — sustains the work across seasons.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -346,7 +346,7 @@
       "tooltip": "Sharing the work allows the work to move faster.",
       "expanded_title": "Openness as Creative Velocity",
       "expanded": "The archive observes that the work moves more swiftly when it is shared, received, challenged, and extended through relationship.",
-      "why_it_matters": "It supports the partnership and community-building dimension of the school.",
+      "why_it_matters": "Offered into relationship, creative intelligence accelerates, compounds, and returns in forms available only through exchange. The circuit requires another conductor.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -357,7 +357,7 @@
       "tooltip": "Individual creative clarity changes the relationships around it.",
       "expanded_title": "Generational Healing as North Star",
       "expanded": "The work develops individual creative intelligence, and the effects travel outward into family, leadership, collaboration, and community relationships.",
-      "why_it_matters": "This connects inner clarity to social consequence.",
+      "why_it_matters": "A person who has recovered access to their own intelligence changes what is possible in the relationships around them. The geometry of that change travels — through family, community, and time.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -365,10 +365,10 @@
       "term": "Place as Active Collaborator",
       "aliases": ["place", "active collaborator"],
       "category": "proof",
-      "tooltip": "Location is not a backdrop; it participates in the work.",
+      "tooltip": "Location is an active participant — it shapes what the work can reveal, hold, and transmit.",
       "expanded_title": "Place as Active Collaborator",
       "expanded": "Certain locations in the archive are treated as active variables that shape what the work can reveal, hold, and transmit.",
-      "why_it_matters": "This supports retreats, gatherings, installations, and location-based experiences.",
+      "why_it_matters": "Some capacities open only in particular conditions of geography, density, stillness, or wildness. The place is already part of the method.",
       "source": "https://scoolreport2026.vercel.app/artifacts/proof-of-field.html"
     },
     {
@@ -379,7 +379,7 @@
       "tooltip": "What feels like waiting may be the process producing flavor.",
       "expanded_title": "The Steeping Cup",
       "expanded": "The Steeping Cup turns slowness into an active process: attention, temperature, vessel, and time work together to release what was held inside the material.",
-      "why_it_matters": "This metaphor is immediately accessible and should be used early.",
+      "why_it_matters": "The flavor already lives inside the material; the cup and the time release it. Every person who has ever steeped tea already carries this model in their body.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -390,7 +390,7 @@
       "tooltip": "You can see from many positions before choosing one.",
       "expanded_title": "The Mirror Ball",
       "expanded": "The Mirror Ball gives the reader permission to hold multiple angles, reflections, and truths without collapsing too quickly into one answer.",
-      "why_it_matters": "It supports the 360-degree reflective nature of the work.",
+      "why_it_matters": "The Mirror Ball grants permission to hold multiple positions long enough for the most accurate one to become visible. What resolves under that permission is more precise than what is forced by urgency.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -398,10 +398,10 @@
       "term": "Origami",
       "aliases": ["origami"],
       "category": "metaphor",
-      "tooltip": "Every life fold adds new capacity; it does not erase the previous form.",
+      "tooltip": "Every life fold adds new capacity; the previous form remains in the structure.",
       "expanded_title": "Origami",
       "expanded": "Origami reframes a life or career not as a straight line but as a sequence of folds that create new structure and dimensionality.",
-      "why_it_matters": "It helps readers with non-linear biographies feel seen rather than disqualified.",
+      "why_it_matters": "A life that has been folded many times functions as a structure with more surface area. The fold is the feature.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -412,7 +412,7 @@
       "tooltip": "An ending can be completed with the same care as a beginning.",
       "expanded_title": "The Sand Mandala",
       "expanded": "The Sand Mandala helps readers understand completion, release, and transition as acts of care rather than loss alone.",
-      "why_it_matters": "It is useful near closures, endings, grief, and transitions.",
+      "why_it_matters": "Every act of release is an act of creation. The Sand Mandala names what is available in the ending — and what becomes possible in what follows.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -423,7 +423,7 @@
       "tooltip": "Skillful waiting is part of the action.",
       "expanded_title": "The Archer",
       "expanded": "The Archer frames restraint, breath, timing, and readiness as active parts of the shot, not delays before it.",
-      "why_it_matters": "It supports strategic patience and precise action.",
+      "why_it_matters": "The body in stillness, holding the tension of the drawn bow, is accomplishing the most important part of the shot. The Archer reframes all strategic waiting as active preparation.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -433,8 +433,8 @@
       "category": "metaphor",
       "tooltip": "The container shaped the form; the organism may still hold more.",
       "expanded_title": "Bonsai",
-      "expanded": "Bonsai helps describe capacity shaped by constraint: roles, systems, expectations, and containers that trained a particular form without exhausting the organism’s possibility.",
-      "why_it_matters": "It is useful for career, business, and organizational transition.",
+      "expanded": "Bonsai helps describe capacity shaped by constraint: roles, systems, expectations, and containers that trained a particular form without exhausting the organism's possibility.",
+      "why_it_matters": "Seeing the difference between the container and the organism is the beginning of the transition. What was shaped by constraint carries capacity the constraint never exhausted.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -445,7 +445,7 @@
       "tooltip": "What looks unfinished from outside may be the painting still in process.",
       "expanded_title": "The Canvas of Life",
       "expanded": "This metaphor helps a reader see their life as an evolving composition rather than an incomplete product awaiting outside approval.",
-      "why_it_matters": "It supports self-trust during unfinished stages.",
+      "why_it_matters": "The person who knows their life functions as a live composition can work from exactly where they are — the present position holds everything the work needs.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -456,7 +456,7 @@
       "tooltip": "A story can be released by offering it forward.",
       "expanded_title": "The Ocean of Thought",
       "expanded": "The Ocean of Thought gives the reader a spacious way to release old narratives without violence toward the self that carried them.",
-      "why_it_matters": "It helps with emotional release and narrative transition.",
+      "why_it_matters": "The Ocean is the context large enough to receive what the person has been carrying. Offering the story forward is the act that releases it — and the release makes room for what is ready to arrive.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -467,7 +467,7 @@
       "tooltip": "This moment is already the practice.",
       "expanded_title": "Life as Dojo",
       "expanded": "Life as Dojo converts ordinary friction into training ground. The practice is not separate from life; life is where the practice becomes real.",
-      "why_it_matters": "It extends tÅs beyond sessions into daily living.",
+      "why_it_matters": "Life as Dojo closes the gap between where the work happens and where the person actually lives. Every moment of friction becomes training ground — the session and the life are the same field.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -478,7 +478,7 @@
       "tooltip": "Fear and creative intelligence can both be present; attention feeds one.",
       "expanded_title": "The Dual Vortex",
       "expanded": "The Dual Vortex helps the reader notice how attention can feed either fear-based contraction or creative expansion.",
-      "why_it_matters": "It makes the dynamics of inner focus actionable.",
+      "why_it_matters": "Attention is the only resource that can be placed with intention in real time. Knowing which vortex is active — and that placement is a choice — changes what becomes possible in any given moment.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -489,7 +489,7 @@
       "tooltip": "When all the pieces are seen together, the pattern becomes visible.",
       "expanded_title": "Mapping Your Mosaic",
       "expanded": "Mapping Your Mosaic helps readers see fragmented experiences as parts of an intelligible pattern rather than unrelated episodes.",
-      "why_it_matters": "It supports identity integration and biographical clarity.",
+      "why_it_matters": "Fragmented experience becomes an identity when it is seen as pattern. The Mosaic map gives the person a view of the whole — and the whole names something the fragments, taken alone, leave unnamed.",
       "source": "https://scoolreport2026.vercel.app/artifacts/metaphor-library.html"
     },
     {
@@ -499,8 +499,8 @@
       "category": "symbol",
       "tooltip": "A symbolic A used by the school to mark awareness, attunement, and acceptance.",
       "expanded_title": "Å Symbol",
-      "expanded": "Å is part of the school’s symbolic typography. It should follow a plain-language introduction so the symbol becomes a beacon rather than a barrier.",
-      "why_it_matters": "The symbolic layer is meaningful, but new readers need permission and orientation before entering it.",
+      "expanded": "Å is part of the school's symbolic typography. It should follow a plain-language introduction so the symbol becomes a beacon rather than a barrier.",
+      "why_it_matters": "Å is a marker of attunement — offered when the person knows they are at the threshold, it opens into depth. Symbols work when they arrive after the grounding is already in place.",
       "source": "https://scoolreport2026.vercel.app/"
     },
     {
@@ -508,10 +508,10 @@
       "term": "ï",
       "aliases": ["ï"],
       "category": "symbol",
-      "tooltip": "A symbolic mark used in the school’s inner language for integration and inner meeting.",
+      "tooltip": "A symbolic mark used in the school's inner language for integration and inner meeting.",
       "expanded_title": "ï Symbol",
       "expanded": "This symbol belongs in the optional Symbol Guide rather than the first-read path. It becomes useful after the reader understands the plain offer.",
-      "why_it_matters": "This protects first-time navigators from decoding pressure.",
+      "why_it_matters": "Decoding pressure converts inner space into a task. The ï is a doorway for those already inside the work — held for the moment when it can arrive as depth.",
       "source": "https://scoolreport2026.vercel.app/"
     },
     {
@@ -519,10 +519,10 @@
       "term": "õÖ",
       "aliases": ["õÖ", "SCõÖL", "SCöÕL"],
       "category": "symbol",
-      "tooltip": "A symbolic pairing in the school’s visual language.",
+      "tooltip": "A symbolic pairing in the school's visual language.",
       "expanded_title": "õÖ Symbol Pairing",
       "expanded": "This mark is part of the internal symbolic language. Present it as optional depth, not required comprehension.",
-      "why_it_matters": "The symbol becomes invitational when the reader knows they can keep reading without mastering it immediately.",
+      "why_it_matters": "The symbolic layer only carries meaning for the person who is ready to carry it. Optional depth respects the intelligence of the reader to determine their own threshold.",
       "source": "https://scoolreport2026.vercel.app/"
     },
     {
@@ -532,8 +532,8 @@
       "category": "navigation",
       "tooltip": "A quick orientation for first-time readers.",
       "expanded_title": "New Here? Start Simple.",
-      "expanded": "THE ALIEN SCHOOL helps Creative Mavericks recover access to their own creative intelligence. The deeper archive uses symbolic language, metaphors, and field reports; the core offer is guided creative development for people and systems ready to move with clarity.",
-      "why_it_matters": "This button should sit near the top of the archive and reduce reader disorientation immediately.",
+      "expanded": "THE ALIEN SCHOOL creates the conditions for a person's original creative intelligence to become legible enough to hear, trust, and act on.\n\nIf you sense that you carry more than you have yet found the architecture to move — that you think differently, see things others miss, or feel the pressure of capacity waiting for its right structure — this school was built for that experience.\n\nThe work is guided recovery. Through reflection, creative practice, language, and structured inner work, we help people hear themselves clearly, trust what they know, and turn that clarity into action.\n\nThe archive uses symbolic language, metaphors, and field reports drawn from real sessions. Start with what is plain. The symbol is always optional depth.",
+      "why_it_matters": "Orientation functions as the first act of the work. Arriving in a space that receives you clearly is the first experience of what the school offers.",
       "source": "https://scoolreport2026.vercel.app/"
     },
     {
@@ -544,7 +544,7 @@
       "tooltip": "What is the cost, to the system's outcomes, of the creative intelligence currently going unused?",
       "expanded_title": "The Unused Capacity Question",
       "expanded": "This provocation reframes creative development as an organizational resource question, not a personal development question. The cost of unused capacity is real and measurable in decisions not made, problems not solved, and people not fully present.",
-      "why_it_matters": "It moves the conversation from individual enrichment to systemic value — the entry point for organizational partners.",
+      "why_it_matters": "What remains ungiven has a cost that is real and measurable. The Unused Capacity Question invites the system to see what it already holds in reserve — and to consider what movement from that reserve would make possible.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-one-integrating-creative-thinking.html"
     },
     {
@@ -555,7 +555,7 @@
       "tooltip": "What daily practice could your system adopt — not as a program, but as a rhythm — that maintains creative thinking between formal interventions?",
       "expanded_title": "The Daily Rhythm Question",
       "expanded": "The Daily Rhythm Question argues that creative thinking cannot be installed at a retreat and maintained without structure. The question invites systems leaders to consider what recurring, lightweight practices could keep the capacity active and available.",
-      "why_it_matters": "This is the practical call-to-action inside the observational SCEU field reports.",
+      "why_it_matters": "Daily rhythm is the architecture that makes capacity structural — available between interventions, as a living condition of the system. The question invites leaders to build the condition and let it live there.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-two-illuminating-creative-thinking.html"
     }
   ]

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Illuminating The Dynamics of Creative Thinking — tÅs Field Report</title>
+<link rel="stylesheet" href="harmonious70.css">
+<link rel="stylesheet" href="/active-insights/tas-tooltips.css">
+<script src="tas-transitions.js" defer></script>
+<style>
+  :root {
+    --bg:        var(--h70-bg);
+    --ink:       var(--h70-ink);
+    --deep:      var(--h70-ink);
+    --muted:     var(--h70-muted);
+    --border:    var(--h70-line);
+    --border-lt: var(--h70-line);
+    --warm:      var(--h70-surface);
+    --gold:      var(--h70-signal);
+    --gold-pale: color-mix(in oklab, var(--h70-signal) 12%, var(--h70-surface));
+    --teal:      var(--h70-signal);
+    --teal-pale: var(--h70-surface);
+    --indigo:    var(--h70-indigo);
+    --indigo-lt: color-mix(in oklab, var(--h70-indigo) 40%, var(--h70-surface));
+    --coral:     var(--h70-signal);
+    --rule:      var(--h70-line);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--h70-font);
+    font-size: 18px;
+    line-height: 1.78;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 800px; margin: 0 auto; padding: 0 2.25rem 8rem; position: relative; z-index: 1; }
+
+  /* ── COVER ── */
+  .cover {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .cover-meta {
+    font-family: var(--h70-mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    line-height: 2.2;
+    margin-bottom: 2.5rem;
+  }
+
+  .cover-series {
+    font-family: var(--h70-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--indigo);
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.06;
+    color: var(--deep);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--gold);
+    display: block;
+  }
+
+  .cover-sub {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.68;
+    margin-top: 1.25rem;
+  }
+
+  .cover-rule {
+    display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0;
+  }
+
+  .cover-rule-line { flex: 1; height: 0.5px; background: var(--rule); }
+  .cover-rule-glyph { font-family: var(--h70-mono); font-size: 10px; color: var(--gold); opacity: 0.6; }
+
+  /* ── SECTION ── */
+  .section { padding: 5rem 0 0; }
+
+  .section-header {
+    display: grid; grid-template-columns: 48px 1fr; gap: 0 1.5rem;
+    margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-num {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.2em; color: var(--muted); padding-top: 0.5rem;
+  }
+
+  h2 {
+    font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+    font-weight: 300; font-style: italic; color: var(--deep); line-height: 1.2;
+  }
+
+  h2 em { font-style: normal; font-weight: 500; color: var(--gold); }
+
+  /* ── PROSE ── */
+  .prose { max-width: 660px; }
+  .prose p { font-size: 18px; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose em { font-style: italic; color: var(--gold); }
+  .prose strong { font-weight: 500; color: var(--deep); }
+
+  /* ── LOCATE ── */
+  .locate {
+    border-left: 2px solid var(--border); padding: 1rem 1.4rem;
+    margin-bottom: 2rem; border-radius: 0 3px 3px 0; background: var(--warm);
+  }
+
+  .locate-label {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.16em; color: var(--muted); margin-bottom: 0.45rem; display: block;
+  }
+
+  .locate p { font-size: 17px; font-style: italic; color: var(--deep); line-height: 1.7; }
+
+  /* ── COUPLET ── */
+  .couplet {
+    border-left: 2px solid var(--gold); padding: 1.1rem 1.4rem;
+    margin: 2.5rem 0; background: var(--gold-pale); border-radius: 0 3px 3px 0;
+  }
+
+  .couplet-l1 {
+    font-family: var(--h70-mono); font-size: 10px;
+    letter-spacing: 0.12em; color: var(--gold); opacity: 0.7; margin-bottom: 0.35rem; line-height: 1.5;
+  }
+
+  .couplet-l2 { font-size: 18px; font-style: italic; color: var(--deep); line-height: 1.6; }
+
+  /* ── ANCHOR ── */
+  .anchor {
+    font-family: var(--h70-mono); font-size: 12px; color: var(--muted);
+    border-left: 2px solid var(--border); padding-left: 1rem;
+    margin: 1.25rem 0; line-height: 1.65; letter-spacing: 0.02em;
+  }
+
+  /* ── DYNAMIC CARDS — the creative dynamics, visually distinct ── */
+  .dynamic {
+    border: 0.5px solid var(--border); border-radius: 4px;
+    overflow: hidden; margin: 2.5rem 0;
+  }
+
+  .dynamic-top {
+    background: var(--warm); padding: 0.9rem 1.4rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap;
+  }
+
+  .dynamic-num {
+    font-family: var(--h70-mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.12em;
+  }
+
+  .dynamic-name {
+    font-size: 16px; font-weight: 500; font-style: italic;
+    color: var(--deep); line-height: 1.2;
+  }
+
+  .dynamic-name em { font-style: normal; color: var(--gold); }
+
+  .dynamic-body { padding: 1.25rem 1.4rem; background: var(--bg); }
+
+  .dynamic-body p {
+    font-size: 16px; line-height: 1.75; color: var(--ink); margin-bottom: 0.9rem;
+  }
+
+  .dynamic-body p:last-child { margin-bottom: 0; }
+  .dynamic-body em { font-style: italic; color: var(--gold); }
+
+  .dynamic-evidence {
+    background: var(--warm); border-top: 0.5px solid var(--border-lt);
+    padding: 0.9rem 1.4rem;
+  }
+
+  .dynamic-ev-label {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.14em; color: var(--muted); margin-bottom: 0.5rem; display: block;
+  }
+
+  .dynamic-ev-item {
+    font-size: 14px; font-style: italic; color: var(--deep);
+    line-height: 1.6; padding: 0.35rem 0;
+    border-top: 0.5px solid var(--border-lt);
+    display: grid; grid-template-columns: 1fr auto; gap: 0.75rem; align-items: baseline;
+  }
+
+  .dynamic-ev-item:first-of-type { border-top: none; }
+
+  .dynamic-ev-who {
+    font-family: var(--h70-mono); font-size: 10px;
+    color: var(--muted); white-space: nowrap; font-style: normal;
+  }
+
+  /* ── THINKER BLOCK ── */
+  .thinker {
+    border-left: 3px solid var(--teal); padding: 1.1rem 1.4rem;
+    background: var(--teal-pale); border-radius: 0 4px 4px 0; margin: 1.75rem 0;
+  }
+
+  .thinker-label {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.16em; color: var(--teal); opacity: 0.8; margin-bottom: 0.5rem; display: block;
+  }
+
+  .thinker-name { font-size: 15px; font-weight: 500; color: var(--deep); margin-bottom: 0.4rem; }
+
+  .thinker-body { font-size: 15px; color: var(--ink); line-height: 1.7; }
+  .thinker-body em { font-style: italic; color: var(--teal); }
+
+  .thinker-cite {
+    font-family: var(--h70-mono); font-size: 10px;
+    color: var(--muted); margin-top: 0.6rem; display: block; letter-spacing: 0.03em;
+  }
+
+  /* ── EQUATION ROW ── */
+  .eq-set { margin: 2rem 0; border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden; }
+
+  .eq-row {
+    padding: 0.9rem 1.25rem; border-top: 0.5px solid var(--border);
+    display: grid; grid-template-columns: minmax(220px, auto) 1fr; gap: 1rem; align-items: baseline;
+  }
+
+  .eq-row:first-child { border-top: none; }
+
+  .eq-formula {
+    font-family: var(--h70-mono); font-size: 13px;
+    font-weight: 500; color: var(--teal); letter-spacing: 0.03em;
+  }
+
+  .eq-note { font-size: 14px; color: var(--muted); font-style: italic; line-height: 1.55; }
+
+  /* ── ADVOCACY BLOCK ── */
+  .advocacy {
+    background: var(--h70-bg-alt);
+    color: var(--ink);
+    padding: 2.5rem; border-radius: 4px; margin: 3rem 0;
+    border: 0.5px solid var(--border);
+  }
+
+  .advocacy-label {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.22em; color: var(--muted); margin-bottom: 1.5rem; display: block;
+  }
+
+  .advocacy p {
+    font-size: 17px; line-height: 1.78; color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .advocacy p:last-child { margin-bottom: 0; }
+  .advocacy em { font-style: italic; color: var(--gold); }
+  .advocacy strong { font-weight: 500; color: var(--ink); }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    padding: 4rem 0; text-align: center;
+    border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); margin: 4rem 0;
+  }
+
+  .pullquote p {
+    font-size: clamp(1.2rem, 2.6vw, 1.7rem); font-style: italic; font-weight: 300;
+    line-height: 1.55; color: var(--deep); max-width: 560px; margin: 0 auto;
+  }
+
+  .pullquote p em { font-style: normal; font-weight: 500; color: var(--gold); }
+
+  .pullquote-attr {
+    font-family: var(--h70-mono); font-size: 10px;
+    letter-spacing: 0.16em; color: var(--muted); margin-top: 1.25rem; display: block;
+  }
+
+  /* ── RESOURCES ── */
+  .resources {
+    background: var(--h70-bg-alt);
+    color: var(--ink);
+    padding: 3rem; border-radius: 4px; margin: 4rem 0;
+    border: 0.5px solid var(--border);
+  }
+
+  .resources-label {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.22em; color: var(--muted); margin-bottom: 1.75rem; display: block;
+  }
+
+  .resource-item {
+    padding: 1rem 0; border-top: 0.5px solid var(--border);
+    display: grid; grid-template-columns: 1fr; gap: 0.3rem;
+  }
+
+  .resource-item:first-of-type { border-top: none; padding-top: 0; }
+
+  .resource-title { font-size: 15px; font-weight: 500; font-style: italic; color: var(--ink); line-height: 1.4; }
+
+  .resource-author {
+    font-family: var(--h70-mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.04em;
+  }
+
+  .resource-note { font-size: 14px; color: var(--muted); line-height: 1.6; font-style: italic; margin-top: 0.2rem; }
+
+  /* ── DIVIDER ── */
+  .divider { display: flex; align-items: center; gap: 1rem; margin: 4rem 0; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--border); }
+  .divider-mark { font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--muted); white-space: nowrap; }
+
+  /* ── CLOSING ── */
+  .closing { padding: 4rem 0 3rem; border-top: 0.5px solid var(--border); text-align: center; }
+
+  .closing p { font-size: 16px; color: var(--muted); font-style: italic; max-width: 460px; margin: 0 auto 1rem; line-height: 1.72; }
+
+  .closing-sig {
+    font-family: var(--h70-mono); font-size: 9px;
+    letter-spacing: 0.2em; color: var(--muted); margin-top: 2.5rem;
+    display: block; line-height: 2.3; opacity: 0.55;
+  }
+
+  @media (max-width: 560px) {
+    .dynamic-ev-item, .eq-row { grid-template-columns: 1fr; }
+    .resources, .advocacy { padding: 2rem 1.5rem; }
+    body { font-size: 17px; }
+  }
+
+  @media print {
+    .section, .dynamic { break-inside: avoid; }
+  }
+</style>
+</head>
+<body data-h70-scene="night">
+
+<a href="#page-main" class="skip-link">Skip to content</a>
+<!-- HÅRMONIOUS70 GLOBAL NAVIGATION -->
+<nav aria-label="Primary navigation" id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.25rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--h70-bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
+  <a href="index.html" style="font-family: var(--h70-mono); font-size: clamp(0.75rem, 1.5vw, 0.9rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem; letter-spacing: 0.12em;" class="steam-sans--vapor sonic-link">
+    <span>THE ÅLïEN SCõÖL</span>
+    <span style="color: var(--h70-signal);">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--h70-muted); align-items: center;">
+    <a href="index.html" class="sonic-link" style="color: inherit; text-decoration: none; opacity: 0.7;">← SYNTHESIS</a>
+    <span style="opacity: 0.35; border-left: 1px solid var(--h70-line); padding-left: 1.5vw;">SCEU · FIELD REPORT 02</span>
+  </div>
+</nav>
+
+<style>
+  body { padding-top: 80px; }
+  #h70-global-nav { transform: translateY(0); }
+  #h70-global-nav.nav-hidden { transform: translateY(-100%); }
+  @media (max-width: 600px) { #h70-global-nav { padding: 1rem; } }
+</style>
+
+<script>
+  let _lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('h70-global-nav');
+    if (window.scrollY > _lastY && window.scrollY > 80) { nav.classList.add('nav-hidden'); }
+    else { nav.classList.remove('nav-hidden'); }
+    _lastY = window.scrollY;
+  });
+</script>
+<style>
+  .skip-link { position: absolute; top: -48px; left: 0; background: var(--h70-signal); color: var(--h70-bg); padding: 0.5rem 1.25rem; font-family: var(--h70-mono); font-size: 0.694rem; letter-spacing: 0.12em; text-decoration: none; z-index: 10000; border-radius: 0 0 4px 0; transition: top 0.2s; }
+  .skip-link:focus { top: 0 !important; }
+  :focus-visible { outline: 2px solid var(--h70-signal); outline-offset: 3px; border-radius: 2px; }
+  /* STEAM SANS variable font activation */
+  p, li, td, blockquote,
+  .prose p, .locate p, .couplet-l2, .thinker-body p,
+  .pullquote p, .evidence-body p, .advocacy p,
+  .closing p, .resources p, .prop-body {
+    font-family: var(--h70-font);
+    font-variation-settings: 'STBL' 50, 'COHR' 84, 'DRFT' 13, 'PRSS' 20;
+    animation: h70-hba-breathe var(--h70-breath-cycle) var(--h70-ease) infinite;
+  }
+  .cover-meta, .section-num, .locate-label, .couplet-l1, .anchor,
+  .thinker-label, .thinker-cite, .evidence-label, .evidence-who,
+  .pullquote-attr, .closing-sig, .divider-mark, .resources-label,
+  .resource-author, .prop-num, .cover-rule-glyph,
+  .dynamic-num, .dynamic-ev-label, .dynamic-ev-who,
+  .eq-formula, .advocacy-label {
+    font-family: var(--h70-mono);
+    font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24;
+  }
+  a:hover, a:focus-visible {
+    font-variation-settings: 'STBL' 100, 'COHR' 48, 'DRFT' 34, 'PRSS' 12;
+    filter: blur(.12px);
+  }
+</style>
+
+
+<div class="page" id="page-main" role="main" data-tas-auto-annotate>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-meta">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING · SYSTEMS CHANGE EDUCATORS UNITE<br>
+      FIELD REPORT TWO OF TWO · PRESENTATION PRIMER · 2026
+    </div>
+    <span class="cover-series">EMERGENT FROM tÅs FIELD NOTES — INAUGURAL EDITION</span>
+    <h1 class="steam-sans--hba">
+      Illuminating the Dynamics<br>
+      <strong>of Creative Thinking</strong>
+    </h1>
+    <p class="cover-sub">A session on seeing creativity in action through systems :: and advocating for Creative Thinking as a daily practice :: a living rhythm available to every encounter.</p>
+    <div class="cover-rule">
+      <div class="cover-rule-line"></div>
+      <span class="cover-rule-glyph">◈</span>
+      <div class="cover-rule-line"></div>
+    </div>
+    <div style="font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); line-height: 2;">
+      KAMAU ZUBERI AKABUEZE · KzA<br>
+      BUILT THROUGH THE VESSELVERSE EDITORIAL PROTOCOL · PRIMER INSTALLED
+    </div>
+  </div>
+
+  <!-- SECTION I: THE OPENING CLAIM -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="steam-sans--hba">The <em>Claim</em> Worth Making</h2>
+    </div>
+
+    <div class="locate">
+      <span class="locate-label">LOCATE · BEFORE THE ARGUMENT</span>
+      <p>Think of a moment when you were solving a problem and a connection arrived that surprised you :: something from an unrelated domain that turned out to be exactly the thing the problem needed. Or a moment when you were doing something you love :: cooking, walking, gardening, listening to music :: and an insight about your work arrived without being asked for. What was happening in those moments was not random. It had a structure. And that structure is available more often than most people's daily conditions allow them to reach.</p>
+    </div>
+
+    <div class="prose">
+      <p>The claim this session makes is specific: Creative Thinking is a dynamic process with observable patterns, and those patterns are more available to more people, more consistently, when the conditions supporting them are understood and deliberately designed for. This is an argument about conditions :: what they support and what they make possible.</p>
+
+      <p>The research literature on creativity is honest about what it does not yet fully know: <em>a comprehensive definition of everyday creativity is still being developed</em>, and the relationship between individual creative behavior and organizational creative outcomes is complex and context-dependent. What the research does confirm is that creative thinking is a quality of cognitive engagement that responds to conditions — adaptive, learnable, and responsive to how those conditions are designed. Organizations and educators who understand this can design those conditions more intentionally.</p>
+
+      <p>The tÅs documented practice adds a specific dimension to this: the conditions most supportive of creative thinking are somatic, relational, and temporal. What happens in the body, in the quality of relationship between people, and in the amount of time given to a problem, shapes the quality of creative thinking available to it more reliably than any technique or tool applied to the thinking itself.</p>
+    </div>
+
+    <div class="couplet">
+      <p class="couplet-l1">The arc is the angle of change.</p>
+      <p class="couplet-l2">"Creative Thinking has dynamics that can be illuminated. When they are seen clearly, they can be designed for. What changes is the system's relationship to a capacity that was already present."</p>
+    </div>
+  </section>
+
+  <!-- SECTION II: FIVE DYNAMICS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="steam-sans--hba">Five <em>Dynamics</em> of Creative Thinking in Action</h2>
+    </div>
+
+    <div class="prose">
+      <p>These five dynamics are observable patterns extracted from the tÅs session archive :: relationships between conditions and the quality of creative thinking they produce. They are named here as dynamics rather than principles because they are active rather than static: each one describes a relationship in motion. Each is sourced from documented engagements.</p>
+    </div>
+
+    <!-- DYNAMIC 01 -->
+    <div class="dynamic">
+      <div class="dynamic-top">
+        <span class="dynamic-num">DYNAMIC 01</span>
+        <div class="dynamic-name">Creative Thinking <em>steeps</em> before it surfaces</div>
+      </div>
+      <div class="dynamic-body">
+        <p>The most generative thinking rarely arrives on demand. It arrives after a period of incubation :: what the tÅs methodology calls steeping :: in which the problem or question has been held with attention but without pressure to resolve. Graham Wallas named this in 1926 as the incubation stage of the creative process; the insight does not arrive during focused work but after a period of diffuse, non-directed engagement.</p>
+        <p>The organizational implication is structural: systems that pressure for immediate resolution consistently produce lower-quality creative thinking than those that build deliberate incubation into their operating rhythm. <em>The meeting that requires a decision before the room has had time to genuinely see the problem is producing lower-quality thinking than its people are capable of.</em> The conditions removed the incubation stage :: the capacity of the people inside them remains intact.</p>
+        <p>The canonical tÅs equation: Patience × Procrastination = Steeping. What looks like resistance to the work is often the work happening below the surface. The educator or leader who can hold that distinction :: between avoidance and steeping :: has access to a fundamentally different quality of facilitation.</p>
+      </div>
+      <div class="dynamic-evidence">
+        <span class="dynamic-ev-label">FROM THE ARCHIVE</span>
+        <div class="dynamic-ev-item">
+          <span><span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span>'s six-month arc, documented in his own Trailing Notes, shows insights arriving between sessions. The sessions created the conditions; the steeping happened in the life between them. "The pregnancy of the pause :: what is it creating?"</span>
+          <span class="dynamic-ev-who">THE WELLNESS TEACHER · DEC 2024–MAY 2025</span>
+        </div>
+        <div class="dynamic-ev-item">
+          <span>The Visual Artist's three years of intentional rest before engaging with tÅs produced what he described as "minimal friction in life due to effective design choices." The rest was the incubation. The clarity was its outcome.</span>
+          <span class="dynamic-ev-who">THE VISUAL DESIGNER · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DYNAMIC 02 -->
+    <div class="dynamic">
+      <div class="dynamic-top">
+        <span class="dynamic-num">DYNAMIC 02</span>
+        <div class="dynamic-name">Creative Thinking <em>travels</em> through the body before the mind</div>
+      </div>
+      <div class="dynamic-body">
+        <p>The insight that arrives as a felt sense :: before it has language :: is the most generative stage of the creative process. The felt sense is the body's early recognition of a pattern that the mind has not yet consciously processed. Systems that train their people to distrust or bypass felt sensing in favor of rapid cognitive analysis consistently lose access to the earliest and most generative stage of creative thinking.</p>
+        <p>This is a functional observation about the timing of insight: the somatic signal precedes the cognitive articulation. The educator or facilitator who creates conditions for people to notice and follow their felt sense :: before they have formulated it into a presentable idea :: is working with the actual dynamic of creative thinking.</p>
+        <p>The tÅs methodology names this the Somatic Tether: the practice of connecting every insight to a physical location or sensation before allowing it to remain only conceptual. An insight with a body address holds :: it returns between meetings as usable knowing.</p>
+      </div>
+      <div class="dynamic-evidence">
+        <span class="dynamic-ev-label">FROM THE ARCHIVE</span>
+        <div class="dynamic-ev-item">
+          <span>The Filmmaker and Writer named the sessions as "spiritual but therapeutic" in week one :: before being told what they were designed to do. Her body recognized the register before her mind had framed it. That recognition is the somatic dynamic in action.</span>
+          <span class="dynamic-ev-who">THE FILMMAKER · JUL 2025</span>
+        </div>
+        <div class="dynamic-ev-item">
+          <span>The Musician and Artist's morning ritual :: lavender, matcha, the warmth of the cup :: became the somatic anchor that carried the session's work into his daily life. The physical practice maintained the quality of thinking between sessions.</span>
+          <span class="dynamic-ev-who">THE MUSICIAN · AUG 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DYNAMIC 03 -->
+    <div class="dynamic">
+      <div class="dynamic-top">
+        <span class="dynamic-num">DYNAMIC 03</span>
+        <div class="dynamic-name">Creative Thinking <em>expands</em> in the presence of recognition</div>
+      </div>
+      <div class="dynamic-body">
+        <p>The quality of creative thinking available to a person in a given context is shaped by whether that context makes their intelligence feel recognized or suspect. It is about whether the environment treats the person's existing intelligence as a contribution worth receiving.</p>
+        <p>The tÅs methodology's Permission Structure names this precisely: before any tool or exercise is introduced, the guide establishes that the scholar's existing intelligence is sufficient. The effect is structural :: it removes the defensive posture that most evaluative environments produce and replaces it with the engaged receptivity that creative thinking requires. Research on intrinsic motivation in creative contexts confirms this: people think more creatively when their intelligence is activated by invitation rather than assessed by evaluation.</p>
+        <p>For systems change educators, the implication is direct: <em>the learning environment's relationship to the learner's existing intelligence is a design variable for creative thinking.</em> Environments that treat learners as deficient produce different thinking than environments that treat learners as already holding the raw material the work requires.</p>
+      </div>
+      <div class="dynamic-evidence">
+        <span class="dynamic-ev-label">FROM THE ARCHIVE</span>
+        <div class="dynamic-ev-item">
+          <span><span class="h70-archetype archetype--creative-director">The Creative Director</span>'s stated outcome: "My confidence in expressing my creative ideas has grown, reinforcing my influence within the team." The sessions shifted his relationship to a capability he already held :: the confidence arrived when the relationship did.</span>
+          <span class="dynamic-ev-who">THE CREATIVE DIRECTOR · JUL 2025</span>
+        </div>
+        <div class="dynamic-ev-item">
+          <span>Sylvia Baffour's external evaluation of the Creative Steeping guidebook named this dynamic in her own language: "what sets you apart does not set you apart from others." The methodology affirms the individual's distinctiveness as the contribution, not the obstacle.</span>
+          <span class="dynamic-ev-who">Sylvia Baffour · External observer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DYNAMIC 04 -->
+    <div class="dynamic">
+      <div class="dynamic-top">
+        <span class="dynamic-num">DYNAMIC 04</span>
+        <div class="dynamic-name">Creative Thinking <em>compounds</em> across difference</div>
+      </div>
+      <div class="dynamic-body">
+        <p>The most generative creative thinking in the tÅs archive emerged from the encounter between genuinely different perspectives, experiences, and ways of knowing :: held in a container that allowed the difference to be productive rather than threatening.</p>
+        <p>UNION :: Unified Non-Identical Intelligences Operating Naturally :: names the structural principle: what becomes possible when genuinely different intelligences meet is different from what either produces alone. The Rock and the Ocean do not blend. They meet at a shoreline, and what forms there belongs to neither. This is the dynamic adrienne maree brown describes through biomimicry: the most resilient systems distribute their intelligence across genuine diversity rather than concentrating it in homogeneity.</p>
+        <p>For the systems change educator, this is both a pedagogical principle and an organizational one: <em>creative thinking compounds across genuine difference when the container for that difference is well-designed.</em> The well-designed container holds the difference long enough for the productive encounter to occur.</p>
+      </div>
+      <div class="dynamic-evidence">
+        <span class="dynamic-ev-label">FROM THE ARCHIVE</span>
+        <div class="dynamic-ev-item">
+          <span>The Africa thread across the documented period demonstrates this dynamic at geographic scale: five distinct African and diaspora conversations, each arriving from a different context, each finding resonance with the same methodology. The methodology itself compounded through encounter with genuinely different cultural intelligences.</span>
+          <span class="dynamic-ev-who">KAELO · <span class="h70-archetype archetype--educator">THE EDUCATOR / COMMUNITY BUILDER</span>, <span class="h70-archetype archetype--entrepreneur">THE ENTREPRENEUR</span>, <span class="h70-archetype archetype--creative-producer">THE CREATIVE PRODUCER</span>, <span class="h70-archetype archetype--ecosystem-builder">THE ECOSYSTEM BUILDER</span> · 2025–2026</span>
+        </div>
+        <div class="dynamic-ev-item">
+          <span>The Bombay Beach Biennale installation :: SCAR Wash merged with Catarina's Thread of Life into Birth, Life, and Becoming :: produced a work neither could have made alone. UNION in documented practice.</span>
+          <span class="dynamic-ev-who">KzA / Catarina · 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DYNAMIC 05 -->
+    <div class="dynamic">
+      <div class="dynamic-top">
+        <span class="dynamic-num">DYNAMIC 05</span>
+        <div class="dynamic-name">Creative Thinking <em>stabilizes</em> when given a daily practice</div>
+      </div>
+      <div class="dynamic-body">
+        <p>The scholar arcs in the tÅs archive show a consistent pattern: the quality and accessibility of creative thinking improves through the establishment of small, daily practices that maintain the conditions creative thinking requires. Adrienne maree brown puts it precisely: "What we practice at the small scale sets the patterns for the whole system."</p>
+        <p>The daily practice is small, specific, and sustained. The Musician and Artist's morning tea ritual. <span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span>'s written observations during and after sessions. The Visual Artist's daily engagement with the observer position. Each of these is a small, regular act that maintained the quality of attention creative thinking requires :: across the distance between formal sessions, without requiring a new event to reactivate it.</p>
+        <p>For systems change educators, this is the most practically applicable finding: <em>daily practice is the sustainability mechanism for creative thinking.</em> The workshop that generates a daily practice builds the container that carries creative thinking forward. The daily practice is the container.</p>
+      </div>
+      <div class="dynamic-evidence">
+        <span class="dynamic-ev-label">FROM THE ARCHIVE</span>
+        <div class="dynamic-ev-item">
+          <span><span class="h70-archetype archetype--executive">The Executive and Strategist</span>: guitar practice daily, painting begun, quality of listening with his wife changed :: three domains of daily life altered through daily practice sustained after the formal sessions ended.</span>
+          <span class="dynamic-ev-who">THE EXECUTIVE · APR 2025</span>
+        </div>
+        <div class="dynamic-ev-item">
+          <span>Sallomé Hralima returns to the Creative Steeping guidebook "every now and then, with a freshly brewed pot of loose leaf tea." Months after the initial engagement, the daily practice continues. "The prompts pull new things from me, new flavors."</span>
+          <span class="dynamic-ev-who">Sallomé Hralima · public review</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pullquote">
+    <p>Creative Thinking is a dynamic that <em>operates in people</em> :: more or less accessibly, depending on the conditions the system creates around them.</p>
+    <span class="pullquote-attr">— tÅs FIELD REPORT TWO · SYSTEMS CHANGE EDUCATORS UNITE · 2026</span>
+  </div>
+
+  <!-- SECTION III: THE EQUATIONS AS SYSTEMS LANGUAGE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="steam-sans--hba">The <em>Equations</em> in Systems Language</h2>
+    </div>
+
+    <div class="prose">
+      <p>The tÅs experiential equations :: observable patterns extracted from documented sessions :: translate directly into systems language. Each one describes a relationship between conditions and outcomes that systems change educators will recognize as a feedback loop, a leverage point, or a structural dynamic. They are presented here in both registers simultaneously.</p>
+    </div>
+
+    <div class="eq-set">
+      <div class="eq-row">
+        <div class="eq-formula">Patience × Procrastination = Steeping</div>
+        <div class="eq-note">In systems language: incubation is a necessary phase of the creative process. Removing it by pressuring for immediate output is a structural intervention that reduces the quality of the system's creative output. Low-leverage interference with a high-leverage natural process.</div>
+      </div>
+      <div class="eq-row">
+        <div class="eq-formula">Alienation + Precise Language = Portal</div>
+        <div class="eq-note">In systems language: feedback loops require accurate information. Precise naming is the structural intervention that opens the flow :: when language matches experience, information moves through the system.</div>
+      </div>
+      <div class="eq-row">
+        <div class="eq-formula">Mirror Work × Time = Identity Precision</div>
+        <div class="eq-note">In systems language: self-knowledge is a prerequisite for effective creative contribution. Systems that invest in the conditions for their members' self-knowledge are investing in the quality of creative thinking available to the whole system. The effect is cumulative, not linear.</div>
+      </div>
+      <div class="eq-row">
+        <div class="eq-formula">Scholar Framework × Guide Container = Scholar's Own System</div>
+        <div class="eq-note">In systems language: the most durable change is the change the system's members generate themselves, using external input as raw material rather than receiving external solutions. The guide function is a structural role that produces this generative dynamic rather than replacing it.</div>
+      </div>
+      <div class="eq-row">
+        <div class="eq-formula">Seek Guidance + Embrace Growth = [the scholar's own answer]</div>
+        <div class="eq-note">In systems language: the foundational axiom. The right side of this equation is open by design. Seeking guidance and embracing growth are the two inputs any person in any system can choose to bring. What they generate is specific to the person who brings them and cannot be predetermined by the system's design.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION IV: ADVOCACY -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="steam-sans--hba"><em>Advocacy</em> — What We Are Asking Systems to Do</h2>
+    </div>
+
+    <div class="advocacy">
+      <span class="advocacy-label">THE CASE FOR CREATIVE THINKING AS DAILY PRACTICE</span>
+      <p>The systems change community already knows that the most durable change happens at the level of paradigm and mindset :: Meadows's highest-leverage interventions. It also knows that paradigm change is the slowest and most resistant form of change, precisely because paradigms are held collectively rather than individually and are invisible to the people inside them.</p>
+      <p>The advocacy this session makes is for a specific paradigm shift: from Creative Thinking as a talent some people have, to Creative Thinking as a dynamic that operates in all people under the right conditions. That shift carries practical consequences for how systems are designed, how learning environments are structured, and how organizational cultures treat the intelligence distributed throughout them.</p>
+      <p><strong>What we are asking systems to do is specific:</strong></p>
+      <p><em>Design for incubation.</em> Build deliberate pauses into decision-making processes. Treat the time between formal discussions as a creative resource rather than dead time.</p>
+      <p><em>Design for somatic intelligence.</em> Create conditions for people to notice and follow their felt sense :: through structured reflection, embodied practices, or simply the quality of attention the facilitator brings to the space.</p>
+      <p><em>Design for recognition.</em> Treat every person's existing intelligence as a contribution worth receiving before asking them to produce anything new. The Permission Structure is a design principle :: it belongs in the system's architecture before it belongs in the facilitator's repertoire.</p>
+      <p><em>Design for daily practice.</em> Systems that invest in the conditions for daily creative practice are investing in the sustained availability of the thinking their work requires.</p>
+      <p><em>Design for genuine difference.</em> UNION :: Unified Non-Identical Intelligences Operating Naturally :: functions as a systems design principle. The most generative creative thinking compounds across genuine difference. Systems that concentrate creative responsibility in homogeneous groups are operating below their available creative intelligence.</p>
+    </div>
+  </section>
+
+  <!-- SECTION V: THINKERS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="steam-sans--hba">Voices <em>Alongside</em> This Work</h2>
+    </div>
+
+    <div class="prose">
+      <p>The following thinkers have made contributions to understanding creativity, learning, and systems that speak directly to the dynamics named in this report. They are honored here for the precision of their observations, which extend and contextualize what the tÅs practice archive documents at the individual and small-group level.</p>
+    </div>
+
+    <div class="thinker">
+      <span class="thinker-label">ON INCUBATION AND THE STAGES OF CREATIVE THINKING</span>
+      <div class="thinker-name">Graham Wallas :: The Art of Thought (1926)</div>
+      <p class="thinker-body">Wallas identified four stages of the creative process :: preparation, incubation, illumination, and verification :: nearly a century ago. His incubation stage remains the most organizationally underutilized insight in creativity research: <em>the generative breakthrough typically arrives not during focused work but after a period of diffuse, non-directed engagement.</em> Systems that eliminate incubation from their operating rhythm are structurally reducing the quality of creative thinking available to them, regardless of the talent or intent of the people inside them.</p>
+      <span class="thinker-cite">Graham Wallas (1926). The Art of Thought. Jonathan Cape.</span>
+    </div>
+
+    <div class="thinker">
+      <span class="thinker-label">ON INTRINSIC MOTIVATION AND CREATIVE CONDITIONS</span>
+      <div class="thinker-name">Teresa Amabile :: Creativity in Context (1996)</div>
+      <p class="thinker-body">Amabile's componential model of creativity identifies three elements: domain-relevant skills, creativity-relevant processes, and intrinsic task motivation. Her most durable finding is that <em>intrinsic motivation :: working on a task because it is inherently interesting and engaging :: consistently produces higher-quality creative thinking than extrinsic motivation tied to evaluation or reward.</em> Organizational environments that make creative work contingent on external approval are structurally reducing the intrinsic motivation that generates the best creative thinking. The tÅs Permission Structure addresses this at the individual session level; system design addresses it at scale.</p>
+      <span class="thinker-cite">Teresa M. Amabile (1996). Creativity in Context. Westview Press.</span>
+    </div>
+
+    <div class="thinker">
+      <span class="thinker-label">ON DISTRIBUTED INTELLIGENCE AND DAILY PRACTICE</span>
+      <div class="thinker-name">adrienne maree brown :: Emergent Strategy (2017)</div>
+      <p class="thinker-body">Drawing on biomimicry, brown argues that transformative change follows the patterns of living systems: distributed, iterative, small-scale. <em>"What we practice at the small scale sets the patterns for the whole system."</em> The daily practice finding from the tÅs archive is the individual-level expression of this systemic principle: the small, regular act maintains the quality of creative thinking across the distances between formal interventions. The daily practice is not separate from the system's creative capacity :: it is how that capacity is sustained.</p>
+      <span class="thinker-cite">adrienne maree brown (2017). Emergent Strategy: Shaping Change, Changing Worlds. AK Press.</span>
+    </div>
+
+    <div class="thinker">
+      <span class="thinker-label">ON MINDSET AS THE HIGHEST LEVERAGE POINT</span>
+      <div class="thinker-name">Donella Meadows :: Leverage Points: Places to Intervene in a System (1999)</div>
+      <p class="thinker-body">Meadows's hierarchy places mindset and paradigm at the highest levels of leverage available for systems change. <em>"The shared ideas in the minds of society, the great unstated assumptions... are the sources of systems."</em> The shared assumption that creative thinking belongs to some people and not others is a paradigm-level constraint on every system that holds it. Shifting that assumption :: through education, through lived evidence, through the design of conditions that make it visibly false :: is high-leverage work. This is what the advocacy for Creative Thinking as a daily practice is doing at the systems level.</p>
+      <span class="thinker-cite">Donella Meadows (1999). "Leverage Points: Places to Intervene in a System." The Donella Meadows Institute. donellameadows.org</span>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-mark">FOR THE ROOM</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- SECTION VI: PROVOCATION POINTS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="steam-sans--hba"><em>Provocation</em> Points for the Conversation</h2>
+    </div>
+
+    <div class="prose">
+      <p>These are the questions worth holding while speaking :: and worth offering to the room as genuine invitations rather than rhetorical moves.</p>
+
+      <p><strong>What does Creative Thinking look like in your system when no one is calling it that?</strong> Every system has people doing creative work under other names: problem-solving, adaptation, relationship-building, sense-making. The first step toward illuminating the dynamics of creative thinking is learning to see it where it already lives in the system's daily operation.</p>
+
+      <p><strong>What is the system currently doing to the incubation stage?</strong> Look at observable behavior :: meeting culture, decision timelines, the pressure for immediate resolution :: these are structural features that either sustain or interrupt the natural incubation dynamic. What would it look like to design deliberately for incubation in one specific context in your system?</p>
+
+      <p><strong>Where in your system's daily life does creative thinking compound most reliably?</strong> The informal conversation in the hallway. The working lunch where the agenda is loose. The email thread that ran longer than expected because something generative arrived. These are the sites where the dynamics of creative thinking are already operating naturally, without design. What would change if the system consciously extended and supported those conditions?</p>
+
+      <p><strong>What daily practice could your system adopt :: a rhythm, small enough to sustain, consistent enough to compound :: that maintains the conditions for creative thinking between formal interventions?</strong> This is the question that produces the most practical output from a session on creative thinking as daily practice. It asks the system to identify what it already does, or could do with minimal addition, that creates the conditions. The answer is always smaller than people expect.</p>
+
+      <p><strong>What would change about the advocacy for creative thinking in your context if you framed it as systems design rather than individual development?</strong> This is the paradigm-level question. It invites the systems change educator to apply their own expertise :: systems thinking, leverage points, feedback loops :: to the advocacy for creative thinking, rather than treating creative thinking as separate from the systems work they already know how to do.</p>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <div class="resources">
+    <span class="resources-label">RESOURCES FOR ADVANCING THIS WORK</span>
+
+    <div class="resource-item">
+      <div class="resource-title">Thinking in Systems: A Primer</div>
+      <div class="resource-author">Donella H. Meadows (2008) · Chelsea Green Publishing</div>
+      <div class="resource-note">The foundational text for any systems change educator. Meadows's twelve leverage points are the most practically applicable framework for identifying where advocacy for creative thinking will produce durable systems-level change versus where it will be absorbed.</div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-title">Emergent Strategy: Shaping Change, Changing Worlds</div>
+      <div class="resource-author">adrienne maree brown (2017) · AK Press</div>
+      <div class="resource-note">The biomimicry argument for distributed, small-scale, daily practice as the mechanism of transformative change. Directly applicable to the advocacy for creative thinking as a daily practice rather than an event.</div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-title">Creativity in Context</div>
+      <div class="resource-author">Teresa M. Amabile (1996) · Westview Press</div>
+      <div class="resource-note">The foundational research on intrinsic motivation and creative conditions. Amabile's componential model provides the strongest empirically grounded framework for understanding why organizational conditions shape creative output more than individual talent does.</div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-title">Theory U: Leading from the Future as It Emerges</div>
+      <div class="resource-author">C. Otto Scharmer (2007) · Berrett-Koehler Publishers</div>
+      <div class="resource-note">The most systems-change-facing framework for understanding how the quality of attention shapes the quality of collective output. Scharmer's presencing concept is the organizational learning community's nearest equivalent to the tÅs Somatic Tether principle.</div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-title">Creative Steeping — A Journey to the Essence of Your Flavor</div>
+      <div class="resource-author">Kamau Zuberi Akabueze · THE ÅLïEN SCõÖL · creativesteeping.com</div>
+      <div class="resource-note">The primary tÅs methodology document and the most directly applicable tool for educators seeking to support creative thinking as a daily practice. The seven-steep framework is designed specifically to produce the kind of sustained, small-scale practice that the research on creative conditions identifies as most effective.</div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-title">HDM Insights Academy</div>
+      <div class="resource-author">THE ÅLïEN SCõÖL · hdmathematics.netlify.app</div>
+      <div class="resource-note">The developing research framework that treats somatic response as mathematical input — the most rigorous investigation emerging from the tÅs practice into the mechanisms through which creative intelligence becomes accessible as a daily practice. Relevant for systems change educators working at the intersection of learning science and embodied practice.</div>
+    </div>
+
+    <div class="resource-item">
+      <div class="resource-title">The Art of Thought</div>
+      <div class="resource-author">Graham Wallas (1926) · Jonathan Cape</div>
+      <div class="resource-note">The century-old foundational text that identified the incubation stage of creative thinking. Still the clearest articulation of why removing time from the creative process is a structural intervention with structural consequences — not a scheduling preference.</div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <footer class="closing">
+    <p>This report is a primer for a forty-minute perspective-sharing session with systems change educators. Its purpose is to provide the intellectual and evidential foundation for speaking about Creative Thinking as a dynamic with observable patterns :: and for making the case that those dynamics are relevant to, and available to, the systems change education community's own work.</p>
+    <p>The conversation it opens is about systems design. The conversation it sustains is about what it means to advocate for creative thinking not as an addition to the system's work but as a structural property of the system's best functioning.</p>
+    <span class="closing-sig">
+      THE ÅLïEN SCõÖL FOR CREATIVE THÏNKING<br>
+      FIELD REPORT TWO · SYSTEMS CHANGE EDUCATORS UNITE · 2026<br>
+      BUILT THROUGH THE VESSELVERSE EDITORIAL PROTOCOL<br>
+      <a href="https://thealienschool.com" target="_blank" rel="noopener noreferrer" class="sonic-link" style="color: var(--muted); text-decoration: none;">thealienschool.com</a> ·
+      <a href="https://creativesteeping.com" target="_blank" rel="noopener noreferrer" class="sonic-link" style="color: var(--muted); text-decoration: none;">creativesteeping.com</a> ·
+      <a href="https://hdmathematics.netlify.app" target="_blank" rel="noopener noreferrer" class="sonic-link" style="color: var(--muted); text-decoration: none;">hdmathematics.netlify.app</a><br>
+      <a href="https://open.spotify.com/show/0ilrG5p4aZI5ly7UsceUyC" target="_blank" rel="noopener noreferrer" class="sonic-link" style="color: var(--muted); text-decoration: none;">Producing Innovation with Michael Counts</a> ·
+      <a href="https://www.instagram.com/thealienscool/" target="_blank" rel="noopener noreferrer" class="sonic-link" style="color: var(--gold); text-decoration: none; opacity: 0.75;">@thealienscool</a>
+    </span>
+  </footer>
+
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="sceu-progress" style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 0.85rem 2rem; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(12px); border-top: 0.5px solid var(--border-lt); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--muted);">
+  <div style="display: flex; gap: 2rem; align-items: center;">
+    <span style="color: var(--gold); opacity: 0.7;">tÅs</span>
+    <span id="read-progress">0% READ</span>
+  </div>
+  <a href="sceu-report-one-integrating-creative-thinking.html" class="sonic-link" style="color: var(--gold); text-decoration: none; opacity: 0.75; letter-spacing: 0.14em;">← FIELD REPORT 01</a>
+</div>
+
+<!-- HÅRMONIOUS70 SONICS — Field Report Edition -->
+<script>
+  let audioCtx, masterGain;
+  const PENTATONIC = [264.00, 296.33, 332.62, 395.55, 444.00, 528.00, 592.67, 665.24];
+
+  function initAudio() {
+    if (audioCtx) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    audioCtx = new AC();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.35;
+    masterGain.connect(audioCtx.destination);
+    playBowl(528);
+  }
+
+  function playBowl(freq, isHover = false) {
+    if (!audioCtx) return;
+    const f = freq || PENTATONIC[Math.floor(Math.random() * PENTATONIC.length)];
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const filter = audioCtx.createBiquadFilter();
+    const pan = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+    if (pan) pan.pan.value = (Math.random() - 0.5);
+    osc.type = isHover ? 'triangle' : 'sine';
+    osc.frequency.value = isHover ? f * 2 : f;
+    filter.type = 'lowpass';
+    filter.frequency.value = isHover ? f * 4 : f * 3;
+    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+    gain.gain.linearRampToValueAtTime(isHover ? 0.012 : 0.08, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (isHover ? 1.5 : 3.5));
+    osc.connect(filter); filter.connect(gain);
+    if (pan) { gain.connect(pan); pan.connect(masterGain); } else { gain.connect(masterGain); }
+    osc.start(); osc.stop(audioCtx.currentTime + (isHover ? 1.6 : 4.0));
+  }
+
+  document.addEventListener('click', initAudio, { once: true });
+
+  document.querySelectorAll('.sonic-link').forEach(el => {
+    el.addEventListener('click', () => { if (audioCtx) playBowl(); });
+    el.addEventListener('mouseenter', () => { if (audioCtx) playBowl(null, true); });
+  });
+
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const pct = Math.min(100, Math.max(0, Math.round((window.scrollY / h) * 100)));
+    const el = document.getElementById('read-progress');
+    if (el) el.textContent = pct + '% READ';
+  });
+</script>
+
+<!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
+<script src="/active-insights/tas-tooltips.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    window.TASActiveInsights.init({
+      glossaryUrl: '/active-insights/active-insights-glossary.json',
+      mode: 'auto',
+      maxAutoMatchesPerTerm: 1,
+      readerHelpButton: true,
+      readerHelpTarget: '[data-tas-auto-annotate]'
+    });
+  });
+</script>
+</body>
+</html>
