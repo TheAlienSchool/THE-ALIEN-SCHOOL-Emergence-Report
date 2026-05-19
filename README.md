@@ -75,7 +75,7 @@ Every surface is a 70mm resonance installation. The system runs in two scenes �
 | `--h70-muted` | `#8b7d6b` | `#544a3e` | Secondary text |
 | `--h70-line` | `rgba(232,228,219,.12)` | `rgba(23,23,20,.18)` | Dividers |
 
-The type scale follows a `1.618` golden ratio. **STEAM SANS** is the primary variable typeface — four axes: `STBL` (stability), `COHR` (coherence), `DRFT` (drift), `PRSS` (pressure). DM Sans and DM Mono serve as system fallbacks.
+The type scale follows the structural harmony of Phi in respectful magnetics and mathematical surface awareness. **STEAM SANS** is the primary variable typeface — four axes: `STBL` (stability), `COHR` (coherence), `DRFT` (drift), `PRSS` (pressure). DM Sans and DM Mono serve as system fallbacks.
 
 ### Active Insights · Tooltip Layer
 
