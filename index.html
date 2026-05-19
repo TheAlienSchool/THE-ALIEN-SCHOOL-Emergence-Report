@@ -6,7 +6,6 @@
 <title>THE ÅLïEN SCõÖL :: Synthesis Archive</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="harmonious70.css">
-<link rel="stylesheet" href="tas-glossary.css">
 <link rel="stylesheet" href="/active-insights/tas-tooltips.css">
 <script src="tas-transitions.js" defer></script>
 <style>
@@ -999,28 +998,6 @@
 @media(min-width: 800px) { .contact-desktop { display: inline !important; } }
 </style>
 
-<!-- tÅs GLOSSARY SYSTEM :: Insight Layer -->
-<!-- To add to any report page: copy these two elements + link tas-glossary.css + tas-glossary.js -->
-<div id="tas-gloss-overlay" class="tas-gloss-overlay" aria-hidden="true"></div>
-<div id="tas-gloss-sheet"
-     class="tas-gloss-sheet"
-     role="dialog"
-     aria-modal="true"
-     aria-labelledby="tas-gloss-term-name"
-     aria-hidden="true">
-  <div class="tas-gloss-handle" aria-hidden="true"></div>
-  <div class="tas-gloss-meta">
-    <span id="tas-gloss-category" class="tas-gloss-cat"></span>
-    <button class="tas-gloss-close" onclick="TasGloss.close()" aria-label="Close definition">✕</button>
-  </div>
-  <p id="tas-gloss-term-name" class="tas-gloss-term-name"></p>
-  <p id="tas-gloss-def" class="tas-gloss-def"></p>
-  <a id="tas-gloss-more" class="tas-gloss-more" href="#" style="display: none;">
-    Full glossary entry <span aria-hidden="true">→</span>
-  </a>
-  <span id="tas-gloss-depth" class="tas-gloss-depth"></span>
-</div>
-<script src="tas-glossary.js" defer></script>
 
 <!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
 <script src="/active-insights/tas-tooltips.js" defer></script>

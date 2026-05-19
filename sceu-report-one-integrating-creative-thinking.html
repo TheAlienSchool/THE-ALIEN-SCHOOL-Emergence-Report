@@ -868,5 +868,12 @@
     });
   });
 </script>
+
+<div id="audio-overlay" style="position: fixed; inset: 0; background: var(--h70-bg); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--h70-ink); transition: opacity 1.5s ease;">
+  <div style="font-family: var(--h70-font); font-size: clamp(1.5rem, 4vw, 2.5rem); font-style: normal; margin-bottom: 0.75rem; font-variation-settings: 'STBL' 0, 'COHR' 100, 'DRFT' 0, 'PRSS' 24; letter-spacing: 0.06em;">The Synthesis Archive</div>
+  <div style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-muted); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.4rem;">A Bioacoustic Repository</div>
+  <div style="font-family: var(--h70-mono); font-size: 10px; color: var(--h70-signal); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 2.5rem;">Field Report One · Systems Change Educators Unite</div>
+  <button onclick="const o=document.getElementById('audio-overlay'); o.style.opacity='0'; setTimeout(()=>o.style.display='none',1500); initAudio();" style="background: transparent; border: 1px solid var(--h70-signal); color: var(--h70-signal); padding: 1rem 3rem; font-family: var(--h70-mono); font-size: 11px; letter-spacing: 0.22em; cursor: pointer; text-transform: uppercase; border-radius: 2px; transition: all 0.5s ease;">Enter Space</button>
+</div>
 </body>
 </html>
