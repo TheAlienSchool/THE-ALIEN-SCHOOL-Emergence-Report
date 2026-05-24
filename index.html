@@ -163,6 +163,28 @@
     0% { transform: scaleX(0.85); opacity: 0.6; }
     100% { transform: scaleX(1.15); opacity: 1; }
   }
+
+  /* Gateway Equal trigger interactive answers */
+  .gateway-equal-trigger:hover .equal-bar,
+  .gateway-equal-trigger:focus .equal-bar {
+    background-color: var(--h70-signal) !important;
+    opacity: 1 !important;
+  }
+  .gateway-equal-trigger:hover .equal-bar:first-child,
+  .gateway-equal-trigger:focus .equal-bar:first-child {
+    transform: translateY(-2px) scaleX(1.2);
+  }
+  .gateway-equal-trigger:hover .equal-bar:last-child,
+  .gateway-equal-trigger:focus .equal-bar:last-child {
+    transform: translateY(2px) scaleX(1.2);
+  }
+  .gateway-equal-trigger:hover .gateway-answers-dropdown,
+  .gateway-equal-trigger:focus-within .gateway-answers-dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+    pointer-events: auto !important;
+  }
 </style>
 </head>
 <body data-h70-scene="night" class="gateway-open">
@@ -233,9 +255,38 @@
     <!-- [1] Brand Screen — fills initial viewport -->
     <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 0 3rem; text-align: center;">
       <div class="steam-sans--harris" style="font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: 0.01em; line-height: 1.05; text-transform: uppercase; margin-bottom: 1rem;">The Alien School<br><span style="color: var(--h70-signal);">for Creative Thinking</span></div>
-      <div class="steam-sans--vapor" style="font-size: clamp(0.7rem, 1.3vw, 0.88rem); letter-spacing: 0.35em; opacity: 0.42; margin-bottom: 0.75rem; text-transform: uppercase;">THE ÅLïEN SCõÖL</div>
-      <div style="font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.28em; color: var(--h70-signal); opacity: 0.5; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 4rem;">
-        <span style="opacity: 0.5;">∴</span><span>FOR CREATIVE THÏNKING</span><span style="opacity: 0.5;">∴</span>
+      <!-- SEEK GUIDANCE + EMBRACE GROWTH = (Interactive Gateway Axiom) -->
+      <div class="gateway-axiom-container" style="margin: 1.5rem 0 4rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; position: relative;">
+        
+        <div style="font-family: var(--h70-mono); font-size: clamp(0.75rem, 1.6vw, 0.95rem); letter-spacing: 0.22em; text-transform: uppercase; color: var(--h70-signal); opacity: 0.9; text-align: center;">
+          SEEK GUIDANCE <span style="font-family: var(--h70-font); font-weight: 300; opacity: 0.5; margin: 0 0.25rem;">+</span> EMBRACE GROWTH
+        </div>
+
+        <!-- Interactive threshold to the Answers -->
+        <div class="gateway-equal-trigger" style="display: flex; flex-direction: column; gap: 6px; width: 60px; margin-top: 0.5rem; cursor: pointer; padding: 10px 0; position: relative; z-index: 100;" aria-label="EQUALS :: The Answers">
+          <div class="equal-bar" style="height: 2px; width: 100%; background: var(--h70-ink); opacity: 0.45; transition: transform 0.4s var(--h70-ease), opacity 0.4s var(--h70-ease), background-color 0.4s var(--h70-ease);"></div>
+          <div class="equal-bar" style="height: 2px; width: 100%; background: var(--h70-ink); opacity: 0.45; transition: transform 0.4s var(--h70-ease), opacity 0.4s var(--h70-ease), background-color 0.4s var(--h70-ease);"></div>
+          
+          <!-- Interactive Floating Answers Panel -->
+          <div class="gateway-answers-dropdown" style="position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(15px); width: clamp(285px, 80vw, 420px); background: color-mix(in oklab, var(--h70-bg) 96%, var(--h70-signal)); border: 1px solid color-mix(in oklab, var(--h70-signal) 40%, var(--h70-line)); border-radius: var(--h70-radius-object); padding: 1.5rem; box-shadow: 0 30px 90px rgba(0,0,0,0.6), inset 0 1px 0 var(--h70-reflection); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.5s var(--h70-ease), transform 0.5s var(--h70-ease), visibility 0.5s var(--h70-ease); text-align: left;">
+            <p class="h70-kicker" style="margin-bottom: 1rem; font-size: 8px; letter-spacing: 0.2em; text-align: center; border-bottom: 1px solid var(--h70-line); padding-bottom: 0.5rem; color: var(--h70-signal);">THE ANSWERS :: FOUR DIRECTIONS OF BEING</p>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div style="font-size: 11px; line-height: 1.5; color: var(--h70-ink); font-family: var(--h70-font);">
+                <strong style="color: var(--h70-signal); font-family: var(--h70-mono); margin-right: 0.4rem;">01</strong> The experiential practice of Living, Working, Parenting, and Loving as/with Creative Beings.
+              </div>
+              <div style="font-size: 11px; line-height: 1.5; color: var(--h70-ink); font-family: var(--h70-font);">
+                <strong style="color: var(--h70-signal); font-family: var(--h70-mono); margin-right: 0.4rem;">02</strong> Creative Transformation catalyst for those in Career, Artistic, and Relationship Transition.
+              </div>
+              <div style="font-size: 11px; line-height: 1.5; color: var(--h70-ink); font-family: var(--h70-font);">
+                <strong style="color: var(--h70-signal); font-family: var(--h70-mono); margin-right: 0.4rem;">03</strong> A release from the alienating nature of work, into the vibrant garden of Creative Exploration.
+              </div>
+              <div style="font-size: 11px; line-height: 1.5; color: var(--h70-ink); font-family: var(--h70-font);">
+                <strong style="color: var(--h70-signal); font-family: var(--h70-mono); margin-right: 0.4rem;">04</strong> A creative approach to listening that supports humanity in understanding their creative source.
+              </div>
+            </div>
+            <p style="font-family: var(--h70-mono); font-size: 8px; color: var(--h70-muted); text-align: center; margin-top: 1.25rem; opacity: 0.6; letter-spacing: 0.1em; text-transform: uppercase;">Founder Kamau Zuberi Akabueze</p>
+          </div>
+        </div>
       </div>
       <!-- Scroll hint -->
       <div class="gateway-scroll-hint" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: pointer;" onclick="document.getElementById('audio-overlay').scrollTop += window.innerHeight">
