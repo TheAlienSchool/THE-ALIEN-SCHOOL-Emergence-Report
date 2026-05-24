@@ -149,6 +149,20 @@
     margin: 0;
     text-wrap: balance;
   }
+
+  /* Direction Cards & Geometry of Creative Thinking */
+  .direction-card {
+    transition: transform 0.4s var(--h70-ease), border-color 0.4s var(--h70-ease), box-shadow 0.4s var(--h70-ease) !important;
+  }
+  .direction-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: color-mix(in oklab, var(--h70-signal) 60%, var(--h70-line)) !important;
+    box-shadow: 0 22px 80px rgba(0,0,0,0.4), inset 0 1px 0 var(--h70-reflection) !important;
+  }
+  @keyframes breathe-line {
+    0% { transform: scaleX(0.85); opacity: 0.6; }
+    100% { transform: scaleX(1.15); opacity: 1; }
+  }
 </style>
 </head>
 <body data-h70-scene="night" class="gateway-open">
@@ -624,46 +638,97 @@
     </div>
   </section>
 
-  <!-- tÅs GROUNDING PANEL :: Decompression Chamber -->
-  <section class="tas-grounding-panel" aria-label="About The Alien School" style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; position: relative; overflow: clip; border-top: 1px solid color-mix(in oklab, var(--h70-signal) 22%, var(--h70-line)); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 45%, transparent); padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); text-align: center; background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--h70-signal) 7%, transparent) 0%, transparent 60%), color-mix(in oklab, var(--h70-surface) 55%, transparent);">
-
+  <!-- UPGRADED SECTION :: THE GEOMETRY OF CREATIVE THINKING -->
+  <section class="tas-geometry-panel" id="creative-thinking-geometry" style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; position: relative; overflow: clip; border-top: 1px solid color-mix(in oklab, var(--h70-signal) 22%, var(--h70-line)); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 45%, transparent); padding: clamp(4rem, 8vw, 6rem) clamp(2rem, 4vw, 3rem); background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--h70-signal) 10%, transparent) 0%, transparent 70%), color-mix(in oklab, var(--h70-surface) 60%, transparent); border-radius: var(--h70-radius-vessel); box-shadow: 0 28px 100px rgba(0,0,0,.22), inset 0 1px 0 var(--h70-reflection);">
     <div style="display: flex; gap: 3px; max-width: 180px; margin: 0 auto 2.5rem;" aria-hidden="true">
-      <div style="height: 2px; flex: 1; background: #c8922a; border-radius: 1px;"></div>
-      <div style="height: 2px; flex: 1; background: #1a5848; border-radius: 1px;"></div>
-      <div style="height: 2px; flex: 1; background: #883020; border-radius: 1px;"></div>
-      <div style="height: 2px; flex: 1; background: #8888cc; border-radius: 1px;"></div>
+      <div style="height: 2.5px; flex: 1; background: #c8922a; border-radius: 1px;"></div>
+      <div style="height: 2.5px; flex: 1; background: #1a5848; border-radius: 1px;"></div>
+      <div style="height: 2.5px; flex: 1; background: #883020; border-radius: 1px;"></div>
+      <div style="height: 2.5px; flex: 1; background: #8888cc; border-radius: 1px;"></div>
     </div>
 
-    <h2 class="steam-sans--hba" style="font-size: clamp(var(--h70-lg), 3.5vw, var(--h70-xl)); margin: 0 auto 1.25rem; max-width: 22ch; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.02em;">
-      Recover Your <span class="h70-signal">Creative Intelligence</span>
-    </h2>
-
-    <p class="h70-body" style="max-width: 52ch; margin: 0 auto 2.5rem; font-size: clamp(0.95rem, 2vw, 1.08rem); line-height: 1.72; color: var(--h70-muted);">
-      THE ALIEN SCHOOL helps <span data-tas-term="creative-maverick">Creative Mavericks</span> turn alienation, uncertainty, and inner noise into clarity, confidence, and creative action.
-    </p>
-
-    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 3.5rem;">
-      <a href="https://www.thealienschool.com/about-us" target="_blank" rel="noopener noreferrer" class="tas-grounding-btn sonic-link">For Individuals</a>
-      <a href="https://www.thealienschool.com/services" target="_blank" rel="noopener noreferrer" class="tas-grounding-btn sonic-link">For Organizations</a>
-      <a href="https://www.thealienschool.com/services" target="_blank" rel="noopener noreferrer" class="tas-grounding-btn sonic-link">For Partners &amp; Funders</a>
-    </div>
-
-    <div class="tas-grounding-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; text-align: left; border-top: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
-      <div style="padding: 2rem clamp(1rem, 2.5vw, 1.75rem) 2rem 0;">
-        <p class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 0.85rem; letter-spacing: 0.2em; font-size: 9px;">What We Believe</p>
-        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Creativity is a human birthright. Many people lose access to it through systems, pressure, fear, and alienation. tÅs creates the conditions for people to hear themselves again and act from what they know.</p>
-      </div>
-      <div style="padding: 2rem clamp(1rem, 2.5vw, 1.75rem);">
-        <p class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 0.85rem; letter-spacing: 0.2em; font-size: 9px;">Who We Serve</p>
-        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Creative Mavericks: people who feel the pressure of unrealized potential and are ready to develop it with structure, reflection, and support.</p>
-      </div>
-      <div style="padding: 2rem 0 2rem clamp(1rem, 2.5vw, 1.75rem);">
-        <p class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 0.85rem; letter-spacing: 0.2em; font-size: 9px;">What We Offer</p>
-        <p class="h70-body" style="margin: 0; font-size: 0.93rem; line-height: 1.72; color: var(--h70-muted);">Guided sessions, <span data-tas-term="steeping-as-time-design">Creative Steeping</span>, courses, retreats, organizational workshops, and research-backed creative development tools.</p>
+    <!-- SEEK GUIDANCE + EMBRACE GROWTH = -->
+    <div style="text-align: center; margin-bottom: 3.5rem; position: relative; z-index: 2;">
+      <p class="h70-kicker" style="margin-bottom: 1.5rem; letter-spacing: 0.28em;">THE ÅLïEN SCõÖL :: AXÏOM</p>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; margin: 2rem 0;">
+        <div style="font-family: var(--h70-mono); font-size: clamp(1.1rem, 3.2vw, 2rem); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 300; line-height: 1.25; max-width: 820px; color: var(--h70-ink);">
+          <span style="border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 4px;">SEEK GUIDANCE</span> 
+          <span style="color: var(--h70-signal); font-family: var(--h70-font); font-weight: 300; margin: 0 0.6rem; vertical-align: middle; font-size: clamp(1.3rem, 3.5vw, 2.3rem);">+</span> 
+          <span style="border-bottom: 1px solid rgba(212, 175, 55, 0.35); padding-bottom: 4px;">EMBRACE GROWTH</span>
+        </div>
+        
+        <!-- Intentional '=' holds the answers -->
+        <div class="h70-geometry-equal" style="margin-top: 2rem; position: relative; display: flex; flex-direction: column; gap: 8px; width: 90px; align-items: center;" aria-label="EQUALS">
+          <div style="width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--h70-signal), transparent); border-radius: 2px; animation: breathe-line 4s infinite alternate ease-in-out;"></div>
+          <div style="width: 100%; height: 3px; background: linear-gradient(90deg, transparent, var(--h70-signal), transparent); border-radius: 2px; animation: breathe-line 4s infinite alternate-reverse ease-in-out;"></div>
+        </div>
       </div>
     </div>
 
+    <!-- The offering: Introduction to the Geometry of Creative Thinking -->
+    <div style="text-align: center; max-width: 720px; margin: 0 auto 3.5rem; position: relative; z-index: 2;">
+      <h3 class="steam-sans--hba" style="font-size: clamp(var(--h70-lg), 3.2vw, var(--h70-xl)); text-transform: uppercase; line-height: 1.15; letter-spacing: 0.05em; margin-bottom: 1.25rem;">
+        The Geometry of <span class="h70-signal">Creative Thinking</span>
+      </h3>
+      <p class="h70-body" style="text-align: center; margin: 0 auto; font-size: clamp(0.95rem, 1.8vw, 1.06rem); line-height: 1.7; color: var(--h70-muted);">
+        The Four Directions of Being for Kamau Zuberi Akabueze, Founder. These four coordinates represent the answers seek guidance and embrace growth resolve to—the structural compass for recovering the human capacity to hear, trust, and create.
+      </p>
+    </div>
+
+    <!-- The Four Directions Grid -->
+    <div class="h70-grid h70-grid--two" style="position: relative; z-index: 2; margin-top: 2.5rem; text-align: left;">
+      
+      <!-- Direction 01 -->
+      <div class="h70-vessel-card direction-card" style="display: flex; flex-direction: column; padding: clamp(2rem, 4vw, 3rem);">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.75rem; border-bottom: 1px solid var(--h70-line); padding-bottom: 0.85rem;">
+          <span style="font-family: var(--h70-mono); font-size: var(--h70-xl); font-weight: 300; color: var(--h70-signal); line-height: 1;">01</span>
+          <span style="font-family: var(--h70-mono); font-size: 8px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase;">EXPERIENTIAL PRACTICE</span>
+        </div>
+        <p class="h70-body" style="font-size: 1.05rem; line-height: 1.68; flex: 1; margin: 0; color: var(--h70-ink);">
+          The experiential practice of <strong>Living as a Creative Being</strong>, <strong>Working with Creative Beings</strong>, <strong>Parenting Creative Beings</strong>, and <strong>Loving Creative Beings</strong>.
+        </p>
+      </div>
+
+      <!-- Direction 02 -->
+      <div class="h70-vessel-card direction-card" style="display: flex; flex-direction: column; padding: clamp(2rem, 4vw, 3rem);">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.75rem; border-bottom: 1px solid var(--h70-line); padding-bottom: 0.85rem;">
+          <span style="font-family: var(--h70-mono); font-size: var(--h70-xl); font-weight: 300; color: var(--h70-signal); line-height: 1;">02</span>
+          <span style="font-family: var(--h70-mono); font-size: 8px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase;">CREATIVE TRANSFORMATION</span>
+        </div>
+        <p class="h70-body" style="font-size: 1.05rem; line-height: 1.68; flex: 1; margin: 0; color: var(--h70-ink);">
+          A Creative Transformation catalyst for those in <strong>Career, Artistic, and Relationship Transition</strong> looking to cultivate a prosperous future.
+        </p>
+      </div>
+
+      <!-- Direction 03 -->
+      <div class="h70-vessel-card direction-card" style="display: flex; flex-direction: column; padding: clamp(2rem, 4vw, 3rem);">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.75rem; border-bottom: 1px solid var(--h70-line); padding-bottom: 0.85rem;">
+          <span style="font-family: var(--h70-mono); font-size: var(--h70-xl); font-weight: 300; color: var(--h70-signal); line-height: 1;">03</span>
+          <span style="font-family: var(--h70-mono); font-size: 8px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase;">THE VIBRANT GARDEN</span>
+        </div>
+        <p class="h70-body" style="font-size: 1.05rem; line-height: 1.68; flex: 1; margin: 0; color: var(--h70-ink);">
+          A release from the <strong>Alienating nature of work</strong>, into the vibrant garden of <strong>Creative Exploration</strong>.
+        </p>
+      </div>
+
+      <!-- Direction 04 -->
+      <div class="h70-vessel-card direction-card" style="display: flex; flex-direction: column; padding: clamp(2rem, 4vw, 3rem);">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.75rem; border-bottom: 1px solid var(--h70-line); padding-bottom: 0.85rem;">
+          <span style="font-family: var(--h70-mono); font-size: var(--h70-xl); font-weight: 300; color: var(--h70-signal); line-height: 1;">04</span>
+          <span style="font-family: var(--h70-mono); font-size: 8px; letter-spacing: 0.2em; color: var(--h70-muted); text-transform: uppercase;">CREATIVE LISTENING</span>
+        </div>
+        <p class="h70-body" style="font-size: 1.05rem; line-height: 1.68; flex: 1; margin: 0; color: var(--h70-ink);">
+          A creative approach to <strong>Listening</strong> that supports humanity in understanding the <strong>Source of their creativity</strong>.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Atmospheric blur radial -->
+    <div aria-hidden="true" style="position: absolute; bottom: -50%; left: 50%; transform: translateX(-50%); width: 70%; height: 80%; background: radial-gradient(closest-side, color-mix(in oklab, var(--h70-signal) 12%, transparent), transparent); filter: blur(55px); pointer-events: none; z-index: 1;"></div>
   </section>
+
 
 
   <!-- OPEN SESAME GEOMETRY -->
