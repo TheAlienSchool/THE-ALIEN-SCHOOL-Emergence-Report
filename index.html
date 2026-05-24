@@ -183,7 +183,16 @@
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateX(-50%) translateY(0) !important;
-    pointer-events: auto !important;
+  }
+
+  /* Foundational Frequency Writings Tab Switcher Styles */
+  .tas-writing-tab-btn:hover {
+    color: var(--h70-ink) !important;
+    border-color: color-mix(in oklab, var(--h70-signal) 40%, var(--h70-line)) !important;
+    background: color-mix(in oklab, var(--h70-signal) 6%, var(--h70-surface)) !important;
+  }
+  .tas-writing-panel {
+    transition: opacity 0.4s var(--h70-ease);
   }
 </style>
 </head>
@@ -297,6 +306,17 @@
 
     <!-- [2] Mission Text -->
     <div id="gateway-mission" style="padding: clamp(3rem, 6vw, 5rem) 0; border-top: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent); text-align: left;">
+
+      <!-- WE ARE... (Original Frequency July 2022) -->
+      <div style="border: 1px solid var(--h70-line); border-radius: var(--h70-radius-object); padding: clamp(1.5rem, 3vw, 2.5rem); background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--h70-signal) 8%, transparent) 0%, transparent 60%), color-mix(in oklab, var(--h70-surface) 60%, transparent); margin-bottom: 3rem; position: relative; overflow: clip; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.18), inset 0 1px 0 var(--h70-reflection);">
+        <span class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 1.5rem; letter-spacing: 0.22em; font-size: clamp(8px, 1.8vw, 10px); display: block;">WE ARE…</span>
+        <div style="display: flex; flex-direction: column; gap: 1.25rem; font-family: 'EB Garamond', Georgia, serif; font-size: clamp(1.15rem, 2.5vw, 1.45rem); font-style: italic; line-height: 1.45; color: var(--h70-ink);">
+          <div style="text-wrap: balance;">A place to gain creative clarity through your lived experiences</div>
+          <div style="opacity: 0.9; text-wrap: balance;">A connective path to your higher self</div>
+          <div style="opacity: 0.8; text-wrap: balance;">A portal to and through the sensation of Alienation</div>
+          <div style="opacity: 0.7; text-wrap: balance;">A pathway beyond conformity into the comfort of your uniqueness</div>
+        </div>
+      </div>
 
       <!-- Active Insights orientation button -->
       <button type="button" class="tas-ai-reader-help" onclick="window.TASActiveInsights && window.TASActiveInsights.openTerm('calvin-mode')" style="margin-bottom: 2rem;">New here? Start simple.</button>
@@ -782,6 +802,133 @@
 
 
 
+  <!-- FOUNDATIONAL FREQUENCY WRITINGS :: JULY 2022 -->
+  <section class="tas-frequency-writings" id="foundational-writings-july" style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; position: relative;">
+    
+    <div style="text-align: center; max-width: 720px; margin: 0 auto 3rem;">
+      <p class="h70-kicker" style="margin-bottom: 1rem;">ORIGINAL FREQUENCY</p>
+      <h2 class="steam-sans--hba" style="font-size: clamp(var(--h70-lg), 3.5vw, var(--h70-xl)); text-transform: uppercase; margin: 0 0 1rem; letter-spacing: 0.05em;">
+        Foundational <span class="h70-signal">Writings</span>
+      </h2>
+      <p class="h70-body" style="text-align: center; margin: 0 auto; font-size: 0.98rem; line-height: 1.65; color: var(--h70-muted);">
+        Original formulations recorded in July 2022 as the initial resonance of tÅs was being drawn into form. These writings hold the primary frequency of the work.
+      </p>
+    </div>
+
+    <!-- Tabbed Deck Container -->
+    <div class="h70-vessel-card" style="padding: clamp(2rem, 5vw, 4rem); min-height: 500px; display: flex; flex-direction: column; gap: 2rem;">
+      
+      <!-- Tab Control Row -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; border-bottom: 1px solid var(--h70-line); padding-bottom: 1.5rem;">
+        <button class="tas-writing-tab-btn active" onclick="switchWritingTab(0)" style="background: color-mix(in oklab, var(--h70-signal) 10%, var(--h70-surface)); border: 1px solid color-mix(in oklab, var(--h70-signal) 40%, var(--h70-line)); border-radius: var(--h70-radius-orb); padding: 0.6rem 1.25rem; font-family: var(--h70-mono); font-size: clamp(8.5px, 1.8vw, 10px); letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; color: var(--h70-ink); transition: all 0.3s ease;">
+          I. THE TWIN FLAMES
+        </button>
+        <button class="tas-writing-tab-btn" onclick="switchWritingTab(1)" style="background: transparent; border: 1px solid var(--h70-line); border-radius: var(--h70-radius-orb); padding: 0.6rem 1.25rem; font-family: var(--h70-mono); font-size: clamp(8.5px, 1.8vw, 10px); letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; color: var(--h70-muted); transition: all 0.3s ease;">
+          II. OUR PRACTICE
+        </button>
+        <button class="tas-writing-tab-btn" onclick="switchWritingTab(2)" style="background: transparent; border: 1px solid var(--h70-line); border-radius: var(--h70-radius-orb); padding: 0.6rem 1.25rem; font-family: var(--h70-mono); font-size: clamp(8.5px, 1.8vw, 10px); letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; color: var(--h70-muted); transition: all 0.3s ease;">
+          III. OUR IMPACT
+        </button>
+      </div>
+
+      <!-- Tab Content Panels -->
+      <div id="tas-writing-panels-container" style="flex: 1; display: flex; flex-direction: column;">
+        
+        <!-- Tab 01: Twin Flames -->
+        <div class="tas-writing-panel active" style="display: block;">
+          <div style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.22em; color: var(--h70-signal); margin-bottom: 1.5rem; text-transform: uppercase;">CREATIVITY &amp; IMAGINATION :: THE TWIN FLAMES OF YOUR EXPRESSION</div>
+          <div class="h70-body" style="font-size: 1.08rem; line-height: 1.78; max-width: 100%;">
+            <p style="margin-bottom: 1.5rem;">Somewhere along the way in our human experience, imagination and creativity were unjustly dislocated from each other.</p>
+            <p style="margin-bottom: 1.5rem; color: var(--h70-muted);">Creativity became a career as directed by the flows of architectural, artistic, and commercial trend.</p>
+            <p style="margin-bottom: 1.5rem;">While imagination was left wondering why it had been left out of the creative processes. That wondering led to a wandering of the mind - aimlessly - because what is imagination without creativity? Creativity aimed at an imagined destination… now that is the magic we see before us.</p>
+            <p style="margin-bottom: 1.5rem; color: var(--h70-muted);">Creativity without the balance of imagination can create into infinity; yet only into the void of the mind. Imagination without the aim of creation through a creator - say for example, you or I - infinitizes the loop of imagining.</p>
+            
+            <div style="border-left: 2px solid var(--h70-signal); padding-left: 1.5rem; margin: 2rem 0; font-family: var(--h70-mono); font-size: clamp(0.85rem, 1.8vw, 1rem); letter-spacing: 0.05em; line-height: 1.65; color: var(--h70-signal);">
+              The infinite loop of imagining can spiral into a constant considering of the worst case scenario of any objective, which is rather restrictive to a creative being like yourself. 
+              <span style="display: block; margin-top: 0.75rem; opacity: 0.75; font-size: clamp(8px, 1.6vw, 9px); letter-spacing: 0.18em; text-transform: uppercase;">It can keep you from starting · It can keep you from finishing · It can keep you from kindness · It can keep you from seeing · It can keep you from meditating · It can keep you in meetings with other people doing the same.</span>
+            </div>
+
+            <p style="margin-bottom: 1.5rem;">At <strong>THE ÅLÏEN SCÕÖL</strong> we re-Lasso creativity to the imagination - angling your insights upwards towards optimism, towards better thoughts about your ideas for a better now and a better you.</p>
+            <p style="margin-bottom: 1.5rem; color: var(--h70-muted);">Towards creating with an enthusiasm that is transformative to every element of your creative existence. Towards an understanding of how to create with a harmony that is undeniably illuminating.</p>
+            <p style="margin-bottom: 1.5rem;">Towards illuminating how brilliant your ideas can be, when they are seen with the eyes of creative possibility. Towards the possibility of being the vibrantly creative being you are here to embody and experience.</p>
+            <p style="margin-bottom: 2rem; font-family: 'EB Garamond', Georgia, serif; font-size: 1.25rem; font-style: italic; color: var(--h70-ink);">"You are a creative being. You were created to create. You were created to be. So what else can you possibly be?"</p>
+            
+            <div style="background: color-mix(in oklab, var(--h70-signal) 6%, var(--h70-surface)); border: 1px dashed var(--h70-line); padding: 1.5rem; border-radius: var(--h70-radius-paper); font-family: var(--h70-mono); font-size: clamp(10px, 1.8vw, 12px); color: var(--h70-signal); letter-spacing: 0.15em; text-align: center; text-transform: uppercase;">
+              &lt;If you were an android with consciousness, what would you do with the information you have about yourself?&gt;
+              <span style="display: block; margin-top: 0.5rem; color: var(--h70-ink); opacity: 0.7;">Let’s find out.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 02: Our Practice -->
+        <div class="tas-writing-panel" style="display: none;">
+          <div style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.22em; color: var(--h70-signal); margin-bottom: 1.5rem; text-transform: uppercase;">OUR PRACTICE :: STUDYING HEART</div>
+          <div class="h70-body" style="font-size: 1.08rem; line-height: 1.78; max-width: 100%;">
+            <p style="margin-bottom: 1.5rem; font-family: 'EB Garamond', Georgia, serif; font-size: 1.25rem; font-style: italic; color: var(--h70-ink);">
+              "OKU-I.b 'I Am Studying Heart' is the principle education practice @ THE ÅLïEN SCõÖL."
+            </p>
+            <p style="margin-bottom: 1.5rem;">The Heart is not only the central filter for our blood flow, it is the primary filter for our <strong>Creative Flow</strong> - in coherence and resonance with our State of Mind.</p>
+            <p style="margin-bottom: 1.5rem; color: var(--h70-muted);">When we understand what is at the Heart of our thinking, we better understand why our Creative thoughts and ideas are so profoundly beautiful and simultaneously challenging.</p>
+            <p style="margin-bottom: 2rem;">When we align our heart with the beauty of our complex minds, we can create magic in our lives and enliven the hearts of all who we encounter.</p>
+            
+            <div style="border-left: 2px solid var(--h70-signal); padding-left: 1.5rem; margin: 2rem 0; font-family: var(--h70-mono); font-size: clamp(0.85rem, 1.8vw, 1rem); letter-spacing: 0.08em; line-height: 1.65; text-transform: uppercase; color: var(--h70-signal);">
+              Your life is a love letter to yourself, and everyone around you.
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 2rem); margin-top: 2rem; border-top: 1px solid var(--h70-line); padding-top: 1.5rem;">
+              <div>
+                <span style="font-family: var(--h70-mono); font-size: var(--h70-lg); color: var(--h70-signal); display: block; margin-bottom: 0.5rem;">GROK</span>
+                <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--h70-muted);">The Growth of Knowledge. Distilling information into cellular realization.</p>
+              </div>
+              <div>
+                <span style="font-family: var(--h70-mono); font-size: var(--h70-lg); color: var(--h70-signal); display: block; margin-bottom: 0.5rem;">GROKING</span>
+                <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--h70-muted);">The Experience of Growth. Living in the active realization of that expansion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 03: Our Impact -->
+        <div class="tas-writing-panel" style="display: none;">
+          <div style="font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.22em; color: var(--h70-signal); margin-bottom: 1.5rem; text-transform: uppercase;">OUR IMPACT :: WHAT IF YOU SAID YES?</div>
+          <div class="h70-body" style="font-size: 1.08rem; line-height: 1.78; max-width: 100%;">
+            <p style="margin-bottom: 1.5rem; font-family: var(--h70-mono); font-size: clamp(1.1rem, 2.5vw, 1.45rem); color: var(--h70-signal); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 300;">What if you said yes?</p>
+            <p style="margin-bottom: 1.5rem;">Your Result is universal. It will impact everyone you see and interact with. It will impact how you see the world, and how you create with the world that you see. It will impact the impact you have on your world - and my world - because we live in the same world. Why would we not want your world to be a better place? Like tomorrow.</p>
+            <p style="margin-bottom: 1.5rem; color: var(--h70-muted);">You will change the way you see and feel your environment. Sight is caveated here as vision. You will have a vision for the world, and you will feel how brilliantly impactful your clear vision can be on the world. As such, you will feel as though you can have a beautiful impact on the world.</p>
+            <p style="margin-bottom: 1.5rem;">We already know how cool your vision is, which is why we created THE ÅLÏEN SCÕÖL, and why you are here on this site. That’s just facts.</p>
+            
+            <p style="margin-bottom: 1.5rem; color: var(--h70-muted);">We want to help you understand how to feel better about what you create, how you create, and all of the creativity around you. As such you will get our full and enthusiastic investment in your creative betterment.</p>
+            
+            <div style="border-left: 2px solid var(--h70-signal); padding-left: 1.5rem; margin: 2rem 0; font-family: 'EB Garamond', Georgia, serif; font-size: 1.18rem; font-style: italic; line-height: 1.65; color: var(--h70-ink);">
+              Our investment is matched by yours, creating an energetic entanglement nearly as powerful as the quantum entanglement that all of the long-haired physicists are talking about ⚡️ This is a mutual investment that legitimately makes the world a better place.
+            </div>
+
+            <!-- Mathematical sequence mapping of the being -->
+            <div style="margin-top: 2rem; border-top: 1px solid var(--h70-line); padding-top: 2rem; text-align: center;">
+              <p style="font-family: var(--h70-mono); font-size: clamp(8px, 1.8vw, 10px); letter-spacing: 0.22em; text-transform: uppercase; color: var(--h70-signal); margin-bottom: 1.5rem;">THE PHYSICS OF BEING</p>
+              
+              <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem; font-family: var(--h70-mono); font-size: clamp(10px, 1.8vw, 12px); color: var(--h70-ink); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.8;">
+                <span>We must DO to BE</span> <span style="color: var(--h70-signal);">→</span>
+                <span>We must BE to DO</span> <span style="color: var(--h70-signal);">→</span>
+                <span style="color: var(--h70-signal);">DOING = ESSENCE OF BEING</span> <span style="color: var(--h70-signal);">→</span>
+                <span>LEARNING = DOING PROCESS</span> <span style="color: var(--h70-signal);">→</span>
+                <span>GROWTH = LEARNING RESULT</span> <span style="color: var(--h70-signal);">→</span>
+                <span style="border-bottom: 1px solid var(--h70-signal); padding-bottom: 2px;">ILLUMINATION = SEEING GROWTH CLEARLY 🌱</span>
+              </div>
+              
+              <p style="font-family: var(--h70-mono); font-size: var(--h70-xs); color: var(--h70-signal); margin-top: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase;">We are here for your growth</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
   <!-- OPEN SESAME GEOMETRY -->
   <section style="max-width: 960px; margin: var(--h70-room) auto 0; width: 100%; text-align: center;" id="open-sesame-container">
     <p class="h70-kicker" style="margin-bottom: 2rem;">GRADUATE ACCESS</p>
@@ -939,6 +1086,36 @@
   // Start the render loop if not on a strictly touch device
   if (window.matchMedia("(pointer: fine)").matches) {
     requestAnimationFrame(renderParallax);
+  }
+
+  // Foundational Frequency Tab Switcher
+  function switchWritingTab(index) {
+    const tabs = document.querySelectorAll('.tas-writing-tab-btn');
+    const panels = document.querySelectorAll('.tas-writing-panel');
+    
+    tabs.forEach((tab, i) => {
+      if(i === index) {
+        tab.classList.add('active');
+        tab.style.color = 'var(--h70-ink)';
+        tab.style.borderColor = 'color-mix(in oklab, var(--h70-signal) 40%, var(--h70-line))';
+        tab.style.background = 'color-mix(in oklab, var(--h70-signal) 10%, var(--h70-surface))';
+      } else {
+        tab.classList.remove('active');
+        tab.style.color = 'var(--h70-muted)';
+        tab.style.borderColor = 'var(--h70-line)';
+        tab.style.background = 'transparent';
+      }
+    });
+
+    panels.forEach((panel, i) => {
+      if(i === index) {
+        panel.style.display = 'block';
+        panel.style.opacity = 0;
+        setTimeout(() => { panel.style.opacity = 1; }, 50);
+      } else {
+        panel.style.display = 'none';
+      }
+    });
   }
 
   // ==========================================

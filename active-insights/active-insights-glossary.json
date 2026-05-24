@@ -568,6 +568,50 @@
       "expanded": "The Daily Rhythm Question argues that creative thinking cannot be installed at a retreat and maintained without structure. The question invites systems leaders to consider what recurring, lightweight practices could keep the capacity active and available.",
       "why_it_matters": "Daily rhythm is the architecture that makes capacity structural — available between interventions, as a living condition of the system. The question invites leaders to build the condition and let it live there.",
       "source": "https://scoolreport2026.vercel.app/sceu-report-two-illuminating-creative-thinking.html"
+    },
+    {
+      "id": "oku-ib",
+      "term": "OKU-I.b",
+      "aliases": ["OKU-I.b", "I Am Studying Heart", "Studying Heart"],
+      "category": "methodology",
+      "tooltip": "The principle education practice: 'I Am Studying Heart'.",
+      "expanded_title": "OKU-I.b :: I Am Studying Heart",
+      "expanded": "The primary educational practice at THE ALIEN SCHOOL. The Heart acts not only as a filter for blood flow, but as the primary filter for Creative Flow in coherence and resonance with our State of Mind.",
+      "why_it_matters": "Understanding what is at the Heart of our thinking reveals why our creative insights are profoundly beautiful and simultaneously challenging. Aligning the heart with the mind allows us to create magic.",
+      "source": "https://scoolreport2026.vercel.app/"
+    },
+    {
+      "id": "grok",
+      "term": "GROK",
+      "aliases": ["GROK", "Growth of Knowledge"],
+      "category": "methodology",
+      "tooltip": "GROK represents the Growth of Knowledge.",
+      "expanded_title": "GROK :: Growth of Knowledge",
+      "expanded": "The tÅs terminology for the structural absorption and distillation of learning into cellular realization.",
+      "why_it_matters": "Knowing is not static. Knowledge must grow through active application and reflection to become a permanent part of our creative identity.",
+      "source": "https://scoolreport2026.vercel.app/"
+    },
+    {
+      "id": "groking",
+      "term": "GROKING",
+      "aliases": ["GROKING", "The Experience of Growth"],
+      "category": "methodology",
+      "tooltip": "GROKING represents the Experience of Growth.",
+      "expanded_title": "GROKING :: The Experience of Growth",
+      "expanded": "The tÅs term for living in the active, conscious realization of expansion and learning.",
+      "why_it_matters": "Being is an active experience. Living the growth in real time is the process that closes the loop between understanding and action.",
+      "source": "https://scoolreport2026.vercel.app/"
+    },
+    {
+      "id": "twin-flames-of-expression",
+      "term": "Twin Flames of Expression",
+      "aliases": ["Twin Flames of Expression", "Creativity & Imagination", "imagination and creativity", "creativity and imagination"],
+      "category": "principle",
+      "tooltip": "The unification of imagination and creativity to release transformative expression.",
+      "expanded_title": "Twin Flames of Expression",
+      "expanded": "Imagination and creativity were historically dislocated, with creativity reduced to commercial careers and imagination left aimless. Re-lassoing them angles insights upwards towards transformative and harmonious possibility.",
+      "why_it_matters": "Creativity without imagination creates into the void of the mind; imagination without creativity infinitizes the loop of considering worst-case scenarios. Their balance produces magic.",
+      "source": "https://scoolreport2026.vercel.app/"
     }
   ]
 }
