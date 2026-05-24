@@ -194,6 +194,86 @@
   .tas-writing-panel {
     transition: opacity 0.4s var(--h70-ease);
   }
+
+  /* ── ENTER SPACE · Superposition Beacon ──────────────────────── */
+  .enter-space-field {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  /* Three rings expanding at staggered phases — interference pattern */
+  .enter-space-ring {
+    position: absolute;
+    inset: 1.5rem; /* matches field padding so rings trace the button edge */
+    border-radius: 6px;
+    border: 1px solid color-mix(in oklab, var(--h70-signal) 35%, transparent);
+    animation: superposition-expand 3s ease-out infinite;
+    pointer-events: none;
+  }
+  .enter-space-ring:nth-child(1) { animation-delay: 0s; }
+  .enter-space-ring:nth-child(2) { animation-delay: 1s; }
+  .enter-space-ring:nth-child(3) { animation-delay: 2s; }
+
+  @keyframes superposition-expand {
+    0%   { transform: scale(1);   opacity: 0.6; }
+    100% { transform: scale(2.1); opacity: 0; }
+  }
+
+  .enter-space-btn {
+    position: relative;
+    z-index: 2;
+    font-family: var(--h70-mono);
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    padding: 1.3rem 5.5rem;
+    background: color-mix(in oklab, var(--h70-signal) 6%, transparent);
+    border: 1px solid color-mix(in oklab, var(--h70-signal) 40%, transparent);
+    color: var(--h70-ink);
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 52px;
+    animation: enter-space-breathe 5s ease-in-out infinite alternate;
+    transition: transform 600ms var(--h70-ease), background 600ms var(--h70-ease),
+                border-color 600ms var(--h70-ease), box-shadow 600ms var(--h70-ease);
+  }
+
+  @keyframes enter-space-breathe {
+    0% {
+      box-shadow:
+        0 0 18px color-mix(in oklab, var(--h70-signal) 10%, transparent),
+        0 0 55px color-mix(in oklab, var(--h70-signal) 4%, transparent);
+    }
+    100% {
+      box-shadow:
+        0 0 32px color-mix(in oklab, var(--h70-signal) 22%, transparent),
+        0 0 90px color-mix(in oklab, var(--h70-signal) 10%, transparent),
+        0 0 160px color-mix(in oklab, var(--h70-signal) 5%, transparent),
+        inset 0 1px 0 color-mix(in oklab, var(--h70-signal) 18%, transparent);
+    }
+  }
+
+  .enter-space-btn:hover,
+  .enter-space-btn:focus-visible {
+    transform: scale(1.04);
+    background: color-mix(in oklab, var(--h70-signal) 14%, transparent);
+    border-color: color-mix(in oklab, var(--h70-signal) 70%, transparent);
+    box-shadow:
+      0 0 45px color-mix(in oklab, var(--h70-signal) 30%, transparent),
+      0 0 110px color-mix(in oklab, var(--h70-signal) 15%, transparent),
+      0 0 200px color-mix(in oklab, var(--h70-signal) 8%, transparent),
+      inset 0 1px 0 color-mix(in oklab, var(--h70-signal) 35%, transparent);
+    animation-play-state: paused;
+    outline: none;
+  }
+
+  /* Rings intensify on hover — potential becomes palpable */
+  .enter-space-field:hover .enter-space-ring {
+    border-color: color-mix(in oklab, var(--h70-signal) 55%, transparent);
+  }
 </style>
 </head>
 <body data-h70-scene="night" class="gateway-open">
@@ -360,7 +440,12 @@
 
     <!-- [3] Enter CTA -->
     <div style="text-align: center; padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3.5rem, 7vw, 6rem);">
-      <button class="h70-glyph-button sonic-link" onclick="initializeSpace()" style="background: transparent; color: var(--h70-ink); border: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent); padding: 1rem 4rem; font-size: 11px; letter-spacing: 0.2em; border-radius: 4px; cursor: pointer;">ENTER SPACE</button>
+      <div class="enter-space-field">
+        <span class="enter-space-ring" aria-hidden="true"></span>
+        <span class="enter-space-ring" aria-hidden="true"></span>
+        <span class="enter-space-ring" aria-hidden="true"></span>
+        <button class="enter-space-btn sonic-link" onclick="initializeSpace()">ENTER SPACE</button>
+      </div>
       <p style="font-family: var(--h70-mono); font-size: 8px; letter-spacing: 0.2em; color: var(--h70-muted); margin-top: 1.25rem; opacity: 0.4; text-transform: uppercase;">∴ Synthesis Archive · tÅs ∴</p>
     </div>
 
