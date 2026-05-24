@@ -307,17 +307,6 @@
     <!-- [2] Mission Text -->
     <div id="gateway-mission" style="padding: clamp(3rem, 6vw, 5rem) 0; border-top: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent); text-align: left;">
 
-      <!-- WE ARE... (Original Frequency July 2022) -->
-      <div style="border: 1px solid var(--h70-line); border-radius: var(--h70-radius-object); padding: clamp(1.5rem, 3vw, 2.5rem); background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--h70-signal) 8%, transparent) 0%, transparent 60%), color-mix(in oklab, var(--h70-surface) 60%, transparent); margin-bottom: 3rem; position: relative; overflow: clip; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.18), inset 0 1px 0 var(--h70-reflection);">
-        <span class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 1.5rem; letter-spacing: 0.22em; font-size: clamp(8px, 1.8vw, 10px); display: block;">WE ARE…</span>
-        <div style="display: flex; flex-direction: column; gap: 1.25rem; font-family: 'EB Garamond', Georgia, serif; font-size: clamp(1.15rem, 2.5vw, 1.45rem); font-style: italic; line-height: 1.45; color: var(--h70-ink);">
-          <div style="text-wrap: balance;">A place to gain creative clarity through your lived experiences</div>
-          <div style="opacity: 0.9; text-wrap: balance;">A connective path to your higher self</div>
-          <div style="opacity: 0.8; text-wrap: balance;">A portal to and through the sensation of Alienation</div>
-          <div style="opacity: 0.7; text-wrap: balance;">A pathway beyond conformity into the comfort of your uniqueness</div>
-        </div>
-      </div>
-
       <!-- Active Insights orientation button -->
       <button type="button" class="tas-ai-reader-help" onclick="window.TASActiveInsights && window.TASActiveInsights.openTerm('calvin-mode')" style="margin-bottom: 2rem;">New here? Start simple.</button>
 
@@ -818,6 +807,17 @@
     <!-- Tabbed Deck Container -->
     <div class="h70-vessel-card" style="padding: clamp(2rem, 5vw, 4rem); min-height: 500px; display: flex; flex-direction: column; gap: 2rem;">
       
+      <!-- WE ARE... (Original Frequency July 2022) -->
+      <div style="border-bottom: 1px solid var(--h70-line); padding-bottom: 3rem; margin-bottom: 1rem; position: relative; overflow: clip; text-align: center;">
+        <span class="h70-kicker" style="color: var(--h70-signal); margin-bottom: 2rem; letter-spacing: 0.28em; font-size: clamp(8.5px, 1.8vw, 10px); display: block;">WE ARE…</span>
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; font-family: 'EB Garamond', Georgia, serif; font-size: clamp(1.25rem, 2.8vw, 1.6rem); font-style: italic; line-height: 1.45; color: var(--h70-ink);">
+          <div style="text-wrap: balance;">A place to gain creative clarity through your lived experiences</div>
+          <div style="opacity: 0.9; text-wrap: balance;">A connective path to your higher self</div>
+          <div style="opacity: 0.8; text-wrap: balance;">A portal to and through the sensation of Alienation</div>
+          <div style="opacity: 0.7; text-wrap: balance;">A pathway beyond conformity into the comfort of your uniqueness</div>
+        </div>
+      </div>
+
       <!-- Tab Control Row -->
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; border-bottom: 1px solid var(--h70-line); padding-bottom: 1.5rem;">
         <button class="tas-writing-tab-btn active" onclick="switchWritingTab(0)" style="background: color-mix(in oklab, var(--h70-signal) 10%, var(--h70-surface)); border: 1px solid color-mix(in oklab, var(--h70-signal) 40%, var(--h70-line)); border-radius: var(--h70-radius-orb); padding: 0.6rem 1.25rem; font-family: var(--h70-mono); font-size: clamp(8.5px, 1.8vw, 10px); letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; color: var(--h70-ink); transition: all 0.3s ease;">
