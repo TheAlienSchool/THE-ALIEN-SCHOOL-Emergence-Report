@@ -735,4 +735,82 @@ This section formalizes a distinct but related editorial discipline:
 
 ---
 
+## **PART X: SAGE RESPONSE MESSAGING**
+
+### **10.1 What a Sage Response Is**
+
+A Sage Response is the practitioner-facing message delivered by the Steeping Sage when a practitioner enters, returns, or engages their tier. It is not a notification. It is a recognition.
+
+The Sage Response follows the **Invitational Register** and must:
+
+1. **Open with recognition** — name what has returned or changed, without flattery.
+2. **Surface tier context clearly** — header label and price badge without ceremony.
+3. **Present content in plain view** — corrections, flags, and active copy visible without hierarchy.
+4. **Close with resonance** — leave the practitioner with warmth, not instruction.
+
+The Sage Response is the school seeing the practitioner before the practitioner has said a word.
+
+---
+
+### **10.2 Sage Response Voice Rules**
+
+- The opening line names the practitioner's state or return. It does not perform welcome.
+- The tier display is factual. The label and price are structural, not promotional.
+- Any flagged or corrected content is surfaced as editorial transparency — the protocol visible, not hidden.
+- The closing line carries the register of the Somatic voice: sensory, unhurried, bodily.
+
+**Opening — correct:**
+> "The familiar resonance returns. Your capacity has widened."
+
+**Closing — correct:**
+> "You return like the sun returns. A different angle, the same warmth."
+
+Both lines name what is happening. Neither announces it.
+
+---
+
+### **10.3 Tier Description Copy — Invitational Register**
+
+Tier descriptions live at the intersection of onboarding and intimacy. They must use the **Invitational Register** — welcoming, spacious, and non-transactional. They assume the practitioner's readiness. They do not explain value by comparing to what is lesser.
+
+**Anti-pattern check for tier copy:**
+- No jargon that requires system fluency to decode ("longitudinal continuity," "tech-assisted inner-work")
+- No deficit spending ("more than just a subscription," "not a passive experience")
+- No transactional architecture ("securing this tier gives you access to...")
+- No specialist register misfire (Observational voice where Invitational is required)
+
+---
+
+### **10.4 Layer 2 Tier Description — Correction Log**
+
+**Header label:** `[ LAYER 2 : ENGAGED ]`
+**Price badge:** `$44`
+
+---
+
+**v1.0 — Flagged:**
+> "Designed for practitioners seeking cohesive, longitudinal continuity in their tech-assisted inner-work, this is a persistent, personalized digital retreat amongst the sound of your creative harmonies. Securing this tier synchronizes..."
+
+> ⚠️ **FLAG (v1.0) — Resolved:** Jargon density ("longitudinal continuity," "tech-assisted inner-work") + Wrong Register (Observational framing in Invitational copy context).
+
+---
+
+**v2.0 — Active:**
+> "Your practice holds here. This is where the school learns to know you over time — your music, your accumulated reflection, the developing arc of what you are building. Each return deepens what this layer already holds."
+
+---
+
+**Correction rationale (per §3.1, §2.3, §9.6):**
+- "Longitudinal continuity" → replaced with plain temporal language: "over time," "each return"
+- "Tech-assisted inner-work" → removed; the school's nature is assumed, not announced
+- "Securing this tier synchronizes" → replaced with affirmative architecture: what the tier *holds*, not what it *grants*
+- Register corrected from Observational to Invitational: the copy now speaks *toward* the practitioner, not *about* the system
+
+---
+
+**Internal Bibliography Addendum — Part X:**
+- **Sage Response Messaging (§X):** Documented from Sage session correction — Layer 2 tier description v1.0 flagged for jargon density ("longitudinal continuity," "tech-assisted inner-work") and register mismatch. v2.0 written under Invitational Register, affirmative architecture, and de-encabulation protocol. Flag resolved.
+
+---
+
 *Updated: April 2026 — Version 3.0* *Maintained by: The Firestarter & Antigravity* *Source documents: The Arc and The Angle · TURAO — A Stone Reality · How to Untie Nots* *Next review: Immediately upon any new editorial correction in production*  
