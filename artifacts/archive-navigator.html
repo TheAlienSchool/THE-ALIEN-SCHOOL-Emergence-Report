@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive Navigator :: THE ÅLïEN SCõÖL</title>
+<link rel="icon" type="image/svg+xml" href="/assets/beacon-favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/harmonious70.css">
+<link rel="stylesheet" href="/active-insights/tas-tooltips.css">
+<link rel="stylesheet" href="/active-insights/tas-glyphs.css">
+<style>
+  :root {
+    --bg:     var(--h70-bg);
+    --ink:    var(--h70-ink);
+    --muted:  var(--h70-muted);
+    --border: var(--h70-line);
+    --gold:   var(--h70-signal);
+    --rule:   var(--h70-line);
+    --mono:   'DM Mono', ui-monospace, monospace;
+    --serif:  'EB Garamond', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 2.5rem) 8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TYPE UTILITIES ── */
+  .mono  { font-family: var(--mono); }
+  .serif { font-family: var(--serif); }
+  .signal { color: var(--gold); }
+  .muted  { color: var(--muted); }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .kicker--signal { color: var(--gold); }
+
+  /* ── COVER ── */
+  .nav-cover {
+    min-height: 55vh;
+    padding: 9rem 0 5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .nav-cover__eyebrow {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.26em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.75;
+  }
+
+  .nav-cover__title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.0;
+    margin-bottom: 2rem;
+  }
+
+  .nav-cover__deck {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    max-width: 56ch;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .nav-cover__orientation {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink);
+    max-width: 66ch;
+    opacity: 0.88;
+  }
+
+  /* ── SECTIONS ── */
+  .nav-section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-section:last-child { border-bottom: none; }
+
+  .section-heading {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--rule);
+  }
+
+  .section-intro {
+    font-size: 0.95rem;
+    line-height: 1.78;
+    color: var(--muted);
+    max-width: 62ch;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── DOCUMENT GROUPS ── */
+  .doc-group { margin-bottom: 3rem; }
+  .doc-group:last-child { margin-bottom: 0; }
+
+  .doc-group__label {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1px;
+    padding: 0.6rem 0;
+    opacity: 0.6;
+    border-top: 1px solid var(--border);
+  }
+
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .doc-card {
+    background: var(--bg);
+    padding: 1.75rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  .doc-card:is(:hover, :focus-visible) {
+    background: color-mix(in oklab, var(--bg) 88%, var(--gold));
+    outline: none;
+  }
+
+  .doc-card__glyph {
+    margin-bottom: 0.15rem;
+    font-size: 1rem;
+  }
+
+  .doc-card__type {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    opacity: 0.75;
+    text-transform: uppercase;
+  }
+
+  .doc-card__name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .doc-card__role {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  .doc-card__for {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    opacity: 0.6;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    line-height: 1.7;
+  }
+
+  .doc-card__link {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  /* ── READING PATHS ── */
+  .path-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .path-card {
+    background: var(--bg);
+    padding: 1.75rem 1.6rem;
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 600px) {
+    .path-card { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
+  .path-card__who {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    text-transform: uppercase;
+    line-height: 1.9;
+  }
+
+  .path-card__context {
+    display: block;
+    font-size: 7.5px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    opacity: 0.65;
+    margin-top: 0.2rem;
+    font-style: normal;
+  }
+
+  .path-sequence {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    line-height: 2;
+    margin-bottom: 0.85rem;
+  }
+  .path-sequence .arrow { color: var(--gold); opacity: 0.55; padding: 0 0.3em; }
+
+  .path-card__gives {
+    font-family: var(--serif);
+    font-size: 0.93rem;
+    line-height: 1.68;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── THROUGH-LINES ── */
+  .through-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .through-item {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .through-item:last-child { border-bottom: none; }
+
+  .through-item__glyph {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.2rem;
+    font-size: 1rem;
+  }
+
+  .through-item__name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .through-item__desc {
+    font-size: 0.92rem;
+    line-height: 1.72;
+    color: var(--muted);
+  }
+
+  .through-item__sources {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 0.13em;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-top: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  /* ── GLYPH KEY ── */
+  .glyph-key {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .glyph-entry {
+    background: var(--bg);
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .glyph-entry__mark {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-family: var(--mono);
+    min-width: 1.6rem;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.08rem;
+  }
+
+  .glyph-entry__name {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+    opacity: 0.9;
+  }
+
+  .glyph-entry__desc {
+    font-size: 0.84rem;
+    line-height: 1.62;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span data-tas-term="tas">THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" title="therefore — the school's practice signal" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="../index.html" style="color: inherit; text-decoration: none;">← SYNTHESIS</a>
+  </div>
+</nav>
+
+<div class="page" data-tas-auto-annotate>
+
+  <!-- ── COVER ── -->
+  <section class="nav-cover">
+    <p class="nav-cover__eyebrow">THE ÅLïEN SCõÖL · SYNTHESIS ARCHIVE</p>
+    <h1 class="nav-cover__title">Archive<br><span class="signal">Navigator</span></h1>
+    <p class="nav-cover__deck">What each document contains, who it serves, and how the pieces connect.</p>
+    <p class="nav-cover__orientation">The Synthesis Archive is not a single document — it is a system of documents. Each enters the school's work from a different position: the evidence, the methodology, the language, the theory, the resonance. Together, they are the full accounting. This page maps that system, so any reader arrives at any artifact knowing what it holds and where it sits in the whole.</p>
+  </section>
+
+  <!-- ── THE DOCUMENTS ── -->
+  <section class="nav-section">
+    <h2 class="section-heading">THE DOCUMENTS</h2>
+
+    <!-- Primary Archive -->
+    <div class="doc-group">
+      <p class="doc-group__label">Primary Archive — what happened, the patterns that hold, and how the work is structured</p>
+      <div class="doc-grid">
+
+        <a href="field-notes.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="field" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Inaugural Field Record</p>
+          <p class="doc-card__name">Field Notes</p>
+          <p class="doc-card__role">The school's full accounting — methodology, scholar arcs, proof points, reach, and origins. The closest thing to a complete picture in one document.</p>
+          <p class="doc-card__for">For · First encounters · Partners · Funders · Anyone wanting the full picture</p>
+          <p class="doc-card__link">Open Field Notes →</p>
+        </a>
+
+        <a href="proof-of-field.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="phi" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">The Reflectionary</p>
+          <p class="doc-card__name">Proof of Field</p>
+          <p class="doc-card__role">Six phi-level threads that hold across every scholar, geography, and session in the archive. The evidence that the work produces consistent, observable transformation.</p>
+          <p class="doc-card__for">For · Evidence review · Structural analysis · Research · Pattern recognition</p>
+          <p class="doc-card__link">Review the Proof →</p>
+        </a>
+
+        <a href="elevation-codex.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="emergence" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Practitioner's Field Guide</p>
+          <p class="doc-card__name">Elevation Codex</p>
+          <p class="doc-card__role">What KzA does, how the sessions are structured, and why the methodology produces what it does. The architecture of the practice — explicit and transferable.</p>
+          <p class="doc-card__for">For · Guides · Educators · Practitioners · Organizations designing creative environments</p>
+          <p class="doc-card__link">Enter the Codex →</p>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Orientation Documents -->
+    <div class="doc-group">
+      <p class="doc-group__label">Orientation Documents — resonance coordinates and the language system</p>
+      <div class="doc-grid">
+
+        <a href="frequency-report.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="frequency" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Compass Document · Living</p>
+          <p class="doc-card__name">Frequency Report</p>
+          <p class="doc-card__role">A compass reading. Three resonance coordinates where the school receives its deepest recognition — and what each asks of the school's future design.</p>
+          <p class="doc-card__for">For · Strategic partners · Organizational leads · Funders evaluating fit</p>
+          <p class="doc-card__link">Read the Frequency →</p>
+        </a>
+
+        <a href="metaphor-library.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="voice" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Language System · Living Document</p>
+          <p class="doc-card__name">Metaphor Library</p>
+          <p class="doc-card__role">The school's language system. The metaphors, terms, and images through which creative intelligence becomes speakable — and the practice becomes transferable.</p>
+          <p class="doc-card__for">For · Practitioners · Scholars · Writers · Anyone entering the school's symbolic vocabulary</p>
+          <p class="doc-card__link">Enter the Library →</p>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Research Integration -->
+    <div class="doc-group">
+      <p class="doc-group__label">Research Integration — the school's practice positioned in academic context</p>
+      <div class="doc-grid">
+
+        <a href="../sceu-report-one-integrating-creative-thinking.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="evidence" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Integration Brief · SCEU</p>
+          <p class="doc-card__name">Integrating Creative Thinking</p>
+          <p class="doc-card__role">An integration brief mapping tÅs's documented practice against creative thinking research in systems change education. The school's methodology positioned within established frameworks.</p>
+          <p class="doc-card__for">For · Educators · Organizational researchers · Academic collaborators</p>
+          <p class="doc-card__link">Read Report One →</p>
+        </a>
+
+        <a href="../sceu-report-two-illuminating-creative-thinking.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="field" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Illumination Brief · SCEU</p>
+          <p class="doc-card__name">Illuminating Creative Thinking</p>
+          <p class="doc-card__role">The somatic, relational, and temporal conditions most supportive of creative thinking — identified and specified through the tÅs lens. Conditions that can be designed for.</p>
+          <p class="doc-card__for">For · Educators · Wellness practitioners · Leaders designing creative environments</p>
+          <p class="doc-card__link">Read Report Two →</p>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- School of Thought -->
+    <div class="doc-group">
+      <p class="doc-group__label">School of Thought — the school's intellectual horizon and the lineages it draws from</p>
+      <div class="doc-grid">
+
+        <a href="../tas-emergence-report.html" class="doc-card">
+          <div class="doc-card__glyph"><span data-tas-glyph="frequency" data-tas-glyph-size="lg"></span></div>
+          <p class="doc-card__type">Theoretical Speculation</p>
+          <p class="doc-card__name">The Emergence Report</p>
+          <p class="doc-card__role">Four intellectual lineages converging on the position tÅs occupies — and what its full emergence as a school of thought requires. The school as an idea with a named future.</p>
+          <p class="doc-card__for">For · Investors · Thought partners · Researchers · Anyone asking what the school could become</p>
+          <p class="doc-card__link">Enter the Emergence →</p>
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── READING PATHS ── -->
+  <section class="nav-section">
+    <h2 class="section-heading">READING PATHS</h2>
+    <p class="section-intro">Five entry points depending on who you are and what you're bringing to the archive. Each path is a sequence — not a requirement. Follow the one that names your position.</p>
+
+    <div class="path-list">
+
+      <div class="path-card">
+        <div class="path-card__who">
+          First Encounter
+          <span class="path-card__context">No prior context. Any starting position.</span>
+        </div>
+        <div>
+          <p class="path-sequence">Field Notes <span class="arrow">→</span> the artifact that speaks to where you are</p>
+          <p class="path-card__gives">Field Notes holds the full picture. The second artifact sharpens it for your specific position. A complete orientation before any depth commitment.</p>
+        </div>
+      </div>
+
+      <div class="path-card">
+        <div class="path-card__who">
+          Scholar or Participant
+          <span class="path-card__context">Considering or beginning the work.</span>
+        </div>
+        <div>
+          <p class="path-sequence">Field Notes <span class="arrow">→</span> Elevation Codex <span class="arrow">→</span> Proof of Field</p>
+          <p class="path-card__gives">What the school is, how the sessions work, and what the documented results look like. A complete picture of what you are entering — and what has already been produced.</p>
+        </div>
+      </div>
+
+      <div class="path-card">
+        <div class="path-card__who">
+          Partner or Funder
+          <span class="path-card__context">Evaluating the school's work and potential.</span>
+        </div>
+        <div>
+          <p class="path-sequence">Proof of Field <span class="arrow">→</span> Field Notes <span class="arrow">→</span> Frequency Report <span class="arrow">→</span> Emergence Report</p>
+          <p class="path-card__gives">Evidence first, then the full context, then strategic positioning, then the school's intellectual horizon. Builds to a complete investment picture in four movements.</p>
+        </div>
+      </div>
+
+      <div class="path-card">
+        <div class="path-card__who">
+          Researcher or Educator
+          <span class="path-card__context">Engaging the school's academic dimension.</span>
+        </div>
+        <div>
+          <p class="path-sequence">SCEU One <span class="arrow">→</span> SCEU Two <span class="arrow">→</span> Proof of Field <span class="arrow">→</span> Emergence Report</p>
+          <p class="path-card__gives">Begins in familiar research territory and arrives at original ground. The academic framework first, then the evidence, then the school's full theoretical position.</p>
+        </div>
+      </div>
+
+      <div class="path-card">
+        <div class="path-card__who">
+          Practitioner or Guide
+          <span class="path-card__context">Learning the methodology for application.</span>
+        </div>
+        <div>
+          <p class="path-sequence">Elevation Codex <span class="arrow">→</span> Proof of Field <span class="arrow">→</span> Metaphor Library</p>
+          <p class="path-card__gives">The methodology, the pattern evidence, then the language system. Gives a practitioner what they need to understand, verify, and speak the work.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── THE THROUGH-LINES ── -->
+  <section class="nav-section">
+    <h2 class="section-heading">THE THROUGH-LINES</h2>
+    <p class="section-intro">Six concepts run through the entire archive. They are not themes — they are structural presences. They appear in different forms across different documents, but the thread is continuous. Meeting one of them in any document connects you to all its other appearances.</p>
+
+    <div class="through-list">
+
+      <div class="through-item">
+        <div class="through-item__glyph"><span data-tas-glyph="field"></span></div>
+        <div>
+          <p class="through-item__name">Creative intelligence as recoverable</p>
+          <p class="through-item__desc">Every document operates from the same operative assumption: the school does not teach creativity. It removes obstruction to creativity already present. This is not a belief — it is a methodological commitment with documented outcomes across every scholar arc in the archive.</p>
+          <p class="through-item__sources">Present in · Field Notes · Proof of Field · Elevation Codex · SCEU One · SCEU Two · Emergence Report</p>
+        </div>
+      </div>
+
+      <div class="through-item">
+        <div class="through-item__glyph"><span data-tas-glyph="emergence"></span></div>
+        <div>
+          <p class="through-item__name">The scholar's arc</p>
+          <p class="through-item__desc">Individual transformation documented over time. Each scholar is a real person who entered the field at a specific moment in their life and left changed in specific, nameable ways. The arcs are not summaries — they are the archive's primary evidence.</p>
+          <p class="through-item__sources">Present in · Field Notes · Proof of Field · SCEU One · SCEU Two</p>
+        </div>
+      </div>
+
+      <div class="through-item">
+        <div class="through-item__glyph"><span data-tas-glyph="phi"></span></div>
+        <div>
+          <p class="through-item__name">Phi-level threads</p>
+          <p class="through-item__desc">Six structural patterns that hold at depth across all sessions and scholars. They appear regardless of the scholar's background, geography, or presenting situation. Named in Proof of Field. Specified and validated in both SCEU reports.</p>
+          <p class="through-item__sources">Present in · Proof of Field · SCEU One · SCEU Two · Emergence Report</p>
+        </div>
+      </div>
+
+      <div class="through-item">
+        <div class="through-item__glyph"><span data-tas-glyph="emergence"></span></div>
+        <div>
+          <p class="through-item__name">The methodology</p>
+          <p class="through-item__desc">What KzA does in each session — documented in Elevation Codex, active in every scholar record in Field Notes, validated in both SCEU reports. The methodology is not a set of techniques. It is an architecture of conditions that makes creative intelligence legible to the scholar themselves.</p>
+          <p class="through-item__sources">Present in · Elevation Codex · Field Notes · SCEU One · SCEU Two</p>
+        </div>
+      </div>
+
+      <div class="through-item">
+        <div class="through-item__glyph"><span data-tas-glyph="voice"></span></div>
+        <div>
+          <p class="through-item__name">The language system</p>
+          <p class="through-item__desc">Metaphors, terms, and marks that give the work's concepts a speakable form. The school does not use generic creativity vocabulary. It develops precise language with and from each scholar — language that names what was previously unnamed. Centered in Metaphor Library. Active through Active Insights across all documents.</p>
+          <p class="through-item__sources">Present in · Metaphor Library · Field Notes · Active Insights (embedded in all pages)</p>
+        </div>
+      </div>
+
+      <div class="through-item">
+        <div class="through-item__glyph"><span data-tas-glyph="frequency"></span></div>
+        <div>
+          <p class="through-item__name">Emergence as ongoing</p>
+          <p class="through-item__desc">The school is in the process of becoming what it is. The Emergence Report names this directly. All other documents are evidence of the process — each one a record of a school accumulating documentation, methodology, and presence in real time, across three continents.</p>
+          <p class="through-item__sources">Present in · Emergence Report · Field Notes · Frequency Report · Proof of Field</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── THE VISUAL VOCABULARY ── -->
+  <section class="nav-section">
+    <h2 class="section-heading">THE VISUAL VOCABULARY</h2>
+    <p class="section-intro">Seven marks appear throughout the archive. Each carries a specific meaning — a precise signal that the scanning eye picks up before the reading mind does. Hover any mark to read its full designation.</p>
+
+    <div class="glyph-key">
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark" style="font-size: 1.15rem; opacity: 0.9;" title="therefore — the school's practice signal">∴</div>
+        <div>
+          <p class="glyph-entry__name">Therefore</p>
+          <p class="glyph-entry__desc">The school's practice signal. The threshold between name and practice. Appears in the global navigation of every archive page.</p>
+        </div>
+      </div>
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark"><span data-tas-glyph="field"></span></div>
+        <div>
+          <p class="glyph-entry__name">Field Signal</p>
+          <p class="glyph-entry__desc">The place where original creative intelligence is accessed. Marks moments of direct contact with the Field of Original Frequency.</p>
+        </div>
+      </div>
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark"><span data-tas-glyph="emergence"></span></div>
+        <div>
+          <p class="glyph-entry__name">Emergence Mark</p>
+          <p class="glyph-entry__desc">A documented moment of transformation. Marks evidence of the scholar moving from one state of creative self-understanding to another.</p>
+        </div>
+      </div>
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark"><span data-tas-glyph="phi"></span></div>
+        <div>
+          <p class="glyph-entry__name">Phi Mark</p>
+          <p class="glyph-entry__desc">A structural pattern that holds at depth. Marks phi-level threads — patterns that recur across all scholars, sessions, and geographies, regardless of context.</p>
+        </div>
+      </div>
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark"><span data-tas-glyph="frequency"></span></div>
+        <div>
+          <p class="glyph-entry__name">Frequency Signal</p>
+          <p class="glyph-entry__desc">A resonance or recurring pattern across the archive. Marks moments where the school's work aligns with wider cultural, educational, or creative patterns.</p>
+        </div>
+      </div>
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark"><span data-tas-glyph="evidence"></span></div>
+        <div>
+          <p class="glyph-entry__name">Evidence Mark</p>
+          <p class="glyph-entry__desc">A verified observation or proof point. Marks statements drawn directly from session records, transcripts, or the scholar's own documented language.</p>
+        </div>
+      </div>
+
+      <div class="glyph-entry">
+        <div class="glyph-entry__mark"><span data-tas-glyph="voice"></span></div>
+        <div>
+          <p class="glyph-entry__name">Scholar Voice</p>
+          <p class="glyph-entry__desc">Direct language from a documented session. Marks the scholar's own words — drawn from Fireflies session transcripts or handwritten Trailing Notes.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- FIXED FOOTER BAR -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span data-tas-term="tas">tÅs</span>
+    <span id="scroll-progress">0% NAVIGATED</span>
+  </div>
+  <div style="text-align: right;">
+    <a href="mailto:connect@thealienschool.com" style="color: var(--h70-signal); text-decoration: none;">connect@thealienschool.com</a>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('scroll', function () {
+    var docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct  = Math.min(100, Math.max(0, Math.round((window.scrollY / docH) * 100)));
+    var el   = document.getElementById('scroll-progress');
+    if (el) el.textContent = pct + '% NAVIGATED';
+  });
+</script>
+
+<!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
+<script src="/active-insights/tas-tooltips.js" defer></script>
+<!-- tÅs GLYPH SYSTEM -->
+<script src="/active-insights/tas-glyphs.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    window.TASActiveInsights.init({
+      glossaryUrl: '/active-insights/active-insights-glossary.json',
+      mode: 'auto',
+      maxAutoMatchesPerTerm: 1,
+      container: '[data-tas-auto-annotate]'
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Brief :: THE ÅLïEN SCõÖL Synthesis Archive</title>
+<link rel="icon" type="image/svg+xml" href="/assets/beacon-favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/harmonious70.css">
+<link rel="stylesheet" href="/active-insights/tas-glyphs.css">
+<style>
+  :root {
+    --bg:    var(--h70-bg);
+    --ink:   var(--h70-ink);
+    --muted: var(--h70-muted);
+    --border: var(--h70-line);
+    --gold:  var(--h70-signal);
+    --mono:  'DM Mono', ui-monospace, monospace;
+    --serif: 'EB Garamond', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: var(--mono); font-size: 0.82em; background: rgba(232,228,219,0.06); padding: 0.1em 0.35em; border-radius: 2px; }
+  pre { font-family: var(--mono); font-size: 0.78rem; background: rgba(232,228,219,0.04); border: 1px solid var(--border); padding: 1.1rem 1.3rem; border-radius: 3px; overflow-x: auto; line-height: 1.6; color: var(--ink); white-space: pre; }
+
+  .page {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 2.5rem) 8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TYPE ── */
+  .mono { font-family: var(--mono); }
+  .signal { color: var(--gold); }
+  .muted  { color: var(--muted); }
+
+  /* ── COVER ── */
+  .brief-cover {
+    min-height: 45vh;
+    padding: 9rem 0 4.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .brief-cover__eyebrow {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+  .brief-cover__title {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 1.75rem;
+  }
+  .brief-cover__intro {
+    font-size: 0.97rem;
+    line-height: 1.82;
+    color: var(--ink);
+    max-width: 68ch;
+    opacity: 0.88;
+  }
+
+  /* ── SECTION ── */
+  .brief-section {
+    padding: clamp(3rem, 5vw, 4.5rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .brief-section:last-child { border-bottom: none; }
+
+  .section-heading {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ── SPEC GRIDS ── */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0.3rem 1.5rem;
+    font-size: 0.88rem;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 560px) { .spec-grid { grid-template-columns: 1fr; gap: 0.15rem; } }
+
+  .spec-label {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding-top: 0.2em;
+    opacity: 0.7;
+  }
+  .spec-value { color: var(--ink); line-height: 1.55; }
+  .spec-value--path { font-family: var(--mono); font-size: 0.8rem; color: var(--gold); }
+  .spec-value--dim  { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+
+  /* ── VISUAL SLOT ── */
+  .slot {
+    border: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+    scroll-margin-top: 6rem;
+  }
+
+  .slot:last-child { margin-bottom: 0; }
+
+  .slot__header {
+    background: rgba(232,228,219,0.03);
+    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .slot__id {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .slot__page-label {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+
+  .slot__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .slot__direction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  @media (max-width: 680px) { .slot__direction-grid { grid-template-columns: 1fr; } }
+
+  .direction-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .direction-block__label {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.75;
+  }
+  .direction-block__text {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .direction-block--full { grid-column: 1 / -1; }
+
+  .mood-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .mood-tag {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── PAGE GROUP HEADER ── */
+  .page-group {
+    margin-bottom: 3.5rem;
+  }
+  .page-group__name {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.26em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.75rem;
+    opacity: 0.65;
+  }
+  .page-group__name strong { color: var(--ink); opacity: 1; }
+
+  /* ── PALETTE BLOCK ── */
+  .palette-block {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .palette-swatch {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .swatch-color {
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    border: 1px solid rgba(232,228,219,0.12);
+  }
+  .swatch-label {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── TABLE OF CONTENTS ── */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 0;
+  }
+  .toc-entry {
+    background: var(--bg);
+    padding: 0.85rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: background 0.15s;
+  }
+  .toc-entry:hover { background: rgba(212,175,55,0.05); }
+  .toc-entry__id {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .toc-entry__page {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body data-h70-scene="night">
+
+<!-- GLOBAL NAVIGATION -->
+<nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
+  <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <span data-tas-term="tas">THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" title="therefore — the school's practice signal" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+  </a>
+  <div style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
+    <a href="archive-navigator.html" style="color: inherit; text-decoration: none;">NAVIGATOR</a>
+    <a href="../index.html" style="color: inherit; text-decoration: none; opacity: 0.6;">← SYNTHESIS</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- ── COVER ── -->
+  <section class="brief-cover">
+    <p class="brief-cover__eyebrow">THE ÅLïEN SCõÖL · SYNTHESIS ARCHIVE · INTERNAL CREATIVE BRIEF</p>
+    <h1 class="brief-cover__title">Visual <span class="signal">Brief</span></h1>
+    <p class="brief-cover__intro">A complete art direction specification for the Synthesis Archive's visual layer. Twenty-four image slots, each with exact placement code, conceptual intent, compositional guidance, palette references, and generation prompting seeds. The partner generates from this brief. Each image drops directly into the pre-designated file path. No interpretation required beyond the brief itself.</p>
+  </section>
+
+  <!-- ── TECHNICAL FOUNDATIONS ── -->
+  <section class="brief-section">
+    <h2 class="section-heading">TECHNICAL FOUNDATIONS</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+
+      <!-- File structure -->
+      <div>
+        <p style="font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; opacity: 0.85;">Folder Structure — create before generating</p>
+        <pre>/assets/
+  visuals/
+    index/
+    field-notes/
+    proof-of-field/
+    elevation-codex/
+    frequency-report/
+    metaphor-library/
+    sceu-one/
+    sceu-two/
+    emergence-report/
+    archive-navigator/</pre>
+      </div>
+
+      <!-- Format spec -->
+      <div>
+        <p style="font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; opacity: 0.85;">Image Format Defaults</p>
+        <div class="spec-grid">
+          <span class="spec-label">Format</span>
+          <span class="spec-value">JPG, quality 90–95. PNG only if the image requires transparency.</span>
+        </div>
+        <div class="spec-grid">
+          <span class="spec-label">Color space</span>
+          <span class="spec-value">sRGB</span>
+        </div>
+        <div class="spec-grid">
+          <span class="spec-label">Cover images</span>
+          <span class="spec-value">1400 × 600 px minimum. Horizontally wide. Subject centered or center-right.</span>
+        </div>
+        <div class="spec-grid">
+          <span class="spec-label">Body images</span>
+          <span class="spec-value">1200 × 700 px. Wider than tall. Atmospheric rather than tight.</span>
+        </div>
+        <div class="spec-grid">
+          <span class="spec-label">Interstitial images</span>
+          <span class="spec-value">1400 × 500 px. Very wide, shallow. Works as a visual pause between sections.</span>
+        </div>
+        <div class="spec-grid">
+          <span class="spec-label">Accent images</span>
+          <span class="spec-value">900 × 600 px. More square. Detailed, intimate.</span>
+        </div>
+      </div>
+
+      <!-- Palette -->
+      <div>
+        <p style="font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; opacity: 0.85;">Archive Palette — generate within this range</p>
+        <div class="palette-block">
+          <div class="palette-swatch">
+            <div class="swatch-color" style="background: #050d0c;"></div>
+            <div class="swatch-label">#050d0c<br>Background</div>
+          </div>
+          <div class="palette-swatch">
+            <div class="swatch-color" style="background: #0a1715;"></div>
+            <div class="swatch-label">#0a1715<br>Deep surface</div>
+          </div>
+          <div class="palette-swatch">
+            <div class="swatch-color" style="background: #e8e4db;"></div>
+            <div class="swatch-label">#e8e4db<br>Warm parchment</div>
+          </div>
+          <div class="palette-swatch">
+            <div class="swatch-color" style="background: #d4af37;"></div>
+            <div class="swatch-label">#d4af37<br>Signal gold</div>
+          </div>
+          <div class="palette-swatch">
+            <div class="swatch-color" style="background: #8b7d6b;"></div>
+            <div class="swatch-label">#8b7d6b<br>Warm gray</div>
+          </div>
+          <div class="palette-swatch">
+            <div class="swatch-color" style="background: #b8a060;"></div>
+            <div class="swatch-label">#b8a060<br>Ambient brass</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; line-height: 1.68; color: var(--muted); margin-top: 1rem; max-width: 66ch;">The background world is very dark — not blue-black but green-black, as if lit by ember rather than neon. All light sources are warm. Gold is the signal color: it marks what matters, not what decorates. Avoid cold light, blue tones, and high-contrast white. Every image should feel like it belongs in the same interior.</p>
+      </div>
+
+      <!-- Visual philosophy -->
+      <div>
+        <p style="font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; opacity: 0.85;">Visual Philosophy</p>
+        <p style="font-size: 0.93rem; line-height: 1.78; color: var(--muted); max-width: 68ch;">No faces. The scholars are protected by privacy, and the work is not about specific people — it is about what happens in the field between them. Images should suggest human presence without showing it: an empty chair, a hand, breath-fog, a shadow, an impression. Abstract but not arbitrary. Each image should be conceptually coherent with the section it accompanies — not decorative, not illustrative. Think: the image that holds the same question the text holds, not the image that answers it.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── TABLE OF CONTENTS ── -->
+  <section class="brief-section">
+    <h2 class="section-heading">24 VISUAL SLOTS</h2>
+    <div class="toc-grid">
+      <div class="toc-entry"><a class="toc-entry__id" href="#index-archive-opening">index-archive-opening</a><p class="toc-entry__page">index.html · Archive section header</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#index-artifacts-close">index-artifacts-close</a><p class="toc-entry__page">index.html · Between archive cards and footer</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fn-cover">fn-cover</a><p class="toc-entry__page">field-notes.html · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fn-scholar-field">fn-scholar-field</a><p class="toc-entry__page">field-notes.html · Scholar Record section</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fn-methodology">fn-methodology</a><p class="toc-entry__page">field-notes.html · Methodology section</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fn-close">fn-close</a><p class="toc-entry__page">field-notes.html · Closing</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#pof-cover">pof-cover</a><p class="toc-entry__page">proof-of-field.html · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#pof-threads">pof-threads</a><p class="toc-entry__page">proof-of-field.html · Phi-Level Threads</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#pof-close">pof-close</a><p class="toc-entry__page">proof-of-field.html · Closing</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#ec-cover">ec-cover</a><p class="toc-entry__page">elevation-codex.html · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#ec-methodology">ec-methodology</a><p class="toc-entry__page">elevation-codex.html · Methodology</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fr-cover">fr-cover</a><p class="toc-entry__page">frequency-report.html · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fr-resonance-01">fr-resonance-01</a><p class="toc-entry__page">frequency-report.html · First coordinate</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fr-resonance-02">fr-resonance-02</a><p class="toc-entry__page">frequency-report.html · Second coordinate</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#fr-resonance-03">fr-resonance-03</a><p class="toc-entry__page">frequency-report.html · Third coordinate</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#ml-cover">ml-cover</a><p class="toc-entry__page">metaphor-library.html · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#ml-body">ml-body</a><p class="toc-entry__page">metaphor-library.html · Library body</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#s1-cover">s1-cover</a><p class="toc-entry__page">sceu-report-one · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#s1-integration">s1-integration</a><p class="toc-entry__page">sceu-report-one · Integration section</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#s2-cover">s2-cover</a><p class="toc-entry__page">sceu-report-two · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#s2-conditions">s2-conditions</a><p class="toc-entry__page">sceu-report-two · Conditions section</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#er-cover">er-cover</a><p class="toc-entry__page">emergence-report · Cover</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#er-lineages">er-lineages</a><p class="toc-entry__page">emergence-report · Lineages section</p></div>
+      <div class="toc-entry"><a class="toc-entry__id" href="#nav-header">nav-header</a><p class="toc-entry__page">archive-navigator.html · Cover</p></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       VISUAL SLOTS
+  ══════════════════════════════════════════════════ -->
+  <section class="brief-section">
+    <h2 class="section-heading">THE VISUAL SLOTS</h2>
+
+    <!-- ─────────────────── INDEX.HTML ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>index.html</strong> — The Portal · Synthesis Archive installation</p>
+
+      <!-- SLOT: index-archive-opening -->
+      <article class="slot" id="index-archive-opening">
+        <div class="slot__header">
+          <span class="slot__id">index-archive-opening</span>
+          <span class="slot__page-label">index.html · Archive section header · Interstitial</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/index/index-archive-opening.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 480 px · Wide interstitial</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert directly before <code>&lt;header&gt;</code> inside <code>&lt;main id="archive-core"&gt;</code></span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: index-archive-opening --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial"&gt;
+  &lt;img
+    src="/assets/visuals/index/index-archive-opening.jpg"
+    alt="The threshold into the Synthesis Archive — atmospheric, warm, spatial"
+    class="tas-visual"
+    loading="lazy"
+    width="1400" height="480"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The threshold. The moment before the archive opens — before the reader becomes a reader. A space that is ready but not yet occupied. The quality of an interior that holds its breath.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Very wide, very dark. A single warm light source from one side — not centered. The light illuminates a horizontal surface or spatial plane. Nothing sharp or specific. No human presence, but the sense that a human was here or will be.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Background: #050d0c (dominant). Light source: brass/gold (#d4af37 territory). Mids: warm gray (#8b7d6b). No blue. No cold white.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Dark interior, warm brass light source from left, long horizontal shadows, atmospheric dust or texture, no subjects, extreme wide format, 70mm film grain, breathing room</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">anticipatory</span><span class="mood-tag">quiet</span><span class="mood-tag">spatial</span><span class="mood-tag">threshold</span><span class="mood-tag">inhabited</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLOT: index-artifacts-close -->
+      <article class="slot" id="index-artifacts-close">
+        <div class="slot__header">
+          <span class="slot__id">index-artifacts-close</span>
+          <span class="slot__page-label">index.html · After artifact cards, before closing contact section</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/index/index-artifacts-close.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 400 px · Narrow interstitial</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert after the last artifact card row, before the invitation/contact section</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: index-artifacts-close --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial" style="margin: var(--h70-room) 0 0;"&gt;
+  &lt;img
+    src="/assets/visuals/index/index-artifacts-close.jpg"
+    alt="The archive as a complete system — held together, atmospheric"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="400"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">After the documents. The archive as a system — many pieces, one space, one sustained inquiry. The feeling of a room where multiple things have been laid out and are now held together in a single field of attention.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Multiple faint forms in darkness — shapes that suggest documents, surfaces, layers. Not a desk clutter but an organized field. Shallow focus. Warmth at the edges. A sense of the archive complete and breathing.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Darker than the opening image. More interior. Multiple warm sources rather than one. #050d0c dominant, warm amber at 20–30% of the frame.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Multiple document pages on a dark surface, low warm light, very shallow focus, almost abstract, layered planes of depth, no text visible, 70mm film quality</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">complete</span><span class="mood-tag">systemic</span><span class="mood-tag">interior</span><span class="mood-tag">considered</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── FIELD NOTES ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>field-notes.html</strong> — The Inaugural Field Record · Full accounting</p>
+
+      <!-- fn-cover -->
+      <article class="slot" id="fn-cover">
+        <div class="slot__header">
+          <span class="slot__id">fn-cover</span>
+          <span class="slot__page-label">field-notes.html · Cover section · Large format</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/field-notes/fn-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 600 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within <code>.cover-body</code>, above the cover eyebrow text. The image sits at the top of the cover section.</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fn-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/field-notes/fn-cover.jpg"
+    alt="The field — an open space where something can be received"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="600"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The field itself — not a metaphor, not a classroom. A place where something can happen between two people that couldn't happen anywhere else. Open. Present. Listening. The quality of attention before something begins.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Very wide horizontal. A field of dark with warm light entering from the upper right or lower left. Depth: far distance receding into darkness. Foreground: soft and close. Middle: where the light lands. No specific subject. Texture welcome — grain, atmosphere, depth.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Predominantly #050d0c with the deep field surface #0a1715 as the horizon. Warm gold (#d4af37) as the single entering light source. No harsh contrast. Very gradual illumination.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Dark open field at dusk, warm golden light source entering from one edge, no figures, atmospheric haze, deep focus into darkness, wide format, meditative, 70mm</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">open</span><span class="mood-tag">receptive</span><span class="mood-tag">still</span><span class="mood-tag">spatial</span><span class="mood-tag">present</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- fn-scholar-field -->
+      <article class="slot" id="fn-scholar-field">
+        <div class="slot__header">
+          <span class="slot__id">fn-scholar-field</span>
+          <span class="slot__page-label">field-notes.html · Scholar Record section · Before KzA bio and scholar grid</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/field-notes/fn-scholar-field.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 500 px · Interstitial</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert after the Scholar Record section heading (<code>.section-title</code>), before the prose paragraph block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fn-scholar-field --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial" style="margin-bottom: 2.5rem;"&gt;
+  &lt;img
+    src="/assets/visuals/field-notes/fn-scholar-field.jpg"
+    alt="The scholar record — many different people, one shared experience of being seen"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="500"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Many different people, one shared experience of being seen. Not portraiture — the sense of a space that has held many people without showing anyone specifically. Privacy as a form of respect, not concealment.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Multiple warm light points in a dark field — each distinct but all within the same space. Could be: multiple chairs with individual reading lights. Or: a dark room with windows — each window a different story. No faces. Suggestion of multiplicity rather than crowd.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Dark field dominant. Multiple small warm sources (#d4af37 to #b8a060). The warmth is scattered, not singular. Feels inhabited over time.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Multiple empty chairs or reading lamps in a dark room, each lit individually, no people, suggestion of many separate presences, intimate, archival, warm</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">intimate</span><span class="mood-tag">multiple</span><span class="mood-tag">held</span><span class="mood-tag">private</span><span class="mood-tag">grateful</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- fn-methodology -->
+      <article class="slot" id="fn-methodology">
+        <div class="slot__header">
+          <span class="slot__id">fn-methodology</span>
+          <span class="slot__page-label">field-notes.html · Methodology or practice section · Body image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/field-notes/fn-methodology.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 580 px · Body image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert at the start of the methodology section, before the section's first prose paragraph</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fn-methodology --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--body"&gt;
+  &lt;img
+    src="/assets/visuals/field-notes/fn-methodology.jpg"
+    alt="The architecture of careful attention — structure that supports something delicate"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="580"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The architecture of careful attention. Something built with precision to support something delicate — like a loom, or a musical instrument, or scaffolding around something still under construction. Structure as care.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Geometric but warm. Lines and structure without coldness. Light revealing architecture rather than exposing it. Could be: light through a stringed instrument, or the cross-section of a beehive, or the geometry of a craft tool. Warm and ordered.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Dark background with warm structural lines in #d4af37 or #b8a060. The structure is lit, not glowing. Precision without severity.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Close detail of a musical instrument or architectural lattice, warm brass light, extreme shallow depth of field, no subjects, order that serves beauty, macro photography feel</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">precise</span><span class="mood-tag">caring</span><span class="mood-tag">ordered</span><span class="mood-tag">warm</span><span class="mood-tag">deliberate</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- fn-close -->
+      <article class="slot" id="fn-close">
+        <div class="slot__header">
+          <span class="slot__id">fn-close</span>
+          <span class="slot__page-label">field-notes.html · Closing section · Narrow interstitial</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/field-notes/fn-close.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 380 px · Narrow horizontal</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert before the closing paragraph or sign-off section at the end of the document</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fn-close --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial"&gt;
+  &lt;img
+    src="/assets/visuals/field-notes/fn-close.jpg"
+    alt="After the accounting — the quality of silence after something significant"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="380"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">After. What remains when the session ends, when the document is complete, when the accounting is done. The quality of silence after something significant has been said. Settled but not finished.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Horizontal, sparse. A single light source nearly extinguished — still warm, still present, but diminished. Could be: a candle near its end, a window at dusk, a desk lamp after the work is done. The warmth is still there; the urgency is gone.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Warmest and darkest image in the field-notes set. The light is amber rather than gold. #050d0c with #c8983a as the single warm source. Very low contrast.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Near-extinguished candle or lamp, warm amber light, dark room, post-session quiet, horizontal, no figures, settled, the end of something that mattered</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">settled</span><span class="mood-tag">warm</span><span class="mood-tag">after</span><span class="mood-tag">complete</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── PROOF OF FIELD ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>proof-of-field.html</strong> — The Reflectionary · Six phi-level threads</p>
+
+      <article class="slot" id="pof-cover">
+        <div class="slot__header">
+          <span class="slot__id">pof-cover</span>
+          <span class="slot__page-label">proof-of-field.html · Cover · Large format</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/proof-of-field/pof-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 600 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within cover section, above the masthead heading</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: pof-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/proof-of-field/pof-cover.jpg"
+    alt="Evidence that accumulates — the persistence of pattern across many distinct moments"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="600"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Evidence accumulates. The same pattern appears again and again across different contexts, different people, different geographies. Not coincidence — persistence. The image should hold this sense of depth through repetition.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Layers. Transparency stacked on transparency — each layer adding depth rather than obscuring. Could be: water rings from multiple glasses, or geological strata, or overlapping circles of light. The pattern is visible at every depth.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">#050d0c base. Multiple translucent warm layers in #d4af37 to #8b7d6b range. The deepest layer is darkest. The surface layer is warmest.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Concentric rings in water or light, multiple overlapping circular patterns, translucent layers, deep field, warm tones, pattern that repeats at different scales, abstract, meditative</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">structural</span><span class="mood-tag">layered</span><span class="mood-tag">persistent</span><span class="mood-tag">deep</span><span class="mood-tag">patient</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="pof-threads">
+        <div class="slot__header">
+          <span class="slot__id">pof-threads</span>
+          <span class="slot__page-label">proof-of-field.html · Phi-Level Threads section · Anchor image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/proof-of-field/pof-threads.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 520 px · Body image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within the Phi-Level Threads section, after the subtitle, before the first thread card. Anchors the section visually.</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: pof-threads --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--body"&gt;
+  &lt;img
+    src="/assets/visuals/proof-of-field/pof-threads.jpg"
+    alt="Structure at depth — the pattern that holds regardless of what surrounds it"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="520"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Structure at depth. The pattern that doesn't change regardless of what surrounds it — the architecture beneath the surface. What phi-level means: something that holds all the way down.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Cross-sections that reveal structure. Could be: wood grain under raking light, geological strata photographed horizontally, or crystal lattice from above. The structure should be beautiful, not clinical. Light reveals it — does not impose it.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Palette</span>
+              <p class="direction-block__text">Warm cross-sections. Dark surrounding field. The revealed structure in #b8a060 to #e8e4db. The surrounding context in #050d0c to #0a1715.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Generation Seeds</span>
+              <p class="direction-block__text">Cross-section of wood or geological formation, raking warm light revealing grain or strata, horizontal composition, structure as beauty, not diagram, 35mm macro lens quality</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">structural</span><span class="mood-tag">revealed</span><span class="mood-tag">depth</span><span class="mood-tag">precise</span><span class="mood-tag">beautiful</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="pof-close">
+        <div class="slot__header">
+          <span class="slot__id">pof-close</span>
+          <span class="slot__page-label">proof-of-field.html · Closing section · Narrow interstitial</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/proof-of-field/pof-close.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 360 px · Narrow closing</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert before the document's closing statement or final prose section</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: pof-close --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial"&gt;
+  &lt;img
+    src="/assets/visuals/proof-of-field/pof-close.jpg"
+    alt="The weight of verified observation — evidence that has become undeniable"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="360"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The weight of verified observation. Many individual moments that together become undeniable. The reflectionary as an object — substantial, held, built from real material.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Something with physical weight and warmth. Could be: stacked notebooks or papers with a single warm light on them. Or: a hardbound book lying open. The suggestion of care taken, time accumulated, something real built by hand.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">substantial</span><span class="mood-tag">verified</span><span class="mood-tag">accumulated</span><span class="mood-tag">earned</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── ELEVATION CODEX ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>elevation-codex.html</strong> — Practitioner's Field Guide · The methodology</p>
+
+      <article class="slot" id="ec-cover">
+        <div class="slot__header">
+          <span class="slot__id">ec-cover</span>
+          <span class="slot__page-label">elevation-codex.html · Cover · Large format</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/elevation-codex/ec-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 600 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within the cover section, above the heading block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: ec-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/elevation-codex/ec-cover.jpg"
+    alt="The practitioner at work — precision and care in close attention"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="600"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The practitioner at work. Precision and care — the act of guiding another person toward their own clarity. Two presences in a shared space, one of them attending very closely to the other. Not clinical. Not formal. Deep, intimate attention.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Two light sources — not equal. One slightly brighter, slightly closer, attending to the other. Abstract enough that no identity is visible, but the two-body dynamic is felt. Could be: two hands near each other but not touching. Or: two shadows cast by two distinct light sources. Or: a close-up of the space between two tools working together.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">close</span><span class="mood-tag">attending</span><span class="mood-tag">precise</span><span class="mood-tag">relational</span><span class="mood-tag">warm</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="ec-methodology">
+        <div class="slot__header">
+          <span class="slot__id">ec-methodology</span>
+          <span class="slot__page-label">elevation-codex.html · Core methodology section · Body image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/elevation-codex/ec-methodology.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 560 px · Body image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert at the opening of the methodology section, before the first step or principle</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: ec-methodology --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--body"&gt;
+  &lt;img
+    src="/assets/visuals/elevation-codex/ec-methodology.jpg"
+    alt="A sequence that builds — each step a deepening, not a complication"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="560"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">A sequence that builds. Each step a deepening rather than a complication. The methodology as progressive refinement — not a list but an architecture that accumulates toward something.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Progressive depth — layers that reveal themselves as you look further in. Could be: a spiral seen from above, becoming finer toward the center. Or: a series of nested rings or arcs, each one more refined. Warm and ordered — the precision of something that took time to learn.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">progressive</span><span class="mood-tag">refined</span><span class="mood-tag">architectural</span><span class="mood-tag">clear</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── FREQUENCY REPORT ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>frequency-report.html</strong> — Compass Document · Three resonance coordinates</p>
+
+      <article class="slot" id="fr-cover">
+        <div class="slot__header">
+          <span class="slot__id">fr-cover</span>
+          <span class="slot__page-label">frequency-report.html · Cover · Large format</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/frequency-report/fr-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 600 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within cover section, above the heading block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fr-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/frequency-report/fr-cover.jpg"
+    alt="Signal reaching through noise — the feeling of something specific being received"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="600"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Signal reaching through noise. The feeling of something specific being received clearly through ambient interference — the way a particular frequency cuts through everything else when the receiver is correctly tuned.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Three distinct wave forms in the same visual field — separated by space, each one distinct. Abstract waveform visualization, very atmospheric. Gold threads or lines of light against near-black. The frequency glyph made large and environmental.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">resonant</span><span class="mood-tag">distinct</span><span class="mood-tag">signal</span><span class="mood-tag">tuned</span><span class="mood-tag">clear</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="fr-resonance-01">
+        <div class="slot__header">
+          <span class="slot__id">fr-resonance-01</span>
+          <span class="slot__page-label">frequency-report.html · First resonance coordinate section · Accent image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/frequency-report/fr-resonance-01.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">900 × 540 px · Accent image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert at the opening of the first resonance coordinate section</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fr-resonance-01 --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--accent"&gt;
+  &lt;img
+    src="/assets/visuals/frequency-report/fr-resonance-01.jpg"
+    alt="First resonance coordinate — where the signal lands most cleanly"
+    class="tas-visual"
+    loading="lazy"
+    width="900" height="540"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The place the signal lands most cleanly. A sense of fit — of something arriving exactly where it was expected. The first resonance coordinate represents the clearest, most immediate recognition the school receives.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Clean arrival. One wave form, landed, still. The warmth of recognition — something received and at rest. More contained than the cover. The single frequency after the three have been distinguished.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">recognized</span><span class="mood-tag">arrived</span><span class="mood-tag">clear</span><span class="mood-tag">immediate</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="fr-resonance-02">
+        <div class="slot__header">
+          <span class="slot__id">fr-resonance-02</span>
+          <span class="slot__page-label">frequency-report.html · Second resonance coordinate section · Accent image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/frequency-report/fr-resonance-02.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">900 × 540 px · Accent image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert at the opening of the second resonance coordinate section</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fr-resonance-02 --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--accent"&gt;
+  &lt;img
+    src="/assets/visuals/frequency-report/fr-resonance-02.jpg"
+    alt="Second resonance coordinate — recognition that requires more time to arrive"
+    class="tas-visual"
+    loading="lazy"
+    width="900" height="540"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Recognition that arrives more slowly, from a more unexpected angle. The second coordinate represents a deeper resonance — one that requires more context before it resolves. Something becoming visible rather than immediately apparent.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Something emerging from blur or depth. Focus arriving gradually. The wave form present but still resolving. Slightly deeper, slightly darker than resonance-01.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">emerging</span><span class="mood-tag">resolving</span><span class="mood-tag">depth</span><span class="mood-tag">gradual</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="fr-resonance-03">
+        <div class="slot__header">
+          <span class="slot__id">fr-resonance-03</span>
+          <span class="slot__page-label">frequency-report.html · Third resonance coordinate section · Accent image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/frequency-report/fr-resonance-03.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">900 × 540 px · Accent image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert at the opening of the third resonance coordinate section</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: fr-resonance-03 --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--accent"&gt;
+  &lt;img
+    src="/assets/visuals/frequency-report/fr-resonance-03.jpg"
+    alt="Third resonance coordinate — the deepest recognition, the one that takes longest to name"
+    class="tas-visual"
+    loading="lazy"
+    width="900" height="540"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The deepest recognition — the one that takes longest to name. This coordinate is the school's most ambitious, the one that asks the most of the receiver. The image should hold a quality of invitation into something not yet fully formed.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Deepest depth of field. Warmest but most distant light. Something that is there but not yet arrived — potential rather than presence. Suggestion of a horizon.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">potential</span><span class="mood-tag">deep</span><span class="mood-tag">horizon</span><span class="mood-tag">becoming</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── METAPHOR LIBRARY ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>metaphor-library.html</strong> — The Language System · Living document</p>
+
+      <article class="slot" id="ml-cover">
+        <div class="slot__header">
+          <span class="slot__id">ml-cover</span>
+          <span class="slot__page-label">metaphor-library.html · Cover · Large format</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/metaphor-library/ml-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 600 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within cover section, above the heading block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: ml-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/metaphor-library/ml-cover.jpg"
+    alt="The space between experience and the word for it — where language is born"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="600"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The place where language lives before it becomes language. The space between the experience and the word for it — the moment of crystallization when something that was only felt becomes nameable.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Transformation through form. Ink dispersing in water — each moment different, each one distinct, all of them one movement. Or: light through a prism, the spectrum caught in the moment of separation. Abstract, luminous, in process rather than settled.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">transforming</span><span class="mood-tag">luminous</span><span class="mood-tag">in-process</span><span class="mood-tag">crystallizing</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="ml-body">
+        <div class="slot__header">
+          <span class="slot__id">ml-body</span>
+          <span class="slot__page-label">metaphor-library.html · Library body · Interstitial anchor</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/metaphor-library/ml-body.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 480 px · Interstitial</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert between the introductory section and the first metaphor cluster</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: ml-body --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial"&gt;
+  &lt;img
+    src="/assets/visuals/metaphor-library/ml-body.jpg"
+    alt="The library as a living collection — not archived but still being written"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="480"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The library as living collection — not a museum but a working space. Something still being added to. Books that have been opened recently, not preserved behind glass. The warmth of active use.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Books, notebooks, or writing instruments — in use, not displayed. Warm desk light. Papers with faint writing. The sense that the person who works here just stepped away and will return. Inhabited and unfinished.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">active</span><span class="mood-tag">inhabited</span><span class="mood-tag">unfinished</span><span class="mood-tag">warm</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── SCEU REPORTS ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>sceu-report-one + sceu-report-two</strong> — Research Integration · Systems Change Educators Unite</p>
+
+      <article class="slot" id="s1-cover">
+        <div class="slot__header">
+          <span class="slot__id">s1-cover</span>
+          <span class="slot__page-label">sceu-report-one-integrating-creative-thinking.html · Cover</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/sceu-one/s1-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 560 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within cover section, above the heading block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: s1-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/sceu-one/s1-cover.jpg"
+    alt="The individual methodology connecting to broader patterns of knowing"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="560"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The school in relationship with a larger field. How one methodology connects to broader patterns of knowing — a single thread revealing itself as part of a larger weave. Integration without loss of distinctness.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">A root system seen from below — the individual root visible, but surrounded by and connected to a larger network. Or: a single thread in a larger fabric, caught in the moment where its connection becomes visible. Warm, structural, networked.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">connected</span><span class="mood-tag">distinct</span><span class="mood-tag">networked</span><span class="mood-tag">rooted</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="s1-integration">
+        <div class="slot__header">
+          <span class="slot__id">s1-integration</span>
+          <span class="slot__page-label">sceu-report-one · Integration section · Body image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/sceu-one/s1-integration.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 500 px · Body image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert before the evidence section, after the integration framing paragraph</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: s1-integration --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--body"&gt;
+  &lt;img
+    src="/assets/visuals/sceu-one/s1-integration.jpg"
+    alt="Two frameworks finding common ground — resonance, not fusion"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="500"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Two frameworks finding each other's common ground. Not fusion — resonance. Each maintains its distinctness, but the shared illumination between them is the brightest point.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Two light sources, each from a different angle, creating a shared zone of illumination where they overlap. The overlap is the warmest, brightest point. The sources themselves are distinct. Neutral between them.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">resonant</span><span class="mood-tag">shared</span><span class="mood-tag">distinct</span><span class="mood-tag">illuminated</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="s2-cover">
+        <div class="slot__header">
+          <span class="slot__id">s2-cover</span>
+          <span class="slot__page-label">sceu-report-two-illuminating-creative-thinking.html · Cover</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/sceu-two/s2-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 560 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within cover section, above the heading block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: s2-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/sceu-two/s2-cover.jpg"
+    alt="The body knowing something the mind doesn't yet have language for"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="560"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The body knowing something the mind doesn't yet have language for. Somatic knowledge — what is felt before it is named. The image should be warm, physical, and pre-conceptual.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Breath visible in cold air, or body heat as thermal imaging (abstracted), or hands in warm water — something that is felt rather than understood. The physical quality of being present in a space, before thinking begins. Warm, soft, immediate.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">somatic</span><span class="mood-tag">pre-verbal</span><span class="mood-tag">immediate</span><span class="mood-tag">warm</span><span class="mood-tag">present</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="s2-conditions">
+        <div class="slot__header">
+          <span class="slot__id">s2-conditions</span>
+          <span class="slot__page-label">sceu-report-two · Conditions section · Body image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/sceu-two/s2-conditions.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 500 px · Body image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert before the conditions section, after the section heading</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: s2-conditions --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--body"&gt;
+  &lt;img
+    src="/assets/visuals/sceu-two/s2-conditions.jpg"
+    alt="An environment designed for creative thinking — set but not yet occupied"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="500"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The specific conditions that make creative thinking possible. Not a trigger — a context. An environment that has been set up with care to allow something that couldn't happen otherwise.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">A room set but not occupied — the conditions present, the person not yet arrived. A chair with good light. A space with the right quality of air and quiet. Everything arranged for what is about to happen. The conditions, not the event.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">prepared</span><span class="mood-tag">conditional</span><span class="mood-tag">anticipatory</span><span class="mood-tag">inviting</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── EMERGENCE REPORT ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>tas-emergence-report.html</strong> — Theoretical Speculation · Four lineages · Full emergence</p>
+
+      <article class="slot" id="er-cover">
+        <div class="slot__header">
+          <span class="slot__id">er-cover</span>
+          <span class="slot__page-label">tas-emergence-report.html · Cover · Large format</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/emergence-report/er-cover.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1400 × 600 px · Cover format</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert within cover section, above the heading block</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: er-cover --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/emergence-report/er-cover.jpg"
+    alt="Convergence — four intellectual lineages arriving at the same point"
+    class="tas-visual"
+    loading="eager"
+    width="1400" height="600"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">Convergence. Four distinct threads arriving at the same point — each from a different direction, each maintaining its character, but all finding the same place. The school as the point where multiple intellectual lineages naturally arrive.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Four streams of light, each entering from a different angle, meeting at a single illuminated point in the center. The center is the brightest point. Each stream is visible all the way to its source. The convergence is the event, not the streams themselves.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">convergent</span><span class="mood-tag">arriving</span><span class="mood-tag">historic</span><span class="mood-tag">charged</span><span class="mood-tag">inevitable</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="slot" id="er-lineages">
+        <div class="slot__header">
+          <span class="slot__id">er-lineages</span>
+          <span class="slot__page-label">tas-emergence-report.html · Intellectual lineages section · Body image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/emergence-report/er-lineages.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 520 px · Body image</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert at the opening of the intellectual lineages section, before the first lineage</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: er-lineages --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--body"&gt;
+  &lt;img
+    src="/assets/visuals/emergence-report/er-lineages.jpg"
+    alt="History as something still active — lineages that haven't ended but arrived here"
+    class="tas-visual"
+    loading="lazy"
+    width="1200" height="520"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">History as something still active. Four intellectual lineages that haven't ended — they've arrived here. Not fossils but roots. Not monuments but growing things that have been growing for a very long time and have arrived at this particular point.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Root systems, seen from below — living, not preserved. Four distinct root structures visible, each coming from a different direction, sharing the same dark soil. Growth patterns, not diagrams. Warm light from below illuminating the roots rather than the surface above.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">rooted</span><span class="mood-tag">living</span><span class="mood-tag">historic</span><span class="mood-tag">converging</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ─────────────────── ARCHIVE NAVIGATOR ─────────────────── -->
+    <div class="page-group">
+      <p class="page-group__name"><strong>archive-navigator.html</strong> — The Archive's Structural Map</p>
+
+      <article class="slot" id="nav-header">
+        <div class="slot__header">
+          <span class="slot__id">nav-header</span>
+          <span class="slot__page-label">archive-navigator.html · Cover · Accent image</span>
+        </div>
+        <div class="slot__body">
+          <div>
+            <div class="spec-grid"><span class="spec-label">File path</span><span class="spec-value spec-value--path">/assets/visuals/archive-navigator/nav-header.jpg</span></div>
+            <div class="spec-grid"><span class="spec-label">Dimensions</span><span class="spec-value spec-value--dim">1200 × 440 px · Interstitial</span></div>
+            <div class="spec-grid"><span class="spec-label">Placement</span><span class="spec-value">Insert above the navigator's cover heading, as the first visual element the reader encounters</span></div>
+          </div>
+          <pre>&lt;!-- tas-visual: nav-header --&gt;
+&lt;figure class="tas-visual-frame tas-visual-frame--interstitial" style="margin-bottom: 3rem;"&gt;
+  &lt;img
+    src="/assets/visuals/archive-navigator/nav-header.jpg"
+    alt="The map as an object — the satisfaction of orientation"
+    class="tas-visual"
+    loading="eager"
+    width="1200" height="440"
+  &gt;
+&lt;/figure&gt;</pre>
+          <div class="slot__direction-grid">
+            <div class="direction-block">
+              <span class="direction-block__label">Conceptual Intent</span>
+              <p class="direction-block__text">The map as an object. The satisfaction of orientation — of knowing where you are and how things relate before you move. Not a road map: the kind of map that shows structure, not just direction.</p>
+            </div>
+            <div class="direction-block">
+              <span class="direction-block__label">Compositional Guidance</span>
+              <p class="direction-block__text">Gold lines on near-black. Geometric but not rigid — the lines of a constellation chart, or architectural drawings, or a carefully annotated diagram. The suggestion of a system held in spatial relation. No text visible. Light warm, lines thin and precise.</p>
+            </div>
+            <div class="direction-block direction-block--full">
+              <span class="direction-block__label">Mood</span>
+              <div class="mood-tags"><span class="mood-tag">oriented</span><span class="mood-tag">structural</span><span class="mood-tag">clear</span><span class="mood-tag">spatial</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+<!-- FIXED FOOTER BAR -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
+  <div style="display: flex; gap: 2rem;">
+    <span>tÅs</span>
+    <span>VISUAL BRIEF · 24 SLOTS</span>
+  </div>
+  <div>
+    <a href="archive-navigator.html" style="color: var(--h70-signal); text-decoration: none;">← Navigator</a>
+  </div>
+</div>
+
+<!-- tÅs GLYPH SYSTEM -->
+<script src="/active-insights/tas-glyphs.js" defer></script>
+</body>
+</html>

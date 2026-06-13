@@ -1,0 +1,105 @@
+/*
+ * tÅs Synthesis Archive · Visual Glyph System Styles
+ * Canonical marks: field · emergence · phi · frequency · evidence · voice
+ * Rendered by tas-glyphs.js via [data-tas-glyph] attribute
+ */
+
+/* ── BASE ── */
+
+[data-tas-glyph] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--h70-signal, #d4af37);
+  opacity: 0.72;
+  vertical-align: middle;
+  flex-shrink: 0;
+  line-height: 1;
+  cursor: default;
+  transition: opacity 0.25s ease;
+}
+
+[data-tas-glyph]:hover { opacity: 1; }
+
+.tas-glyph-svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+  overflow: visible;
+}
+
+/* ── SIZE VARIANTS ── */
+
+[data-tas-glyph-size="sm"] .tas-glyph-svg { width: 0.7em;  height: 0.7em;  }
+[data-tas-glyph-size="md"] .tas-glyph-svg { width: 1em;    height: 1em;    }
+[data-tas-glyph-size="lg"] .tas-glyph-svg { width: 1.4em;  height: 1.4em;  }
+[data-tas-glyph-size="xl"] .tas-glyph-svg { width: 2em;    height: 2em;    }
+
+/* ── PLACEMENT VARIANTS ── */
+
+[data-tas-glyph-placement="block"] {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+[data-tas-glyph-placement="section-mark"] {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* ── COLOR VARIANTS ── */
+
+[data-tas-glyph-variant="signal"] { color: var(--h70-signal, #d4af37); opacity: 1;   }
+[data-tas-glyph-variant="muted"]  { color: var(--h70-muted,  #8b7d6b); opacity: 0.5; }
+[data-tas-glyph-variant="ink"]    { color: var(--h70-ink,    #e8e4db); opacity: 0.4; }
+
+
+/* ── VISUAL FRAMES (for generated image placement) ── */
+
+.tas-visual-frame {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tas-visual-frame--cover {
+  width: 100%;
+  height: clamp(260px, 40vw, 480px);
+  margin-bottom: 0;
+}
+
+.tas-visual-frame--body {
+  width: 100%;
+  margin: var(--h70-room, 3rem) 0;
+}
+
+.tas-visual-frame--accent {
+  max-width: 520px;
+  margin: 2.5rem auto;
+}
+
+.tas-visual-frame--interstitial {
+  width: 100%;
+  margin: var(--h70-room, 3rem) 0;
+  border-top: 1px solid var(--h70-line, rgba(232,228,219,.12));
+  border-bottom: 1px solid var(--h70-line, rgba(232,228,219,.12));
+  padding: 0;
+}
+
+/* ── VISUAL IMAGE ELEMENT ── */
+
+.tas-visual {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tas-visual-frame--cover   .tas-visual { height: 100%; }
+.tas-visual-frame--body    .tas-visual { height: clamp(200px, 30vw, 380px); }
+.tas-visual-frame--accent  .tas-visual { height: clamp(180px, 28vw, 340px); border-radius: var(--h70-radius-paper, .375rem); }
+.tas-visual-frame--interstitial .tas-visual { height: clamp(220px, 32vw, 420px); opacity: 0.85; }
