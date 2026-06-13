@@ -104,7 +104,8 @@
       expanded_title: term.expanded_title || term.term,
       expanded: term.expanded || term.tooltip || '',
       why_it_matters: term.why_it_matters || '',
-      source: term.source || ''
+      source: term.source || '',
+      maxMatches: term.maxMatches != null ? term.maxMatches : null
     }));
 
     byId = new Map();
@@ -297,7 +298,8 @@
           const term = byLookup.get(slugify(phrase));
           if (!term) continue;
           const count = counts.get(term.id) || 0;
-          if (count >= config.maxAutoMatchesPerTerm) continue;
+          const termMax = term.maxMatches != null ? term.maxMatches : config.maxAutoMatchesPerTerm;
+          if (count >= termMax) continue;
           if (annotateTextNode(node, phrase, term)) {
             counts.set(term.id, count + 1);
             break;
