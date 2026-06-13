@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/beacon-favicon.svg">
 <link rel="stylesheet" href="harmonious70.css">
 <link rel="stylesheet" href="/active-insights/tas-tooltips.css">
+<link rel="stylesheet" href="/active-insights/tas-glyphs.css">
 <script src="tas-transitions.js" defer></script>
 <style>
   :root {
@@ -458,8 +459,8 @@
 <!-- HÅRMONIOUS70 GLOBAL NAVIGATION -->
 <nav aria-label="Primary navigation" id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.25rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--h70-bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
   <a href="index.html" style="font-family: var(--h70-mono); font-size: clamp(0.75rem, 1.5vw, 0.9rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem; letter-spacing: 0.12em;" class="steam-sans--vapor sonic-link">
-    <span>THE ÅLïEN SCõÖL</span>
-    <span style="color: var(--h70-signal);">∴ FOR CREATIVE THÏNKING</span>
+    <span data-tas-term="tas">THE ÅLïEN SCõÖL</span>
+    <span title="therefore — the school's practice signal" style="color: var(--h70-signal);">∴ FOR CREATIVE THÏNKING</span>
   </a>
   <div style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--h70-muted); align-items: center;">
     <a href="index.html" class="sonic-link" style="color: inherit; text-decoration: none; opacity: 0.7;">← SYNTHESIS</a>
@@ -611,7 +612,7 @@
 
       <p>Otto Scharmer's work at MIT on Theory U offers a framework that speaks directly to this: his central argument is that the quality of a system's outcomes is determined by the quality of awareness of the people operating within it. <em>The way we listen shapes what we see, and what we see shapes what we do.</em> Organizations that operate primarily in "downloading" mode :: applying existing frameworks to new situations without genuinely seeing the situation :: produce solutions shaped by the past rather than by what is actually present.</p>
 
-      <p>What tÅs's documented practice shows is that Creative Awareness is teachable and transferable :: but only under specific conditions. It requires time at temperature. It requires the kind of sustained, structured reflection that the seven-steep Creative Steeping methodology is designed to produce. It requires the organization to create lasting containers for this quality of attention — structures that sustain rather than sample the quality of creative thinking.</p>
+      <p>tÅs's documented practice confirms that Creative Awareness is teachable and transferable — but only under specific conditions. It requires time at temperature. It requires sustained, structured reflection — the kind the seven-steep Creative Steeping methodology is designed to produce. It requires the organization to create lasting containers for this quality of attention: structures that sustain rather than sample the quality of creative thinking.</p>
     </div>
 
     <div class="thinker">
@@ -621,8 +622,10 @@
       <span class="thinker-cite">C. Otto Scharmer (2007). Theory U: Leading from the Future as It Emerges. Berrett-Koehler Publishers. Presencing Institute: presencing.org</span>
     </div>
 
+    <span data-tas-glyph="evidence" data-tas-glyph-size="md" data-tas-glyph-placement="block" data-tas-glyph-variant="muted" style="margin-bottom: 1rem;"></span>
     <div class="evidence">
       <span class="evidence-label">FROM THE tÅs ARCHIVE — CREATIVE AWARENESS IN ORGANIZATIONAL CONTEXTS</span>
+      <p style="font-size: var(--h70-xs); color: var(--h70-muted); margin: 0.5rem 0 1.5rem; font-style: italic; line-height: 1.6;">Scholar names are replaced with descriptive archetypes — domain and role — to honor requested privacy. The engagements are real; outcomes are drawn directly from session records and the scholars' own reflections.</p>
       <div class="evidence-item">
         <span><span class="h70-archetype archetype--creative-director">The Creative Director</span>'s sessions turned design thinking toward the organizational navigation problem itself :: producing stated increases in confidence and professional influence. The awareness expanded to include the institution itself — the scholar's relationship to the full ecology of professional belonging, not only to the work within it.</span>
         <span class="evidence-who">THE CREATIVE DIRECTOR · 2025</span>
@@ -800,7 +803,7 @@
 <!-- SCROLL PROGRESS BAR -->
 <div id="sceu-progress" style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 0.85rem 2rem; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(12px); border-top: 0.5px solid var(--border-lt); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--muted);">
   <div style="display: flex; gap: 2rem; align-items: center;">
-    <span style="color: var(--gold); opacity: 0.7;">tÅs</span>
+    <span style="color: var(--gold); opacity: 0.7;" data-tas-term="tas">tÅs</span>
     <span id="read-progress">0% READ</span>
   </div>
   <a href="sceu-report-two-illuminating-creative-thinking.html" class="sonic-link" style="color: var(--gold); text-decoration: none; opacity: 0.75; letter-spacing: 0.14em;">FIELD REPORT 02 →</a>
@@ -856,6 +859,9 @@
     if (el) el.textContent = pct + '% READ';
   });
 </script>
+
+<!-- tÅs Visual Glyph System -->
+<script src="/active-insights/tas-glyphs.js" defer></script>
 
 <!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
 <script src="/active-insights/tas-tooltips.js" defer></script>

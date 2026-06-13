@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/harmonious70.css">
 <link rel="stylesheet" href="/active-insights/tas-tooltips.css">
+<link rel="stylesheet" href="/active-insights/tas-glyphs.css">
 <style>
       :root {
     --bg:         var(--h70-bg);
@@ -524,8 +525,8 @@
 <!-- GLOBAL NAVIGATION -->
 <nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
   <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
-    <span>THE ÅLïEN SCõÖL</span>
-    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+    <span data-tas-term="tas">THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" title="therefore — the school's practice signal" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
   </a>
   <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
     <a href="../index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
@@ -625,7 +626,7 @@
     <div class="prose">
       <p class="h70-body">This document answers those questions :: drawn from a living archive of documented conversations between KzA and the scholars who have entered the tÅs field. Every quotation, every equation, every thread named here originates in those conversations. The work is real. This document is the work hearing itself speak.</p>
 
-      <p class="h70-body">This version adds two scholar arcs in full: <span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span>, whose Trailing Notes :: written in his own hand during and after sessions across six months :: carry a quality of evidence the Fireflies summaries cannot replicate; and <span class="h70-archetype archetype--executive">The Executive / Strategist</span>, whose complete semester from November 2024 through April 2025 is the most fully documented arc in the archive, including the honest edges of the closing session.</p>
+      <p class="h70-body">This version adds two scholar arcs in full: <span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span>, whose Trailing Notes :: written in his own hand during and after sessions across six months :: carry a quality of evidence the Fireflies session transcripts cannot replicate; and <span class="h70-archetype archetype--executive">The Executive / Strategist</span>, whose complete semester from November 2024 through April 2025 is the most fully documented arc in the archive, including the honest edges of the closing session.</p>
 
       <p class="h70-body">A reflectionary is a document returned to. Each time the reader arrives at a different position in their own work, different coordinates within it become visible. The partner or funder reads the evidence of production. The guide reads the methodology made visible. The scholar reads the field they are entering. KzA reads the accounting of what the work has generated and continues to generate.</p>
 
@@ -637,7 +638,9 @@
   <section class="section" id="threads">
     <div class="section-header">
       <span class="section-num">PART I</span>
+      <span data-tas-glyph="phi" data-tas-glyph-size="lg" data-tas-glyph-placement="block"></span>
       <h2 class="section-title">The <em>Phi-Level</em> Threads</h2>
+      <p style="font-size: var(--h70-xs); color: var(--h70-muted); margin-top: 0.5rem; font-style: italic; letter-spacing: 0.03em; opacity: 0.85;">structural patterns that hold at depth :: across scholars, geographies, sessions, and years</p>
     </div>
 
     <div class="prose">
@@ -747,6 +750,7 @@
 
         <p class="h70-body">The Trailing Notes :: his own handwritten documentation across six months of sessions :: show the work operating in real time. Each dated entry carries the language the sessions generated and the scholar received. Three qualities of evidence are present here that the Fireflies summaries cannot provide: the scholar's own words rather than AI synthesis; the sessions' language persisting into the week between sessions, confirmed by the act of writing it down; and the progressive development of a framework the scholar built himself from the sessions' materials.</p>
 
+        <span data-tas-glyph="voice" data-tas-glyph-size="md" data-tas-glyph-placement="block" data-tas-glyph-variant="muted" style="margin-top: 0.5rem;"></span>
         <div class="scholar-voice">
           <span class="scholar-voice-label">SCHOLAR'S OWN HAND :: TRAILING NOTES, SELECTED</span>
           <p class="h70-body">"Over-eager for nothing. Overflowing with everything."</p>
@@ -831,6 +835,7 @@
   <section class="section" id="equations">
     <div class="section-header">
       <span class="section-num">PART III</span>
+      <span data-tas-glyph="evidence" data-tas-glyph-size="lg" data-tas-glyph-placement="block"></span>
       <h2 class="section-title">The <em>Experiential</em> Equations</h2>
     </div>
 
@@ -1260,7 +1265,7 @@
 
 <div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
   <div style="display: flex; gap: 2rem;">
-    <span>tÅs</span>
+    <span data-tas-term="tas">tÅs</span>
     <span id="scroll-progress">0% STEEPED</span>
   </div>
   <div style="text-align: right;">
@@ -1279,6 +1284,9 @@
 <style>
 @media(min-width: 800px) { .contact-desktop { display: inline !important; } }
 </style>
+
+<!-- tÅs Visual Glyph System -->
+<script src="/active-insights/tas-glyphs.js" defer></script>
 
 <!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
 <script src="/active-insights/tas-tooltips.js" defer></script>

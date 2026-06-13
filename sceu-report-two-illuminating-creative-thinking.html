@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/beacon-favicon.svg">
 <link rel="stylesheet" href="harmonious70.css">
 <link rel="stylesheet" href="/active-insights/tas-tooltips.css">
+<link rel="stylesheet" href="/active-insights/tas-glyphs.css">
 <script src="tas-transitions.js" defer></script>
 <style>
   :root {
@@ -359,8 +360,8 @@
 <!-- HÅRMONIOUS70 GLOBAL NAVIGATION -->
 <nav aria-label="Primary navigation" id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.25rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--h70-bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 40%, transparent);">
   <a href="index.html" style="font-family: var(--h70-mono); font-size: clamp(0.75rem, 1.5vw, 0.9rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem; letter-spacing: 0.12em;" class="steam-sans--vapor sonic-link">
-    <span>THE ÅLïEN SCõÖL</span>
-    <span style="color: var(--h70-signal);">∴ FOR CREATIVE THÏNKING</span>
+    <span data-tas-term="tas">THE ÅLïEN SCõÖL</span>
+    <span title="therefore — the school's practice signal" style="color: var(--h70-signal);">∴ FOR CREATIVE THÏNKING</span>
   </a>
   <div style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--h70-muted); align-items: center;">
     <a href="index.html" class="sonic-link" style="color: inherit; text-decoration: none; opacity: 0.7;">← SYNTHESIS</a>
@@ -451,11 +452,11 @@
     </div>
 
     <div class="prose">
-      <p>The claim this session makes is specific: Creative Thinking is a dynamic process with observable patterns, and those patterns are more available to more people, more consistently, when the conditions supporting them are understood and deliberately designed for. This is an argument about conditions :: what they support and what they make possible.</p>
+      <p>This session makes a specific claim: Creative Thinking is a dynamic process with observable patterns, and those patterns are more available to more people, more consistently, when the conditions supporting them are understood and deliberately designed for. This is an argument about conditions :: what they support and what they make possible.</p>
 
       <p>The research literature on creativity is honest about what it does not yet fully know: <em>a comprehensive definition of everyday creativity is still being developed</em>, and the relationship between individual creative behavior and organizational creative outcomes is complex and context-dependent. What the research does confirm is that creative thinking is a quality of cognitive engagement that responds to conditions — adaptive, learnable, and responsive to how those conditions are designed. Organizations and educators who understand this can design those conditions more intentionally.</p>
 
-      <p>The tÅs documented practice adds a specific dimension to this: the conditions most supportive of creative thinking are somatic, relational, and temporal. What happens in the body, in the quality of relationship between people, and in the amount of time given to a problem, shapes the quality of creative thinking available to it more reliably than any technique or tool applied to the thinking itself.</p>
+      <p>tÅs's documented practice adds one specific finding: the conditions most supportive of creative thinking are somatic (of the body), relational, and temporal. What happens in the body, in the quality of relationship between people, and in the amount of time given to a problem shapes the quality of creative thinking more reliably than any technique or tool applied to the thinking itself.</p>
     </div>
 
     <div class="couplet">
@@ -482,14 +483,16 @@
         <div class="dynamic-name">Creative Thinking <em>steeps</em> before it surfaces</div>
       </div>
       <div class="dynamic-body">
-        <p>The most generative thinking rarely arrives on demand. It arrives after a period of incubation :: what the tÅs methodology calls steeping :: in which the problem or question has been held with attention but without pressure to resolve. Graham Wallas named this in 1926 as the incubation stage of the creative process; the insight does not arrive during focused work but after a period of diffuse, non-directed engagement.</p>
+        <p>The most generative thinking rarely arrives on demand. It arrives after a period of incubation :: what the tÅs methodology calls steeping :: in which the problem or question has been held with attention but without pressure to resolve it. Graham Wallas named this in 1926 as the incubation stage of the creative process; the insight does not arrive during focused work but after a period of diffuse, non-directed engagement.</p>
         <p>The organizational implication is structural: systems that pressure for immediate resolution consistently produce lower-quality creative thinking than those that build deliberate incubation into their operating rhythm. <em>The meeting that requires a decision before the room has had time to genuinely see the problem is producing lower-quality thinking than its people are capable of.</em> The conditions removed the incubation stage :: the capacity of the people inside them remains intact.</p>
         <p>The canonical tÅs equation: Patience × Procrastination = Steeping. What looks like resistance to the work is often the work happening below the surface. The educator or leader who can hold that distinction :: between avoidance and steeping :: has access to a fundamentally different quality of facilitation.</p>
       </div>
+      <span data-tas-glyph="evidence" data-tas-glyph-size="md" data-tas-glyph-placement="block" data-tas-glyph-variant="muted" style="margin-bottom: 1rem;"></span>
       <div class="dynamic-evidence">
         <span class="dynamic-ev-label">FROM THE ARCHIVE</span>
+        <p style="font-size: var(--h70-xs); color: var(--muted); margin: 0.5rem 0 1.25rem; font-style: italic; line-height: 1.6;">Scholars are identified by archetype — domain and role — to honor requested privacy. Engagements are real; outcomes drawn from session records and scholars' own reflections.</p>
         <div class="dynamic-ev-item">
-          <span><span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span>'s six-month arc, documented in his own Trailing Notes, shows insights arriving between sessions. The sessions created the conditions; the steeping happened in the life between them. "The pregnancy of the pause :: what is it creating?"</span>
+          <span><span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span>'s six-month arc, documented in his own Trailing Notes (handwritten session reflections recorded across the engagement), shows insights arriving between sessions. The sessions created the conditions; the steeping happened in the life between them. "The pregnancy of the pause :: what is it creating?"</span>
           <span class="dynamic-ev-who">THE WELLNESS TEACHER · DEC 2024–MAY 2025</span>
         </div>
         <div class="dynamic-ev-item">
@@ -792,7 +795,7 @@
 <!-- SCROLL PROGRESS BAR -->
 <div id="sceu-progress" style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 0.85rem 2rem; background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(12px); border-top: 0.5px solid var(--border-lt); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--muted);">
   <div style="display: flex; gap: 2rem; align-items: center;">
-    <span style="color: var(--gold); opacity: 0.7;">tÅs</span>
+    <span style="color: var(--gold); opacity: 0.7;" data-tas-term="tas">tÅs</span>
     <span id="read-progress">0% READ</span>
   </div>
   <a href="sceu-report-one-integrating-creative-thinking.html" class="sonic-link" style="color: var(--gold); text-decoration: none; opacity: 0.75; letter-spacing: 0.14em;">← FIELD REPORT 01</a>
@@ -848,6 +851,9 @@
     if (el) el.textContent = pct + '% READ';
   });
 </script>
+
+<!-- tÅs Visual Glyph System -->
+<script src="/active-insights/tas-glyphs.js" defer></script>
 
 <!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
 <script src="/active-insights/tas-tooltips.js" defer></script>

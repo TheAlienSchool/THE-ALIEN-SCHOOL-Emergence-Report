@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/harmonious70.css">
 <link rel="stylesheet" href="/active-insights/tas-tooltips.css">
+<link rel="stylesheet" href="/active-insights/tas-glyphs.css">
 <style>
       :root {
     --bg:         var(--h70-bg);
@@ -511,8 +512,8 @@
 <!-- GLOBAL NAVIGATION -->
 <nav id="h70-global-nav" style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2vw; display: flex; justify-content: space-between; align-items: baseline; z-index: 9999; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--h70-bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--h70-line) 30%, transparent);">
   <a href="../index.html" id="nav-brand" class="steam-sans--vapor sonic-link" style="font-size: clamp(1rem, 2vw, 1.2rem); text-decoration: none; color: var(--h70-ink); display: flex; flex-wrap: wrap; gap: 0.5rem;">
-    <span>THE ÅLïEN SCõÖL</span>
-    <span id="nav-c-thinking" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
+    <span data-tas-term="tas">THE ÅLïEN SCõÖL</span>
+    <span id="nav-c-thinking" title="therefore — the school's practice signal" style="color: var(--h70-signal); opacity: 1; transition: opacity 2s ease;">∴ FOR CREATIVE THÏNKING</span>
   </a>
   <div class="nav-links" style="display: flex; gap: 1.5vw; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.15em; color: var(--h70-muted);">
     <a href="../index.html" class="sonic-link" style="color: inherit; text-decoration: none;">SYNTHESIS</a>
@@ -582,6 +583,7 @@
 
   <!-- PREAMBLE -->
   <section class="preamble">
+    <span data-tas-glyph="emergence" data-tas-glyph-size="lg" data-tas-glyph-placement="block" style="margin-bottom: 1.25rem;"></span>
     <p class="h70-body">You have already used these metaphors. Some of them arrived in you before this document named them. A scholar you guided reached the edge of a truth they had never said aloud, and you offered a word :: a vessel :: and the concept landed.</p>
     <p class="h70-body">That is what this library holds. Sixteen of those vessels, sourced from your actual conversations, given definition and mechanism and deployment conditions :: so that what has lived only in the room can now travel beyond it.</p>
     <p class="h70-body">A metaphor in the tÅs system <em>carries the practitioner across a threshold uniquely accessible through symbolic language.</em> The archery metaphor describes patience, and immediately <em>installs</em> it as a physical practice. The sand mandala explains endings by <em>transforming</em> the experience into ceremony, in the body, while the scholar is still inside it.</p>
@@ -1334,7 +1336,7 @@
 
 <div style="position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem 2rem; background: color-mix(in oklab, var(--h70-bg) 90%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--h70-line); display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: var(--h70-mono); font-size: var(--h70-xs); letter-spacing: 0.1em; color: var(--h70-muted);">
   <div style="display: flex; gap: 2rem;">
-    <span>tÅs</span>
+    <span data-tas-term="tas">tÅs</span>
     <span id="scroll-progress">0% STEEPED</span>
   </div>
   <div style="text-align: right;">
@@ -1353,6 +1355,9 @@
 <style>
 @media(min-width: 800px) { .contact-desktop { display: inline !important; } }
 </style>
+
+<!-- tÅs Visual Glyph System -->
+<script src="/active-insights/tas-glyphs.js" defer></script>
 
 <!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
 <script src="/active-insights/tas-tooltips.js" defer></script>
