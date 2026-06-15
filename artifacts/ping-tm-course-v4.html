@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>PING™ — An Introductory Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<style>
+/* ─────────────────────────────────────────────────
+   PING™ v5 · Somatic-Enhanced, Constrained Column CSS
+   ───────────────────────────────────────────────── */
+:root {
+  --void:    #080604;
+  --deep:    #0F0C08;
+  --raised:  #1C1812;
+  --signal:  #C48C50;
+  --sig-dim: rgba(196,140,80,.38);
+  --terra:   #C4622D;
+  --sand:    #F0E6D2;
+  --sand-m:  #D4C4A4;
+  --sand-d:  #B0A088;
+  --forest:  #2D5A45;
+  --for-lt:  #8ACFB0;
+  --border:  rgba(255,255,255,.09);
+  --b-gold:  rgba(196,140,80,.28);
+  --safe-t:  env(safe-area-inset-top, 0px);
+  --safe-b:  env(safe-area-inset-bottom, 0px);
+  
+  --gold:    #FFD700;
+  --glow-gold: rgba(255, 215, 0, 0.25);
+  --glow-signal: rgba(196, 140, 80, 0.25);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--void);
+  color:var(--sand-m);
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  font-size:16px;
+  line-height:2.0;
+  letter-spacing:0.015em;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-wrap: pretty;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes sonar{0%{transform:scale(.3);opacity:.8}100%{transform:scale(4.5);opacity:0}}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes wb{0%,100%{transform:scaleX(1)scaleY(1)}50%{transform:scaleX(1.1)scaleY(.9)}}
+@keyframes breathing {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.6); opacity: 0.95; }
+}
+
+/* ── CLARITY BRIDGE SYSTEM UPGRADES ── */
+
+/* 1. Somatic Grounding Gate (Rope Bridge Phase) */
+.somatic-gate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--void);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+.somatic-gate.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.breath-circle-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.breath-circle {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, var(--signal) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: breathing 6s ease-in-out infinite;
+  box-shadow: 0 0 20px var(--glow-signal);
+}
+.somatic-instruction {
+  font-family: 'Lexend', sans-serif;
+  font-size: 20px;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+.somatic-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--sand);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  height: 20px;
+  opacity: 0.95;
+}
+.somatic-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--void);
+  background: var(--signal);
+  border: 1px solid var(--signal);
+  padding: 12px 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(196,140,80,0.2);
+}
+.somatic-btn:hover {
+  background: transparent;
+  color: var(--signal);
+  box-shadow: 0 4px 15px var(--glow-signal);
+}
+
+/* 2. Somatic Companion Bar (Brooklyn Bridge Phase) */
+.somatic-companion-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background: rgba(15, 12, 8, 0.98);
+  border-top: 1px solid var(--b-gold);
+  color: var(--sand-m);
+  padding: 14px 24px;
+  z-index: 9000;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+.somatic-companion-bar.alert-state {
+  background: rgba(196, 98, 45, 0.98);
+  border-top-color: var(--terra);
+  color: var(--sand);
+}
+.companion-news-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  flex: 1;
+}
+.companion-emoji {
+  animation: pulse 1s infinite;
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.companion-text {
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.companion-metric {
+  font-size: 10px;
+  color: var(--signal);
+  opacity: 0.95;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+.somatic-companion-bar.alert-state .companion-metric {
+  color: var(--sand);
+}
+
+/* 3. Coherence Pause Gate */
+.coherence-gate {
+  background: rgba(15, 12, 8, 0.95);
+  border: 1px solid var(--b-gold);
+  border-radius: 4px;
+  padding: 24px;
+  margin: 32px 0;
+  text-align: center;
+}
+.coherence-timer {
+  font-family: 'DM Mono', monospace;
+  font-size: 24px;
+  color: var(--signal);
+  margin: 16px 0;
+}
+
+/* 4. Interactive Topological Legend (Golden Gate Phase) */
+.legend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+@media(min-width: 600px) {
+  .legend-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.legend-item {
+  background: var(--raised);
+  border: 1px solid var(--border);
+  border-top: 2.5px solid var(--signal);
+  padding: 20px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.legend-item:hover {
+  border-color: var(--signal);
+  box-shadow: 0 4px 15px var(--glow-signal);
+  transform: translateY(-2px);
+}
+.legend-title {
+  font-family: 'Lexend', sans-serif;
+  font-size: 18px;
+  color: var(--signal);
+  margin-bottom: 8px;
+}
+.legend-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--sand);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.95;
+}
+.legend-body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 5. Reflective Journal (Camelback Crossing Phase) */
+.journal-box {
+  background: rgba(28, 24, 18, 0.6);
+  border: 1px solid var(--b-gold);
+  border-radius: 4px;
+  padding: 20px;
+  margin: 24px 0;
+}
+.journal-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--sand);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+  opacity: 0.95;
+}
+.journal-input {
+  width: 100%;
+  height: 100px;
+  background: rgba(8, 6, 4, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  color: var(--sand);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+.journal-input:focus {
+  outline: none;
+  border-color: var(--signal);
+}
+.journal-dashboard {
+  background: var(--deep);
+  border: 1px solid var(--b-gold);
+  padding: 28px;
+  border-radius: 4px;
+  margin: 40px 0;
+}
+.journal-db-title {
+  font-family: 'Lexend', sans-serif;
+  font-size: 24px;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+.journal-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--void);
+  background: var(--signal);
+  border: 1px solid var(--signal);
+  padding: 10px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+  display: inline-block;
+}
+.journal-btn:hover {
+  background: transparent;
+  color: var(--signal);
+}
+
+/* ── RESONANT HONORING CARDS ── */
+.honoring-card {
+  background: linear-gradient(135deg, rgba(196, 140, 80, 0.08) 0%, rgba(196, 98, 45, 0.05) 100%);
+  border: 1px solid rgba(196, 140, 80, 0.4);
+  border-top: 4px solid var(--signal);
+  padding: 32px;
+  margin: 32px 0;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+.honoring-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.25em;
+  color: var(--sand);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.95;
+}
+.honoring-title {
+  font-family: 'Lexend', sans-serif;
+  font-size: 24px;
+  color: var(--sand);
+  margin-bottom: 16px;
+}
+.honoring-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--sand-m);
+}
+.honoring-names {
+  font-family: 'Lexend', sans-serif;
+  font-size: 22px;
+  color: var(--signal);
+  font-weight: 700;
+  margin: 14px 0;
+}
+
+/* ─────────────────────────────────────────────────
+   STORY CARDS — Viewport structured
+   ───────────────────────────────────────────────── */
+.story {
+  width:100%;
+  min-height:100svh;
+  min-height:-webkit-fill-available;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  padding:
+    calc(var(--safe-t) + 40px)
+    24px
+    calc(var(--safe-b) + 60px);
+  text-align:center;
+}
+.story-inner{position:relative;z-index:2;width:100%;max-width:580px;margin:0 auto}
+.story-bg-text{
+  position:absolute;
+  font-family:'Lexend',sans-serif;
+  font-size:200px;
+  color:rgba(196,140,80,.05);
+  letter-spacing:-.05em;
+  line-height:1;
+  z-index:1;
+  pointer-events:none;
+  user-select:none;
+}
+
+/* Sonar */
+.sonar-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:1}
+.sonar-ring{position:absolute;width:100px;height:100px;border-radius:50%;border:1.5px solid rgba(196,140,80,.5);top:-50px;left:-50px}
+.sonar-ring:nth-child(1){animation:sonar 3.2s ease-out infinite}
+.sonar-ring:nth-child(2){animation:sonar 3.2s ease-out infinite 1.07s}
+.sonar-ring:nth-child(3){animation:sonar 3.2s ease-out infinite 2.14s}
+
+/* Story badge */
+.story-badge{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.28em;
+  color:var(--sand);
+  text-transform:uppercase;
+  background:rgba(196,140,80,.18);
+  border: 1px solid var(--signal);
+  padding:6px 16px;
+  border-radius:2px;
+  display:inline-block;
+  margin-bottom:32px;
+  font-weight:500;
+}
+.story-chapter{
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:.3em;
+  color:var(--sand);
+  text-transform:uppercase;
+  margin-bottom:16px;
+  opacity:0.9;
+}
+.story-ping{
+  font-family:'Lexend',sans-serif;
+  font-size:96px;
+  font-weight:700;
+  color:var(--signal);
+  line-height:.9;
+  letter-spacing:-.02em;
+}
+.story-tm{
+  font-family:'DM Mono',monospace;
+  font-size:48px;
+  vertical-align:super;
+  color:var(--signal);
+  font-weight:600;
+}
+.story-sub{
+  font-family:'DM Mono',monospace;
+  font-size:12px;
+  letter-spacing:.28em;
+  color:var(--sand);
+  text-transform:uppercase;
+  margin-top:14px;
+  display:block;
+  opacity:0.95;
+}
+.story-title{
+  font-family:'Lexend',sans-serif;
+  font-size:38px;
+  color:var(--sand);
+  line-height:1.15;
+  font-weight:600;
+  margin-bottom:14px;
+  text-wrap: balance;
+}
+.story-def{
+  font-family:'Lexend',sans-serif;
+  font-size:18px;
+  color:var(--sand-m);
+  line-height:1.75;
+  margin-top:16px;
+  text-wrap: balance;
+}
+.story-mark{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.22em;
+  color:var(--sand-m);
+  text-transform:uppercase;
+  margin-top:40px;
+  opacity:0.9;
+}
+
+/* ─────────────────────────────────────────────────
+   QUOTES — 4:5 feed format
+   ───────────────────────────────────────────────── */
+.quote-card{
+  background:var(--void);
+  border:1px solid var(--b-gold);
+  border-top:3px solid var(--signal);
+  padding:40px 28px 32px;
+  margin:0;
+  position:relative;
+}
+.quote-card-label{
+  font-family:'DM Mono',monospace;
+  font-size:8.5px;
+  letter-spacing:.25em;
+  color:var(--signal);
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.quote-text{
+  font-family:'Lexend',sans-serif;
+  font-size:22px;
+  color:var(--sand);
+  line-height:1.7;
+  margin-bottom:20px;
+  text-wrap: balance;
+}
+.quote-attr{
+  font-family:'DM Mono',monospace;
+  font-size:9px;
+  letter-spacing:.18em;
+  color:var(--sand-d);
+  text-transform:uppercase;
+}
+.quote-watermark{
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  letter-spacing:.18em;
+  color:rgba(196,140,80,.28);
+  text-transform:uppercase;
+  margin-top:24px;
+  text-align:center;
+}
+
+/* ─────────────────────────────────────────────────
+   FORMULA BLOCK — Chapter 02 hero
+   ───────────────────────────────────────────────── */
+.formula-story{
+  background:radial-gradient(ellipse at center, rgba(196,140,80,.08) 0%, var(--void) 70%);
+}
+.formula-big{
+  font-family:'Lexend',sans-serif;
+  font-size:64px;
+  color:var(--signal);
+  line-height:1;
+  margin:20px 0 8px;
+}
+.formula-eq{
+  font-family:'DM Mono',monospace;
+  font-size:13px;
+  color:var(--sand-m);
+  line-height:2.2;
+  margin-top:16px;
+}
+.formula-eq strong{color:var(--signal)}
+.formula-threshold{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid var(--b-gold);
+}
+.threshold-row{
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  color:var(--sand-d);
+  letter-spacing:.08em;
+}
+.threshold-row strong{color:var(--signal)}
+
+/* ─────────────────────────────────────────────────
+   READING SECTIONS — Streamlined & Centered (580px)
+   ───────────────────────────────────────────────── */
+.reading{
+  max-width:580px;
+  margin: 0 auto;
+  padding:48px 24px;
+}
+@media (min-width: 768px) {
+  .reading {
+    padding: 64px 38px;
+  }
+}
+.reading-label{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.28em;
+  color:var(--sand);
+  background: rgba(196,98,45,0.18);
+  border: 1px solid var(--terra);
+  padding: 4px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.reading-title{
+  font-family:'Lexend',sans-serif;
+  font-size:32px;
+  color:var(--sand);
+  line-height:1.2;
+  margin-bottom:28px;
+  font-weight:500;
+  text-wrap: balance;
+}
+p{
+  margin-bottom:24px;
+  color:var(--sand-m);
+  font-size:16.5px;
+  line-height:2.0;
+  letter-spacing:0.015em;
+  text-align: left;
+  text-wrap: pretty;
+}
+strong{color:var(--sand);font-weight:500}
+a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim)}
+
+/* Poetic Flow Text style */
+.poetic-flow {
+  line-height: 2.1;
+  text-align: center;
+  font-family: 'Lexend', sans-serif;
+  font-size: 18px;
+  color: var(--sand);
+  margin: 32px 0;
+  text-wrap: balance;
+}
+
+/* Poetic Statement Frame */
+.poetic-statement-frame {
+  border: 1px solid var(--b-gold);
+  border-left: 3px solid var(--signal);
+  border-right: 3px solid var(--signal);
+  padding: 28px 24px;
+  margin: 40px auto;
+  max-width: 500px;
+  background: rgba(196, 140, 80, 0.04);
+  text-align: center;
+  box-shadow: 0 0 15px rgba(196, 140, 80, 0.05);
+}
+.poetic-statement-text {
+  font-family: 'Lexend', sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--sand);
+  text-shadow: 0 0 8px rgba(240, 230, 210, 0.15);
+  text-wrap: balance;
+}
+
+/* Radiant Line Breaks */
+.radiant-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 56px auto;
+  width: 100%;
+  max-width: 320px;
+}
+.radiant-divider::before, .radiant-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--b-gold));
+}
+.radiant-divider::after {
+  background: linear-gradient(90deg, var(--b-gold), transparent);
+}
+.radiant-divider-glyph {
+  font-size: 15px;
+  color: var(--signal);
+  margin: 0 16px;
+  opacity: 0.9;
+  text-shadow: 0 0 8px var(--glow-signal);
+}
+
+/* Infographic SVG Radar Charts */
+.infographic-radar-card {
+  background: var(--raised);
+  border: 1px solid var(--b-gold);
+  border-radius: 4px;
+  padding: 24px;
+  margin: 36px auto;
+  max-width: 300px;
+  text-align: center;
+}
+.radar-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--sand-d);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+.radar-svg {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  display: block;
+}
+.radar-legend {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--sand-d);
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.legend-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+/* ── CONTEXT BLOCKS ── */
+.ctx{
+  background:rgba(30,19,14,.9);
+  border:1px solid rgba(196,98,45,.3);
+  border-left:3px solid var(--terra);
+  padding:20px 22px;
+  margin:22px 0;
+}
+.ctx-label{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.25em;
+  color:var(--sand);
+  background: rgba(196,98,45,0.18);
+  padding: 2px 8px;
+  border-radius: 2px;
+  display: inline-block;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  font-weight: 500;
+}
+.ctx-title{font-family:'Lexend',sans-serif;font-size:18px;color:var(--sand);margin-bottom:12px}
+.ctx p{font-size:14px;margin-bottom:8px}
+
+/* ── REGISTER TAGS ── */
+.reg{display:inline-block;font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin:0 4px 10px 0;font-weight: 500;}
+.reg-obs{background:rgba(196,140,80,.25);color:var(--sand);border:1px solid var(--signal)}
+.reg-som{background:rgba(45,90,69,.35);color:var(--sand);border:1px solid var(--for-lt)}
+.reg-inv{background:rgba(61,80,128,.35);color:var(--sand);border:1px solid #98B0D8}
+
+/* ── BAT SVG ── */
+.bat-svg{animation:wb 2.8s ease-in-out infinite;display:inline-block}
+
+/* ─────────────────────────────────────────────────
+   BAT SCIENCE BLOCK
+   ───────────────────────────────────────────────── */
+.bat-science{background:rgba(26,56,40,.28);border-left:2.5px solid var(--forest);padding:20px 22px;margin:22px 0}
+.bs-label{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.25em;
+  color:var(--sand);
+  background: rgba(45,90,69,0.25);
+  border: 1px solid var(--for-lt);
+  padding: 2px 8px;
+  border-radius: 2px;
+  display: inline-block;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  font-weight: 500;
+}
+.bs-title{font-family:'Lexend',sans-serif;font-size:16px;color:var(--sand);margin-bottom:10px}
+.bs-find{padding:10px 0;border-bottom:1px solid rgba(45,80,64,.35);font-size:14px;color:var(--sand-m);line-height:1.65}
+.bs-find:last-child{border-bottom:none}
+.bs-find strong{color:var(--for-lt)}
+
+/* ─────────────────────────────────────────────────
+   CULTURE CARDS — Square format
+   ───────────────────────────────────────────────── */
+.culture-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 28px 16px;margin:0 -28px;scrollbar-width:none}
+.culture-scroll::-webkit-scrollbar{display:none}
+.culture-row{display:flex;gap:14px;width:max-content}
+.culture-card{
+  width:320px;
+  flex-shrink:0;
+  background:var(--raised);
+  border:1px solid var(--b-gold);
+  border-top:2.5px solid var(--signal);
+  padding:24px 22px 20px;
+  border-radius:2px;
+}
+.cc-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--signal);opacity:.7;margin-bottom:8px}
+.cc-culture{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--sand-d);text-transform:uppercase;margin-bottom:4px}
+.cc-term{font-family:'Lexend',sans-serif;font-size:22px;color:var(--signal);margin-bottom:10px;line-height:1.2}
+.cc-meaning{font-size:13px;color:var(--sand-m);line-height:1.65;margin-bottom:10px;}
+.cc-ping{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--for-lt);line-height:1.55;padding-top:10px;border-top:1px solid rgba(255,255,255,.08)}
+
+/* Culture cards in reading mode (stacked) */
+.culture-stack{display:none}
+@media(max-width:428px){
+}
+.culture-full{margin:16px 0}
+.culture-full .culture-card{width:100%;display:block;margin-bottom:14px}
+
+/* ─────────────────────────────────────────────────
+   FIVE EXPLORERS — Mobile cards
+   ───────────────────────────────────────────────── */
+.explorer-item{padding:12px 0;border-bottom:1px solid var(--border)}
+.explorer-item:last-child{border-bottom:none}
+.ex-tag{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:var(--signal);padding:3px 10px;border:1px solid rgba(196,140,80,.38);border-radius:2px;display:inline-block;margin-bottom:8px}
+.ex-ans{font-size:14px;color:var(--sand-m);line-height:1.65}
+
+/* ─────────────────────────────────────────────────
+   USER GUIDE STEPS
+   ───────────────────────────────────────────────── */
+.guide-card{
+  background:var(--raised);
+  border:1px solid var(--border);
+  border-left:3px solid var(--signal);
+  padding:22px 22px 20px;
+  margin:14px 0;
+  border-radius:0 3px 3px 0;
+}
+.gc-num{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:var(--sand);text-transform:uppercase;margin-bottom:8px;opacity:0.95;}
+.gc-title{font-family:'Lexend',sans-serif;font-size:20px;color:var(--sand);margin-bottom:10px}
+.gc-body{font-size:14px;color:var(--sand-m);line-height:1.7}
+.gc-box{background:rgba(196,140,80,.05);border:1px solid var(--b-gold);padding:14px 16px;margin-top:12px;border-radius:2px}
+.gc-box-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.2em;color:var(--signal);text-transform:uppercase;margin-bottom:6px}
+.gc-box p{font-size:13px;margin:0;color:var(--sand-m)}
+
+/* ── TM MARK ── */
+.tm{font-family:'DM Mono',monospace;font-size:.85em;vertical-align:super;color:var(--signal);font-weight:600;letter-spacing:0}
+
+/* ─────────────────────────────────────────────────
+   DURABILITY CALLOUT
+   ───────────────────────────────────────────────── */
+.d-callout{
+  font-family:'DM Mono',monospace;
+  font-size:14px;
+  color:var(--for-lt);
+  padding:14px 0;
+  border-top:1px solid rgba(45,80,64,.35);
+  border-bottom:1px solid rgba(45,80,64,.35);
+  margin:22px 0;
+  line-height:1.6;
+}
+.d-callout::before{content:'D·A  ';font-size:8px;letter-spacing:.2em;color:var(--for-lt);opacity:.6}
+
+/* ─────────────────────────────────────────────────
+   DOMAIN TABLE — Mobile list format
+   ───────────────────────────────────────────────── */
+.domain-list{margin:16px 0}
+.domain-item{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:start}
+.domain-item:last-child{border-bottom:none}
+.di-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--signal);opacity:.75;padding-top:2px}
+.di-domain{font-family:'DM Mono',monospace;font-size:10px;color:var(--signal);opacity:.75;margin-bottom:3px}
+.di-what{font-size:14px;color:var(--sand-m);line-height:1.6}
+
+/* ─────────────────────────────────────────────────
+   BIBLIOGRAPHY — Mobile format
+   ───────────────────────────────────────────────── */
+.bib-section{background:var(--deep);padding:48px 24px;border-top:1px solid var(--b-gold)}
+@media (min-width: 768px) {
+  .bib-section {
+    padding: 64px 38px;
+  }
+}
+.bib-main-title{font-family:'Lexend',sans-serif;font-size:28px;color:var(--sand);margin-bottom:6px}
+.bib-subtitle{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--sand-d);margin-bottom:32px;text-transform:uppercase}
+.bib-domain{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--terra);text-transform:uppercase;margin:24px 0 10px}
+.bib-entry{font-size:13px;color:var(--sand-m);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.65}
+.bib-entry:last-child{border-bottom:none}
+.bib-entry em{font-weight:500;font-style:normal;color:var(--sand)}
+.bib-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--signal);margin-right:6px}
+
+/* ─────────────────────────────────────────────────
+   CLOSING
+   ───────────────────────────────────────────────── */
+.closing{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 24px calc(var(--safe-b) + 80px);
+  background:radial-gradient(ellipse at center bottom, rgba(196,140,80,.07) 0%, var(--void) 60%);
+}
+.closing-ping{font-family:'Lexend',sans-serif;font-size:80px;color:var(--signal);opacity:.18;line-height:1;margin-bottom:24px}
+.closing-text{font-family:'Lexend',sans-serif;font-size:18px;color:var(--sand-m);line-height:1.85;max-width:340px;margin:0 auto;text-wrap: balance;}
+.closing-colophon{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;color:rgba(196,140,80,.28);margin-top:40px;line-height:1.9}
+
+/* ── CLARITY BRIDGE SYSTEM FOOTER ── */
+.clarity-bridge-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  background: var(--deep);
+  border-top: 1px solid var(--b-gold);
+  padding: 16px 16px calc(var(--safe-b) + 60px);
+  position: relative;
+  z-index: 100;
+}
+.clarity-bridge-nav a {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sand-d);
+  border-bottom: none;
+  transition: color 0.3s ease;
+}
+.clarity-bridge-nav a:hover {
+  color: var(--signal);
+}
+
+.spec-box{background:rgba(196,140,80,.05);border:1px solid var(--b-gold);padding:22px;margin:20px 0;border-radius:2px}
+.spec-box-title{font-family:'Lexend',sans-serif;font-size:22px;color:var(--signal);margin-bottom:6px}
+.spec-box-sub{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.2em;color:var(--sand-d);text-transform:uppercase;margin-bottom:16px}
+.spec-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--sand-m)}
+.spec-row:last-child{border-bottom:none}
+.spec-label{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--signal);opacity:.8;flex-shrink:0;width:110px}
+
+/* ── PRINT ── */
+@media print {
+  body{background:#fff;color:#111}
+  .story{min-height:auto;padding:40px 32px;page-break-after:always}
+  .reading{page-break-inside:avoid;max-width:100%}
+  .quote-card,.guide-card,.culture-card,.infographic-radar-card{page-break-inside:avoid}
+  .sonar-wrap,.bat-svg,.somatic-companion-bar{display:none}
+  .story-ping{color:#8B5A28}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Somatic Grounding Gate (Rope Bridge Phase) -->
+<div id="somatic-gate" class="somatic-gate">
+  <div class="breath-circle-container">
+    <div class="breath-circle"></div>
+  </div>
+  <h2 class="somatic-instruction">Somatic Grounding: Checked</h2>
+  <div class="somatic-sub" id="somatic-sub-text">Prepare your attention. Check your posture. Align your spine. Anchor your presence.</div>
+  <button class="somatic-btn" id="somatic-activate-btn">Initiate Attunement</button>
+</div>
+
+<!-- Somatic Companion Ticker/News Bar (Brooklyn Bridge Phase) -->
+<div id="somatic-companion-bar" class="somatic-companion-bar">
+  <div class="companion-news-wrap">
+    <span class="companion-emoji" id="companion-emoji">🧘</span>
+    <span class="companion-text" id="companion-text">Somatic Companion: checked &amp; attuning.</span>
+  </div>
+  <div class="companion-metric" id="companion-metric">HIA NETWORK BROADCAST</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] COVER
+     ══════════════════════════════════════════════ -->
+<div class="story">
+  <div class="sonar-wrap">
+    <div class="sonar-ring"></div>
+    <div class="sonar-ring"></div>
+    <div class="sonar-ring"></div>
+  </div>
+  <div class="story-inner">
+    <div class="story-badge">New Scholar Edition · First Encounter</div>
+    <div class="story-ping">PING<span class="tm">™</span></div>
+    <span class="story-sub">Thought Momentum</span>
+    <p class="story-def">The moment a pattern achieves enough momentum to notify itself —<br>and the recognition that arrives before understanding has had time to arrive.</p>
+    <div class="story-mark">THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+</div>
+
+<!-- ORIENTATION -->
+<div class="reading" style="background:var(--deep);border-bottom:1px solid var(--b-gold)">
+  <div class="reading-label">Before You Begin</div>
+  <p class="poetic-flow">
+    This course introduces PING<span class="tm">™</span> from the beginning.<br>
+    You carry code and memory&nbsp;—<br>
+    especially the experience of moments<br>
+    when a pattern clicked before you could explain&nbsp;why.
+  </p>
+  
+  <p class="poetic-flow">
+    Throughout: references to <em>The Matrix</em> (1999 film),<br>
+    Active Inference (neuroscience framework),<br>
+    and THE φ OCEAN (<a href="https://hdmathematics.netlify.app/explorers/phi-explorer" target="_blank">interactive mathematics</a>)<br>
+    each receive their own brief orientation.<br>
+    Bats appear with a 2025 <em>Nature</em> paper to&nbsp;support&nbsp;them.
+  </p>
+  
+  <!-- Mars Math Club Origin Narrative -->
+  <div class="honoring-card" style="border-color: rgba(196, 140, 80, 0.4);">
+    <div class="honoring-eyebrow">The Inception Seed · Mars 2026</div>
+    <div class="honoring-title">Mars College Math Club &amp; Ethnomathematics</div>
+    <div class="honoring-body">
+      This HIA ecosystem sprouted from a thoughtspark during the <strong>Mars 2026 College Math Club</strong>. A presentation on <strong>Ethnomathematics</strong> by visual artist and researcher <strong>Vanessa Rosa</strong>, developer of the <em>Little Martians</em> speculatively crafted universe, revealed a profound connection to Human Development Mathematics.
+      <br><br>
+      Guided by **Pseudo** — the Mars Math Club Sage and Observational Protagonist — we began mapping these relational patterns. This PING™ course is a monument to that arch of momentum, a direct crossing on the Clarity Bridge of our collaborative history.
+    </div>
+  </div>
+
+  <!-- Ujamaa Cooperative Economics Honoring -->
+  <div class="honoring-card" style="border-color: rgba(196, 98, 45, 0.4); margin-top: 20px;">
+    <div class="honoring-eyebrow">Principle of Ujamaa · Cooperative Economics</div>
+    <div class="honoring-title">Resonant Community Energy</div>
+    <div class="honoring-body">
+      We honor and celebrate the partnership of:
+      <div class="honoring-names">Raushanah Kareem, Omar Luqmaan Harris, Jesse and Alan Vann Gardner</div>
+      in deep gratitude for their support on this Mars journey. By practicing cooperative economic exchange, we honor the Kwanzaa principle of **Ujamaa**, recognizing that community energy is the ultimate generative force behind this Insight Archive's interactivitie design.
+    </div>
+  </div>
+
+  <div class="spec-box" style="margin-top:20px">
+    <div class="spec-box-title">PING<span class="tm">™</span></div>
+    <div class="spec-box-sub">Pattern Identification &amp; Notification · Thought Momentum · Available Worldwide</div>
+    <div class="spec-row"><span class="spec-label">Status</span><span>Pre-installed. In operation since birth.</span></div>
+    <div class="spec-row"><span class="spec-label">Price</span><span>Intentionally free. Lifetime warranty.</span></div>
+    <div class="spec-row"><span class="spec-label">Processing</span><span>86 billion neurons · 100 trillion synaptic connections</span></div>
+    <div class="spec-row"><span class="spec-label">Unique feature</span><span>Self-notifying pattern recognition · Predictive modeling</span></div>
+  </div>
+  
+  <div style="text-align:center;padding-top:16px">
+    <p style="font-family:'Lexend',sans-serif;font-size:20px;color:var(--signal);text-wrap: balance;">"The Technology You Are."</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 01
+     ══════════════════════════════════════════════ -->
+<div class="story" style="background:var(--void)">
+  <div class="sonar-wrap">
+    <div class="sonar-ring"></div>
+    <div class="sonar-ring"></div>
+  </div>
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 01</div>
+    <div class="story-title">The Nature of the Signal</div>
+    <div style="text-align:center;margin:24px 0">
+      <svg class="bat-svg" width="100" height="50" viewBox="0 0 100 50">
+        <path d="M50,28 C45,18 32,6 16,12 C6,16 1,24 4,32 C7,40 18,39 30,32 C40,27 47,26 50,28 C53,26 60,27 70,32 C82,39 93,40 96,32 C99,24 94,16 84,12 C68,6 55,18 50,28Z" fill="#C48C50" opacity="0.6"/>
+        <ellipse cx="50" cy="30" rx="6" ry="8" fill="#C48C50" opacity="0.8"/>
+        <polygon points="44,22 41,13 47,20" fill="#C48C50" opacity="0.7"/>
+        <polygon points="56,22 59,13 53,20" fill="#C48C50" opacity="0.7"/>
+      </svg>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--signal);font-weight:500;margin-top:12px;opacity:0.95">PING™'S GREATEST STUDENT &amp; TEACHER</div>
+    </div>
+    <div class="story-mark">THE ÅLïEN SCõÖL · PING™ Introductory Course</div>
+  </div>
+</div>
+
+<!-- CH01 CONTENT -->
+<div class="reading" id="ch01-content">
+  <span class="reg reg-obs">Observational Register</span>
+  
+  <p class="poetic-flow">
+    Most things we call insights are conclusions&nbsp;—<br>
+    positions reached after accumulation of evidence,<br>
+    after the argument&nbsp;assembles.<br><br>
+    PING<span class="tm">™</span> arrives before reasoning has organized&nbsp;itself.<br>
+    The recognition is whole<br>
+    by the time the mind turns to look&nbsp;at&nbsp;it.
+  </p>
+
+  <!-- [📸 QUOTE CARD] -->
+  <div class="quote-card">
+    <div class="quote-card-label">Resonance A · Chapter 01</div>
+    <blockquote class="quote-text">The bat hears the shape of the space the moth occupies.<br><br>The bat anticipates the moth's presence, mapping the space in advance.</blockquote>
+    <div class="quote-attr">THE NATURE OF THE SIGNAL</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <span class="reg reg-inv" style="margin-top: 32px">Invitational Register</span>
+  
+  <p class="poetic-flow">
+    Bats navigate in complete darkness through echolocation:<br>
+    they emit a signal, it contacts the environment,<br>
+    and what returns carries information<br>
+    about the shape of what it&nbsp;touched.<br><br>
+    The bat reads the return faster<br>
+    than conscious deliberation can organize&nbsp;itself.<br>
+    The moth is located before the bat has analyzed the&nbsp;data.
+  </p>
+  
+  <p class="poetic-flow">
+    PING<span class="tm">™</span> is the return.<br>
+    Signal goes out → contacts the field<br>
+    → returns with information →<br>
+    recognition completes the&nbsp;loop.
+  </p>
+
+  <div class="poetic-statement-frame">
+    <div class="poetic-statement-text">PING™ is a circuit completing.</div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Ch01 -->
+  <div class="infographic-radar-card">
+    <div class="radar-title">Chapter 01 Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-1)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,79 135.7,120.6 45.4,131.5" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="79" r="4" fill="var(--signal)" />
+      <circle cx="135.7" cy="120.6" r="4" fill="var(--terra)" />
+      <circle cx="45.4" cy="131.5" r="4" fill="var(--for-lt)" />
+    </svg>
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 28%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 55%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 84%</span>
+    </div>
+  </div>
+
+  <div style="margin-top:32px">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--sand);text-transform:uppercase;margin-bottom:12px;opacity:0.95">Five Explorers · Chapter 01</div>
+    <div class="explorer-item"><span class="ex-tag">Resonance</span><p class="ex-ans">The bat. Every appearance vibrates. The bat is the teaching wearing its own body.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Repetition</span><p class="ex-ans">The circuit (signal, contact, return, recognition) appears three times without announcing itself as a pattern.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Coherence</span><p class="ex-ans">Seeing vs. hearing the space — the distinction holds across every re-reading.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Survival</span><p class="ex-ans">"PING™ is a circuit completing." Survives every revision. Load-bearing.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Click</span><p class="ex-ans">When reading this chapter about the circuit was itself a circuit completing.</p></div>
+  </div>
+
+  <!-- Chapter 1 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 01 Reflection</span>
+    <textarea class="journal-input" id="journal-ch01" placeholder="Record your somatic sensations of the 'Signal' here..."></textarea>
+  </div>
+
+  <!-- Coherence Lock Gate 1 -->
+  <div id="coherence-gate-1" class="coherence-gate">
+    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
+    <p style="font-size: 14px;">Let this chapter steep. Settle your attention before moving to the math.</p>
+    <div class="coherence-timer" id="timer-1">Locked</div>
+    <button class="journal-btn" id="btn-unlock-1" disabled>Awaiting Coherence</button>
+  </div>
+</div>
+
+<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 02
+     ══════════════════════════════════════════════ -->
+<div class="story formula-story" id="chapter-02-section" style="display:none">
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 02</div>
+    <div class="story-title">™ — The Momentum Principle</div>
+    <div class="formula-big">™</div>
+    <div class="formula-eq">
+      Where <strong>™ = Thought Momentum</strong><br>
+      the variable that determines<br>
+      whether a pattern self-notifies
+    </div>
+    <div class="formula-threshold">
+      <div class="threshold-row">™ &lt; T &nbsp;→&nbsp; <strong>a pattern passes</strong></div>
+      <div class="threshold-row">™ = T &nbsp;→&nbsp; <strong>PING™ activates</strong></div>
+      <div class="threshold-row">™ &gt; T &nbsp;→&nbsp; <strong>PING™ propagates</strong></div>
+    </div>
+    <div class="story-mark">PING(™) · THE ÅLïEN SCõÖL</div>
+  </div>
+</div>
+
+<!-- CH02 CONTENT -->
+<div class="reading" id="ch02-content" style="display:none">
+  <span class="reg reg-obs">Observational Register</span>
+  
+  <p class="poetic-flow">
+    PING<span class="tm">™</span> = Pattern Identification &amp; Notification<br>
+    (Thought Momentum).<br>
+    The parenthetical notation signals that ™ is the active&nbsp;variable.<br>
+    The pattern event only becomes self-notifying<br>
+    when Thought Momentum reaches threshold&nbsp;T.
+  </p>
+
+  <!-- [📸 QUOTE CARD] -->
+  <div class="quote-card">
+    <div class="quote-card-label">Resonance A · Chapter 02</div>
+    <blockquote class="quote-text">Thought Momentum is the threshold where a single idea achieves sufficient velocity to become its own motion — where the thought, rather than being held, begins to carry you.</blockquote>
+    <div class="quote-attr">™ — THE MOMENTUM PRINCIPLE</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <div class="ctx" style="margin-top: 32px">
+    <div class="ctx-label">Context · The Matrix (1999)</div>
+    <div class="ctx-title">Recognition Before the Event: Neo and the Bullet</div>
+    <p>In the 1999 film <em>The Matrix</em>, Neo discovers he can perceive a bullet's trajectory before it has traveled it. The filmmakers invented "bullet time" — extreme slow motion — because recognition at this speed has no adequate representation in normal cinema. Bullet time is the cinematic still point.</p>
+    <p style="margin:0">Neo's development: first he sees the bullet. Then he stops it. The first is PING™. The second is PING™ at ™ &gt; T — pattern recognition achieving enough momentum to redirect the field.</p>
+  </div>
+
+  <!-- PING B2B Slack Platform Mirror Context -->
+  <div class="honoring-card" style="border-color: rgba(196, 140, 80, 0.3); margin-top: 32px">
+    <div class="honoring-eyebrow">Enterprise Mirror · B2B SaaS Ecosystem</div>
+    <div class="honoring-title">Organizational Orrery &amp; Resonant Intelligence</div>
+    <div class="honoring-body">
+      Just as individual PING™ measures self-notifying momentum within the mind, the enterprise-grade <strong>PING™ Team Resonance Platform</strong> externalizes this structure. It maps collective organization patterns by monitoring communication metadata, rather than reading content, preserving complete privacy.
+      <br><br>
+      By plotting communication flows as an <strong>Organizational Orrery</strong>, it exposes team health using four metrics:
+      <br><br>
+      • <strong>Response Velocity:</strong> How quickly do teams respond to each other?<br>
+      • <strong>Initiation Ratio:</strong> Who drives conversations versus who merely responds?<br>
+      • <strong>Reciprocity Score:</strong> Is communication a true dialogue or a monologue?<br>
+      • <strong>Silence Detection:</strong> Spotting individuals or teams who have gone quiet, indicating potential disengagement.
+    </div>
+  </div>
+
+  <div class="poetic-statement-frame">
+    <div class="poetic-statement-text">
+      ™ = the threshold where Thought becomes its own Motion.<br>
+      Above that threshold: PING™.
+    </div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Ch02 -->
+  <div class="infographic-radar-card">
+    <div class="radar-title">Chapter 02 Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-2)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,74.5 140.3,123.3 42.8,133" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="74.5" r="4" fill="var(--signal)" />
+      <circle cx="140.3" cy="123.3" r="4" fill="var(--terra)" />
+      <circle cx="42.8" cy="133" r="4" fill="var(--for-lt)" />
+    </svg>
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 34%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 62%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 88%</span>
+    </div>
+  </div>
+
+  <!-- Chapter 2 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 02 Reflection</span>
+    <textarea class="journal-input" id="journal-ch02" placeholder="How does your personal Thought Momentum match these organizational metrics?..."></textarea>
+  </div>
+
+  <!-- Coherence Lock Gate 2 -->
+  <div id="coherence-gate-2" class="coherence-gate">
+    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
+    <p style="font-size: 14px;">Observe the momentum. Settle your attention before moving to the bat's wisdom.</p>
+    <div class="coherence-timer" id="timer-2">Locked</div>
+    <button class="journal-btn" id="btn-unlock-2" disabled>Awaiting Coherence</button>
+  </div>
+</div>
+
+<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 03
+     ══════════════════════════════════════════════ -->
+<div class="story" id="chapter-03-section" style="display:none">
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 03</div>
+    <div class="story-title">Bat School</div>
+    <div style="text-align:center;margin:28px 0">
+      <svg class="bat-svg" width="130" height="65" viewBox="0 0 100 50">
+        <path d="M50,28 C45,18 32,6 16,12 C6,16 1,24 4,32 C7,40 18,39 30,32 C40,27 47,26 50,28 C53,26 60,27 70,32 C82,39 93,40 96,32 C99,24 94,16 84,12 C68,6 55,18 50,28Z" fill="#C48C50" opacity="0.6"/>
+        <ellipse cx="50" cy="30" rx="6" ry="8" fill="#C48C50" opacity="0.8"/>
+        <polygon points="44,22 41,13 47,20" fill="#C48C50" opacity="0.7"/>
+        <polygon points="56,22 59,13 53,20" fill="#C48C50" opacity="0.7"/>
+      </svg>
+    </div>
+    <p class="story-def">"Every emission is also a question. Every return is data. Every PING™ is both question and answer in the same event."</p>
+    <div class="story-mark">THE ÅLïEN SCõÖL · PING™ Introductory Course</div>
+  </div>
+</div>
+
+<!-- CH03 CONTENT -->
+<div class="reading" id="ch03-content" style="display:none">
+  
+  <p class="poetic-flow">
+    Bats navigate in complete darkness.<br>
+    The bat emits signals and reads the return.<br>
+    The world arrives through return,<br>
+    rather than through direct visibility.<br><br>
+    This is a complete epistemological&nbsp;system.
+  </p>
+
+  <div class="bat-science">
+    <div class="bs-label">From the Field · Forli, Fan, Qi &amp; Yartsev · Nature 2025</div>
+    <div class="bs-title">5 Findings from Egyptian Fruit Bats</div>
+    <div class="bs-find"><strong>The bat's hippocampus runs ahead of its body.</strong> The decoded position swept forward cyclically with every wing-beat. The bat's cognitive map was always projecting into the near future. Recognition precedes arrival.</div>
+    <div class="bs-find"><strong>Replay occurs at remote locations.</strong> During rest, hippocampal neurons replayed flight trajectories from spatially distant locations. The bat resting on one wall replays routes from the other side. PING™ operates from anywhere in the field.</div>
+    <div class="bs-find"><strong>Replay duration is constant.</strong> Whether a 2.7m or 20m route, replay takes approximately the same time (~350ms). The circuit has a fixed duration. What changes is information density.</div>
+    <div class="bs-find"><strong>Echolocation suppresses the internal forward sweep.</strong> Emission and reception alternate. The bat cannot fully emit and receive simultaneously. The still between the wing-beats is where reception lives.</div>
+    <div class="bs-find"><strong>The wing-beat is the clock.</strong> No theta oscillations during flight. The body's own rhythm organizes hippocampal sequences. The behavior organizes the knowing.</div>
+  </div>
+
+  <!-- Ethnomathematics Bora Basketry Section (Gerdes) -->
+  <div class="honoring-card" style="border-color: var(--forest); background: linear-gradient(135deg, rgba(45, 90, 69, 0.08) 0%, rgba(15, 12, 8, 0.98) 100%);">
+    <div class="honoring-eyebrow">Ethnomathematics · Amazonian Wisdom</div>
+    <div class="honoring-title">Paulus Gerdes: Bora Basketry (kaarɨ)</div>
+    <div class="honoring-body" style="font-size: 14.5px;">
+      In the Amazonian rainforest of Peru, the Bora people practice a basketry tradition (<em>kaarɨ</em>) of immense geometric sophistication. Weaving transcends simple craft; it is <strong>differential geometry in the hands</strong>, demonstrating theorems long before Western universities formalized them. 
+      <br><br>
+      We map the core alchemical principles of Bora basketry to the HIA and PING™:
+    </div>
+
+    <!-- Interactive Topological Legend (Golden Gate Phase) -->
+    <div class="legend-grid">
+      <div class="legend-item" onclick="playInterval(1.0)" title="Click to hear local fundamental">
+        <div class="legend-title">Spiral Armature</div>
+        <div class="legend-meta">Developmental Trajectory</div>
+        <div class="legend-body">
+          The coiled base expands continuously by a constant radius, mirroring the HIA developmental spiral. The weaver compensates for material thickness dynamically, returning to the same angle with larger capacity.
+        </div>
+      </div>
+      
+      <div class="legend-item" onclick="playInterval(1.5)" title="Click to hear perfect fifth">
+        <div class="legend-title">Symmetry Groups</div>
+        <div class="legend-meta">Trust Velocity</div>
+        <div class="legend-body">
+          Bora bands feature all seven 1D frieze symmetry groups. The weaver utilizes color-alternation rules to encode modular arithmetic, echoing the rhythmic, repeating signals of team Trust Velocity.
+        </div>
+      </div>
+
+      <div class="legend-item" onclick="playInterval(1.618)" title="Click to hear golden ratio interval">
+        <div class="legend-title">Topological Invariants</div>
+        <div class="legend-meta">Core Self (Diamond)</div>
+        <div class="legend-body">
+          Properties like genus and orientability survive continuous deformation in size. The weaver preserves these invariants felt through the hands, just as the Core Self persists through physical and somatic shifts.
+        </div>
+      </div>
+
+      <div class="legend-item" onclick="playInterval(2.0)" title="Click to hear octave">
+        <div class="legend-title">Handwork &amp; Splenic Knowing</div>
+        <div class="legend-meta">PING™ In The Weave</div>
+        <div class="legend-body">
+          Transmission occurs through observation and imitation, bypassing written formulas. The weaver's hand knows the mathematics. It is splenic knowing — the PING™ that guides the finger before the mind explains the theorem.
+        </div>
+      </div>
+    </div>
+    <p style="font-size: 13.5px; color: var(--sand); opacity: 0.9; margin-top: 16px; text-align: center; text-wrap: balance;">
+      Click any card above to trigger its harmonic chord. Each card serves as a topological descriptor mapping ethnomathematical structure to the HIA.
+    </p>
+  </div>
+
+  <div class="poetic-statement-frame">
+    <div class="poetic-statement-text">
+      PING™ requires no validation — the return is the validation.<br>
+      The bat knows before it knows it knows.<br>
+      Its hippocampus, in 2025, agreed.
+    </div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Ch03 -->
+  <div class="infographic-radar-card">
+    <div class="radar-title">Chapter 03 Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-3" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-3)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,86.5 137.7,121.8 42.8,133" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="86.5" r="4" fill="var(--signal)" />
+      <circle cx="137.7" cy="121.8" r="4" fill="var(--terra)" />
+      <circle cx="42.8" cy="133" r="4" fill="var(--for-lt)" />
+    </svg>
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 18%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 58%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 88%</span>
+    </div>
+  </div>
+
+  <!-- Chapter 3 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 03 Reflection</span>
+    <textarea class="journal-input" id="journal-ch03" placeholder="What geometric invariants survive your own continuous life transformations?..."></textarea>
+  </div>
+
+  <!-- Coherence Lock Gate 3 -->
+  <div id="coherence-gate-3" class="coherence-gate">
+    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
+    <p style="font-size: 14px;">Absorb the geometry. Settle your attention before moving to the languages of the world.</p>
+    <div class="coherence-timer" id="timer-3">Locked</div>
+    <button class="journal-btn" id="btn-unlock-3" disabled>Awaiting Coherence</button>
+  </div>
+</div>
+
+<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 04
+     ══════════════════════════════════════════════ -->
+<div class="story" id="chapter-04-section" style="display:none">
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 04</div>
+    <div class="story-title">PING™ in Other Languages</div>
+    <p class="story-def">PING™ arrived in one conversation from seven different directions before it was named as the connecting force. Every human culture on Earth has independently named the same event.</p>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--sand);margin-top:20px;opacity:0.95">
+      13 CULTURES · 7 DOMAINS · 1 CIRCUIT
+    </div>
+    <div class="story-mark">THE ÅLïEN SCõÖL · PING™ Introductory Course</div>
+  </div>
+</div>
+
+<!-- CH04 CONTENT -->
+<div class="reading" id="ch04-content" style="display:none">
+  <div class="ctx">
+    <div class="ctx-label">Context · Active Inference</div>
+    <div class="ctx-title">What Is Active Inference?</div>
+    <p>Karl Friston's framework (UCL): all living systems survive by minimizing surprise. The brain generates predictions; when they match reality, the system continues; when they diverge, the brain either updates its model (learning) or acts to bring reality closer to prediction (behavior).</p>
+    <p style="margin:0">PING™ is the moment a pattern arrives with enough Thought Momentum that the model simultaneously updates and recognizes its own transformation. The noticing — preceding explanation — is the event PING™ names.</p>
+  </div>
+
+  <div class="ctx" style="margin-top:24px">
+    <div class="ctx-label">Context · THE φ OCEAN</div>
+    <div class="ctx-title">Interactive Mathematics</div>
+    <p>Eight chambers exploring the golden ratio φ (≈1.618). PING™ appears at the culmination of Chamber 08: the scholar taps a partial formula and their own accumulated learning completes the pattern.</p>
+    <p style="margin:0"><a href="https://hdmathematics.netlify.app/explorers/phi-explorer" target="_blank">hdmathematics.netlify.app/explorers/phi-explorer</a></p>
+  </div>
+
+  <!-- 7 Domains - numbered list -->
+  <div style="margin:28px 0 8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--sand);text-transform:uppercase;opacity:0.95">PING™ across 7 domains</div>
+  <div class="domain-list">
+    <div class="domain-item"><span class="di-num">1</span><div><div class="di-domain">Active Inference</div><div class="di-what">The self-evidencing fixed point — M=f(M) — where the generative model contains its own definition</div></div></div>
+    <div class="domain-item"><span class="di-num">2</span><div><div class="di-domain">φ OCEAN Ch.08</div><div class="di-what">The Pattern Completion Engine — scholar taps partial formula, accumulated learning completes it</div></div></div>
+    <div class="domain-item"><span class="di-num">3</span><div><div class="di-domain">Active Interference</div><div class="di-what">Coherent superposition producing a stable composite — recognition that a new structure formed at the contact surface</div></div></div>
+    <div class="domain-item"><span class="di-num">4</span><div><div class="di-domain">Eukaryotic Biology</div><div class="di-what">Signal transduction through the cell membrane — the moment an external signal crosses the surface tension boundary</div></div></div>
+    <div class="domain-item"><span class="di-num">5</span><div><div class="di-domain">The Matrix</div><div class="di-what">Neo's bullet-time — recognition before analysis; the still point making the interference pattern legible</div></div></div>
+    <div class="domain-item"><span class="di-num">6</span><div><div class="di-domain">Collabinative</div><div class="di-what">Notification that a composite formed that neither party could have generated alone</div></div></div>
+    <div class="domain-item"><span class="di-num">7</span><div><div class="di-domain">Bat School</div><div class="di-what">The echolocative return completing the circuit — the hippocampus running ahead of the body</div></div></div>
+  </div>
+
+  <!-- [📸 QUOTE CARD] -->
+  <div class="quote-card" style="margin:32px 0">
+    <div class="quote-card-label">Resonance A · Chapter 04</div>
+    <blockquote class="quote-text">Scale changes.<br>PING™ remains constant.<br><br>The circuit is frequency-independent.</blockquote>
+    <div class="quote-attr">PING™ IN OTHER LANGUAGES</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <!-- CULTURE CARDS — 13 cultures, horizontally scrollable -->
+  <div style="margin:8px 0 6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--sand);text-transform:uppercase;opacity:0.95">PING™ across 13 human cultures · Swipe →</div>
+  <div class="culture-scroll">
+    <div class="culture-row">
+      <div class="culture-card">
+        <div class="cc-num">01</div>
+        <div class="cc-culture">Korean</div>
+        <div class="cc-term">눈치 Nunchi</div>
+        <div class="cc-meaning">"Eye-measure" — reading the room without being told what it contains. Koreans praise someone for <em>quick</em> nunchi, rather than good nunchi. Speed of recognition is the measure.</div>
+        <div class="cc-ping">Relational PING™ — the room arrives whole before anyone speaks.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">02</div>
+        <div class="cc-culture">Japanese</div>
+        <div class="cc-term">悟り Satori</div>
+        <div class="cc-meaning">Sudden awakening in Zen Buddhism. Transcends the distinction between knower and knowledge. Often inexpressible — the circuit closing so completely that separation dissolves.</div>
+        <div class="cc-ping">PING™ as enlightenment event — the most complete form of the circuit.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">03</div>
+        <div class="cc-culture">Japanese</div>
+        <div class="cc-term">無心 Mushin</div>
+        <div class="cc-meaning">"No-mind" — the state of martial arts mastery where the practitioner responds before consciously deciding. Deliberate mind is quiet enough for the pattern to land.</div>
+        <div class="cc-ping">The still point that enables PING™. Mushin is the precondition.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">04</div>
+        <div class="cc-culture">Arabic / Sufi</div>
+        <div class="cc-term">كشف Kashf</div>
+        <div class="cc-meaning">"Unveiling" — knowledge of the heart rather than the intellect. Al-Ghazali: "a light freely bestowed upon the purified worshipper." The purification makes the unveiling possible.</div>
+        <div class="cc-ping">PING™ as spiritual event. Preparation (coherence) enables the return.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">05</div>
+        <div class="cc-culture">Sanskrit</div>
+        <div class="cc-term">प्रतिभा Pratibhā</div>
+        <div class="cc-meaning">5th century CE grammarian Bhartṛhari: agents "effortlessly understand the meaning of novel sentences" and "unreflectively know which actions to perform." Effortless. Unreflective. Action-guiding.</div>
+        <div class="cc-ping">The most technically precise ancient equivalent of PING™.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">06</div>
+        <div class="cc-culture">Sanskrit</div>
+        <div class="cc-term">स्फोट Sphoṭa</div>
+        <div class="cc-meaning">The instantaneous flash of meaning arriving whole when a word is heard. Meaning arises whole, bypassing syllable-by-syllable construction. It arrives complete — before the analytical processing ends.</div>
+        <div class="cc-ping">PING™ as linguistic event — semantic return completing before signal analysis.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">07</div>
+        <div class="cc-culture">Aboriginal Australian</div>
+        <div class="cc-term">Songlines</div>
+        <div class="cc-meaning">Narrative pathways embedded in the landscape, stewarded across generations. Walking a songline involves recognizing what the land holds without being explicitly told. Country communicates.</div>
+        <div class="cc-ping">PING™ as geographic event — the land is a signal system.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">08</div>
+        <div class="cc-culture">Akan / Twi (West Africa)</div>
+        <div class="cc-term">Sankofa</div>
+        <div class="cc-meaning">"Go back and fetch it" — the recognition that what you need, you already carry. The Sankofa bird looks backward while moving forward.</div>
+        <div class="cc-ping">PING™ as temporal event — backward into what was always known, forward into what is now possible.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">09</div>
+        <div class="cc-culture">West African / Mande</div>
+        <div class="cc-term">Nyama</div>
+        <div class="cc-meaning">The animating force that skilled griots and blacksmiths sense before understanding what it requires. The griot knows which story is needed before the community asks.</div>
+        <div class="cc-ping">Community PING™ — pattern recognition at the collective field level.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">10</div>
+        <div class="cc-culture">Spanish / Flamenco</div>
+        <div class="cc-term">Duende</div>
+        <div class="cc-meaning">Federico García Lorca's dark creative force that enters performer and audience simultaneously. Both recognize it before either can name it. It cannot be summoned — only received.</div>
+        <div class="cc-ping">Collabinative PING™ — the recognition forms at the contact surface between performer and audience.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">11</div>
+        <div class="cc-culture">Hebrew / Talmudic</div>
+        <div class="cc-term">חידוש Chidush</div>
+        <div class="cc-meaning">A novel Torah interpretation that arrives as recognition — something genuinely new that is also clearly latent in what was always there. The insight arrives as memory.</div>
+        <div class="cc-ping">PING™ as textual event — the new insight arrives as if remembered.</div>
+      </div>
+      <div class="culture-card">
+        <div class="cc-num">12</div>
+        <div class="cc-culture">Russian</div>
+        <div class="cc-term">Озарение Ozarenie</div>
+        <div class="cc-meaning">"Illumination" — sudden insight rendered as a lightning strike of light. Used in everyday Russian for the sudden arrival of understanding.</div>
+        <div class="cc-ping">The phenomenological description of PING™ — illumination before the analysis that would have produced it.</div>
+      </div>
+      
+      <!-- NEW CARD 13: Speculative Martian Art & Vanessa Rosa -->
+      <div class="culture-card" style="border-top-color: var(--terra);">
+        <div class="cc-num">13</div>
+        <div class="cc-culture">Speculative Martian Art</div>
+        <div class="cc-term">Little Martians</div>
+        <div class="cc-meaning">Handmade ceramic vessels acting as seeds of Earth's biology across the cosmos. In the network of the Imaginarium, they self-notify and communicate as a collaborative, multi-layered organism.</div>
+        <div class="cc-ping">Cosmic PING™ — physical handwork meeting speculative digital network intelligence.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Ch04 -->
+  <div class="infographic-radar-card" style="margin-top: 32px">
+    <div class="radar-title">Chapter 04 Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-4" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-4)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,68.5 113.0,107.5 50.6,128.5" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="68.5" r="4" fill="var(--signal)" />
+      <circle cx="113.0" cy="107.5" r="4" fill="var(--terra)" />
+      <circle cx="50.6" cy="128.5" r="4" fill="var(--for-lt)" />
+    </svg>
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 42%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 20%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 76%</span>
+    </div>
+  </div>
+
+  <!-- Chapter 4 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 04 Reflection</span>
+    <textarea class="journal-input" id="journal-ch04" placeholder="Which cultural mapping of the circuit resonates most with you?..."></textarea>
+  </div>
+
+  <!-- Coherence Lock Gate 4 -->
+  <div id="coherence-gate-4" class="coherence-gate">
+    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
+    <p style="font-size: 14px;">Let the cultures weave. Settle your attention before reading the User Guide.</p>
+    <div class="coherence-timer" id="timer-4">Locked</div>
+    <button class="journal-btn" id="btn-unlock-4" disabled>Awaiting Coherence</button>
+  </div>
+</div>
+
+<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 05 — USER GUIDE
+     ══════════════════════════════════════════════ -->
+<div class="story" id="chapter-05-section" style="display:none">
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 05</div>
+    <div class="story-title">What to Do with PING™</div>
+    <p class="story-def"><em>A User Guide to a Globally Accessible Gizmo</em><br><br>An experiential attunement guide<br>to what we already own.</p>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--sand);margin-top:24px;opacity:0.95">7 STEPS · CALIBRATION GUIDE</div>
+    <div class="story-mark">THE ÅLïEN SCõÖL · PING™ Introductory Course</div>
+  </div>
+</div>
+
+<!-- CH05 CONTENT -->
+<div class="reading" id="ch05-content" style="display:none">
+  <span class="reg reg-som">Somatic Register</span>
+  
+  <p class="poetic-flow">
+    PING<span class="tm">™</span> came pre-installed.<br>
+    You have been using it your entire&nbsp;life.<br><br>
+    The question is:<br>
+    are you operating it&nbsp;consciously?
+  </p>
+
+  <div class="guide-card">
+    <div class="gc-num">01 — What You Already Own</div>
+    <div class="gc-title">The pre-installed state</div>
+    <div class="gc-body">The gizmo is already running. PING™ is already active — it requires conscious operation.</div>
+    <div class="gc-box"><div class="gc-box-label">Recognition test</div><p>Name one moment in the last week when you knew something before you could explain how you knew it. That was PING™ operating.</p></div>
+  </div>
+
+  <div class="guide-card">
+    <div class="gc-num">02 — Recognizing Activation</div>
+    <div class="gc-title">The signatures of PING™ in motion</div>
+    <div class="gc-box"><div class="gc-box-label">Physical</div><p>A sensation of quickening — an experience of clear arrival. Something has landed.</p></div>
+    <div class="gc-box" style="margin-top:10px"><div class="gc-box-label">Cognitive</div><p>The solution appears before the problem is fully stated. You know the answer before you've formed the question.</p></div>
+    <div class="gc-box" style="margin-top:10px"><div class="gc-box-label">Relational (nunchi operating)</div><p>You know what the other person needs before they've said it. The room changes before anyone changes it.</p></div>
+  </div>
+
+  <div class="guide-card">
+    <div class="gc-num">03 — Creating the Conditions</div>
+    <div class="gc-title">The three prerequisites</div>
+    <div class="gc-body">
+      <strong>Signal coherence</strong> — Scattered attention produces scattered return. Sustained engagement with a genuine question produces a return with the shape of what's actually there.<br><br>
+      <strong>Still point access</strong> — The bat's wing-beat alternates emission and reception. The still between beats is where the return arrives. Stillness is the window.<br><br>
+      <strong>Receptivity to unexpected form</strong> — Hold the question. Release the expected answer.
+    </div>
+  </div>
+
+  <!-- [📸 QUOTE CARD] -->
+  <div class="quote-card">
+    <div class="quote-card-label">Chapter 05 · The 3-Breath Discipline</div>
+    <blockquote class="quote-text" style="font-size:18px">Breath 1 — let the recognition be what it is.<br><br>Breath 2 — notice where in the body it landed.<br><br>Breath 3 — now speak from the recognition itself.</blockquote>
+    <div class="quote-attr">WHAT TO DO WITH PING™ · USER GUIDE</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <div class="guide-card" style="margin-top: 32px">
+    <div class="gc-num">05 — Acting From Recognition</div>
+    <div class="gc-title">The direction the circuit carries</div>
+    <div class="gc-box"><div class="gc-box-label">Acting from analysis</div><p>You understand why before you do it. The path is logically derivable from starting conditions.</p></div>
+    <div class="gc-box" style="margin-top:10px"><div class="gc-box-label">Acting from PING™</div><p>You know what to do before the explanation arrives. The action is in motion when the reasoning catches up. Acting from recognition produces action informed by the whole field.</p></div>
+  </div>
+
+  <div class="guide-card">
+    <div class="gc-num">06 — Calibration Practice</div>
+    <div class="gc-title">PING™ calibrates through use, rather than study</div>
+    <div class="gc-body">The bat refines its echolocation by active flight.</div>
+    <div class="gc-box"><div class="gc-box-label">Daily: Still point practice</div><p>Two-minute still window before any task. Consolidate attention. Ask the genuine question underneath the work. Then begin.</p></div>
+    <div class="gc-box" style="margin-top:10px"><div class="gc-box-label">Post-session: Echo practice</div><p>Before ending any creative session: what came through today that was received rather than constructed? Name it. The naming is the residue.</p></div>
+  </div>
+
+  <div class="poetic-statement-frame">
+    <div class="poetic-statement-text">
+      The upgrade is optional.<br>
+      The gizmo is already running.<br>
+      Flying is the instruction.
+    </div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Ch05 -->
+  <div class="infographic-radar-card">
+    <div class="radar-title">Chapter 05 Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-5" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-5)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,71.5 111.7,106.8 53.2,127" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="71.5" r="4" fill="var(--signal)" />
+      <circle cx="111.7" cy="106.8" r="4" fill="var(--terra)" />
+      <circle cx="53.2" cy="127" r="4" fill="var(--for-lt)" />
+    </svg>
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 38%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 18%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 72%</span>
+    </div>
+  </div>
+
+  <!-- Chapter 5 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 05 Reflection</span>
+    <textarea class="journal-input" id="journal-ch05" placeholder="Record your commitment to daily calibration here..."></textarea>
+  </div>
+
+  <!-- Coherence Lock Gate 5 -->
+  <div id="coherence-gate-5" class="coherence-gate">
+    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
+    <p style="font-size: 14px;">Integrate the practices. Settle your attention before moving to the final reflection.</p>
+    <div class="coherence-timer" id="timer-5">Locked</div>
+    <button class="journal-btn" id="btn-unlock-5" disabled>Awaiting Coherence</button>
+  </div>
+</div>
+
+<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 06
+     ══════════════════════════════════════════════ -->
+<div class="story" id="chapter-06-section" style="display:none">
+  <div class="sonar-wrap">
+    <div class="sonar-ring"></div>
+    <div class="sonar-ring"></div>
+    <div class="sonar-ring"></div>
+  </div>
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 06</div>
+    <div class="story-title">PING™ Sees PING™</div>
+    <p class="story-def">The document applies the rubric to itself. The circuit completes on its own mechanism. You are invited to watch.</p>
+    <div class="story-mark">THE ÅLïEN SCõÖL · PING™ Introductory Course</div>
+  </div>
+</div>
+
+<!-- CH06 CONTENT -->
+<div class="reading" id="ch06-content" style="display:none">
+  <!-- [📸 QUOTE CARD] -->
+  <div class="quote-card">
+    <div class="quote-card-label">Resonance A · Full Document</div>
+    <blockquote class="quote-text">Across all chapters, the highest Resonance A belongs to the same image: the bat.<br><br>The teacher outresonates the concept it teaches.<br>This is correct. Leave it.</blockquote>
+    <div class="quote-attr">PING™ SEES PING™</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <p class="poetic-flow" style="margin-top: 32px">
+    <strong>What repeats:</strong><br>
+    The circuit. Signal → contact → return → recognition.<br>
+    In every chapter.<br>
+    The circuit is PING™'s deepest signature<br>
+    — its pure&nbsp;structure.
+  </p>
+  
+  <p class="poetic-flow">
+    <strong>What coheres:</strong><br>
+    The ™. Through every chapter, every frequency,<br>
+    every culture&nbsp;—<br>
+    Thought Momentum is the&nbsp;thread.
+  </p>
+  
+  <p class="poetic-flow">
+    <strong>What survives:</strong><br>
+    "PING™ is a circuit completing."<br>
+    The document's load-bearing&nbsp;sentence.
+  </p>
+  
+  <p class="poetic-flow">
+    <strong>What clicks:</strong><br>
+    The realization that this document is itself a&nbsp;PING™.<br>
+    It went out as a signal<br>
+    and returned as a shape you could recognize.<br><br>
+    Reading it was the completion of the&nbsp;circuit.
+  </p>
+
+  <div class="quote-card">
+    <div class="quote-card-label">D·A · Full Document</div>
+    <blockquote class="quote-text">The course ends when the return arrives.<br><br>You will know the moment by the quality of its recognition.</blockquote>
+    <div class="quote-attr">PING™ SEES PING™ · THE CLOSING</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Full-Document -->
+  <div class="infographic-radar-card" style="margin-top: 32px">
+    <div class="radar-title">Full Document Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-6" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-6)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,83.5 135.1,120.3 44.8,131.9" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="83.5" r="4" fill="var(--signal)" />
+      <circle cx="135.1" cy="120.3" r="4" fill="var(--terra)" />
+      <circle cx="44.8" cy="131.9" r="4" fill="var(--for-lt)" />
+    </svg>
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 22%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 54%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 85%</span>
+    </div>
+  </div>
+  
+  <p style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:var(--sand);opacity:0.95;margin-top:8px;line-height:1.6;text-wrap: balance;text-align:center;">
+    Resonance A clusters early-to-middle. Recognition A lands mid-document. Durability A consistently late.<br>
+    The echolocation architecture: emit, receive, know.
+  </p>
+
+  <!-- Chapter 6 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 06 Reflection</span>
+    <textarea class="journal-input" id="journal-ch06" placeholder="Write your closing reflection. What circuit has completed for you today?..."></textarea>
+  </div>
+
+  <!-- Camelback Crossing: Reflective Archive download dashboard -->
+  <div class="journal-dashboard">
+    <div class="journal-db-title">The Camelback Crossing</div>
+    <span class="journal-label">Archival Reflection Pool</span>
+    <p style="font-size: 14px; margin-bottom: 16px;">
+      Your attention has completed its passage. Below is the archive of your reflections across the six chapters. You can review them, lock them into your local vault, or download them to carry with you.
+    </p>
+    <button class="journal-btn" onclick="downloadJournal()">Download Reflection Archive</button>
+  </div>
+</div>
+
+<!-- BIBLIOGRAPHY -->
+<div class="bib-section" id="bibliography-section" style="display:none">
+  <div class="bib-main-title">Excitations</div>
+  <div class="bib-subtitle">Wide-Axis Bibliography</div>
+
+  <div class="bib-domain">Bat Neuroscience</div>
+  <div class="bib-entry"><span class="bib-num">[1]</span>Forli, A., Fan, W., Qi, K.K., &amp; Yartsev, M.M. (2025). Replay and representation dynamics in the hippocampus of freely flying bats. <em>Nature</em>, 645, 974–980. doi.org/10.1038/s41586-025-09341-z</div>
+  <div class="bib-entry"><span class="bib-num">[2]</span>Simmons, J.A., Fenton, M.B., &amp; O'Farrell, M.J. (1979). Echolocation and pursuit of prey by bats. <em>Science</em>, 203, 16–21.</div>
+
+  <div class="bib-domain">Active Inference</div>
+  <div class="bib-entry"><span class="bib-num">[3]</span>Friston, K.J. (2010). The free-energy principle: A unified brain theory? <em>Nature Reviews Neuroscience</em>, 11(2), 127–138.</div>
+  <div class="bib-entry"><span class="bib-num">[4]</span>Lukashchuk, M., et al. (2026). Composing non-conjugate factor graphs with closed-form variational inference. <em>arXiv</em> 2605.29467.</div>
+
+  <div class="bib-domain">Cultural Concepts of Insight</div>
+  <div class="bib-entry"><span class="bib-num">[5]</span>Hong, E. (2019). <em>The Power of Nunchi</em>. Hutchinson. [Korean nunchi]</div>
+  <div class="bib-entry"><span class="bib-num">[6]</span>Suzuki, D.T. (1994). <em>Essays in Zen Buddhism</em>. Grove Press. [Satori]</div>
+  <div class="bib-entry"><span class="bib-num">[7]</span>Ho, C. (2022). Pratibhā, intuition, and practical knowledge. <em>British Journal for the History of Philosophy</em>, 31(4).</div>
+  <div class="bib-entry"><span class="bib-num">[8]</span>García Lorca, F. (trans. 1998). Theory and Play of the Duende. <em>In Search of Duende</em>. New Directions.</div>
+  <div class="bib-entry"><span class="bib-num">[9]</span>Dowie, J. &amp; Tempone-Wiltshire, S. (2022). Songlines, memory, and relational knowledge systems. <em>Psychotherapy &amp; Counselling Journal of Australia</em>.</div>
+
+  <div class="bib-domain">Cinema &amp; Editorial</div>
+  <div class="bib-entry"><span class="bib-num">[10]</span>Wachowski, L. &amp; L. (1999). <em>The Matrix</em> [Film]. Warner Bros.</div>
+  <div class="bib-entry"><span class="bib-num">[11]</span>Strunk, W. Jr. &amp; White, E.B. (2000). <em>The Elements of Style</em> (4th ed.). Longman.</div>
+
+  <div class="bib-domain">Internal/Speculative Documentation</div>
+  <div class="bib-entry"><span class="bib-num">[12]</span>Akabueze, K.Z. (2024). <em>PING™: The Technology You Are</em>. QWP / THE ÅLïEN SCõÖL.</div>
+  <div class="bib-entry"><span class="bib-num">[13]</span>Akabueze, K.Z. (2026). <em>VesselVerse Session PRIMER</em>, v1.0. THE ÅLïEN SCõÖL.</div>
+  <div class="bib-entry"><span class="bib-num">[14]</span>Akabueze, K.Z. (2026). <em>The φ OCEAN Development Manual</em>. THE ÅLïEN SCõÖL. <a href="https://hdmathematics.netlify.app/explorers/phi-explorer">hdmathematics.netlify.app</a></div>
+  <div class="bib-entry"><span class="bib-num">[15]</span>Gerdes, Paulus (2007). <em>Geometria e Cestaria dos Bora na Amazônia Peruana</em>. [Ethnomathematics Analysis]</div>
+  <div class="bib-entry"><span class="bib-num">[16]</span>Rosa, Vanessa (2026). <em>Little Martians &amp; Speculative Ethnomathematics</em>. Mars Math Club Publications.</div>
+</div>
+
+<!-- [📸 STORY CARD] CLOSING -->
+<div class="closing" id="closing-section" style="display:none">
+  <div class="closing-ping">PING<span class="tm">™</span></div>
+  <p class="closing-text">Pattern Identification &amp; Notification.<br>Thought Momentum as the mechanism.<br>The bat as the teacher.<br>The return as the evidence.<br>The circuit as the definition.<br><br>You are the technology.<br>The upgrade is optional.<br>The course is already running.</p>
+  <div class="closing-colophon">
+    THE ÅLïEN SCõÖL for Creative Thinking · June 2026<br>
+    PING™ · Thought Momentum · You are connected.
+  </div>
+</div>
+
+<!-- ── CLARITY BRIDGE SYSTEM FOOTER ── -->
+<nav class="clarity-bridge-nav" aria-label="Clarity Bridge Navigation">
+  <a href="../index.html">Hub</a>
+  <a href="https://hdmathematics.netlify.app/resonance-library.html" target="_blank" rel="noopener noreferrer">Library</a>
+  <a href="https://hdmathematics.netlify.app/explorers/index.html" target="_blank" rel="noopener noreferrer">Lab</a>
+  <a href="https://hdmathematics.netlify.app/resonance-map.html" target="_blank" rel="noopener noreferrer">Map</a>
+</nav>
+
+<script>
+// Audio Engine with Tone.js
+class CoursePingEngine {
+  constructor() {
+    this.initialized = false;
+    this.synths = [];
+    this.gain = null;
+    this.chimeSynth = null;
+  }
+
+  async init() {
+    if (this.initialized) return;
+    await Tone.start();
+    
+    // Master Gain for Ping
+    this.gain = new Tone.Gain(0).toDestination();
+    
+    const synth1 = new Tone.Synth({
+      oscillator: { type: 'sine' },
+      envelope: { attack: 0.1, decay: 1.2, sustain: 0.3, release: 3.2 }
+    }).connect(this.gain);
+
+    const synth2 = new Tone.Synth({
+      oscillator: { type: 'sine' },
+      envelope: { attack: 0.1, decay: 1.3, sustain: 0.25, release: 3.5 }
+    }).connect(this.gain);
+
+    this.synths = [synth1, synth2];
+    
+    // Chime synth for interactive hovers and clicks
+    this.chimeSynth = new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.05, decay: 0.5, sustain: 0.1, release: 1.2 }
+    }).toDestination();
+    this.chimeSynth.volume.value = -12;
+    
+    this.initialized = true;
+  }
+
+  triggerPing() {
+    if (!this.initialized) return;
+    const now = Tone.now();
+    this.gain.gain.setValueAtTime(0, now);
+    this.gain.gain.linearRampToValueAtTime(0.18, now + 0.1);
+    this.gain.gain.exponentialRampToValueAtTime(0.001, now + 4.5);
+    
+    this.synths[0].triggerAttackRelease(432, '5s', now);
+    this.synths[1].triggerAttackRelease(648, '5s', now);
+  }
+  
+  triggerChime(freq) {
+    if (!this.initialized) return;
+    try {
+      this.chimeSynth.triggerAttackRelease(freq, '1.5s');
+    } catch(e) {}
+  }
+}
+
+const audio = new CoursePingEngine();
+
+// Somatic Grounding Logic
+document.getElementById('somatic-activate-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('somatic-activate-btn');
+  btn.innerText = "Attuning...";
+  
+  // Initialize audio
+  await audio.init();
+  audio.triggerPing();
+  
+  // Fade out gate
+  const gate = document.getElementById('somatic-gate');
+  gate.classList.add('hidden');
+  setTimeout(() => {
+    gate.style.display = 'none';
+  }, 800);
+  
+  // Start the first chapter locking timer
+  startCoherenceTimer(1, 10);
+});
+
+// Pacing & Coherence Gates
+function startCoherenceTimer(chapterNum, durationSecs) {
+  const timerDiv = document.getElementById(`timer-${chapterNum}`);
+  const btn = document.getElementById(`btn-unlock-${chapterNum}`);
+  let timeLeft = durationSecs;
+  
+  btn.disabled = true;
+  btn.innerText = "Awaiting Coherence";
+  
+  const interval = setInterval(() => {
+    timeLeft--;
+    if (timeLeft > 0) {
+      timerDiv.innerText = `${timeLeft}s remaining`;
+    } else {
+      clearInterval(interval);
+      timerDiv.innerText = "Coherent state established";
+      btn.disabled = false;
+      btn.innerText = "Unlock Next Chapter";
+      btn.style.background = "var(--forest)";
+      btn.style.color = "var(--sand)";
+      btn.style.borderColor = "var(--for-lt)";
+      
+      btn.onclick = () => {
+        unlockNextChapter(chapterNum);
+      };
+    }
+  }, 1000);
+}
+
+// Function to play sound and unlock next chapter
+function unlockNextChapter(currentChapterNum) {
+  audio.triggerChime(540);
+  
+  document.getElementById(`coherence-gate-${currentChapterNum}`).style.display = 'none';
+  
+  const nextCh = currentChapterNum + 1;
+  const nextSectionId = `chapter-0${nextCh}-section`;
+  const nextContentId = `ch0${nextCh}-content`;
+  
+  if (document.getElementById(nextSectionId)) {
+    document.getElementById(nextSectionId).style.display = 'flex';
+    document.getElementById(nextContentId).style.display = 'block';
+    
+    document.getElementById(nextSectionId).scrollIntoView({ behavior: 'smooth' });
+    
+    if (document.getElementById(`timer-${nextCh}`)) {
+      startCoherenceTimer(nextCh, 10);
+    }
+  } else {
+    document.getElementById('bibliography-section').style.display = 'block';
+    document.getElementById('closing-section').style.display = 'flex';
+    document.getElementById('closing-section').scrollIntoView({ behavior: 'smooth' });
+    audio.triggerPing();
+  }
+}
+
+// Interactive Topological Legend Audio
+function playInterval(ratio) {
+  audio.init().then(() => {
+    const freq = 216 * ratio;
+    audio.triggerChime(freq);
+  });
+}
+
+// Self-Aware news ticker update based on position
+function updateActiveChapterNews() {
+  if (isPacingAlertActive) return;
+  
+  const chs = [
+    { el: document.querySelector('.reading:first-of-type'), text: 'ORIENTATION: Attuning presence. Check posture. Align spine. 🧘', emoji: '🧘' },
+    { el: document.getElementById('ch01-content'), text: 'BROADCAST: Echolocation loop active. Bats anticipate space. 🦇', emoji: '🦇' },
+    { el: document.getElementById('chapter-02-section'), text: 'MOMENTUM: Threshold T active. Neo perceives bullet time. 🕴️', emoji: '🕴️' },
+    { el: document.getElementById('chapter-03-section'), text: 'GEOMETRY: Bora basketry base. splenic handwork knowing. 🌀', emoji: '🌀' },
+    { el: document.getElementById('chapter-04-section'), text: 'RESONANCE: Kashf, Satori, and 눈치. frequency-independent. 🌍', emoji: '🌍' },
+    { el: document.getElementById('chapter-05-section'), text: 'CALIBRATION: Pre-installed gizmo running. 3-breath discipline. 📖', emoji: '📖' },
+    { el: document.getElementById('closing-section'), text: 'HARVEST: The loop completes. Download your reflections. 🌌', emoji: '🌌' }
+  ];
+  
+  let currentActive = chs[0];
+  const scrollPos = window.scrollY + window.innerHeight / 3;
+  
+  for (let i = 0; i < chs.length; i++) {
+    const el = chs[i].el;
+    if (el && el.style.display !== 'none') {
+      const top = el.offsetTop;
+      if (scrollPos >= top) {
+        currentActive = chs[i];
+      }
+    }
+  }
+  
+  document.getElementById('companion-text').innerText = currentActive.text;
+  document.getElementById('companion-emoji').innerText = currentActive.emoji;
+}
+
+// Scroll Companion & Velocity Tracker
+// Pacing debounce window and target reading wpm limit.
+// A soft slerp-like interpolation of velocity is applied to scroll rates.
+let isPacingAlertActive = false;
+let lastScrollTop = 0;
+let lastScrollTime = Date.now();
+let warningTimeout = null;
+
+window.addEventListener('scroll', () => {
+  const now = Date.now();
+  const timeDiff = now - lastScrollTime;
+  if (timeDiff < 60) return;
+  
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollDiff = Math.abs(scrollTop - lastScrollTop);
+  
+  const speed = scrollDiff / timeDiff;
+  
+  if (speed > 3.2) {
+    isPacingAlertActive = true;
+    const bar = document.getElementById('somatic-companion-bar');
+    bar.classList.add('alert-state');
+    
+    document.getElementById('companion-emoji').innerText = '⚠️';
+    document.getElementById('companion-text').innerText = 'Somatic Pace Alert: Speed exceeds integration limit. Settle and slow down.';
+    
+    clearTimeout(warningTimeout);
+    warningTimeout = setTimeout(() => {
+      bar.classList.remove('alert-state');
+      isPacingAlertActive = false;
+      updateActiveChapterNews();
+    }, 3000);
+  } else {
+    updateActiveChapterNews();
+  }
+  
+  lastScrollTop = scrollTop;
+  lastScrollTime = now;
+}, { passive: true });
+
+// Reflective Journal local storage binding
+const chapters = ['ch01', 'ch02', 'ch03', 'ch04', 'ch05', 'ch06'];
+chapters.forEach(ch => {
+  const textarea = document.getElementById(`journal-${ch}`);
+  if (textarea) {
+    const saved = localStorage.getItem(`hia_ping_journal_${ch}`);
+    if (saved) textarea.value = saved;
+    
+    textarea.addEventListener('input', () => {
+      localStorage.setItem(`hia_ping_journal_${ch}`, textarea.value);
+    });
+  }
+});
+
+// Journal download as markdown
+function downloadJournal() {
+  let md = "# PING™ Course Reflections\n\n";
+  md += "Created: " + new Date().toLocaleDateString() + "\n\n";
+  
+  chapters.forEach((ch, idx) => {
+    const textarea = document.getElementById(`journal-${ch}`);
+    const val = textarea ? textarea.value.trim() : "";
+    md += `## Chapter ${idx+1} Reflection\n\n`;
+    md += val ? val : "*No reflection recorded for this chapter.*";
+    md += "\n\n---\n\n";
+  });
+  
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'hia_ping_reflections.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// Hover chimes on elements
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.culture-card, .quote-card, .guide-card, .honoring-card');
+  cards.forEach((card, idx) => {
+    card.addEventListener('mouseenter', () => {
+      const frequencies = [432, 486, 540, 576, 648];
+      const freq = frequencies[idx % frequencies.length];
+      audio.triggerChime(freq);
+    });
+  });
+});
+</script>
+</body>
+</html>
