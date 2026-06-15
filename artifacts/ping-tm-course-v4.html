@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>PING™ — An Introductory Course</title>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../active-insights/tas-tooltips.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 <style>
 /* ─────────────────────────────────────────────────
@@ -68,7 +69,7 @@ body{
   width: 100vw;
   height: 100vh;
   background: var(--void);
-  z-index: 10000;
+  z-index: 10010;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -917,9 +918,30 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
   .story-ping{color:#8B5A28}
   a{color:inherit;text-decoration:none}
 }
+
+/* ── ORBITAL HUB & STILLNESS NODE ── */
+.orbital-hub { position: fixed; top: 24px; left: 24px; z-index: 10000; }
+.orbital-hub a { text-decoration: none; color: var(--signal, #C48C50); font-size: 1.4rem; opacity: 0.4; transition: all 0.3s ease; font-family: sans-serif; font-weight: normal; }
+.orbital-hub a:hover { opacity: 1; transform: scale(1.1); color: var(--sand, #F0E6D2); text-shadow: 0 0 12px var(--signal, #C48C50); }
+
+.stillness-node { position: fixed; top: 24px; right: 24px; z-index: 10001; color: var(--sand-d, #B0A088); font-size: 1.4rem; cursor: pointer; opacity: 0.4; transition: all 0.3s ease; font-family: sans-serif; }
+.stillness-node:hover { opacity: 1; color: var(--signal, #C48C50); text-shadow: 0 0 12px var(--signal, #C48C50); transform: scale(1.1); }
+
+body.stillness-active > *:not(.stillness-countdown):not(.orbital-hub):not(script):not(style) { opacity: 0 !important; pointer-events: none !important; transition: opacity 3s ease-in-out !important; }
+body.stillness-active { background-color: #050403 !important; transition: background-color 3s ease-in-out !important; }
+
+.stillness-countdown { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.4em; color: var(--sand-m, #D4C4A4); opacity: 0; pointer-events: none; transition: opacity 2s ease; z-index: 10000; }
+body.stillness-active .stillness-countdown { opacity: 0.6 !important; }
+body.stillness-active .stillness-node { opacity: 0 !important; pointer-events: none !important; }
 </style>
 </head>
 <body>
+
+<div class="orbital-hub">
+  <a href="../index.html" title="Return to Hub">⎈</a>
+</div>
+<div class="stillness-node" onclick="initiateStillness()" title="Tea on the Moon Protocol">⊙</div>
+<div class="stillness-countdown" id="stillnessTracker">TEA ON THE MOON :: 60</div>
 
 <!-- Somatic Grounding Gate (Rope Bridge Phase) -->
 <div id="somatic-gate" class="somatic-gate">
@@ -1015,13 +1037,132 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
 <!-- ══════════════════════════════════════════════
      [📸 STORY CARD] CHAPTER 01
      ══════════════════════════════════════════════ -->
-<div class="story" style="background:var(--void)">
+<div class="story formula-story">
+  <div class="story-inner">
+    <div class="story-chapter">Chapter 01</div>
+    <div class="story-title">™ — The Momentum Principle</div>
+    <div class="formula-big">™</div>
+    <div class="formula-eq">
+      Where <strong>™ = Thought Momentum</strong><br>
+      the variable that determines<br>
+      whether a pattern self-notifies
+    </div>
+    <div class="formula-threshold">
+      <div class="threshold-row">™ &lt; T &nbsp;→&nbsp; <strong>a pattern passes</strong></div>
+      <div class="threshold-row">™ = T &nbsp;→&nbsp; <strong>PING™ activates</strong></div>
+      <div class="threshold-row">™ &gt; T &nbsp;→&nbsp; <strong>PING™ propagates</strong></div>
+    </div>
+    <div class="story-mark">PING(™) · THE ÅLïEN SCõÖL</div>
+  </div>
+</div>
+
+<!-- CH01 CONTENT -->
+<div class="reading" id="ch01-content">
+  <span class="reg reg-obs">Observational Register</span>
+  
+  <p class="poetic-flow">
+    PING<span class="tm">™</span> = Pattern Identification &amp; Notification<br>
+    (Thought Momentum).<br>
+    The parenthetical notation signals that ™ is the active&nbsp;variable.<br>
+    The pattern event only becomes self-notifying<br>
+    when Thought Momentum reaches threshold&nbsp;T.
+  </p>
+
+  <!-- [📸 QUOTE CARD] -->
+  <div class="quote-card">
+    <div class="quote-card-label">Resonance A · Chapter 01</div>
+    <blockquote class="quote-text">Thought Momentum is the threshold where a single idea achieves sufficient velocity to become its own motion — where the thought, rather than being held, begins to carry you.</blockquote>
+    <div class="quote-attr">™ — THE MOMENTUM PRINCIPLE</div>
+    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
+  </div>
+
+  <div class="ctx" style="margin-top: 32px">
+    <div class="ctx-label">Context · The Matrix (1999)</div>
+    <div class="ctx-title">Recognition Before the Event: Neo and the Bullet</div>
+    <p>In the 1999 film <em>The Matrix</em>, Neo discovers he can perceive a bullet's trajectory before it has traveled it. The filmmakers invented "bullet time" — extreme slow motion — because recognition at this speed has no adequate representation in normal cinema. Bullet time is the cinematic still point.</p>
+    <p style="margin:0">Neo's development: first he sees the bullet. Then he stops it. The first is PING™. The second is PING™ at ™ &gt; T — pattern recognition achieving enough momentum to redirect the field.</p>
+  </div>
+
+  <!-- PING B2B Slack Platform Mirror Context -->
+  <div class="honoring-card" style="border-color: rgba(196, 140, 80, 0.3); margin-top: 32px">
+    <div class="honoring-eyebrow">Enterprise Mirror · B2B SaaS Ecosystem</div>
+    <div class="honoring-title">Organizational Orrery &amp; Resonant Intelligence</div>
+    <div class="honoring-body">
+      Just as individual PING™ measures self-notifying momentum within the mind, the enterprise-grade <strong>PING™ Team Resonance Platform</strong> externalizes this structure. It maps collective organization patterns by monitoring communication metadata, rather than reading content, preserving complete privacy.
+      <br><br>
+      By plotting communication flows as an <span class="tas-term" data-tas-term="organizational-orrery">Organizational Orrery</span>, it exposes team health using four metrics:
+      <br><br>
+      • <strong>Response Velocity:</strong> How quickly do teams respond to each other?<br>
+      • <strong>Initiation Ratio:</strong> Who drives conversations versus who merely responds?<br>
+      • <strong>Reciprocity Score:</strong> Is communication a true dialogue or a monologue?<br>
+      • <strong>Silence Detection:</strong> Spotting individuals or teams who have gone quiet, indicating potential disengagement.
+    </div>
+  </div>
+
+  <div class="poetic-statement-frame">
+    <div class="poetic-statement-text">
+      ™ = the threshold where Thought becomes its own Motion.<br>
+      Above that threshold: PING™.
+    </div>
+  </div>
+
+  <!-- Infographic SVG Radar Chart Ch01 -->
+  <div class="infographic-radar-card">
+    <div class="radar-title">Chapter 01 Attunement</div>
+    <svg class="radar-svg" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="radar-glow-1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-1)" />
+      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
+      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
+      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
+      <polygon points="100,74.5 140.3,123.3 42.8,133" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
+      <circle cx="100" cy="74.5" r="4" fill="var(--signal)" />
+      <circle cx="140.3" cy="123.3" r="4" fill="var(--terra)" />
+      <circle cx="42.8" cy="133" r="4" fill="var(--for-lt)" />
+    </svg>
+    ,
+    <div class="radar-legend">
+      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 34%</span>
+      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 62%</span>
+      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 88%</span>
+    </div>
+  </div>
+
+  <!-- Chapter 1 Journal -->
+  <div class="journal-box">
+    <span class="journal-label">Chapter 01 Reflection</span>
+    <textarea class="journal-input" id="journal-ch01" placeholder="How does your personal Thought Momentum match these organizational metrics?..."></textarea>
+  </div>
+
+  <!-- Coherence Lock Gate 1 -->
+  <div id="coherence-gate-1" class="coherence-gate">
+    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
+    <p style="font-size: 14px;">Observe the momentum. Settle your attention before moving to the bat's wisdom.</p>
+    <div class="coherence-timer" id="timer-1">Locked</div>
+    <button class="journal-btn" id="btn-unlock-1" disabled>Awaiting Coherence</button>
+  </div>
+</div>
+
+<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
+
+<!-- ══════════════════════════════════════════════
+     [📸 STORY CARD] CHAPTER 02
+     ══════════════════════════════════════════════ -->
+<div class="story" id="chapter-02-section" style="display:none; background:var(--void)">
   <div class="sonar-wrap">
     <div class="sonar-ring"></div>
     <div class="sonar-ring"></div>
   </div>
   <div class="story-inner">
-    <div class="story-chapter">Chapter 01</div>
+    <div class="story-chapter">Chapter 02</div>
     <div class="story-title">The Nature of the Signal</div>
     <div style="text-align:center;margin:24px 0">
       <svg class="bat-svg" width="100" height="50" viewBox="0 0 100 50">
@@ -1036,8 +1177,8 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
   </div>
 </div>
 
-<!-- CH01 CONTENT -->
-<div class="reading" id="ch01-content">
+<!-- CH02 CONTENT -->
+<div class="reading" id="ch02-content" style="display:none">
   <span class="reg reg-obs">Observational Register</span>
   
   <p class="poetic-flow">
@@ -1051,7 +1192,7 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
 
   <!-- [📸 QUOTE CARD] -->
   <div class="quote-card">
-    <div class="quote-card-label">Resonance A · Chapter 01</div>
+    <div class="quote-card-label">Resonance A · Chapter 02</div>
     <blockquote class="quote-text">The bat hears the shape of the space the moth occupies.<br><br>The bat anticipates the moth's presence, mapping the space in advance.</blockquote>
     <div class="quote-attr">THE NATURE OF THE SIGNAL</div>
     <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
@@ -1080,17 +1221,17 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
     <div class="poetic-statement-text">PING™ is a circuit completing.</div>
   </div>
 
-  <!-- Infographic SVG Radar Chart Ch01 -->
+  <!-- Infographic SVG Radar Chart Ch02 -->
   <div class="infographic-radar-card">
-    <div class="radar-title">Chapter 01 Attunement</div>
+    <div class="radar-title">Chapter 02 Attunement</div>
     <svg class="radar-svg" viewBox="0 0 200 200">
       <defs>
-        <radialGradient id="radar-glow-1" cx="50%" cy="50%" r="50%">
+        <radialGradient id="radar-glow-2-alt" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
           <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-1)" />
+      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-2-alt)" />
       <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
       <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
       <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
@@ -1110,142 +1251,24 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
   </div>
 
   <div style="margin-top:32px">
-    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--sand);text-transform:uppercase;margin-bottom:12px;opacity:0.95">Five Explorers · Chapter 01</div>
-    <div class="explorer-item"><span class="ex-tag">Resonance</span><p class="ex-ans">The bat. Every appearance vibrates. The bat is the teaching wearing its own body.</p></div>
-    <div class="explorer-item"><span class="ex-tag">Repetition</span><p class="ex-ans">The circuit (signal, contact, return, recognition) appears three times without announcing itself as a pattern.</p></div>
-    <div class="explorer-item"><span class="ex-tag">Coherence</span><p class="ex-ans">Seeing vs. hearing the space — the distinction holds across every re-reading.</p></div>
-    <div class="explorer-item"><span class="ex-tag">Survival</span><p class="ex-ans">"PING™ is a circuit completing." Survives every revision. Load-bearing.</p></div>
-    <div class="explorer-item"><span class="ex-tag">Click</span><p class="ex-ans">When reading this chapter about the circuit was itself a circuit completing.</p></div>
-  </div>
-
-  <!-- Chapter 1 Journal -->
-  <div class="journal-box">
-    <span class="journal-label">Chapter 01 Reflection</span>
-    <textarea class="journal-input" id="journal-ch01" placeholder="Record your somatic sensations of the 'Signal' here..."></textarea>
-  </div>
-
-  <!-- Coherence Lock Gate 1 -->
-  <div id="coherence-gate-1" class="coherence-gate">
-    <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
-    <p style="font-size: 14px;">Let this chapter steep. Settle your attention before moving to the math.</p>
-    <div class="coherence-timer" id="timer-1">Locked</div>
-    <button class="journal-btn" id="btn-unlock-1" disabled>Awaiting Coherence</button>
-  </div>
-</div>
-
-<div class="radiant-divider"><span class="radiant-divider-glyph">⌬</span></div>
-
-<!-- ══════════════════════════════════════════════
-     [📸 STORY CARD] CHAPTER 02
-     ══════════════════════════════════════════════ -->
-<div class="story formula-story" id="chapter-02-section" style="display:none">
-  <div class="story-inner">
-    <div class="story-chapter">Chapter 02</div>
-    <div class="story-title">™ — The Momentum Principle</div>
-    <div class="formula-big">™</div>
-    <div class="formula-eq">
-      Where <strong>™ = Thought Momentum</strong><br>
-      the variable that determines<br>
-      whether a pattern self-notifies
-    </div>
-    <div class="formula-threshold">
-      <div class="threshold-row">™ &lt; T &nbsp;→&nbsp; <strong>a pattern passes</strong></div>
-      <div class="threshold-row">™ = T &nbsp;→&nbsp; <strong>PING™ activates</strong></div>
-      <div class="threshold-row">™ &gt; T &nbsp;→&nbsp; <strong>PING™ propagates</strong></div>
-    </div>
-    <div class="story-mark">PING(™) · THE ÅLïEN SCõÖL</div>
-  </div>
-</div>
-
-<!-- CH02 CONTENT -->
-<div class="reading" id="ch02-content" style="display:none">
-  <span class="reg reg-obs">Observational Register</span>
-  
-  <p class="poetic-flow">
-    PING<span class="tm">™</span> = Pattern Identification &amp; Notification<br>
-    (Thought Momentum).<br>
-    The parenthetical notation signals that ™ is the active&nbsp;variable.<br>
-    The pattern event only becomes self-notifying<br>
-    when Thought Momentum reaches threshold&nbsp;T.
-  </p>
-
-  <!-- [📸 QUOTE CARD] -->
-  <div class="quote-card">
-    <div class="quote-card-label">Resonance A · Chapter 02</div>
-    <blockquote class="quote-text">Thought Momentum is the threshold where a single idea achieves sufficient velocity to become its own motion — where the thought, rather than being held, begins to carry you.</blockquote>
-    <div class="quote-attr">™ — THE MOMENTUM PRINCIPLE</div>
-    <div class="quote-watermark">PING™ · THE ÅLïEN SCõÖL for Creative Thinking</div>
-  </div>
-
-  <div class="ctx" style="margin-top: 32px">
-    <div class="ctx-label">Context · The Matrix (1999)</div>
-    <div class="ctx-title">Recognition Before the Event: Neo and the Bullet</div>
-    <p>In the 1999 film <em>The Matrix</em>, Neo discovers he can perceive a bullet's trajectory before it has traveled it. The filmmakers invented "bullet time" — extreme slow motion — because recognition at this speed has no adequate representation in normal cinema. Bullet time is the cinematic still point.</p>
-    <p style="margin:0">Neo's development: first he sees the bullet. Then he stops it. The first is PING™. The second is PING™ at ™ &gt; T — pattern recognition achieving enough momentum to redirect the field.</p>
-  </div>
-
-  <!-- PING B2B Slack Platform Mirror Context -->
-  <div class="honoring-card" style="border-color: rgba(196, 140, 80, 0.3); margin-top: 32px">
-    <div class="honoring-eyebrow">Enterprise Mirror · B2B SaaS Ecosystem</div>
-    <div class="honoring-title">Organizational Orrery &amp; Resonant Intelligence</div>
-    <div class="honoring-body">
-      Just as individual PING™ measures self-notifying momentum within the mind, the enterprise-grade <strong>PING™ Team Resonance Platform</strong> externalizes this structure. It maps collective organization patterns by monitoring communication metadata, rather than reading content, preserving complete privacy.
-      <br><br>
-      By plotting communication flows as an <strong>Organizational Orrery</strong>, it exposes team health using four metrics:
-      <br><br>
-      • <strong>Response Velocity:</strong> How quickly do teams respond to each other?<br>
-      • <strong>Initiation Ratio:</strong> Who drives conversations versus who merely responds?<br>
-      • <strong>Reciprocity Score:</strong> Is communication a true dialogue or a monologue?<br>
-      • <strong>Silence Detection:</strong> Spotting individuals or teams who have gone quiet, indicating potential disengagement.
-    </div>
-  </div>
-
-  <div class="poetic-statement-frame">
-    <div class="poetic-statement-text">
-      ™ = the threshold where Thought becomes its own Motion.<br>
-      Above that threshold: PING™.
-    </div>
-  </div>
-
-  <!-- Infographic SVG Radar Chart Ch02 -->
-  <div class="infographic-radar-card">
-    <div class="radar-title">Chapter 02 Attunement</div>
-    <svg class="radar-svg" viewBox="0 0 200 200">
-      <defs>
-        <radialGradient id="radar-glow-2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="var(--signal)" stop-opacity="0.25" />
-          <stop offset="100%" stop-color="var(--void)" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-      <circle cx="100" cy="100" r="75" fill="url(#radar-glow-2)" />
-      <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(196,140,80,0.18)" stroke-width="0.8" />
-      <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(196,140,80,0.12)" stroke-width="0.8" stroke-dasharray="3,3" />
-      <circle cx="100" cy="100" r="25" fill="none" stroke="rgba(196,140,80,0.08)" stroke-width="0.8" stroke-dasharray="3,3" />
-      <line x1="100" y1="100" x2="100" y2="25" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
-      <line x1="100" y1="100" x2="165" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
-      <line x1="100" y1="100" x2="35" y2="137.5" stroke="rgba(196,140,80,0.2)" stroke-width="1.2" />
-      <polygon points="100,74.5 140.3,123.3 42.8,133" fill="rgba(196, 140, 80, 0.12)" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" />
-      <circle cx="100" cy="74.5" r="4" fill="var(--signal)" />
-      <circle cx="140.3" cy="123.3" r="4" fill="var(--terra)" />
-      <circle cx="42.8" cy="133" r="4" fill="var(--for-lt)" />
-    </svg>
-    <div class="radar-legend">
-      <span><span class="legend-dot" style="background:var(--signal)"></span>R: 34%</span>
-      <span><span class="legend-dot" style="background:var(--terra)"></span>Rec: 62%</span>
-      <span><span class="legend-dot" style="background:var(--for-lt)"></span>D: 88%</span>
-    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--sand);text-transform:uppercase;margin-bottom:12px;opacity:0.95">Five Explorers · Opportunity &amp; Real-World Potential</div>
+    <div class="explorer-item"><span class="ex-tag">Resonance</span><p class="ex-ans">The opportunity to sense, receive, transmit, relate, and/or learn from resonance.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Repetition</span><p class="ex-ans">How to be a pathmaker leveraging the material in hand.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Coherence</span><p class="ex-ans">What may exist beyond the fog that is already clear? What accessible knowings are already within reach of the inner self's knowings?</p></div>
+    <div class="explorer-item"><span class="ex-tag">Survival</span><p class="ex-ans">Survival was yesterday when the instincts and the awareness of fear was installed in and through our experience. Survival has the opportunity to be a past participle over time with awareness of our co-creative roles in each other's lives. Even far beyond the known - mathematically.</p></div>
+    <div class="explorer-item"><span class="ex-tag">Click</span><p class="ex-ans">How does the click feel, arrive, announce itself? Is the click audible, sensational, external, vibratory? All of that at once? Goosebumps are a pretty great click.</p></div>
   </div>
 
   <!-- Chapter 2 Journal -->
   <div class="journal-box">
     <span class="journal-label">Chapter 02 Reflection</span>
-    <textarea class="journal-input" id="journal-ch02" placeholder="How does your personal Thought Momentum match these organizational metrics?..."></textarea>
+    <textarea class="journal-input" id="journal-ch02" placeholder="Record your somatic sensations of the 'Signal' here..."></textarea>
   </div>
 
   <!-- Coherence Lock Gate 2 -->
   <div id="coherence-gate-2" class="coherence-gate">
     <div class="journal-label">Brooklyn Bridge Gate :: Pacing Integration</div>
-    <p style="font-size: 14px;">Observe the momentum. Settle your attention before moving to the bat's wisdom.</p>
+    <p style="font-size: 14px;">Let this chapter steep. Settle your attention before moving to the basketry.</p>
     <div class="coherence-timer" id="timer-2">Locked</div>
     <button class="journal-btn" id="btn-unlock-2" disabled>Awaiting Coherence</button>
   </div>
@@ -1884,6 +1907,9 @@ a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--sig-dim
   <a href="https://hdmathematics.netlify.app/resonance-map.html" target="_blank" rel="noopener noreferrer">Map</a>
 </nav>
 
+<!-- tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer -->
+<script src="../active-insights/tas-tooltips.js" defer></script>
+
 <script>
 // Audio Engine with Tone.js
 class CoursePingEngine {
@@ -2034,8 +2060,8 @@ function updateActiveChapterNews() {
   
   const chs = [
     { el: document.querySelector('.reading:first-of-type'), text: 'ORIENTATION: Attuning presence. Check posture. Align spine. 🧘', emoji: '🧘' },
-    { el: document.getElementById('ch01-content'), text: 'BROADCAST: Echolocation loop active. Bats anticipate space. 🦇', emoji: '🦇' },
-    { el: document.getElementById('chapter-02-section'), text: 'MOMENTUM: Threshold T active. Neo perceives bullet time. 🕴️', emoji: '🕴️' },
+    { el: document.getElementById('ch01-content'), text: 'MOMENTUM: Threshold T active. Neo perceives bullet time. 🕴️', emoji: '🕴️' },
+    { el: document.getElementById('chapter-02-section'), text: 'BROADCAST: Echolocation loop active. Bats anticipate space. 🦇', emoji: '🦇' },
     { el: document.getElementById('chapter-03-section'), text: 'GEOMETRY: Bora basketry base. splenic handwork knowing. 🌀', emoji: '🌀' },
     { el: document.getElementById('chapter-04-section'), text: 'RESONANCE: Kashf, Satori, and 눈치. frequency-independent. 🌍', emoji: '🌍' },
     { el: document.getElementById('chapter-05-section'), text: 'CALIBRATION: Pre-installed gizmo running. 3-breath discipline. 📖', emoji: '📖' },
@@ -2146,6 +2172,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Stillness protocol logic
+let isStillnessActivating = false;
+window.initiateStillness = async function() {
+  if (isStillnessActivating) return;
+  isStillnessActivating = true;
+  
+  if (typeof Tone !== 'undefined') {
+    await Tone.start();
+  }
+  
+  document.body.classList.add('stillness-active');
+  
+  let stillnessDrone = null;
+  try {
+    if (typeof Tone !== 'undefined') {
+      stillnessDrone = new Tone.FMSynth({
+        harmonicity: 0.5,
+        modulationIndex: 1.2,
+        oscillator: { type: "sine" },
+        modulation: { type: "sine" },
+        envelope: { attack: 4, decay: 0, sustain: 1, release: 8 }
+      }).toDestination();
+      stillnessDrone.volume.value = -12;
+      stillnessDrone.triggerAttack("E2");
+    }
+  } catch (e) {
+    console.warn("Drone audio failed:", e);
+  }
+
+  let count = 60;
+  const cdEl = document.getElementById('stillnessTracker');
+  cdEl.innerText = "TEA ON THE MOON :: 60";
+  
+  const interval = setInterval(() => {
+    count--;
+    cdEl.innerText = "TEA ON THE MOON :: " + count;
+    if(count <= 0) {
+      clearInterval(interval);
+      document.body.classList.remove('stillness-active');
+      if (stillnessDrone) {
+        try {
+          stillnessDrone.triggerRelease();
+          setTimeout(() => { stillnessDrone.dispose(); isStillnessActivating = false; }, 8000);
+        } catch(e) {
+          isStillnessActivating = false;
+        }
+      } else {
+        isStillnessActivating = false;
+      }
+    }
+  }, 1000);
+};
+
+// tÅs ACTIVE INSIGHTS :: Tooltip + Glossary Layer
+window.addEventListener('DOMContentLoaded', function () {
+  if (window.TASActiveInsights) {
+    window.TASActiveInsights.init({
+      glossaryUrl: '../active-insights/active-insights-glossary.json',
+      mode: 'auto',
+      maxAutoMatchesPerTerm: 1,
+      readerHelpButton: false
+    });
+  }
+});
+
 </script>
 </body>
 </html>

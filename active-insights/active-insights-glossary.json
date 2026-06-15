@@ -9,6 +9,17 @@
   },
   "terms": [
     {
+      "id": "organizational-orrery",
+      "term": "Organizational Orrery",
+      "aliases": ["orrery"],
+      "category": "CONCEPT",
+      "tooltip": "A visual mapping of communication metadata (speed, reciprocity, and volume) to display team dynamics and trust health without inspecting content.",
+      "expanded_title": "The Organizational Orrery",
+      "expanded": "A topological instrument designed to map organizational relationships. By tracking communications metadata (such as who initiates dialogue, how fast teams respond, and where silences persist) while fully preserving content privacy, it translates cultural health into legible geometric patterns of team resonance.",
+      "why_it_matters": "It allows leaders to detect team friction and support needs objectively while respecting absolute personal privacy.",
+      "source": "PING™ Team Resonance platform"
+    },
+    {
       "id": "tas",
       "term": "tÅs",
       "aliases": ["THE ÅLïEN SCõÖL", "The Alien School", "THE ALIEN SCHOOL"],
