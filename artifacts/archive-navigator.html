@@ -28,7 +28,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--serif);
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
@@ -36,7 +36,7 @@
   a { color: inherit; text-decoration: none; }
 
   .page {
-    max-width: 980px;
+    max-width: 1160px;
     margin: 0 auto;
     padding: 0 clamp(1.5rem, 4vw, 2.5rem) 8rem;
     position: relative;
@@ -51,8 +51,8 @@
 
   .kicker {
     font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.24em;
+    font-size: 13px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
     display: block;
@@ -72,17 +72,17 @@
 
   .nav-cover__eyebrow {
     font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.26em;
+    font-size: 13px;
+    letter-spacing: 0.25em;
     color: var(--muted);
     text-transform: uppercase;
     margin-bottom: 1.5rem;
-    opacity: 0.75;
+    opacity: 0.85;
   }
 
   .nav-cover__title {
     font-family: var(--serif);
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
     font-weight: 400;
     line-height: 1.0;
     margin-bottom: 2rem;
@@ -90,23 +90,23 @@
 
   .nav-cover__deck {
     font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 1.25rem;
     line-height: 1.75;
     color: var(--muted);
     letter-spacing: 0.04em;
-    max-width: 56ch;
+    max-width: 60ch;
     margin-bottom: 2.5rem;
     border-left: 2px solid var(--gold);
     padding-left: 1.25rem;
-    opacity: 0.9;
+    opacity: 0.95;
   }
 
   .nav-cover__orientation {
-    font-size: 1rem;
-    line-height: 1.85;
+    font-size: 1.45rem;
+    line-height: 1.8;
     color: var(--ink);
     max-width: 66ch;
-    opacity: 0.88;
+    opacity: 0.9;
   }
 
   /* ── SECTIONS ── */
@@ -118,8 +118,8 @@
 
   .section-heading {
     font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.3em;
+    font-size: 14px;
+    letter-spacing: 0.28em;
     color: var(--gold);
     text-transform: uppercase;
     margin-bottom: 2.5rem;
@@ -135,155 +135,200 @@
   }
 
   .section-intro {
-    font-size: 0.95rem;
-    line-height: 1.78;
+    font-size: 1.35rem;
+    line-height: 1.8;
     color: var(--muted);
-    max-width: 62ch;
+    max-width: 65ch;
     margin-bottom: 2.5rem;
   }
 
   /* ── DOCUMENT GROUPS ── */
-  .doc-group { margin-bottom: 3rem; }
+  .doc-group { margin-bottom: 4rem; }
   .doc-group:last-child { margin-bottom: 0; }
 
   .doc-group__label {
     font-family: var(--mono);
-    font-size: 7.5px;
+    font-size: 14px;
     letter-spacing: 0.28em;
     color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 1px;
-    padding: 0.6rem 0;
-    opacity: 0.6;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 0;
+    opacity: 0.85;
     border-top: 1px solid var(--border);
   }
 
   .doc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 1px;
-    background: var(--border);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    background: transparent;
   }
 
   .doc-card {
-    background: var(--bg);
-    padding: 1.75rem 1.6rem;
+    background: var(--h70-bg-alt, #0a1715);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    padding: 2.5rem 2.25rem;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
-    transition: background 0.2s ease;
+    gap: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
     cursor: pointer;
   }
 
   .doc-card:is(:hover, :focus-visible) {
-    background: color-mix(in oklab, var(--bg) 88%, var(--gold));
+    background: color-mix(in oklab, var(--h70-bg-alt, #0a1715) 94%, var(--gold));
+    border-color: var(--gold);
+    border-left-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
     outline: none;
   }
 
   .doc-card__glyph {
     margin-bottom: 0.15rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   .doc-card__type {
     font-family: var(--mono);
-    font-size: 7.5px;
+    font-size: 12px;
     letter-spacing: 0.22em;
     color: var(--gold);
-    opacity: 0.75;
+    opacity: 0.95;
     text-transform: uppercase;
   }
 
   .doc-card__name {
     font-family: var(--serif);
-    font-size: 1.15rem;
+    font-size: 2.1rem;
     font-weight: 500;
     color: var(--ink);
-    line-height: 1.25;
+    line-height: 1.2;
   }
 
   .doc-card__role {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: var(--muted);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.9;
     flex: 1;
   }
 
   .doc-card__for {
     font-family: var(--mono);
-    font-size: 7px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    letter-spacing: 0.06em;
     color: var(--muted);
-    opacity: 0.6;
-    padding-top: 0.75rem;
+    opacity: 0.95;
+    padding-top: 1.25rem;
     border-top: 1px solid var(--border);
     line-height: 1.7;
+    text-transform: uppercase;
   }
 
   .doc-card__link {
     font-family: var(--mono);
-    font-size: 7.5px;
+    font-size: 12px;
     letter-spacing: 0.16em;
     color: var(--gold);
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   /* ── READING PATHS ── */
   .path-list {
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    background: var(--border);
+    gap: 2rem;
+    background: transparent;
   }
 
   .path-card {
-    background: var(--bg);
-    padding: 1.75rem 1.6rem;
+    background: var(--h70-bg-alt, #0a1715);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--border);
+    padding: 2.5rem 3rem;
+    border-radius: 6px;
     display: grid;
-    grid-template-columns: 168px 1fr;
-    gap: 2rem;
+    grid-template-columns: 240px 1fr;
+    gap: 3.5rem;
     align-items: start;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease, border-left-color 0.4s ease;
   }
 
-  @media (max-width: 600px) {
-    .path-card { grid-template-columns: 1fr; gap: 1rem; }
+  .path-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    border-color: var(--gold);
+    border-left-color: var(--gold);
+  }
+
+  @media (max-width: 768px) {
+    .path-card {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
   }
 
   .path-card__who {
     font-family: var(--mono);
-    font-size: 8.5px;
-    letter-spacing: 0.16em;
+    font-size: 14px;
+    letter-spacing: 0.18em;
     color: var(--gold);
     text-transform: uppercase;
-    line-height: 1.9;
+    line-height: 1.6;
+    font-weight: 600;
   }
 
   .path-card__context {
     display: block;
-    font-size: 7.5px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    letter-spacing: 0.05em;
     color: var(--muted);
-    opacity: 0.65;
-    margin-top: 0.2rem;
+    opacity: 0.95;
+    margin-top: 0.5rem;
     font-style: normal;
+    font-family: var(--serif);
+    text-transform: none;
+    line-height: 1.5;
   }
 
   .path-sequence {
     font-family: var(--mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.03em;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
     color: var(--ink);
-    line-height: 2;
-    margin-bottom: 0.85rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
   }
-  .path-sequence .arrow { color: var(--gold); opacity: 0.55; padding: 0 0.3em; }
+  .path-sequence .arrow { color: var(--gold); opacity: 0.75; padding: 0 0.3em; font-weight: bold; }
+
+  .path-link {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+    font-weight: 500;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  }
+  .path-link:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink);
+  }
 
   .path-card__gives {
     font-family: var(--serif);
-    font-size: 0.93rem;
-    line-height: 1.68;
-    color: var(--muted);
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--ink);
+    opacity: 0.9;
     font-style: italic;
   }
 
@@ -295,68 +340,86 @@
 
   .through-item {
     display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 3rem 1fr;
+    gap: 2.5rem;
     align-items: start;
-    padding: 1.6rem 0;
+    padding: 2.5rem 1.5rem;
     border-bottom: 1px solid var(--border);
+    border-radius: 4px;
+    transition: background 0.3s ease, padding-left 0.3s ease;
   }
   .through-item:last-child { border-bottom: none; }
+
+  .through-item:hover {
+    background: rgba(232, 228, 219, 0.02);
+    padding-left: 1.5rem;
+  }
 
   .through-item__glyph {
     display: flex;
     justify-content: center;
-    padding-top: 0.2rem;
-    font-size: 1rem;
+    padding-top: 0.3rem;
+    font-size: 1.6rem;
   }
 
   .through-item__name {
     font-family: var(--serif);
-    font-size: 1.05rem;
+    font-size: 1.8rem;
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
+    margin-bottom: 0.6rem;
+    line-height: 1.25;
   }
 
   .through-item__desc {
-    font-size: 0.92rem;
-    line-height: 1.72;
-    color: var(--muted);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--ink);
+    opacity: 0.88;
   }
 
   .through-item__sources {
     font-family: var(--mono);
-    font-size: 7px;
-    letter-spacing: 0.13em;
+    font-size: 12px;
+    letter-spacing: 0.14em;
     color: var(--gold);
-    opacity: 0.6;
-    margin-top: 0.6rem;
+    opacity: 0.85;
+    margin-top: 0.8rem;
     text-transform: uppercase;
   }
 
   /* ── GLYPH KEY ── */
   .glyph-key {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1px;
-    background: var(--border);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    background: transparent;
   }
 
   .glyph-entry {
-    background: var(--bg);
-    padding: 1.25rem 1.4rem;
+    background: var(--h70-bg-alt, #0a1715);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 6px;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: flex-start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glyph-entry:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   }
 
   .glyph-entry__mark {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
     color: var(--gold);
     font-family: var(--mono);
-    min-width: 1.6rem;
+    min-width: 2.2rem;
     display: flex;
     align-items: flex-start;
     padding-top: 0.08rem;
@@ -364,18 +427,19 @@
 
   .glyph-entry__name {
     font-family: var(--mono);
-    font-size: 7.5px;
-    letter-spacing: 0.2em;
+    font-size: 13px;
+    letter-spacing: 0.22em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 0.35rem;
-    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    opacity: 0.95;
   }
 
   .glyph-entry__desc {
-    font-size: 0.84rem;
-    line-height: 1.62;
-    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.88;
   }
 </style>
 </head>
@@ -396,6 +460,16 @@
 
   <!-- ── COVER ── -->
   <section class="nav-cover">
+    <!-- tas-visual: nav-header -->
+    <figure class="tas-visual-frame tas-visual-frame--interstitial" style="margin-bottom: 3rem;">
+      <img
+        src="/assets/visuals/archive-navigator/nav-header.jpg"
+        alt="The map as an object — the satisfaction of orientation"
+        class="tas-visual"
+        loading="eager"
+        width="1200" height="440"
+      >
+    </figure>
     <p class="nav-cover__eyebrow">THE ÅLïEN SCõÖL · SYNTHESIS ARCHIVE</p>
     <h1 class="nav-cover__title">Archive<br><span class="signal">Navigator</span></h1>
     <p class="nav-cover__deck">What each document contains, who it serves, and how the pieces connect.</p>
@@ -525,7 +599,7 @@
           <span class="path-card__context">No prior context. Any starting position.</span>
         </div>
         <div>
-          <p class="path-sequence">Field Notes <span class="arrow">→</span> the artifact that speaks to where you are</p>
+          <p class="path-sequence"><a href="field-notes.html" class="path-link">Field Notes</a> <span class="arrow">→</span> the artifact that speaks to where you are</p>
           <p class="path-card__gives">Field Notes holds the full picture. The second artifact sharpens it for your specific position. A complete orientation before any depth commitment.</p>
         </div>
       </div>
@@ -536,7 +610,7 @@
           <span class="path-card__context">Considering or beginning the work.</span>
         </div>
         <div>
-          <p class="path-sequence">Field Notes <span class="arrow">→</span> Elevation Codex <span class="arrow">→</span> Proof of Field</p>
+          <p class="path-sequence"><a href="field-notes.html" class="path-link">Field Notes</a> <span class="arrow">→</span> <a href="elevation-codex.html" class="path-link">Elevation Codex</a> <span class="arrow">→</span> <a href="proof-of-field.html" class="path-link">Proof of Field</a></p>
           <p class="path-card__gives">What the school is, how the sessions work, and what the documented results look like. A complete picture of what you are entering — and what has already been produced.</p>
         </div>
       </div>
@@ -547,7 +621,7 @@
           <span class="path-card__context">Evaluating the school's work and potential.</span>
         </div>
         <div>
-          <p class="path-sequence">Proof of Field <span class="arrow">→</span> Field Notes <span class="arrow">→</span> Frequency Report <span class="arrow">→</span> Emergence Report</p>
+          <p class="path-sequence"><a href="proof-of-field.html" class="path-link">Proof of Field</a> <span class="arrow">→</span> <a href="field-notes.html" class="path-link">Field Notes</a> <span class="arrow">→</span> <a href="frequency-report.html" class="path-link">Frequency Report</a> <span class="arrow">→</span> <a href="../tas-emergence-report.html" class="path-link">Emergence Report</a></p>
           <p class="path-card__gives">Evidence first, then the full context, then strategic positioning, then the school's intellectual horizon. Builds to a complete investment picture in four movements.</p>
         </div>
       </div>
@@ -558,7 +632,7 @@
           <span class="path-card__context">Engaging the school's academic dimension.</span>
         </div>
         <div>
-          <p class="path-sequence">SCEU One <span class="arrow">→</span> SCEU Two <span class="arrow">→</span> Proof of Field <span class="arrow">→</span> Emergence Report</p>
+          <p class="path-sequence"><a href="../sceu-report-one-integrating-creative-thinking.html" class="path-link">SCEU One</a> <span class="arrow">→</span> <a href="../sceu-report-two-illuminating-creative-thinking.html" class="path-link">SCEU Two</a> <span class="arrow">→</span> <a href="proof-of-field.html" class="path-link">Proof of Field</a> <span class="arrow">→</span> <a href="../tas-emergence-report.html" class="path-link">Emergence Report</a></p>
           <p class="path-card__gives">Begins in familiar research territory and arrives at original ground. The academic framework first, then the evidence, then the school's full theoretical position.</p>
         </div>
       </div>
@@ -569,7 +643,7 @@
           <span class="path-card__context">Learning the methodology for application.</span>
         </div>
         <div>
-          <p class="path-sequence">Elevation Codex <span class="arrow">→</span> Proof of Field <span class="arrow">→</span> Metaphor Library</p>
+          <p class="path-sequence"><a href="elevation-codex.html" class="path-link">Elevation Codex</a> <span class="arrow">→</span> <a href="proof-of-field.html" class="path-link">Proof of Field</a> <span class="arrow">→</span> <a href="metaphor-library.html" class="path-link">Metaphor Library</a></p>
           <p class="path-card__gives">The methodology, the pattern evidence, then the language system. Gives a practitioner what they need to understand, verify, and speak the work.</p>
         </div>
       </div>

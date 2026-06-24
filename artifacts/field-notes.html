@@ -296,26 +296,47 @@
 
   /* ── FIELD NAMING ── */
   .field-close {
-    background: var(--deep); color: var(--bg);
+    background: var(--h70-bg-alt, #0a1715);
+    color: var(--h70-ink, #e8e4db);
+    border: 1px solid var(--h70-line, rgba(232,228,219,.12));
+    border-left: 4px solid var(--h70-signal, #d4af37);
     padding: 4rem 3rem; border-radius: 4px; margin: 4rem 0;
     text-align: left; position: relative; overflow: hidden;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .field-close:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: var(--h70-signal, #d4af37);
   }
 
   .field-close::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(154,112,24,0.14) 0%, transparent 65%);
+    background: radial-gradient(ellipse at 50% 100%, rgba(212,175,55,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
-  .field-close-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--bg); opacity: 0.7; display: block; margin-bottom: 2rem; }
+  .field-close-label {
+    font-family: var(--h70-mono, 'DM Mono', monospace); font-size: 10px;
+    letter-spacing: 0.22em; color: var(--h70-signal, #d4af37); display: block; margin-bottom: 2rem;
+    opacity: 0.85;
+  }
 
-  .field-close-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; font-style: normal; line-height: 1.12; color: var(--bg); margin-bottom: 1.5rem; }
+  .field-close-title {
+    font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; font-style: normal;
+    line-height: 1.12; color: var(--h70-ink, #e8e4db); margin-bottom: 1.5rem;
+  }
 
-  .field-close-title em { font-style: normal; font-weight: 500; color: var(--gold); }
+  .field-close-title em { font-style: normal; font-weight: 500; color: var(--h70-signal, #d4af37); }
 
-  .field-close-body { font-size: 17px; font-style: normal; color: var(--bg); opacity: 0.9; max-width: 65ch; margin-left: 0; margin: 0 auto; line-height: 1.75; }
+  .field-close-body {
+    font-size: 17px; font-style: normal; color: var(--h70-ink, #e8e4db);
+    max-width: 65ch; margin: 0 auto; line-height: 1.75; opacity: 0.95;
+  }
 
-  .field-close-body em { font-style: normal; color: var(--gold); }
+  .field-close-body em { font-style: normal; color: var(--h70-signal, #d4af37); }
 
   /* ── LINKS SECTION ── */
   .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
@@ -455,6 +476,16 @@
     </div>
 
     <div class="cover-body">
+      <!-- tas-visual: fn-cover -->
+      <figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;">
+        <img
+          src="/assets/visuals/field-notes/fn-cover.jpg"
+          alt="The field — an open space where something can be received"
+          class="tas-visual"
+          loading="eager"
+          width="1400" height="600"
+        >
+      </figure>
       <span class="cover-eyebrow">EMERGENCE REPORT · PRACTICUM REVIEW · FILED NOTES FROM THE PROOF OF FIELD</span>
       <h1 class="cover-title">Field<br><strong>Notes</strong></h1>
 
@@ -558,6 +589,17 @@
       <h2 class="section-title">The <em>Methodology</em></h2>
     </div>
 
+    <!-- tas-visual: fn-methodology -->
+    <figure class="tas-visual-frame tas-visual-frame--body">
+      <img
+        src="/assets/visuals/field-notes/fn-methodology.jpg"
+        alt="The architecture of careful attention — structure that supports something delicate"
+        class="tas-visual"
+        loading="lazy"
+        width="1200" height="580"
+      >
+    </figure>
+
     <div class="prose">
       <p class="h70-body">THE ÅLïEN SCõÖL operates as a practice environment :: a field in which the scholar's original creative intelligence becomes legible to themselves with enough precision to act on.</p>
 
@@ -596,6 +638,17 @@
       <span data-tas-glyph="evidence" data-tas-glyph-size="lg" data-tas-glyph-placement="block"></span>
       <h2 class="section-title">The <em>Scholar</em> Record</h2>
     </div>
+
+    <!-- tas-visual: fn-scholar-field -->
+    <figure class="tas-visual-frame tas-visual-frame--interstitial" style="margin-bottom: 2.5rem;">
+      <img
+        src="/assets/visuals/field-notes/fn-scholar-field.jpg"
+        alt="The scholar record — many different people, one shared experience of being seen"
+        class="tas-visual"
+        loading="lazy"
+        width="1200" height="500"
+      >
+    </figure>
 
     <div class="prose">
       <p class="h70-body">The following accounts are drawn from the documented session archive :: Fireflies transcripts, session summaries, and in one significant case, the scholar's own hand-written Trailing Notes recorded during and after sessions. Scholar identifiers are descriptive rather than nominal, honoring the privacy of those who requested it while preserving the specificity of what each engagement produced.</p>
@@ -1012,6 +1065,17 @@
       </a>
     </div>
   </section>
+
+  <!-- tas-visual: fn-close -->
+  <figure class="tas-visual-frame tas-visual-frame--interstitial">
+    <img
+      src="/assets/visuals/field-notes/fn-close.jpg"
+      alt="After the accounting — the quality of silence after something significant"
+      class="tas-visual"
+      loading="lazy"
+      width="1200" height="380"
+    >
+  </figure>
 
   <!-- CLOSING -->
   <div class="pullquote">

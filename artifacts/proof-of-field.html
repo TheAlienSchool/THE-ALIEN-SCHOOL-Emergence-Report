@@ -403,35 +403,47 @@
 
   /* ── FIELD NAMING ── */
   .field-name {
-    background: var(--deep); color: var(--page);
+    background: var(--h70-bg-alt, #0a1715);
+    color: var(--h70-ink, #e8e4db);
+    border: 1px solid var(--h70-line, rgba(232,228,219,.12));
+    border-left: 4px solid var(--h70-signal, #d4af37);
     padding: 4rem 3rem; border-radius: 4px; margin: 4rem 0;
     text-align: left; position: relative; overflow: hidden;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .field-name:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: var(--h70-signal, #d4af37);
   }
 
   .field-name::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(160,112,16,0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 100%, rgba(212,175,55,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .field-name-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.22em; color: rgba(200,180,138,0.55); display: block; margin-bottom: 2rem;
+    font-family: var(--h70-mono, 'JetBrains Mono', monospace); font-size: 10px;
+    letter-spacing: 0.22em; color: var(--h70-signal, #d4af37); display: block; margin-bottom: 2rem;
+    opacity: 0.85;
   }
 
   .field-name-title {
     font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; font-style: normal;
-    line-height: 1.1; color: var(--bg); margin-bottom: 0.5rem;
+    line-height: 1.1; color: var(--h70-ink, #e8e4db); margin-bottom: 0.5rem;
   }
 
-  .field-name-title em { font-style: normal; font-weight: 700; color: #c8942a; }
+  .field-name-title em { font-style: normal; font-weight: 700; color: var(--h70-signal, #d4af37); }
 
   .field-name-body {
-    font-size: 17px; font-style: normal; color: rgba(200,180,138,0.8);
-    max-width: 520px; margin: 2rem auto 0; line-height: 1.75;
+    font-size: 17px; font-style: normal; color: var(--h70-ink, #e8e4db);
+    max-width: 65ch; margin: 2rem 0 0; line-height: 1.75; opacity: 0.95;
   }
 
-  .field-name-body em { font-style: normal; color: #c8942a; }
+  .field-name-body em { font-style: normal; color: var(--h70-signal, #d4af37); }
 
   /* ── CONNECTIONS ── */
   .connections {
@@ -590,6 +602,16 @@
     </div>
 
     <div class="cover-body">
+      <!-- tas-visual: pof-cover -->
+      <figure class="tas-visual-frame tas-visual-frame--cover" style="margin-bottom: 3rem;">
+        <img
+          src="/assets/visuals/proof-of-field/pof-cover.jpg"
+          alt="Evidence that accumulates — the persistence of pattern across many distinct moments"
+          class="tas-visual"
+          loading="eager"
+          width="1400" height="600"
+        >
+      </figure>
       <h1 class="cover-title">The <span>Proof</span><br>of Field</h1>
       <div class="cover-rule"></div>
       <p class="cover-sub">What the conversations have generated :: drawn from the documented archive of tÅs sessions, including the scholars' own voices, expressed as phi-level threads, experiential equations, and quotable assets that carry the work's living evidence.</p>
@@ -642,6 +664,17 @@
       <h2 class="section-title">The <em>Phi-Level</em> Threads</h2>
       <p style="font-size: var(--h70-xs); color: var(--h70-muted); margin-top: 0.5rem; font-style: italic; letter-spacing: 0.03em; opacity: 0.85;">structural patterns that hold at depth :: across scholars, geographies, sessions, and years</p>
     </div>
+
+    <!-- tas-visual: pof-threads -->
+    <figure class="tas-visual-frame tas-visual-frame--body">
+      <img
+        src="/assets/visuals/proof-of-field/pof-threads.jpg"
+        alt="Structure at depth — the pattern that holds regardless of what surrounds it"
+        class="tas-visual"
+        loading="lazy"
+        width="1200" height="520"
+      >
+    </figure>
 
     <div class="prose">
       <p class="h70-body">Phi-level threads are the patterns that recur across every context the school enters :: across scholars, geographies, sessions, and years. Six threads are documented in the archive. <span class="h70-archetype archetype--wellness-teacher">The Wellness Teacher</span> and <span class="h70-archetype archetype--executive">The Executive / Strategist</span> both deepen and specify each one.</p>
@@ -1120,6 +1153,17 @@
       <p class="h70-body"><em>The reflectionary is the living center of that architecture.</em> It holds the proof that everything the other artifacts describe is alive in real human exchange :: including the edges, which are also part of the real.</p>
     </div>
   </section>
+
+  <!-- tas-visual: pof-close -->
+  <figure class="tas-visual-frame tas-visual-frame--interstitial">
+    <img
+      src="/assets/visuals/proof-of-field/pof-close.jpg"
+      alt="The weight of verified observation — evidence that has become undeniable"
+      class="tas-visual"
+      loading="lazy"
+      width="1200" height="360"
+    >
+  </figure>
 
   <!-- CLOSING -->
   <div class="pullquote">
