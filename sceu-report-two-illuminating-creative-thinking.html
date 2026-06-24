@@ -208,16 +208,17 @@
 
   .dynamic-ev-item {
     font-size: 14px; font-style: italic; color: var(--deep);
-    line-height: 1.6; padding: 0.35rem 0;
+    line-height: 1.6; padding: 0.5rem 0;
     border-top: 0.5px solid var(--border-lt);
-    display: grid; grid-template-columns: 1fr auto; gap: 0.75rem; align-items: baseline;
+    display: flex; flex-direction: column; gap: 0.4rem;
   }
 
   .dynamic-ev-item:first-of-type { border-top: none; }
 
   .dynamic-ev-who {
     font-family: var(--h70-mono); font-size: 10px;
-    color: var(--muted); white-space: nowrap; font-style: normal;
+    color: var(--muted); font-style: normal;
+    align-self: flex-end; text-align: right;
   }
 
   /* ── THINKER BLOCK ── */
@@ -344,7 +345,7 @@
   }
 
   @media (max-width: 560px) {
-    .dynamic-ev-item, .eq-row { grid-template-columns: 1fr; }
+    .eq-row { grid-template-columns: 1fr; }
     .resources, .advocacy { padding: 2rem 1.5rem; }
     body { font-size: 17px; }
   }

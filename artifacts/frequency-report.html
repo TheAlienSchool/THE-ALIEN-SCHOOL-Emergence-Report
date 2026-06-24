@@ -400,10 +400,9 @@
   .evidence-item {
     padding: 1rem 0;
     border-top: 0.5px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
   .evidence-item:first-of-type { border-top: none; }
@@ -427,9 +426,10 @@
     font-size: 10px;
     color: var(--sand);
     opacity: 0.4;
-    white-space: nowrap;
     letter-spacing: 0.04em;
     padding-top: 0.2rem;
+    align-self: flex-end;
+    text-align: right;
   }
 
   /* Compass implication :: Invitational register */
@@ -585,7 +585,6 @@
     .cth:nth-child(3), .cth:nth-child(4),
     .ct-reception, .ct-move { display: none; }
     .cover-top { flex-direction: column; gap: 0.5rem; }
-    .evidence-item { grid-template-columns: 1fr; }
   }
 
   @media print {
