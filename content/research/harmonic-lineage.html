@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  THE HARMONIC LINEAGE
+  Sound, Healing, and the Mathematics That Connects Them All
+
+  A research essay for Creative Steeping
+  Prepared in the Observational Register — PRIMER-aligned
+
+  DEVELOPER CARTRIDGE — thefrequencyofalienation.com
+  ============================================================
+
+  INTEGRATION NOTES FOR AGENTIC DEVELOPER
+  ----------------------------------------
+  This file is a self-contained HTML cartridge authored for
+  thefrequencyofalienation.com. It carries its own CSS via
+  <style> and requires no external framework dependencies.
+
+  TYPOGRAPHY STACK:
+    --font-display  : 'EB Garamond', 'Playfair Display', Georgia, serif
+    --font-body     : 'EB Garamond', Georgia, serif
+    --font-mono     : 'DM Mono', 'Courier New', monospace
+
+  FONT SWAP POINTS (search: /* FONT SWAP */):
+    Replace font-family stacks with your repo's registered typefaces.
+    The design assumes an editorial serif for headings and a
+    humanist mono for annotation/glossary entries.
+
+  ZUBERI INTEGRATION:
+    ZUBERI (the name KzA carries as middle name — Swahili: "strong")
+    is invoked as a design glyph principle. See /* ZUBERI MARK */
+    comments. The Å glyph is used as a brand mark / section anchor.
+    Replace <!-- ZUBERI SVG --> with your custom mark SVG if available.
+
+  COLOR TOKENS (search: /* COLOR TOKEN */):
+    --ink         : Primary text  (near black)
+    --ground      : Page ground   (near white / aged paper)
+    --signal      : Accent        (deep frequency violet / indigo)
+    --resonance   : Secondary accent (warm copper / amber)
+    --silence     : Muted text    (mid gray)
+    --border      : Rule color    (very light)
+
+  SECTION STRUCTURE:
+    Each <section> carries a data-chapter attribute for router
+    anchoring. Glossary entries are <article class="glyph-entry">
+    with data-concept for JavaScript-based search/filter.
+
+  EXPERIENTIAL GLOSSARY:
+    Appears after the essay body. Each entry contains:
+      .glyph-entry__term        — the concept name
+      .glyph-entry__phonetic    — pronunciation (where relevant)
+      .glyph-entry__tradition   — tradition of origin
+      .glyph-entry__body        — embodied felt-sense description
+      .glyph-entry__exercise    — somatic exercise / practice prompt
+      .glyph-entry__anchor      — cross-reference to essay section
+
+  BEEHIIV ADAPTATION NOTE:
+    The <section class="beehiiv-unit"> blocks are designed to be
+    extractable as standalone Beehiiv issues. Each carries its own
+    typographic logic and can be dropped into Beehiiv's custom HTML
+    block. See the Beehiiv unit comment headers for guidance.
+
+  DEPLOYMENT CHECKLIST:
+    [x] Swap font-family stacks at /* FONT SWAP */ markers
+    [x] Replace <!-- ZUBERI SVG --> with custom glyph asset
+    [x] Set canonical URL in <link rel="canonical">
+    [x] Populate <meta> og: tags with final URL and image
+    [x] Wire .glyph-trigger [data-concept] to your glossary overlay JS
+    [ ] Add your analytics snippet before </body>
+    [x] Test footnote anchor scrolling on mobile
+    [x] Confirm --signal and --resonance match brand palette
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Harmonic Lineage — The Frequency of Alienation</title>
+  <meta name="description" content="Sound, Healing, and the Mathematics That Connects Them All. A research essay tracing the continuous thread of sonic healing from Pythagoras through West Africa, India, China, the Islamic Golden Age, the African Diaspora, and into contemporary neuroscience.">
+  <meta property="og:title" content="The Harmonic Lineage">
+  <meta property="og:description" content="Sound, Healing, and the Mathematics That Connects Them All.">
+  <meta property="og:site_name" content="The Frequency of Alienation">
+  <meta property="og:url" content="https://thefrequencyofalienation.com/research/harmonic-lineage.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://thefrequencyofalienation.com/assets/visuals/social-preview.png">
+  <link rel="canonical" href="https://thefrequencyofalienation.com/research/harmonic-lineage.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS — thefrequencyofalienation.com
+    ========================================================= */
+
+    :root {
+      /* COLOR TOKEN — replace with brand palette */
+      --ink:          #0e0d0c;
+      --ground:       #f5f2ed;
+      --signal:       #2e1f5e;      /* deep violet — frequency depth */
+      --resonance:    #8b4a1a;      /* warm copper — ancestral warmth */
+      --silence:      #7a7068;
+      --border:       #ddd8d0;
+      --glyph-bg:     #ede8e0;
+      --exercise-bg:  #e8f0e8;      /* somatic green — body field */
+
+      /* FONT SWAP — replace with registered typefaces */
+      --font-display: 'EB Garamond', 'Playfair Display', Georgia, serif;
+      --font-body:    'EB Garamond', Georgia, serif;
+      --font-mono:    'DM Mono', 'Courier New', monospace;
+      --font-ui:      'DM Sans', system-ui, sans-serif;
+
+      /* SPACING */
+      --measure:      68ch;
+      --gutter:       clamp(1.5rem, 5vw, 4rem);
+      --section-gap:  clamp(4rem, 10vw, 8rem);
+    }
+
+    /* =========================================================
+       RESET & BASE
+    ========================================================= */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: clamp(16px, 1.1vw + 12px, 20px);
+      scroll-behavior: smooth;
+      background: var(--ground);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: var(--font-body);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================================
+       LAYOUT — COLUMN STRUCTURE
+    ========================================================= */
+
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .essay-column {
+      max-width: var(--measure);
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       MASTHEAD
+    ========================================================= */
+
+    .masthead {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .masthead__wordmark {
+      /* ZUBERI MARK — replace with SVG glyph or custom lockup */
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--signal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .masthead__section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--silence);
+    }
+
+    /* =========================================================
+       COVER — TITLE UNIT
+    ========================================================= */
+
+    .cover {
+      padding: var(--section-gap) 0 clamp(3rem, 8vw, 6rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cover__glyph {
+      /* ASCII / ZUBERI MARK — frequency visualization */
+      font-family: var(--font-mono);
+      font-size: clamp(0.55rem, 1.2vw, 0.75rem);
+      line-height: 1.25;
+      color: var(--signal);
+      opacity: 0.4;
+      margin-bottom: 2.5rem;
+      white-space: pre;
+      letter-spacing: 0.05em;
+      overflow-x: auto;
+    }
+
+    .cover__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--resonance);
+      margin-bottom: 1.25rem;
+    }
+
+    .cover__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .cover__title em {
+      font-style: italic;
+      color: var(--signal);
+    }
+
+    .cover__subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--silence);
+      margin-bottom: 2.5rem;
+      max-width: 55ch;
+    }
+
+    .cover__meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cover__meta-item {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--silence);
+    }
+
+    .cover__meta-item span {
+      display: block;
+      color: var(--ink);
+      font-size: 0.7rem;
+      margin-top: 0.25rem;
+    }
+
+    /* =========================================================
+       EPIGRAPH
+    ========================================================= */
+
+    .epigraph {
+      padding: clamp(2rem, 5vw, 4rem) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .epigraph blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--signal);
+      max-width: 50ch;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .epigraph cite {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-style: normal;
+      color: var(--silence);
+      margin-top: 1rem;
+    }
+
+    /* =========================================================
+       SECTION STRUCTURE
+    ========================================================= */
+
+    .essay-section {
+      padding: clamp(3rem, 7vw, 5rem) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .essay-section:last-of-type { border-bottom: none; }
+
+    .section-header {
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--resonance);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2.25rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .section-title--glyph::before {
+      /* ZUBERI MARK — Å glyph as section anchor */
+      content: 'Å';
+      font-family: var(--font-display);
+      color: var(--signal);
+      opacity: 0.25;
+      margin-right: 0.5rem;
+      font-size: 0.8em;
+    }
+
+    /* =========================================================
+       BODY TEXT
+    ========================================================= */
+
+    .prose p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      max-width: 68ch;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+
+    .prose strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .prose em { font-style: italic; }
+
+    .prose a {
+      color: var(--signal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* =========================================================
+       TRADITION SUBSECTIONS
+    ========================================================= */
+
+    .tradition {
+      margin: clamp(2.5rem, 6vw, 4rem) 0;
+    }
+
+    .tradition__header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tradition__glyph {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--resonance);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding-top: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .tradition__name {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--signal);
+      line-height: 1.3;
+    }
+
+    .tradition__subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--silence);
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    /* =========================================================
+       PULL QUOTES
+    ========================================================= */
+
+    .pull-quote {
+      margin: clamp(2rem, 5vw, 3.5rem) 0;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      border-left: 3px solid var(--signal);
+    }
+
+    .pull-quote__text {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--signal);
+      margin-bottom: 0.5rem;
+    }
+
+    .pull-quote__source {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--silence);
+    }
+
+    /* =========================================================
+       LINEAGE TABLE
+    ========================================================= */
+
+    .lineage-table-wrapper {
+      overflow-x: auto;
+      margin: clamp(2rem, 5vw, 3.5rem) 0;
+      border: 1px solid var(--border);
+    }
+
+    .lineage-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+    }
+
+    .lineage-table thead {
+      background: var(--signal);
+      color: var(--ground);
+    }
+
+    .lineage-table th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .lineage-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .lineage-table tr:nth-child(even) td { background: var(--glyph-bg); }
+    .lineage-table tr:last-child td { border-bottom: none; }
+
+    .lineage-table .tradition-col { color: var(--resonance); font-weight: 600; }
+
+    /* =========================================================
+       INLINE CONCEPT GLYPHS — trigger for JS overlay
+    ========================================================= */
+
+    .glyph-trigger {
+      color: var(--signal);
+      border-bottom: 1px dotted var(--signal);
+      cursor: pointer;
+      font-style: italic;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .glyph-trigger:hover {
+      color: var(--resonance);
+      border-bottom-color: var(--resonance);
+    }
+
+    /* =========================================================
+       GLOSSARY — EXPERIENTIAL
+    ========================================================= */
+
+    .glossary-header {
+      padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .glossary-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--resonance);
+      margin-bottom: 1rem;
+    }
+
+    .glossary-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      max-width: 30ch;
+    }
+
+    .glossary-intro {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--silence);
+      max-width: 55ch;
+      line-height: 1.7;
+      margin-top: 1.25rem;
+    }
+
+    /* GLYPH ENTRY */
+
+    .glyph-entry {
+      padding: clamp(2rem, 5vw, 3.5rem) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      transition: background-color 0.8s ease, border-color 0.8s ease;
+    }
+
+    .glyph-entry--highlight {
+      background-color: rgba(139, 74, 26, 0.08); /* slight warm copper tint */
+      border-color: var(--resonance);
+    }
+
+    @media (min-width: 700px) {
+      .glyph-entry {
+        grid-template-columns: 260px 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .glyph-entry__sidebar {
+      /* left column — term, tradition, phonetic, anchor */
+    }
+
+    .glyph-entry__term {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--signal);
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+
+    .glyph-entry__phonetic {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--silence);
+      margin-bottom: 0.5rem;
+    }
+
+    .glyph-entry__tradition {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ground);
+      background: var(--resonance);
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .glyph-entry__anchor {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--signal);
+      text-decoration: none;
+      display: block;
+      margin-top: 1rem;
+      opacity: 0.65;
+    }
+
+    .glyph-entry__anchor:hover { opacity: 1; }
+
+    .glyph-entry__body {
+      /* right column content */
+    }
+
+    .glyph-entry__definition {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .glyph-entry__felt {
+      background: var(--glyph-bg);
+      border-left: 3px solid var(--resonance);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .glyph-entry__felt-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--resonance);
+      margin-bottom: 0.5rem;
+    }
+
+    .glyph-entry__felt-text {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    .glyph-entry__exercise {
+      background: var(--exercise-bg);
+      border-left: 3px solid #4a7a4a;
+      padding: 1rem 1.25rem;
+    }
+
+    .glyph-entry__exercise-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #3a6a3a;
+      margin-bottom: 0.5rem;
+    }
+
+    .glyph-entry__exercise-text {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .glyph-entry__exercise-steps {
+      list-style: none;
+      margin-top: 0.75rem;
+    }
+
+    .glyph-entry__exercise-steps li {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 1.7;
+      color: var(--ink);
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+
+    .glyph-entry__exercise-steps li::before {
+      content: counter(step-counter, decimal-leading-zero);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      color: #4a7a4a;
+      font-size: 0.6rem;
+      top: 0.2rem;
+    }
+
+    .glyph-entry__exercise-steps { counter-reset: step-counter; }
+
+    /* =========================================================
+       FOOTNOTES
+    ========================================================= */
+
+    .footnotes {
+      padding: clamp(2rem, 5vw, 4rem) 0;
+      border-top: 1px solid var(--border);
+      margin-top: clamp(2rem, 5vw, 4rem);
+    }
+
+    .footnotes__title {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--silence);
+      margin-bottom: 1.5rem;
+    }
+
+    .footnotes ol {
+      padding-left: 1.5rem;
+    }
+
+    .footnotes li {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      line-height: 1.7;
+      color: var(--silence);
+      margin-bottom: 0.5rem;
+    }
+
+    .footnotes li a {
+      color: var(--signal);
+      word-break: break-all;
+    }
+
+    sup.fn {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--signal);
+      vertical-align: super;
+      margin-left: 0.1rem;
+    }
+
+    sup.fn a {
+      color: var(--signal);
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       COLOPHON / FOOTER
+    ========================================================= */
+
+    .colophon {
+      padding: clamp(2rem, 5vw, 4rem) 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .colophon__mark {
+      /* ZUBERI MARK — footer glyph */
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--signal);
+      opacity: 0.3;
+    }
+
+    .colophon__text {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--silence);
+      text-align: right;
+    }
+
+    /* =========================================================
+       ASCII ART / FREQUENCY VISUALIZATION
+       Paul Rand discipline: structure reveals content.
+    ========================================================= */
+
+    .frequency-art {
+      font-family: var(--font-mono);
+      font-size: clamp(0.45rem, 0.9vw, 0.6rem);
+      line-height: 1.3;
+      color: var(--signal);
+      opacity: 0.22;
+      white-space: pre;
+      overflow: hidden;
+      margin: 2rem 0;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 600px) {
+      .cover__meta { flex-direction: column; gap: 1rem; }
+      .tradition__header { flex-direction: column; gap: 0.5rem; }
+      .lineage-table { font-size: 0.6rem; }
+    }
+
+    /* =========================================================
+       PRINT
+    ========================================================= */
+
+    @media print {
+      :root { --ground: #fff; --ink: #000; }
+      .masthead, .colophon { display: none; }
+      .glyph-entry__exercise { -webkit-print-color-adjust: exact; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <!-- ============================================================
+         MASTHEAD
+    ============================================================ -->
+    <header class="masthead">
+      <a href="https://thefrequencyofalienation.com" class="masthead__wordmark">
+        <!-- ZUBERI SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" style="width:1.5rem; height:1.5rem; display:inline-block; vertical-align:middle;">
+          <circle cx="16" cy="20" r="2.5" fill="var(--signal)" />
+          <path d="M16 20V29" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+          <path d="M11 15.5 C 13.5 13.5, 18.5 13.5, 21 15.5" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M7 11.5 C 11 7.5, 21 7.5, 25 11.5" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" opacity="0.65" />
+          <path d="M3 7.5 C 8.5 2, 23.5 2, 29 7.5" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+        </svg>
+        The Frequency of Alienation
+      </a>
+      <span class="masthead__section-label">Research Archive &nbsp;/&nbsp; Sonic Intelligence</span>
+    </header>
+
+    <!-- ============================================================
+         COVER
+    ============================================================ -->
+    <section class="cover essay-column" data-chapter="cover">
+
+      <!-- ASCII frequency visualization — Paul Rand: structure as ornament -->
+      <div class="cover__glyph" aria-hidden="true">
+∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+   ·  ·  ·  CARRIER FREQUENCY: φ  ·  HARMONIC SERIES  ·  ·  ·
+∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+f(1)  f(2)  f(3)  f(4)  f(5)  f(6)  f(7)  f(8)  f(9)  f(∞)
+│     │     │     │     │     │     │     │     │     │
+│     ╫     │     ╫     │     ╫     │     ╫     │     ╫
+│     │     ╫     │     │     │     ╫     │     │     │
+╫     │     │     │     ╫     │     │     │     ╫     │
+∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿}</div>
+
+      <p class="cover__eyebrow">The Frequency of Alienation &nbsp;·&nbsp; Research Essay</p>
+
+      <h1 class="cover__title">
+        The Harmonic<br>
+        <em>Lineage</em>
+      </h1>
+
+      <p class="cover__subtitle">
+        Sound, Healing, and the Mathematics<br>That Connects Them All
+      </p>
+
+      <div class="cover__meta">
+        <div class="cover__meta-item">
+          Register
+          <span>Observational / PRIMER-aligned</span>
+        </div>
+        <div class="cover__meta-item">
+          Prepared for
+          <span>Creative Steeping</span>
+        </div>
+        <div class="cover__meta-item">
+          Archive
+          <span>Sonic Intelligence</span>
+        </div>
+        <div class="cover__meta-item">
+          Issue
+          <span>July 2026</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         EPIGRAPH
+    ============================================================ -->
+    <section class="epigraph" data-chapter="epigraph">
+      <div class="essay-column">
+        <blockquote>
+          "Music gives a soul to the universe, wings to the mind, flight to the imagination, and life to everything."
+          <cite>— attributed to Plato</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION I — PREFACE
+    ============================================================ -->
+    <section class="essay-section" id="preface" data-chapter="preface">
+      <div class="essay-column">
+
+        <header class="section-header">
+          <span class="section-number">I &nbsp;·&nbsp; Preface</span>
+          <h2 class="section-title">The Foreword Was a Map</h2>
+        </header>
+
+        <div class="prose">
+          <p>When a book on music and sound therapy opens with Plato, Pythagoras, Orpheus, and Aristotle, it is doing something precise. It is locating the reader inside a lineage — a continuous thread of human inquiry into why organized sound changes the body, the mood, the mind, and the community. These four names are the Western academic shorthand for a discovery that predates them all and runs through every culture that has ever organized sound into pattern.</p>
+
+          <p>The thread does not begin in Greece. It passes <em>through</em> Greece. And after Greece, it passes through Persia, through the Islamic Golden Age, through the Sahel and the Niger Delta, through the Ganges valley, through the Yellow River basin, through the Andes, through the Mississippi Delta, through Harlem. The mathematics is the same. The instrument changes. The intention — healing, coherence, resonance — holds.</p>
+
+          <p>This essay names the mechanism and keeps the magic.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION II — THE MATHEMATICS
+    ============================================================ -->
+    <section class="essay-section" id="mathematics" data-chapter="mathematics">
+      <div class="essay-column">
+
+        <header class="section-header">
+          <span class="section-number">II &nbsp;·&nbsp; Foundation</span>
+          <h2 class="section-title section-title--glyph">The Mathematics Beneath the Music</h2>
+        </header>
+
+        <div class="prose">
+          <p>Pythagoras did not discover the harmonic series. He <em>measured</em> what every culture had already heard. The observation that a string divided in half produces a tone exactly one octave above the fundamental is not cultural; it is physical. It is encoded in the behavior of vibrating systems — strings, columns of air, drums, vocal cords, the liquid-filled chambers of the inner ear. Every musical tradition in the world has built its scales and tuning systems from subsets of this series.</p>
+
+          <p>The <span class="glyph-trigger" data-concept="harmonic-series">harmonic series</span> — f, 2f, 3f, 4f, 5f, and onward — is not a Greek invention. It is a consequence of physics: a vibrating string produces not just its fundamental frequency but a cascade of overtones, each one a whole-number multiple of the original. These overtones are the raw material from which every musical culture has built its scales, its tuning systems, and its understanding of consonance and dissonance.</p>
+
+          <p>The pentatonic scale — five notes per octave — appears in West African kora music, Chinese guqin music, Scottish bagpipes, Andean panpipes, and the blues. This convergence is the acoustic equivalent of independent mathematical discovery: different civilizations, working from the same physical phenomenon, arriving at the same structure.</p>
+
+          <p><span class="glyph-trigger" data-concept="phi">Phi</span> — the golden ratio, approximately 1.618 — appears in the proportional relationships between overtones, in the geometry of the cochlea, in the spiral of the conch shell used as a horn in Vedic ritual. It is the signature of this convergence. The harmonic series is its grammar.</p>
+        </div>
+
+        <!-- ASCII Frequency Art -->
+        <div class="frequency-art" aria-hidden="true">
+HARMONIC SERIES VISUALIZATION
+──────────────────────────────────────────────────────────
+f(1)  ████████████████████████████████████████  fundamental
+f(2)  ████████████████████  octave above
+f(3)  █████████████  perfect fifth above octave
+f(4)  ██████████  second octave
+f(5)  ████████  major third above second octave
+f(6)  ███████  perfect fifth above second octave
+f(8)  █████  third octave
+──────────────────────────────────────────────────────────
+PENTATONIC CONVERGENCE: West Africa · China · Andes · Scotland · Blues</div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION III — THE LINEAGE
+    ============================================================ -->
+    <section class="essay-section" id="lineage" data-chapter="lineage">
+      <div class="essay-column">
+
+        <header class="section-header">
+          <span class="section-number">III &nbsp;·&nbsp; Lineage</span>
+          <h2 class="section-title section-title--glyph">Through Diaspora and Continental Harmonics</h2>
+        </header>
+
+        <!-- TRADITION: West Africa -->
+        <div class="tradition" id="tradition-west-africa">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 01</span>
+            <div>
+              <div class="tradition__name">West Africa — The Griot and the Healing Dialogue</div>
+              <span class="tradition__subtitle">Mande peoples · Mali, Senegal, Gambia, Guinea, Burkina Faso · ~1200 CE–present</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p>The griot tradition of the Mande people is one of the oldest continuous professional music traditions in the world, with documented lineages stretching back over seven centuries. The <em>jeli</em> (griot) is simultaneously a musician, oral historian, genealogist, diplomat, and healer. The kora — a 21-string bridge harp built on a calabash resonator — produces a tonal spectrum rich in natural harmonics, the raw overtone series that Pythagoras measured on his monochord.</p>
+            <p>The African science of musical healing, documented by ethnomusicologist Meki Nzewi, operates on a precise principle: the healer creates a dialogue between the frequencies of the instrument and the resonant field of the patient's body.<sup class="fn"><a href="#fn7" id="ref7">7</a></sup> Illness is understood as dissonance — a tissue or soul energy that has fallen out of its natural resonance. The music applies targeted frequencies to the dissonant field, initially intensifying the conflict (what Nzewi calls <span class="glyph-trigger" data-concept="bombardment">"bombardment"</span>), then resolving it. The patient is re-tuned to health through sustained consonant sound.</p>
+            <p>This is not a metaphorical description. It is a functional protocol that maps directly onto what modern sound therapy calls <span class="glyph-trigger" data-concept="entrainment"><em>entrainment</em></span> and <span class="glyph-trigger" data-concept="resonance"><em>resonance therapy</em></span>. The African healer and the modern music therapist are describing the same mechanism in different vocabularies.</p>
+          </div>
+        </div>
+
+        <!-- TRADITION: India -->
+        <div class="tradition" id="tradition-india">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 02</span>
+            <div>
+              <div class="tradition__name">India — Nada Brahma and Raga Chikitsa</div>
+              <span class="tradition__subtitle">Vedic texts · Upanishads · Natya Shastra · ~200 BCE–present</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p>The Sanskrit phrase <span class="glyph-trigger" data-concept="nada-brahma"><em>Nada Brahma</em></span> — "the universe is sound" — is the foundational axiom of Indian classical music theory. It predates the Common Era and appears in the Vedic texts, the <em>Upanishads</em>, and the <em>Natya Shastra</em>. The claim is cosmological and therapeutic simultaneously: sound is the primary substance of reality, and organized sound can therefore reorganize the body and the mind.</p>
+            <p>Indian classical music developed the concept of <em>raga chikitsa</em> — raga as medicine — in which specific ragas are prescribed for specific conditions. The Raga Bhairav is prescribed for morning and for the treatment of anxiety. The Raga Darbari, with its characteristic slow <em>meend</em> (glide) between notes, is prescribed for concentration and the relief of mental turbulence. The microtonal intervals of the raga system are understood to interact with specific organ systems and emotional states.<sup class="fn"><a href="#fn9" id="ref9">9</a></sup></p>
+          </div>
+        </div>
+
+        <!-- TRADITION: Greece -->
+        <div class="tradition" id="tradition-greece">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 03</span>
+            <div>
+              <div class="tradition__name">Greece — Pythagoras, Plato, and the Ethos of Music</div>
+              <span class="tradition__subtitle">Pythagorean School · Platonic Academy · ~600–300 BCE</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p><strong>Pythagoras</strong> (circa 570–495 BCE) formalized the mathematics of the harmonic series using a monochord — a single-string instrument with a movable bridge. By dividing the string at precise fractional points, he demonstrated that musical consonance is a property of whole-number ratios: 2:1 (octave), 3:2 (perfect fifth), 4:3 (perfect fourth). He called this system <em>musica universalis</em> — the music of the spheres.<sup class="fn"><a href="#fn1" id="ref1">1</a></sup></p>
+            <p><strong>Plato</strong> argued in <em>The Republic</em> that musical modes directly shape character and emotional disposition — what he called <em>ethos</em> — before the reasoning mind has any opportunity to intervene.<sup class="fn"><a href="#fn3" id="ref3">3</a></sup> This is not a metaphor. It is an early articulation of what we now call neuroplasticity: the idea that sustained exposure to organized sound physically reshapes the nervous system's default orientations.</p>
+            <p><strong>Aristotle</strong> extended Plato's analysis with his concept of <span class="glyph-trigger" data-concept="catharsis"><em>catharsis</em></span>: music produces a controlled emotional arousal followed by a release that restores equilibrium.<sup class="fn"><a href="#fn4" id="ref4">4</a></sup> This describes, in the vocabulary of 4th-century Athens, what modern researchers call the cortisol-reduction and oxytocin-release effects of sustained musical engagement.</p>
+          </div>
+        </div>
+
+        <!-- TRADITION: Islamic Golden Age -->
+        <div class="tradition" id="tradition-islamic">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 04</span>
+            <div>
+              <div class="tradition__name">The Islamic Golden Age — Al-Farabi and Ibn Sina</div>
+              <span class="tradition__subtitle">Al-Farabi · Ibn Sina (Avicenna) · 900–1100 CE</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p><strong>Al-Farabi</strong> (872–950 CE), in his <em>Grand Book of Music</em> (<em>Kitab al-Musiqa al-Kabir</em>), combined Pythagorean harmonic theory with the Arabic maqam system to produce a rigorous taxonomy of the emotional and therapeutic effects of specific intervals and modes.<sup class="fn"><a href="#fn10" id="ref10">10</a></sup></p>
+            <p><strong>Ibn Sina</strong> (Avicenna, 980–1037 CE), whose <em>Canon of Medicine</em> remained the standard medical textbook in Europe and the Islamic world for six centuries, prescribed specific musical modes for specific conditions, documented the use of music in the treatment of melancholia and anxiety, and argued that the mechanism of musical healing is the sympathetic resonance between the organized vibration of sound and the organized vibration of the body's humors.<sup class="fn"><a href="#fn11" id="ref11">11</a></sup></p>
+            <p>Ottoman hospitals of the 15th century were documented as using specific <span class="glyph-trigger" data-concept="maqam"><em>maqamat</em></span> in their treatment of mental illness — a practice that modern Turkish researchers have revived and are now studying with EEG and cortisol measurement.<sup class="fn"><a href="#fn12" id="ref12">12</a></sup></p>
+          </div>
+        </div>
+
+        <!-- TRADITION: China -->
+        <div class="tradition" id="tradition-china">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 05</span>
+            <div>
+              <div class="tradition__name">China — The Five Tones and the Five Elements</div>
+              <span class="tradition__subtitle">Lüshi Chunqiu · Huangdi Neijing · ~200 BCE–present</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p>Chinese music theory, codified in the <em>Lüshi Chunqiu</em> (239 BCE) and the <em>Huangdi Neijing</em> (Yellow Emperor's Classic of Medicine, circa 200 BCE), organized sound into five tones — <em>Gong, Shang, Jue, Zhi, Yu</em> — corresponding to the five elements (earth, metal, wood, fire, water), the five organs (spleen, lung, liver, heart, kidney), and the five emotional states (contemplation, grief, anger, joy, fear).<sup class="fn"><a href="#fn13" id="ref13">13</a></sup></p>
+            <p>The five-tone system is not primarily a system of musical aesthetics. It is a medical taxonomy. Each tone carries a specific vibrational signature that is understood to interact with the organ and emotional state to which it corresponds. This is the acoustic equivalent of the Chinese pulse diagnosis system: a precise map of the body's resonant fields and their susceptibility to sonic intervention.</p>
+          </div>
+        </div>
+
+        <!-- TRADITION: Americas -->
+        <div class="tradition" id="tradition-americas">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 06</span>
+            <div>
+              <div class="tradition__name">Indigenous Americas — Healing as Community Field</div>
+              <span class="tradition__subtitle">Pre-contact–present · Andean, Amazonian, North American traditions</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p>Indigenous healing traditions across the Americas share a common structural insight that distinguishes them from the primarily dyadic (healer-patient) models of other traditions: healing is understood as a <span class="glyph-trigger" data-concept="communal-field"><em>community field</em></span>, not an individual transaction. The sound does not pass from the healer to the patient. The community becomes a resonant field that enfolds both, and the healing occurs in the quality of the field itself.<sup class="fn"><a href="#fn15" id="ref15">15</a></sup></p>
+            <p>This model — healing as a shift in the collective resonant field rather than an intervention on an individual — is the theoretical ground from which modern community music therapy has emerged.</p>
+          </div>
+        </div>
+
+        <!-- TRADITION: African Diaspora -->
+        <div class="tradition" id="tradition-diaspora">
+          <div class="tradition__header">
+            <span class="tradition__glyph">Trad. 07</span>
+            <div>
+              <div class="tradition__name">The African Diaspora — Blues, Gospel, Jazz</div>
+              <span class="tradition__subtitle">~1870–present · Mississippi Delta through Harlem</span>
+            </div>
+          </div>
+          <div class="prose">
+            <p>The blues is a clinical instrument disguised as an art form. Its characteristic 12-bar structure provides a container for the full arc of emotional arousal and release that Aristotle called catharsis. Its call-and-response structure — antiphony — creates the dialogue between instrument and community that Meki Nzewi documented in the West African healing ceremony.<sup class="fn"><a href="#fn17" id="ref17">17</a></sup></p>
+            <p>Gospel music triggers the most documented neurochemical cascade in the music-therapy literature: simultaneous release of dopamine (anticipation), oxytocin (social bonding), and endorphins (communal singing). The Black church was operating a community music therapy program centuries before the clinical literature caught up to it.<sup class="fn"><a href="#fn21" id="ref21">21</a></sup></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION IV — CONTEMPORARY NEUROSCIENCE
+    ============================================================ -->
+    <section class="essay-section" id="neuroscience" data-chapter="neuroscience">
+      <div class="essay-column">
+
+        <header class="section-header">
+          <span class="section-number">IV &nbsp;·&nbsp; Contemporary Field</span>
+          <h2 class="section-title section-title--glyph">The Neuroscience Catches Up</h2>
+        </header>
+
+        <div class="prose">
+          <p><strong>Oliver Sacks</strong>, in <em>Musicophilia: Tales of Music and the Brain</em>, documented case after case of music's capacity to restore function where pharmacology and conventional neurology had failed — Parkinson's patients who could not walk but could dance; dementia patients who could not recognize their own children but could sing complete songs from their youth; stroke patients who could not speak but could sing their thoughts.<sup class="fn"><a href="#fn18" id="ref18">18</a></sup></p>
+          <p>Sacks's clinical observation is that music activates more of the brain simultaneously than any other activity that neuroscience has been able to measure. It is not processed by a single "music center." It is a whole-brain event — recruiting motor, language, memory, emotion, and executive function systems simultaneously.</p>
+        </div>
+
+        <div class="pull-quote">
+          <p class="pull-quote__text">"Sustained musical engagement — the kind that a regular creative practice produces — produces lasting changes in neural architecture. The practice builds the instrument."</p>
+          <span class="pull-quote__source">Nina Kraus, Brainvolts Laboratory, Northwestern University</span>
+        </div>
+
+        <div class="prose">
+          <p><strong>Nina Kraus</strong>, neurobiologist and director of the Auditory Neuroscience Laboratory (Brainvolts) at Northwestern University, has produced the most rigorous biological evidence for music's developmental and therapeutic effects. Her research demonstrates that musical training physically reshapes the auditory brainstem — the neural structure that processes sound — improving the precision and speed of sound processing in ways that transfer to language learning, reading, and social cognition.<sup class="fn"><a href="#fn22" id="ref22">22</a></sup></p>
+          <p>By undergoing sustained creative listening, the nervous system itself receives a precise reorganizing impulse — a physical realization of the <span class="glyph-trigger" data-concept="neuroplasticity">neuroplasticity via music</span> model.</p>
+          <p><strong>Michael Thaut</strong>, founder of the Academy of Neurologic Music Therapy, has developed Neurologic Music Therapy (NMT) — a clinical protocol based on the <span class="glyph-trigger" data-concept="entrainment">entrainment</span> principle. NMT uses rhythmic auditory stimulation to retrain motor function in stroke and Parkinson's patients, melodic intonation therapy to restore speech in aphasia patients, and musical mnemonics to support memory in dementia patients.<sup class="fn"><a href="#fn23" id="ref23">23</a></sup></p>
+          <p>Thaut's work is the clinical operationalization of what Aristotle called catharsis, what the African healer called re-tuning, what the Indian raga therapist called <em>chikitsa</em>. The mechanism is the same. The vocabulary is different.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION V — THE THROUGH-LINE TABLE
+    ============================================================ -->
+    <section class="essay-section" id="through-line" data-chapter="through-line">
+      <div class="essay-column">
+
+        <header class="section-header">
+          <span class="section-number">V &nbsp;·&nbsp; Synthesis</span>
+          <h2 class="section-title">The Through-Line — What the Foreword Was Pointing Toward</h2>
+        </header>
+
+        <div class="lineage-table-wrapper">
+          <table class="lineage-table" role="table">
+            <thead>
+              <tr>
+                <th>Tradition</th>
+                <th>Core Claim</th>
+                <th>Mechanism Named</th>
+                <th>Modern Equivalent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tradition-col">Orphic (Greece, ~600 BCE)</td>
+                <td>Sound reorganizes living systems</td>
+                <td>Vibrational sympathy</td>
+                <td>Entrainment</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Pythagorean (Greece, ~500 BCE)</td>
+                <td>Harmonic ratios restore proportional order</td>
+                <td>Ratio resonance</td>
+                <td>Harmonic series / overtone therapy</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Platonic (Greece, ~380 BCE)</td>
+                <td>Music shapes character before reason</td>
+                <td>Ethos / modal influence</td>
+                <td>Neuroplasticity via sustained exposure</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Aristotelian (Greece, ~330 BCE)</td>
+                <td>Music produces cathartic emotional release</td>
+                <td>Arousal and resolution</td>
+                <td>Emotional regulation / cortisol reduction</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Nada Brahma / Raga Chikitsa (India, ~200 BCE–present)</td>
+                <td>Universe is sound; ragas heal specific conditions</td>
+                <td>Microtonal resonance with organs</td>
+                <td>Frequency-specific physiological response</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Wuxing / Five-Tone (China, ~200 BCE–present)</td>
+                <td>Five tones correspond to five organs and emotions</td>
+                <td>Elemental resonance</td>
+                <td>Organ-frequency mapping</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Al-Farabi / Ibn Sina (Islamic Golden Age, 900–1100 CE)</td>
+                <td>Maqam intervals carry therapeutic properties</td>
+                <td>Vital spirit resonance</td>
+                <td>Psychoacoustic maqam therapy</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Griot / Kora (West Africa, ~1200 CE–present)</td>
+                <td>Healer creates dialogue between instrument and patient</td>
+                <td>Harmonic bombardment and re-tuning</td>
+                <td>Resonance therapy / entrainment</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Indigenous ceremony (Americas, pre-contact–present)</td>
+                <td>Healing is a communal field, not an individual event</td>
+                <td>Field of play / relational resonance</td>
+                <td>Community music therapy</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Blues / Gospel / Jazz (African diaspora, ~1870–present)</td>
+                <td>Music holds grief and transforms it communally</td>
+                <td>Call-and-response catharsis</td>
+                <td>Group music therapy / oxytocin cascade</td>
+              </tr>
+              <tr>
+                <td class="tradition-col">Neurologic Music Therapy (Contemporary)</td>
+                <td>Rhythmic entrainment retrains neural pathways</td>
+                <td>Auditory-motor coupling</td>
+                <td>Clinical NMT protocols</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="prose">
+          <p>The foreword of your book named four Greek figures because those four names are the Western academic entry point into a conversation that humanity has been having for at least three thousand years on every inhabited continent. The Greeks systematized and wrote down what they observed. The African healer, the Indian raga master, the Chinese court physician, the Andean <em>curandero</em>, the Mande griot, the gospel choir director — all were practicing the same science, in the same way that mathematicians in different civilizations independently discovered the same theorems.</p>
+          <p>Phi is the signature of this convergence. The harmonic series is its grammar. The body's tendency to synchronize with organized sound — to entrain, to resonate, to be moved and then restored — is its mechanism. And the therapeutic intention: to use that mechanism deliberately, in service of healing, coherence, and the restoration of the individual to their own natural resonance — is the oldest continuous project in human culture.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXPERIENTIAL GLOSSARY
+         ============================================================
+         DEVELOPER NOTE:
+         Each .glyph-entry carries data-concept for JS-driven
+         filtering, search, and overlay rendering.
+         The .glyph-trigger elements in the essay body reference
+         the same data-concept values — wire them to open the
+         corresponding glossary entry in a modal or drawer.
+         Consider anchoring each entry to its essay citation
+         via the .glyph-entry__anchor href.
+    ============================================================ -->
+    <section class="essay-section" id="glossary" data-chapter="glossary">
+      <div class="essay-column">
+
+        <header class="glossary-header">
+          <p class="glossary-eyebrow">Experiential Glossary &nbsp;·&nbsp; Felt Sense Awareness Bibliography</p>
+          <h2 class="glossary-title">The Body's Field Guide to the Lineage</h2>
+          <p class="glossary-intro">Each entry below is not a definition. It is a handle. Pick it up. Notice the weight. Notice what the hand already knows before the mind has finished reading. The exercise attached to each concept is not a prescription — it is an invitation to locate the concept in your own body before locating it in history.</p>
+        </header>
+
+        <!-- GLOSSARY ENTRY 01: Entrainment -->
+        <article class="glyph-entry" data-concept="entrainment" id="glyph-entrainment">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Entrainment</div>
+            <div class="glyph-entry__phonetic">en-TRAYN-ment</div>
+            <div class="glyph-entry__tradition">Universal / Physics</div>
+            <a class="glyph-entry__anchor" href="#neuroscience">↑ Essay: Neuroscience section</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">The tendency of two oscillating systems, brought into proximity, to synchronize — locking their rhythms together. First documented by Christiaan Huygens in 1665, who noticed pendulum clocks on a shared wall gradually aligning. In music therapy, entrainment describes the synchronization of the body's physiological rhythms (heart rate, brainwaves, breath) with an external musical pulse. It is the physical mechanism beneath every healing tradition documented in this essay.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">You have already experienced entrainment. It is the moment a piece of music makes you tap your foot before you decide to. It is the quickening of the heart rate before the climax of a symphony. It is the way the room breathes together during a powerful live performance. Entrainment is not something that happens to the body. It is something the body already knows how to do — and has always known.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — Sensing Entrainment</div>
+              <p class="glyph-entry__exercise-text">A two-minute attunement practice for locating entrainment in the body.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Sit comfortably. Place one hand on your sternum — lightly, the way you would hold a wing.</li>
+                <li>Without music, notice your heartbeat and breath. Notice their rhythms independently.</li>
+                <li>Begin humming any tone that feels natural. Hold it for ten seconds.</li>
+                <li>Notice: has your breath shifted? Has your heartbeat changed its relationship to the hum?</li>
+                <li>Let the hum become a slow drumbeat with your palm on your thigh. Observe what shifts.</li>
+                <li>Stop. Return to stillness. What remains different from when you began?</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 02: Harmonic Series -->
+        <article class="glyph-entry" data-concept="harmonic-series" id="glyph-harmonic-series">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Harmonic Series</div>
+            <div class="glyph-entry__phonetic">har-MON-ik SEER-eez</div>
+            <div class="glyph-entry__tradition">Physics / Universal</div>
+            <a class="glyph-entry__anchor" href="#mathematics">↑ Essay: Mathematics section</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">The cascade of overtones produced by any vibrating system — a string, a column of air, a drum membrane, a vocal cord. When a string vibrates at its fundamental frequency f, it simultaneously vibrates at 2f, 3f, 4f, and so on. These overtones are not added to the fundamental — they are <em>in</em> it, layered within the same vibration. The harmonic series is the acoustic DNA of all musical sound, and the foundation upon which every healing tradition in this essay has built its practice.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">The harmonic series is not an abstract concept. It is the reason a cello sounds different from a flute playing the same note: the same fundamental, different overtone profiles. It is why you recognize a voice on a phone through static. It is why a gong continues to reveal new frequencies minutes after it has been struck. The overtones are always already there — you are simply learning to listen past the first layer.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — Hearing Your Own Overtones</div>
+              <p class="glyph-entry__exercise-text">A practice for making the harmonic series felt, not merely understood.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Find a quiet space. Place your hands over your ears lightly — not blocking, simply cupping.</li>
+                <li>Hum a comfortable low note. Hold it for fifteen seconds.</li>
+                <li>Slowly adjust the shape of your mouth — open, close, round, flat — while maintaining the same pitch.</li>
+                <li>Notice: different shapes amplify different overtones. You may hear a high, bright tone appear over your fundamental. That is the harmonic series, inside your own voice.</li>
+                <li>Rest your hands. Hum once more, naturally. Do you hear the same complexity now that you know it is there?</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 03: Resonance -->
+        <article class="glyph-entry" data-concept="resonance" id="glyph-resonance">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Resonance</div>
+            <div class="glyph-entry__phonetic">REZ-uh-nents</div>
+            <div class="glyph-entry__tradition">Physics / Cross-traditional</div>
+            <a class="glyph-entry__anchor" href="#tradition-west-africa">↑ Essay: West Africa</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">The amplification of a vibration when an object's natural frequency matches an incoming frequency. A tuning fork struck near a second tuning fork of the same pitch will cause the second fork to vibrate — without being touched. In the healing traditions of this essay, resonance is the mechanism by which the healer's instrument finds the body's natural frequency and amplifies what the body already knows how to be. Illness is dissonance. Health is resonance.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">Resonance is what happens in the chest when a bass note in a concert hall lands. It is what happens in the throat when a choir in a reverberant space finds its chord. It is the physical sensation of being tuned — of something inside you recognizing something outside you as the same frequency, and responding. You do not decide to resonate. The body does it on its own, because it recognizes what belongs to it.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — The Resonance Scan</div>
+              <p class="glyph-entry__exercise-text">A body-mapping practice to locate where different frequencies land in you.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Sit with your spine tall and your jaw soft. Close your eyes.</li>
+                <li>Hum the lowest note you can comfortably produce. Place one hand on your chest, one on your belly. Where does the hum land?</li>
+                <li>Slowly raise the pitch, one step at a time. Chest. Throat. Skull. Sinuses. Notice each location as you ascend.</li>
+                <li>Pause at any note where you feel an unusual warmth, vibration, or sense of spaciousness. Stay there for three breaths.</li>
+                <li>That location is a resonant point. It is your body's acoustic signature showing itself. Note it. Return to it when you need grounding.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 04: Catharsis -->
+        <article class="glyph-entry" data-concept="catharsis" id="glyph-catharsis">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Catharsis</div>
+            <div class="glyph-entry__phonetic">kuh-THAR-sis</div>
+            <div class="glyph-entry__tradition">Aristotelian / Greek · ~330 BCE</div>
+            <a class="glyph-entry__anchor" href="#tradition-greece">↑ Essay: Greece</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">Aristotle's term for the purging or clarification of emotion through aesthetic experience — specifically, the controlled arousal of feeling followed by its resolution and release. In the context of music, catharsis describes the arc from tension to release: the dissonance that creates longing, the consonance that resolves it. This arc, repeated in the 12-bar blues, the gospel chorus, the raga exposition and development, is the oldest therapeutic technology we have documented.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">Catharsis is the feeling after you have cried during a piece of music and feel — not empty, but <em>clear</em>. It is the exhale at the end of a sustained chord. It is the release in the shoulders that happens when a live performance reaches its peak and then opens into resolution. The body knows catharsis before the word arrives. It has been waiting for the permission to feel and then let go.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — The Arc of Tension and Release</div>
+              <p class="glyph-entry__exercise-text">A practice for consciously navigating the cathartic arc.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Choose a piece of music that has moved you before — something you know carries an emotional arc.</li>
+                <li>Before pressing play, notice the current state of your body. Where is there tension? Where is there ease?</li>
+                <li>Play the piece. Place your full attention on one physical sensation — breath, chest, jaw, hands. Track it through the music.</li>
+                <li>When the piece reaches its peak of tension, breathe into the sensation rather than away from it.</li>
+                <li>As the resolution arrives, let the exhale be complete. Longer than feels necessary.</li>
+                <li>Sit in silence for sixty seconds after the piece ends. Notice what has changed in the body map you established at step two.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 05: Nada Brahma -->
+        <article class="glyph-entry" data-concept="nada-brahma" id="glyph-nada-brahma">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Nada Brahma</div>
+            <div class="glyph-entry__phonetic">NAH-dah BRAH-mah</div>
+            <div class="glyph-entry__tradition">Vedic / Indian · ~200 BCE–present</div>
+            <a class="glyph-entry__anchor" href="#tradition-india">↑ Essay: India</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">Sanskrit: "the universe is sound." The foundational cosmological claim of Indian classical music theory: that sound is not merely a property of the physical world but its primary substance — the medium through which reality is organized. From this premise, Raga Chikitsa (raga as medicine) follows logically: if the universe is sound, then organized sound can reorganize any system within the universe — including the body, the nervous system, and the mind.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">Nada Brahma is not a belief. It is a felt experience available before the Sanskrit is understood. Place your hand on a speaker playing a bass note. Feel the membrane vibrating under your palm. Recognize that you are not observing the sound — you are inside it. The wall, the floor, the air, your chest wall: all vibrating at different frequencies simultaneously. The universe is already doing this. Nada Brahma is the name of what you just felt.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — Sound as Environment</div>
+              <p class="glyph-entry__exercise-text">A practice for experiencing yourself as a participant in a sonic field rather than an observer of it.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Find a space with ambient sound — a room with a fan, a window near traffic, a space near running water. Outdoors works especially well.</li>
+                <li>Close your eyes. List the sounds you can identify. Spend thirty seconds cataloguing.</li>
+                <li>Now shift: instead of listening <em>to</em> the sounds, notice that you are <em>inside</em> them. They are not arriving at you — you are immersed.</li>
+                <li>Feel the vibrations that are also physical: the hum of the building, the pressure of distant bass, the micro-vibration of the ground.</li>
+                <li>Place one hand on your sternum. Notice: you too are vibrating. You are part of the field. Not an observer. A participant frequency.</li>
+                <li>Breathe once, slowly, with this awareness. Then open your eyes, carrying the knowledge that you never stopped being part of the field.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 06: Bombardment -->
+        <article class="glyph-entry" data-concept="bombardment" id="glyph-bombardment">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Bombardment</div>
+            <div class="glyph-entry__phonetic">bom-BARD-ment</div>
+            <div class="glyph-entry__tradition">West African / Mande healing</div>
+            <a class="glyph-entry__anchor" href="#tradition-west-africa">↑ Essay: West Africa</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">Ethnomusicologist Meki Nzewi's term for the first phase of the West African healing protocol: the deliberate application of targeted sonic frequencies to a dissonant field — initially intensifying the dissonance before resolving it. Bombardment is the recognition that healing sometimes requires not the immediate imposition of harmony, but the honest encounter with the dissonance that is already present. You cannot tune an instrument without first hearing how far out of tune it is.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">Bombardment is what a song does when it names exactly the feeling you have been trying not to feel. The blues knows this. Gospel knows this. It is the reason "sad songs" make people feel better: the music finds the dissonance, meets it fully, and then — through the arc of the song — resolves it. The feeling is not defeated. It is heard. Bombardment is what it feels like when the music says: I see exactly where you are.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — Meeting the Dissonance</div>
+              <p class="glyph-entry__exercise-text">A practice for using sound to approach, rather than avoid, what is present.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Identify an area of emotional or physical tension you have been carrying. Name it simply — one word or phrase.</li>
+                <li>Choose a piece of music that feels adjacent to that tension — not soothing, not bypassing it, but acknowledging it.</li>
+                <li>Play the piece and deliberately direct your attention <em>toward</em> the tension rather than away from it.</li>
+                <li>Notice: does the music make the tension larger before it makes it smaller? This is bombardment doing its work.</li>
+                <li>Stay with the expansion. Breathe into it. Do not solve it — let the music complete the arc.</li>
+                <li>When the piece ends, sit in the after-state. The tension may not be gone. But its relationship to you may have changed.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 07: Maqam -->
+        <article class="glyph-entry" data-concept="maqam" id="glyph-maqam">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Maqam</div>
+            <div class="glyph-entry__phonetic">mah-KAHM</div>
+            <div class="glyph-entry__tradition">Arabic / Islamic Golden Age · 900 CE–present</div>
+            <a class="glyph-entry__anchor" href="#tradition-islamic">↑ Essay: Islamic Golden Age</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">A mode or melodic framework in Arabic and Ottoman music, characterized by precise quarter-tone intervals absent from Western equal temperament. Each maqam carries a documented emotional and physiological profile: Maqam Rast for joy and vitality; Maqam Hijaz for longing and spiritual transport; Maqam Bayati for the treatment of melancholy. The maqam system is Pythagorean harmonic science extended into a clinical protocol, running continuously from the 10th century to the present day.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">The maqam's quarter-tone intervals fall between the notes of the Western scale. To a Western-trained ear, they initially seem "out of tune." But the body registers something different: a frequency that lands in a gap the Western scale has never addressed. The slight disorientation you may feel hearing maqam music for the first time is the ear recalibrating, learning that there is more space in the octave than it was taught to recognize. That space has been medicine for over a thousand years.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — Listening Past the Known Scale</div>
+              <p class="glyph-entry__exercise-text">A practice for expanding the ear's territory of recognition.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Search for a recording of Maqam Bayati or Maqam Rast — any traditional Arabic or Turkish oud or ney recording will serve.</li>
+                <li>Before pressing play, notice: any mild resistance or anticipation in the body. Name it without judgment.</li>
+                <li>Play the recording. Rather than analyzing whether you "like" it, track: where in the body does each phrase land?</li>
+                <li>Notice any interval that creates an unusual physical sensation — a catch in the chest, a softening of the jaw, an unexpected opening in the throat.</li>
+                <li>After two minutes, pause. Sit in silence. Does your inner ear perceive the room differently? Is there a sense that the sonic field has expanded slightly?</li>
+                <li>This is the ear learning new territory. The body will remember it, even when the mind has moved on.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 08: Phi / Golden Ratio -->
+        <article class="glyph-entry" data-concept="phi" id="glyph-phi">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Phi / φ</div>
+            <div class="glyph-entry__phonetic">fy</div>
+            <div class="glyph-entry__tradition">Mathematics / Universal · ~500 BCE–present</div>
+            <a class="glyph-entry__anchor" href="#mathematics">↑ Essay: Mathematics section</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">The golden ratio: approximately 1.618. The proportion at which a line is divided so that the ratio of the whole to the larger part equals the ratio of the larger part to the smaller. Phi appears in the geometry of the cochlea (the spiral chamber of the inner ear), in the spiral of the nautilus shell, in the proportions of the Parthenon, in the branching patterns of trees, in the harmonic relationships of the overtone series. It is the mathematical signature of growth that is simultaneously structured and alive.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">Phi is the reason a room can feel right without knowing why. It is the sense of rightness in a piece of music whose climax arrives at exactly the moment it should — not too early, not too late. It is the felt proportion. Your cochlea is a phi spiral. You are already built to resonate with the mathematics of the universe. The recognition of phi in a piece of music is not an aesthetic judgment. It is structural resonance: the spiral of your ear meeting the spiral of the mathematics.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — The Architecture of Proportion</div>
+              <p class="glyph-entry__exercise-text">A practice for sensing proportion as a physical, not purely intellectual, experience.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Choose a piece of music you know well — one with a clear emotional arc. Note its total duration.</li>
+                <li>Calculate 61.8% of the duration. This is approximately where phi places the structural "turn" — the moment of maximum tension before resolution. (For a 5-minute piece: 3 minutes, 6 seconds.)</li>
+                <li>Play the piece. Without checking the timer, notice: when does the peak of emotional intensity arrive? Does it correspond to your calculated point?</li>
+                <li>In many compositions, the answer is: remarkably close. Your body recognized this before you calculated it.</li>
+                <li>Now apply this to a moment in your own life: when did a long arc of work or relationship reach its turning point? Was it at approximately the 61.8% mark? The structure of phi is not imposed on life — it is already there, waiting to be recognized.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 09: Neuroplasticity via Music -->
+        <article class="glyph-entry" data-concept="neuroplasticity" id="glyph-neuroplasticity">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Neuroplasticity via Music</div>
+            <div class="glyph-entry__phonetic">nyoor-oh-plas-TIS-uh-tee</div>
+            <div class="glyph-entry__tradition">Contemporary Neuroscience · Nina Kraus</div>
+            <a class="glyph-entry__anchor" href="#neuroscience">↑ Essay: Neuroscience</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">The capacity of the brain and nervous system to reorganize itself structurally in response to sustained experience. In the context of music, Nina Kraus's research at Northwestern's Brainvolts laboratory demonstrates that regular musical engagement physically reshapes the auditory brainstem — improving sound processing speed, precision, and transfer to language and social cognition. A single session produces transient changes. Sustained practice produces lasting changes in neural architecture. The practice builds the instrument.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">Neuroplasticity via music is what you notice when you realize, after months of listening to a particular genre or tradition, that you are hearing things in it that were inaudible to you at the beginning. The music has not changed. Your nervous system has reorganized to receive it more fully. This is not metaphorical. New synaptic pathways have formed. The instrument has been upgraded through use. You are physiologically different because you listened.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — The Sustained Practice Audit</div>
+              <p class="glyph-entry__exercise-text">A reflective practice for mapping your own sonic neuroplasticity.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>Identify a musical tradition or piece you have engaged with consistently over months or years.</li>
+                <li>Recall your earliest encounter with it. What did you hear? What was unfamiliar, inaccessible, or merely background?</li>
+                <li>Now listen again, with fresh attention. What do you hear now that you did not hear then? Specific instruments? Structural elements? Emotional textures?</li>
+                <li>This difference is neuroplasticity made audible. Your brainstem rewired to receive this music more fully. Document the gap between what you heard then and what you hear now.</li>
+                <li>Ask: what am I listening to now that I am only beginning to hear? What is the music teaching my nervous system that it has not yet finished learning?</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- GLOSSARY ENTRY 10: Communal Field -->
+        <article class="glyph-entry" data-concept="communal-field" id="glyph-communal-field">
+          <div class="glyph-entry__sidebar">
+            <div class="glyph-entry__term">Communal Field</div>
+            <div class="glyph-entry__phonetic">kuh-MYOO-nul feeld</div>
+            <div class="glyph-entry__tradition">Indigenous Americas / Community Music Therapy</div>
+            <a class="glyph-entry__anchor" href="#tradition-americas">↑ Essay: Indigenous Americas</a>
+          </div>
+          <div class="glyph-entry__body">
+            <p class="glyph-entry__definition">The understanding, common to Indigenous healing traditions across the Americas and increasingly documented in community music therapy research, that healing occurs not through a dyadic exchange between healer and patient, but through a shift in the quality of the collective resonant field. The community becomes the therapeutic instrument. Healing happens in the field — not to an individual within it. This is not a metaphor. Group singing, documented by researchers Keeler and colleagues, produces simultaneous oxytocin, dopamine, and endorphin cascades across all participants simultaneously.</p>
+            <div class="glyph-entry__felt">
+              <div class="glyph-entry__felt-label">Felt Sense</div>
+              <p class="glyph-entry__felt-text">The communal field is what happens when a congregation sings together and the room itself seems to change — the air becomes denser with presence, something in the chest opens that does not open alone. It is the phenomenon at a concert where ten thousand people share a single breath at the peak of a performance. You are not having a private experience in a public space. You are inside a collective nervous system, temporarily synchronized. The field is real. Your body knows it is real because it just shifted along with everyone else's.</p>
+            </div>
+            <div class="glyph-entry__exercise">
+              <div class="glyph-entry__exercise-label">Somatic Exercise — Entering a Sonic Field</div>
+              <p class="glyph-entry__exercise-text">A practice for consciously entering — and contributing to — a communal resonant field.</p>
+              <ol class="glyph-entry__exercise-steps">
+                <li>The next time you are in a group musical experience — a concert, a worship service, a choir rehearsal, even a crowded venue with live music — dedicate the first two minutes to attentive arrival rather than immediate participation.</li>
+                <li>Before joining the sound, listen. What is the quality of the field? Is it fragmented or coherent? Anxious or settled?</li>
+                <li>Now add your voice — humming, singing, clapping — and notice: how does the field shift as you enter it? Are you matching the field, or changing it?</li>
+                <li>Notice when the field crosses into a different quality — a moment of collective coherence. What does that feel like in the chest, the throat, the face?</li>
+                <li>After the experience: what part of the field did you carry with you? What left when you left? This is the communal field, teaching you its boundaries through their absence.</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTNOTES
+    ============================================================ -->
+    <section class="essay-section" id="footnotes" data-chapter="footnotes">
+      <div class="essay-column">
+        <div class="footnotes">
+          <div class="footnotes__title">Sources &amp; Citations</div>
+          <ol>
+            <li id="fn1">Pythagoras / Harmonic Series: McKinnon, J. (Ed.). (1990). <em>Music in Early Christian Literature.</em> Cambridge University Press. <a href="#ref1">↑</a></li>
+            <li id="fn3">Plato, <em>The Republic</em>, Book III, trans. Cornford, F. M. (1945). Oxford University Press. <a href="#ref3">↑</a></li>
+            <li id="fn4">Aristotle, <em>Politics</em>, Book VIII, trans. Jowett, B. (1984). Princeton University Press. <a href="#ref4">↑</a></li>
+            <li id="fn7">Nzewi, M. (2007). <em>A Contemporary Study of Musical Arts.</em> African Minds. <a href="#ref7">↑</a></li>
+            <li id="fn9">Aluede, C. O. (2006). Music therapy in traditional African societies: Origin, basis and application in Nigeria. <em>Journal of Human Ecology</em>, 19(1), 31–35. <a href="#ref9">↑</a></li>
+            <li id="fn10">Al-Farabi. (10th century). <em>Kitab al-Musiqa al-Kabir</em> (Grand Book of Music). <a href="#ref10">↑</a></li>
+            <li id="fn11">Ibn Sina (Avicenna). <em>Canon of Medicine</em> (<em>Al-Qanun fi al-Tibb</em>). (11th century). <a href="#ref11">↑</a></li>
+            <li id="fn12">Uyar, M. &amp; Helvacı, M. (2013). Music therapy in Ottoman hospitals. <em>Medical Humanities</em>. <a href="#ref12">↑</a></li>
+            <li id="fn13">Yellow Emperor's Classic of Medicine (<em>Huangdi Neijing</em>), trans. Ni, M. (1995). <em>The Yellow Emperor's Classic of Medicine.</em> Shambhala. <a href="#ref13">↑</a></li>
+            <li id="fn15">Gouk, P. (Ed.). (2000). <em>Musical Healing in Cultural Contexts.</em> Ashgate. <a href="#ref15">↑</a></li>
+            <li id="fn17">Levine, L. W. (1977). <em>Black Culture and Black Consciousness.</em> Oxford University Press. <a href="#ref17">↑</a></li>
+            <li id="fn18">Sacks, O. (2007). <em>Musicophilia: Tales of Music and the Brain.</em> Knopf. <a href="#ref18">↑</a></li>
+            <li id="fn21">Keeler, J. R. et al. (2015). The neurochemistry and social flow of singing. <em>Frontiers in Human Neuroscience</em>. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4585277/" target="_blank" rel="noopener">PMC4585277</a> <a href="#ref21">↑</a></li>
+            <li id="fn22">Kraus, N. (2017). Neurobiology of everyday communication: What have we learned from music? <em>Neuroscience &amp; Biobehavioral Reviews</em>. <a href="https://pubmed.ncbi.nlm.nih.gov/27284021/" target="_blank" rel="noopener">PubMed</a> <a href="#ref22">↑</a></li>
+            <li id="fn23">Thaut, M. H. (2021). Evidence-based approaches and neurologic music therapy. <em>Frontiers in Neuroscience</em>. <a href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.740329/full" target="_blank" rel="noopener">Full text</a> <a href="#ref23">↑</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         COLOPHON
+    ============================================================ -->
+    <footer class="colophon">
+      <div class="colophon__mark" aria-hidden="true">
+        <!-- ZUBERI SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" style="width:2rem; height:2rem; display:inline-block; vertical-align:middle; opacity:0.6;">
+          <circle cx="16" cy="20" r="2.5" fill="var(--signal)" />
+          <path d="M16 20V29" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+          <path d="M11 15.5 C 13.5 13.5, 18.5 13.5, 21 15.5" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M7 11.5 C 11 7.5, 21 7.5, 25 11.5" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" opacity="0.65" />
+          <path d="M3 7.5 C 8.5 2, 23.5 2, 29 7.5" stroke="var(--signal)" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+        </svg>
+      </div>
+      <div class="colophon__text">
+        The Frequency of Alienation &nbsp;·&nbsp; Research Archive<br>
+        Creative Steeping &nbsp;·&nbsp; Sonic Intelligence Series<br>
+        Observational Register — PRIMER-aligned &nbsp;·&nbsp; July 2026
+      </div>
+    </footer>
+
+  </div><!-- /.site-wrapper -->
+
+  <!--
+    ============================================================
+    DEVELOPER EXCHANGE — INTEGRATION NOTES
+    ============================================================
+
+    REPOSITORY STRUCTURE SUGGESTION:
+    ─────────────────────────────────
+    /content/research/
+      harmonic-lineage.html          ← this file
+    /content/research/index.json     ← add entry:
+      {
+        "slug": "harmonic-lineage",
+        "title": "The Harmonic Lineage",
+        "subtitle": "Sound, Healing, and the Mathematics That Connects Them All",
+        "section": "Sonic Intelligence",
+        "register": "Research / PRIMER-aligned",
+        "published": "2026-07",
+        "tags": ["sound", "healing", "lineage", "neuroscience", "tradition"],
+        "glossaryConcepts": [
+          "entrainment", "harmonic-series", "resonance", "catharsis",
+          "nada-brahma", "bombardment", "maqam", "phi",
+          "neuroplasticity", "communal-field"
+        ]
+      }
+
+    GLOSSARY OVERLAY WIRING:
+    ─────────────────────────
+    .glyph-trigger elements carry [data-concept] attributes.
+    Map these to the matching #glyph-{concept} anchor or
+    open a modal/drawer rendering the matching .glyph-entry.
+
+    Example JS pattern:
+      document.querySelectorAll('.glyph-trigger').forEach(el => {
+        el.addEventListener('click', () => {
+          const id = el.dataset.concept;
+          const target = document.querySelector(`#glyph-${id}`);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          // or: openGlossaryModal(id);
+        });
+      });
+
+    BEEHIIV EXTRACTION:
+    ────────────────────
+    Each <section data-chapter="..."> is a standalone Beehiiv unit.
+    Recommended extraction sequence for a serialized issue run:
+      Issue 1 → data-chapter="preface" + data-chapter="mathematics"
+      Issue 2 → data-chapter="lineage" (West Africa + India)
+      Issue 3 → data-chapter="lineage" (Greece + Islamic Golden Age)
+      Issue 4 → data-chapter="lineage" (China + Americas + Diaspora)
+      Issue 5 → data-chapter="neuroscience" + data-chapter="through-line"
+      Issue 6 → Glossary: Entrainment + Resonance + Catharsis (3 entries)
+      Issue 7 → Glossary: Nada Brahma + Bombardment + Maqam (3 entries)
+      Issue 8 → Glossary: Phi + Neuroplasticity + Communal Field (3 entries)
+
+    Each Beehiiv issue should carry its own typographic slug from
+    the .cover__glyph ASCII block and a unique frequency-art
+    header drawn from the same monospace vocabulary.
+
+    FONT INTEGRATION (ZUBERI / Paul Rand discipline):
+    ──────────────────────────────────────────────────
+    The design is built for three registers of type:
+      1. Editorial serif (display/titles) — the voice
+      2. Body serif — the essay
+      3. Monospace (mono/annotation) — the evidence, the trace
+
+    Paul Rand's discipline: the grid is not decoration;
+    it is the argument made visible. The ASCII art and
+    monospace elements ARE the argument: the frequency,
+    the table, the footnote, the exercise step — all in
+    the same typeface family, signaling: this is how
+    the evidence speaks.
+
+    ZUBERI (Swahili: "strong") — the name-as-design-principle:
+    The Å glyph throughout this file is a visual stand-in
+    for the ZUBERI mark. Replace <!-- ZUBERI SVG --> with
+    the actual SVG path when available. The Å in section
+    headers (.section-title--glyph::before) can remain as
+    a Unicode character or be replaced with an SVG inline.
+
+    The design intent: every structural marker (section
+    number, tradition glyph, footnote anchor) is also a
+    frequency marker — a moment where the reader's eye
+    is invited to locate itself in the lineage before
+    reading the next passage.
+
+    ============================================================
+  -->
+
+  <script>
+    document.querySelectorAll('.glyph-trigger').forEach(el => {
+      el.addEventListener('click', () => {
+        const conceptId = el.dataset.concept;
+        const target = document.querySelector(`#glyph-${conceptId}`);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('glyph-entry--highlight');
+          setTimeout(() => {
+            target.classList.remove('glyph-entry--highlight');
+          }, 3000);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
