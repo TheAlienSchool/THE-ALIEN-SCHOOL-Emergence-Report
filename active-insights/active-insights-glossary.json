@@ -624,6 +624,158 @@
       "expanded": "Imagination and creativity were historically dislocated, with creativity reduced to commercial careers and imagination left aimless. Re-lassoing them angles insights upwards towards transformative and harmonious possibility.",
       "why_it_matters": "Creativity without imagination creates into the void of the mind; imagination without creativity infinitizes the loop of considering worst-case scenarios. Their balance produces magic.",
       "source": "https://scoolreport2026.vercel.app/"
+    },
+    {
+      "id": "entrainment",
+      "term": "Entrainment",
+      "aliases": ["entrainment", "synchronized rhythms"],
+      "category": "lineage-concept",
+      "tooltip": "The physical tendency of two oscillating systems to synchronize and match their periods when brought into proximity.",
+      "expanded_title": "Acoustic Entrainment",
+      "expanded": "First recorded in physics by Christiaan Huygens is the tendency of biological systems—human heartbeats, breathing patterns, and brain waves—to align their cycles with an external sound stimulus. In sonic therapy, it is the foundational mechanism that allows structured frequency pressure to guide a dysregulated nervous system back into dynamic, calm equilibrium.",
+      "why_it_matters": "Entrainment is the mechanical bridge showing that musical resonance forms an objective, physiological dialogue with the human organism rather than offering merely aesthetic or psychological appeal.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "harmonic-series",
+      "term": "Harmonic Series",
+      "aliases": ["harmonic series", "overtones", "overtone series"],
+      "category": "lineage-concept",
+      "tooltip": "A sequence of pure frequency overtones vibrating naturally as whole-number multiples of a fundamental tone.",
+      "expanded_title": "The Harmonic Series & Overtones",
+      "expanded": "A physical consequence of musical vibration, where any fundamental tone contains within it a hidden cascade of rising, whole-number octaves, fifths, and thirds (f, 2f, 3f, 4f, etc.). This series represents the mathematical spelling of the acoustic universe. Cultures around the globe have built their core musical scales—specifically the five-tone pentatonic structure—from subsets of this physical sequence.",
+      "why_it_matters": "It proves that musical consonance and vocal design are not cultural choices, but physical coordinates aligned directly with how physical media (voice, water, and ears) oscillate.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "resonance",
+      "term": "Resonance",
+      "aliases": ["resonance", "sympathetic resonance", "resonance therapy"],
+      "category": "lineage-concept",
+      "tooltip": "The amplification of vibration that occurs when an incoming frequency matches the natural frequency of an object or body channel.",
+      "expanded_title": "Sympathetic Resonance",
+      "expanded": "The phenomenon in physics where a silent object receives and initiates an identical vibration simply by being in proximity to a matching frequency source. In sonic lineages, health is understood as a well-tuned state of resonance, whereas illness represents a tissue, body hum, or energy field that has fallen out of its natural oscillation.",
+      "why_it_matters": "It explains why sound waves can target specific muscle systems, organs, or mental states without physical contact, correcting cellular blocks through vibration alone.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "catharsis",
+      "term": "Catharsis",
+      "aliases": ["catharsis", "clearing"],
+      "category": "lineage-concept",
+      "tooltip": "The therapeutic release and clarification of congested emotion through structured tension and resolution.",
+      "expanded_title": "Aristotelian Catharsis & Release",
+      "expanded": "Aristotle's classical term for the clearance of emotional weight. In sonic and somatic science, this is achieved by taking the listener on a guided acoustic arc—such as in a 12-bar blues progression, a classical raga expansion, or a dynamic gospel movement—which deliberately introduces physical-emotional tension and then releases it completely.",
+      "why_it_matters": "It matches modern neurochemical models where musical resolution triggers endorphin relief, cortisol drops, and dopamine floods, clearing stored trauma from body channels.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "nada-brahma",
+      "term": "Nada Brahma",
+      "aliases": ["Nada Brahma", "the universe is sound"],
+      "category": "lineage-concept",
+      "tooltip": "Vedic cosmological axiom declaring 'the universe is sound' and vibration is the fundamental medium of reality.",
+      "expanded_title": "Nada Brahma :: The Sonic Medium",
+      "expanded": "The ancient Sanskrit principle holding that oscillation is the precursor to matter and the cosmic fabric itself. From this premise, Raga Chikitsa (musical medicine) flows logically: if the human biological framework is a compound frequency signature, then applying precise microtonal ragas can adjust, repair, and clear any system within that framework.",
+      "why_it_matters": "It merges ancient cosmological knowing with modern field physics, treating health and physical matter as standing patterns of localized frequency.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "bombardment",
+      "term": "Bombardment",
+      "aliases": ["bombardment"],
+      "category": "lineage-concept",
+      "tooltip": "The first phase of traditional acoustic healing, meeting tension with intense targeted frequencies before resolving them.",
+      "expanded_title": "Sonic Bombardment",
+      "expanded": "Nzewi's term for the therapeutic technique of matching a client's specific internal block with direct, often dissonant, acoustic pressure. Rather than immediately applying an artificial, peaceful bypass, bombardment acknowledges and meets the block's current frequency, temporarily intensifying the dynamic struggle until the lock releases into structural alignment.",
+      "why_it_matters": "It warns against shallow peace-bypassing, recognizing that healing requires entering and honoring the tension in order to lead it through resolution.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "maqam",
+      "term": "Maqam",
+      "aliases": ["maqam", "maqamat"],
+      "category": "lineage-concept",
+      "tooltip": "Melodic modes of Islamic and Ottoman acoustic lineages, using microtonal quarter-tones to trigger physiological attunement.",
+      "expanded_title": "The Arabic & Ottoman Maqamat",
+      "expanded": "A highly sophisticated system of melodic design running from Al-Farabi and Ibn Sina into modern medical research. Using intervals that fall 'in the gaps' between Western notes, these modes target specific states—melancholia, anxiety, or deep focus—demonstrating precise clinical psychoacoustic profiles documented across Ottoman hospitals.",
+      "why_it_matters": "It expands the nervous system's capacity to hear and feel, releasing therapeutic responses in channels left unaddressed by standard Western equal temperament.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "phi",
+      "term": "Phi",
+      "aliases": ["phi", "golden ratio"],
+      "category": "lineage-concept",
+      "tooltip": "The mathematical Golden Ratio (~1.618) directing structured growth, musical dynamics, and ear geometry.",
+      "expanded_title": "Phi (φ) & The Spiral Harmony",
+      "expanded": "The foundational mathematical constant of growth patterns found in nautilus shells, the cochlea of the inner ear, and structural proportions of major musical turn-points. It marks the precise threshold where geometry and acoustics match perfectly, offering a blueprint of proportion that organic systems instinctively recognize as consonant and right.",
+      "why_it_matters": "It shows that our physical audiology is hardwired to receive, identify, and settle under proportional geometry, integrating human senses into the universal math of growth.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "neuroplasticity",
+      "term": "Neuroplasticity",
+      "aliases": ["neuroplasticity", "neuroplasticity via music"],
+      "category": "lineage-concept",
+      "tooltip": "The nervous system's capacity to physically reorganize its synapses and brainstem in response to sustained musical training.",
+      "expanded_title": "Auditory Brainstem Neuroplasticity",
+      "expanded": "Nina Kraus's contemporary proof at Brainvolts showing that sustained, attentive listening or playing physically upgrades and sharpens the brainstem's processing speed, pitch registration, and speech clarity. This biological alignment transfers directly to social awareness, reading precision, and cognitive strength.",
+      "why_it_matters": "It provides visual and measurable laboratory evidence that sound does not just pass through the ear temporarily, but leaves a physical, structural blueprint on the brain.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "communal-field",
+      "term": "Communal Field",
+      "aliases": ["communal field", "community field", "communal resonant field"],
+      "category": "lineage-concept",
+      "tooltip": "The model of healing where a synchronized, singing community acts as a singular therapeutic instrument.",
+      "expanded_title": "The Communal Resonant Field",
+      "expanded": "An Indigenous American and gospel insight stating that healing is not an individual service delivered from guide to patient, but an environmental shift. Synchronized singing or drumming merges individual nervous systems into a collective, biological entity, initiating cross-participant oxytocin, dopamine, and endorphin releases.",
+      "why_it_matters": "It redirects focus away from isolated clinical treatments, demonstrating that group vocal synchronization shifts structural chemistry for all participants simultaneously.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "somatic",
+      "term": "Somatic",
+      "aliases": ["somatic", "Somatic", "somatic perspective", "somatic body"],
+      "category": "core-concept",
+      "tooltip": "Relating to the physical body as a lived, felt internal experience rather than an observed object.",
+      "expanded_title": "Somatic Orientation :: Lived Physiology",
+      "expanded": "The internal perspective of the body. In the context of sonic intelligence, somatic focus shifts the target from cognitive processing to literal cellular response: tracking how mechanical sound pressure feels, where it lands, and how it relaxes visceral and muscle tissues.",
+      "why_it_matters": "Understanding the somatic pathway connects sound therapy directly to physical structures like fascia, enabling genuine biological self-attunement.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "epistemic",
+      "term": "Epistemic",
+      "aliases": ["epistemic", "Epistemic", "epistemic fatigue"],
+      "category": "core-concept",
+      "tooltip": "Relating to the validation and construction of knowledge, or how we prove what is true to ourselves.",
+      "expanded_title": "Epistemic Grounding :: The Truth of Knowing",
+      "expanded": "How a system or scholar constructs and validates what is real. Epistemic fatigue occurs when the constant effort of evaluating truth claims exhausts the nervous system; somatic stillness recovers this capacity by settling the analytical mind.",
+      "why_it_matters": "It ensures that inner knowing is validated as a legitimate source of intelligence alongside external documentation.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "biometric-code",
+      "term": "Biometric Code",
+      "aliases": ["biometric code", "Biometric Code", "biometric data"],
+      "category": "core-concept",
+      "tooltip": "The translation of continuous biological processes—such as blood flow, muscle tension, or visceral movements—into digital or sonic datasets. This raises crucial ethical questions about personal metadata ownership and authority over cellular design.",
+      "why_it_matters": "As tech shifts to continuous observation, biometric code becomes the medium of public health data, making ownership of biological records a key social concern.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
+    },
+    {
+      "id": "plastic-synaptic-reorganization",
+      "term": "Plastic Synaptic Reorganization",
+      "aliases": ["plastic synaptic reorganization", "Synaptic Reorganization", "synaptic reorganization"],
+      "category": "core-concept",
+      "tooltip": "The physical restructuring of brainstem and cortical neural networks through sustained, focused musical practice.",
+      "expanded_title": "Synaptic Reorganization :: Physical Neuroplasticity",
+      "expanded": "The biological process where sustained auditory-motor coupling physically shapes neural pathways, improving pitch precision, memory recall, and language comprehension. This provides concrete evidence that the brain is a highly moldable device built through use.",
+      "why_it_matters": "It replaces vague metaphors about brain power with measured biological facts of cellular rewiring, validating sound as a precise neurodevelopmental tool.",
+      "source": "https://scoolreport2026.vercel.app/artifacts/harmonic-lineage.html"
     }
   ]
 }
